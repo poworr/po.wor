@@ -93,26 +93,26 @@ Drop your music demo files (`.mp3`, `.wav`, etc.) into `assets/` and
 reference them with the `audio` field — the entry expands into an
 inline player.
 
-## Add an entry
+## Add an entry (and publish it)
 
-From the project folder:
+Double-click **`Add Entry.command`** in the po.wor folder (or run
+`python3 scripts/add_entry.py` from the project folder).
 
-```
-python3 scripts/add_entry.py
-```
+A small window opens:
 
-A small window opens. Pick the **Page** (Log, Pouvoir, Album or Cinematic),
-then fill in the date (today by default), a one-line summary, and optionally
-a tag, a longer detail, a link, and one image, audio or video file. On the
-three grid pages the labels change to **Title**, **Subtitle** and **Cover**.
-Click **Save entry** (or press Cmd+Enter). The entry goes into that page's
-JSON file, and an attached file is copied into `assets/`.
+1. Pick the **Page**: Log, Pouvoir, Album or Cinematic.
+2. Fill in the date (today by default), the title / one line, a tag
+   (shows as `TAG | title` on the log, or as the subtitle on the grids),
+   a longer detail, and a link.
+3. Attach a **Photo** and/or an **Audio / video** file. They're copied into
+   `assets/` for you; you don't move files by hand.
+4. Click **Save & publish** (or Cmd+Enter). The entry goes into that page's
+   JSON file, then it's committed and pushed to GitHub. The live site
+   updates in a minute or two. **Save only** keeps it on your Mac without
+   publishing; the next Save & publish sends it along.
 
-You can add several entries for the same day; the newest one you add shows
-first within that day. The site shows one media file per entry (image,
-else video, else audio). Files over 50 MB get a warning and files over
-100 MB are refused, because GitHub limits them.
-
+Files over 50 MB get a warning and files over 100 MB are refused, because
+GitHub limits them. Use JPEG or PNG photos (convert iPhone HEIC first).
 The window needs tkinter, which comes with Python from python.org.
 
 You can also edit the JSON files by hand.

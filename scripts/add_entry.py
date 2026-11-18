@@ -6,25 +6,27 @@ Run it from the project folder:
     python3 scripts/add_entry.py
 
 Pick the page (Log, Pouvoir, Album or Cinematic), fill in the form and
-click "Save entry". The entry goes into that page's JSON file (newest first).
+click "Save & publish" (or "Save only"). The entry goes into that page's
+JSON file (newest first); "Save & publish" also commits and pushes it to
+GitHub, so the live site updates in a minute or two.
 On the Log page an entry is a dated line. On Pouvoir, Album and Cinematic it
 becomes a cover in the grid: the "Title" sits under the picture, the
-"Subtitle" under the title, and the attached image is the cover. If you attach an image, audio or video file, it is copied
-into the assets/ folder and linked from the entry. Then commit and push
-in VS Code to publish.
+"Subtitle" under the title, and the photo is the cover. Attached files
+(one photo plus one audio or video file) are copied into the assets/
+folder and linked from the entry.
 
 You can add as many entries as you like for the same day. The newest one
 you add shows first within that day.
 
-One rule comes from the website itself (script.js): it shows ONE media
-file per entry, so the window lets you attach one file (the page looks
-for an image first, then video, then audio).
+Each entry can have one photo and one audio or video file; the site shows
+them together when the entry is opened.
 """
 
 import filecmp
 import json
 import re
 import shutil
+import subprocess
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -132,7 +134,7 @@ def copy_to_assets(source):
     return f"assets/{dest.name}"
 
 
-def build_entry(entry_date, text, tag, detail, link, media_path):
+def build_entry(entry_date, text, tag, detail, link, media_paths=()):
     """Make one entry dictionary. Optional fields are only added if filled in."""
     entry = {"date": entry_date}
     if tag:
@@ -140,7 +142,7 @@ def build_entry(entry_date, text, tag, detail, link, media_path):
     entry["text"] = text
     if detail:
         entry["detail"] = detail
-    if media_path:
+    for media_path in media_paths:
         kind = media_kind(media_path)
         if kind is None:
             raise ValueError(f"{media_path.name} isn't an image, audio or video file.")
@@ -150,12 +152,38 @@ def build_entry(entry_date, text, tag, detail, link, media_path):
     return entry
 
 
+def publish(message):
+    """Commit the JSON files and assets/, then push to GitHub.
+
+    Returns (ok, text). Pulls first so changes made elsewhere (another
+    computer, GitHub's website) are merged instead of rejected.
+    """
+    def git(*args):
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+
+    files = [str(info["file"].relative_to(ROOT)) for info in PAGES.values()] + ["assets"]
+    steps = [
+        ("add", ["add", "--", *files]),
+        ("commit", ["commit", "-m", message, "--", *files]),
+        ("pull", ["pull", "--no-rebase", "--no-edit"]),
+        ("push", ["push"]),
+    ]
+    for name, args in steps:
+        result = git(*args)
+        if result.returncode != 0:
+            out = (result.stdout + result.stderr).strip()
+            if name == "commit" and "nothing" in out:
+                continue  # nothing new to commit; still push anything waiting
+            return False, f"git {name} failed:\n{out}"
+    return True, "Published ✓  The live site updates in a minute or two."
+
+
 # ---------- the window ----------
 
 class App:
     def __init__(self, root):
         self.root = root
-        self.media_path = None
+        self.media_paths = {"photo": None, "sound": None}
 
         root.title("po.wor — new entry")
         root.resizable(False, False)
@@ -168,7 +196,7 @@ class App:
         self.tag_var = tk.StringVar()
         self.text_var = tk.StringVar()
         self.link_var = tk.StringVar()
-        self.media_var = tk.StringVar(value="no file attached")
+        self.media_vars = {"photo": tk.StringVar(value="no file"), "sound": tk.StringVar(value="no file")}
         self.status_var = tk.StringVar()
 
         def label(row, text):
@@ -200,22 +228,25 @@ class App:
         label(5, "Link")
         ttk.Entry(frame, textvariable=self.link_var, width=52).grid(row=5, column=1, columnspan=2, sticky="we", pady=4)
 
-        self.media_label = label(6, "Media")
-        media_row = ttk.Frame(frame)
-        media_row.grid(row=6, column=1, columnspan=2, sticky="w", pady=4)
-        ttk.Button(media_row, text="Choose file…", command=self.choose_media).pack(side="left")
-        ttk.Button(media_row, text="Clear", command=self.clear_media).pack(side="left", padx=6)
-        ttk.Label(media_row, textvariable=self.media_var).pack(side="left", padx=6)
+        self.media_label = label(6, "Photo")
+        label(7, "Audio / video")
+        for row, slot in ((6, "photo"), (7, "sound")):
+            media_row = ttk.Frame(frame)
+            media_row.grid(row=row, column=1, columnspan=2, sticky="w", pady=4)
+            ttk.Button(media_row, text="Choose file…", command=lambda s=slot: self.choose_media(s)).pack(side="left")
+            ttk.Button(media_row, text="Clear", command=lambda s=slot: self.clear_media(s)).pack(side="left", padx=6)
+            ttk.Label(media_row, textvariable=self.media_vars[slot]).pack(side="left", padx=6)
 
         ttk.Label(frame, textvariable=self.status_var, wraplength=420).grid(
-            row=7, column=0, columnspan=3, sticky="w", pady=(8, 0))
+            row=8, column=0, columnspan=3, sticky="w", pady=(8, 0))
 
         buttons = ttk.Frame(frame)
-        buttons.grid(row=8, column=0, columnspan=3, sticky="e", pady=(12, 0))
+        buttons.grid(row=9, column=0, columnspan=3, sticky="e", pady=(12, 0))
         ttk.Button(buttons, text="Close", command=root.destroy).pack(side="right")
-        ttk.Button(buttons, text="Save entry", command=self.save).pack(side="right", padx=8)
+        ttk.Button(buttons, text="Save only", command=lambda: self.save(push=False)).pack(side="right", padx=8)
+        ttk.Button(buttons, text="Save & publish", command=self.save).pack(side="right")
 
-        # Ctrl+Enter (or Cmd+Enter on a Mac) saves too.
+        # Ctrl+Enter (or Cmd+Enter on a Mac) saves and publishes too.
         root.bind("<Control-Return>", lambda event: self.save())
         try:
             root.bind("<Command-Return>", lambda event: self.save())
@@ -238,38 +269,40 @@ class App:
         if page["grid"]:
             self.text_label.config(text="Title")
             self.tag_label.config(text="Subtitle")
-            self.media_label.config(text="Cover")
+            self.media_label.config(text="Cover photo")
         else:
             self.text_label.config(text="One line")
             self.tag_label.config(text="Tag")
-            self.media_label.config(text="Media")
+            self.media_label.config(text="Photo")
         tags = sorted({e["tag"] for e in load_entries(page["file"]) if e.get("tag")})
         self.tag_box.config(values=tags)
         self.status_var.set("")
 
-    def choose_media(self):
-        extensions = sorted(ext for group in MEDIA_TYPES.values() for ext in group)
+    def choose_media(self, slot):
+        if slot == "photo":
+            allowed = MEDIA_TYPES["image"]
+            title = "Choose a photo"
+        else:
+            allowed = MEDIA_TYPES["audio"] | MEDIA_TYPES["video"]
+            title = "Choose an audio or video file"
         chosen = filedialog.askopenfilename(
-            title="Choose an image, audio or video file",
-            filetypes=[("Images, audio, video", " ".join(extensions)), ("All files", "*.*")],
+            title=title,
+            filetypes=[("Allowed files", " ".join(sorted(allowed))), ("All files", "*.*")],
         )
         if not chosen:
             return
         path = Path(chosen)
-        kind = media_kind(path)
-        if kind is None:
-            messagebox.showerror(
-                "Unsupported file",
-                f"{path.suffix or 'That file'} isn't an image, audio or video type the site can show.",
-            )
+        if path.suffix.lower() not in allowed:
+            messagebox.showerror("Unsupported file", f"{path.suffix or 'That file'} doesn't fit here.")
             return
         size_mb = path.stat().st_size / 1024 / 1024
-        self.media_path = path
-        self.media_var.set(f"{kind}: {path.name} ({size_mb:.1f} MB)")
+        self.media_paths[slot] = path
+        self.media_vars[slot].set(f"{path.name} ({size_mb:.1f} MB)")
 
-    def clear_media(self):
-        self.media_path = None
-        self.media_var.set("no file attached")
+    def clear_media(self, slot=None):
+        for s in ([slot] if slot else list(self.media_paths)):
+            self.media_paths[s] = None
+            self.media_vars[s].set("no file")
 
     def clear_form(self):
         self.date_var.set(date.today().isoformat())
@@ -286,7 +319,7 @@ class App:
         self.on_page_change()
         self.status_var.set(status)
 
-    def save(self):
+    def save(self, push=True):
         entry_date = self.date_var.get().strip()
         text = self.text_var.get().strip()
         tag = self.tag_var.get().strip()
@@ -301,8 +334,9 @@ class App:
         page = self.page()
         entries = load_entries(page["file"])
 
-        if self.media_path:
-            size_mb = self.media_path.stat().st_size / 1024 / 1024
+        media = [p for p in self.media_paths.values() if p]
+        for path in media:
+            size_mb = path.stat().st_size / 1024 / 1024
             if size_mb > MAX_MB:
                 messagebox.showerror(
                     "File too big",
@@ -317,7 +351,7 @@ class App:
                 return
 
         try:
-            entry = build_entry(entry_date, text, tag, detail, link, self.media_path)
+            entry = build_entry(entry_date, text, tag, detail, link, media)
         except (OSError, ValueError) as err:
             messagebox.showerror("Couldn't save", str(err))
             return
@@ -329,8 +363,16 @@ class App:
             done = f"Saved ✓  {len(entries)} on {self.page_var.get()}."
         else:
             done = f"Saved ✓  {len(entries)} entries, streak {current_streak(entries)} day(s)."
-        self.status_var.set(done + " Now commit and push in VS Code.")
         self.clear_form()
+        if not push:
+            self.status_var.set(done + " Not published yet.")
+            return
+        self.status_var.set(done + " Publishing…")
+        self.root.update()
+        ok, message = publish(f"add {self.page_var.get()} entry: {text}")
+        self.status_var.set(done + " " + message if ok else done + " Not published.")
+        if not ok:
+            messagebox.showerror("Couldn't publish", message + "\n\nYour entry is saved; try Save & publish again later.")
 
 
 def main():

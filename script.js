@@ -65,15 +65,17 @@ function prepareEntries(rawEntries) {
   return [...rawEntries].sort((a, b) => parseDate(b.date) - parseDate(a.date));
 }
 
-// The one media file an entry shows when opened: image, else video, else audio.
+// Every media file an entry has, in this order: image, video, audio.
+// (So a song can have its cover photo and its player together.)
 function buildMedia(entry) {
+  const media = document.createDocumentFragment();
   if (entry.image) {
     const img = document.createElement('img');
     img.src = entry.image;
     img.alt = entry.text;
     img.loading = 'lazy';
     img.className = 'entry-media';
-    return img;
+    media.appendChild(img);
   }
   if (entry.video) {
     const video = document.createElement('video');
@@ -81,7 +83,7 @@ function buildMedia(entry) {
     video.controls = true;
     video.preload = 'none';
     video.className = 'entry-media';
-    return video;
+    media.appendChild(video);
   }
   if (entry.audio) {
     const audio = document.createElement('audio');
@@ -89,9 +91,9 @@ function buildMedia(entry) {
     audio.controls = true;
     audio.preload = 'none';
     audio.className = 'entry-audio';
-    return audio;
+    media.appendChild(audio);
   }
-  return null;
+  return media;
 }
 
 // ---------- render ----------
@@ -156,8 +158,7 @@ function renderEntry(entry) {
       p.textContent = entry.detail;
       detail.appendChild(p);
     }
-    const media = buildMedia(entry);
-    if (media) detail.appendChild(media);
+    detail.appendChild(buildMedia(entry));
     if (entry.link) {
       const a = document.createElement('a');
       a.href = entry.link;
@@ -280,8 +281,7 @@ function openViewer(entry) {
   close.addEventListener('click', () => v.close());
   inner.appendChild(close);
 
-  const media = buildMedia(entry);
-  if (media) inner.appendChild(media);
+  inner.appendChild(buildMedia(entry));
 
   const title = document.createElement('h2');
   title.className = 'viewer-title';
