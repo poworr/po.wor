@@ -24,6 +24,17 @@
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// The box icon in the header: click to open the lid and show the sections.
+const boxMenu = document.querySelector('.box-menu');
+const boxToggle = document.getElementById('box-toggle');
+function setBoxOpen(open) {
+  boxMenu.classList.toggle('open', open);
+  boxToggle.setAttribute('aria-expanded', String(open));
+}
+boxToggle.addEventListener('click', () => setBoxOpen(!boxMenu.classList.contains('open')));
+document.addEventListener('click', (e) => { if (!boxMenu.contains(e.target)) setBoxOpen(false); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setBoxOpen(false); });
+
 if (location.protocol === 'file:') {
   const warning = document.createElement('div');
   warning.className = 'file-warning';

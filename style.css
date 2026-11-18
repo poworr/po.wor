@@ -96,18 +96,80 @@ a { color: inherit; text-decoration: none; }
 
 .brand:hover { color: var(--accent); }
 
-.nav {
+/* ---------- box menu: the box opens and the sections drop out ---------- */
+
+.box-menu { position: relative; align-self: center; }
+
+.box-toggle {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  color: var(--dim);
+  padding: 6px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
 }
 
-.nav a { display: flex; padding: 4px; }
+.box-toggle:hover { color: var(--accent); }
 
-.nav a:hover { color: var(--accent); }
+.box-lid {
+  transform-box: view-box;
+  transform-origin: 4px 7.5px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-.nav a[aria-current="page"] { color: var(--text); }
+.box-toggle[aria-expanded="true"] .box-lid {
+  transform: translate(-1px, -3px) rotate(-28deg);
+}
+
+.box-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  min-width: 180px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform-origin: top right;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.92);
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.box-menu.open .box-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.2s ease 0.1s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s, visibility 0s;
+}
+
+.box-panel a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--dim);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.box-menu.open .box-panel a { opacity: 1; transform: none; }
+.box-menu.open .box-panel a:nth-child(1) { transition-delay: 0.15s; }
+.box-menu.open .box-panel a:nth-child(2) { transition-delay: 0.2s; }
+.box-menu.open .box-panel a:nth-child(3) { transition-delay: 0.25s; }
+.box-menu.open .box-panel a:nth-child(4) { transition-delay: 0.3s; }
+
+.box-panel a:hover { background: var(--rule); color: var(--text); }
+
+.box-panel a[aria-current="page"] { color: var(--text); font-weight: 700; }
 
 /* ---------- feed / log spine ---------- */
 

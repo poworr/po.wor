@@ -22,7 +22,7 @@ declares which JSON file to read via a `data-feed` attribute, e.g.:
 
 A page picks its look with `data-layout="grid"` on the same tag (leave it out
 for the dated list). `script.js` reads these attributes at load time — nothing
-else needs to change per page. A shared top nav (`.nav`, with `aria-current="page"` on
+else needs to change per page. A shared box menu in the header (`.box-menu`: click the box icon to open it; `aria-current="page"` marks
 the active link) lets you move between all five.
 
 The site is **read-only**: it only displays what is in the JSON files.
