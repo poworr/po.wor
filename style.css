@@ -16,9 +16,9 @@
   --rule: #DCDCDC;
   --accent: #4B5560;
 
-  --mono: 'M PLUS Rounded 1c', ui-rounded, -apple-system, 'Segoe UI', sans-serif;
-  --sans: 'M PLUS Rounded 1c', ui-rounded, -apple-system, 'Segoe UI', sans-serif;
-  --display: 'M PLUS Rounded 1c', ui-rounded, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+  --sans: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+  --display: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
 
   --gutter: 112px;
 }
