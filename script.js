@@ -19,7 +19,7 @@
 //
 // IMPORTANT: every HTML page loads this file as "script.js?v=N" (same for
 // style.css). Browsers cache these aggressively, so whenever this file or
-// style.css changes, bump ?v=N in all four HTML pages — otherwise visitors
+// style.css changes, bump ?v=N in all five HTML pages — otherwise visitors
 // keep running the old cached code.
 
 document.getElementById('year').textContent = new Date().getFullYear();

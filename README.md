@@ -1,14 +1,15 @@
 # po.wor
 
-Four pages, one engine: date, one line, click to see the work. No framework,
+Five pages, one engine: date, one line, click to see the work. No framework,
 no build step.
 
 - **Log** (`index.html`) — the daily log.
 - **Pouvoir** (`pouvoir.html`) — merch design, dark titanium-silver theme.
 - **Album** (`album.html`) — music/album showcase.
 - **Cinematic** (`cinematic.html`) — photo/video showcase.
+- **Creative** (`creative.html`) — creative products.
 
-The Log is a dated list. Pouvoir, Album and Cinematic are **cover grids**: a
+The Log is a dated list. Pouvoir, Album, Cinematic and Creative are **cover grids**: a
 wall of square pictures with a title and subtitle under each, like Apple
 Music's Albums view. Click a cover to open it large.
 
@@ -22,7 +23,7 @@ declares which JSON file to read via a `data-feed` attribute, e.g.:
 A page picks its look with `data-layout="grid"` on the same tag (leave it out
 for the dated list). `script.js` reads these attributes at load time — nothing
 else needs to change per page. A shared top nav (`.nav`, with `aria-current="page"` on
-the active link) lets you move between all four.
+the active link) lets you move between all five.
 
 The site is **read-only**: it only displays what is in the JSON files.
 You change content by editing those files, then committing and pushing.
@@ -43,7 +44,7 @@ po.wor/
                   your data — one JSON file per page, matching each
                   page's data-feed attribute
   scripts/
-    add_entry.py  small window: add an entry to any of the four pages
+    add_entry.py  small window: add an entry to any of the five pages
     build_log.py  optional: generate log.json from an Obsidian folder
   assets/         put images/video referenced from the JSON files here
 ```
@@ -100,7 +101,7 @@ Double-click **`Add Entry.command`** in the po.wor folder (or run
 
 A small window opens:
 
-1. Pick the **Page**: Log, Pouvoir, Album or Cinematic.
+1. Pick the **Page**: Log, Pouvoir, Album, Cinematic or Creative.
 2. Fill in the date (today by default), the title / one line, a tag
    (shows as `TAG | title` on the log, or as the subtitle on the grids),
    a longer detail, and a link.

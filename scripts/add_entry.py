@@ -5,7 +5,7 @@ po.wor — add an entry to any page of the site from a small window.
 Run it from the project folder:
     python3 scripts/add_entry.py
 
-Pick the page (Log, Pouvoir, Album or Cinematic), fill in the form and
+Pick the page (Log, Pouvoir, Album, Cinematic or Creative), fill in the form and
 click "Save & publish" (or "Save only"). The entry goes into that page's
 JSON file (newest first); "Save & publish" also commits and pushes it to
 GitHub, so the live site updates in a minute or two.
@@ -47,6 +47,7 @@ PAGES = {
     "Pouvoir": {"file": ROOT / "pouvoir.json", "grid": True},
     "Album": {"file": ROOT / "albums.json", "grid": True},
     "Cinematic": {"file": ROOT / "cinematic.json", "grid": True},
+    "Creative": {"file": ROOT / "creative.json", "grid": True},
 }
 ASSETS = ROOT / "assets"
 
