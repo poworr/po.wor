@@ -128,17 +128,19 @@ function renderEntry(entry) {
   const main = document.createElement('div');
   main.className = 'entry-main';
 
+  // One line: TAG | title
+  const text = document.createElement('p');
+  text.className = 'entry-text';
   if (entry.tag) {
     const tag = document.createElement('span');
     tag.className = 'entry-tag';
     tag.textContent = entry.tag;
-    main.appendChild(tag);
-    main.appendChild(document.createElement('br'));
+    const sep = document.createElement('span');
+    sep.className = 'entry-sep';
+    sep.textContent = '|';
+    text.append(tag, sep);
   }
-
-  const text = document.createElement('p');
-  text.className = 'entry-text';
-  text.textContent = entry.text;
+  text.append(entry.text);
   main.appendChild(text);
 
   row.appendChild(main);
