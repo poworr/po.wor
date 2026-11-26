@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=21">
 </head>
 <body>
 
   <header>
-    <!-- Logo (left) -->
-    <a href="index.html"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <!-- Logo (left): bounces on hover and shows its message (data-tip) -->
+    <a class="home" href="index.html" data-tip="you want to go home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
 
     <!-- Box (right): links to projects.html.
-         Hover: the lid opens. Click: js/box.js tosses a P into it first. -->
-    <a class="box" href="projects.html" aria-label="Projects">
+         Hover: the box bounces, the lid opens, the message shows.
+         Click: js/box.js tosses a P into it first. -->
+    <a class="box" href="projects.html" aria-label="Projects" data-tip="ready to ride">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
         <!-- box body: left side, bottom, right side -->
         <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
