@@ -28,7 +28,6 @@
       <span>
         <button data-view="day">day</button>
         <button data-view="week">week</button>
-        <button data-view="month">month</button>
       </span>
       <span>
         <button id="prev" aria-label="Back">&lt;</button>
@@ -44,16 +43,9 @@
       <textarea id="page" spellcheck="false" aria-label="Today's page" placeholder="• start writing…"></textarea>
     </section>
 
-    <!-- Week: hours down the side, events (○ 14:00 ...) from each day's page -->
+    <!-- Week: Monday to Sunday, each date with space to write (no times) -->
     <section id="week-view" hidden>
-      <div class="week-scroll" id="week-scroll">
-        <div class="week" id="week"></div>
-      </div>
-    </section>
-
-    <!-- Month: a plain calendar, today has a circle -->
-    <section id="month-view" hidden>
-      <div class="month" id="month"></div>
+      <div id="week"></div>
     </section>
 
     <!-- Shows while you hold ⌘ -->

@@ -319,6 +319,11 @@ footer {
 /* 原稿用紙: 20 squares per row. Sizes use cqi (1% of the paper's width) so it fits any screen. */
 .genko {
   container-type: inline-size;
+  box-sizing: border-box;
+  /* 25 rows of squares (with the gaps between rows) are about 1.65 times as tall
+     as the paper is wide, so 55% of the screen height as the width keeps the
+     whole sheet on screen */
+  width: min(100%, calc(55svh + 30px));
   margin: 16px 0 0;
   padding-right: 30px;   /* room for the 100, 200 ... numbers */
 }
@@ -423,113 +428,54 @@ footer {
   resize: vertical;
 }
 
-/* A circle around today's date */
-.planner .circle {
-  display: inline-block;
-  min-width: 1.6em;
-  line-height: 1.6em;
-  text-align: center;
-  border: 1px solid #1D1D1F;
-  border-radius: 50%;
-}
-
-/* Month: boxes like a paper calendar */
-.month {
+/* Week: 7 columns side by side, like a paper weekly planner */
+#week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   border-left: 1px solid #DCDCDC;
 }
-.month > div {
+.week-day {
+  padding: 0 8px;
   border-right: 1px solid #DCDCDC;
+}
+.week-date {
+  margin: 0 0 8px;
+  padding-bottom: 4px;
   border-bottom: 1px solid #DCDCDC;
 }
-.month-head {
-  padding: 4px 6px;
-  border-top: 1px solid #1D1D1F;
-  border-bottom-color: #1D1D1F !important;
+.week-date.today {
+  font-weight: bold;
+  border-bottom-color: #1D1D1F;
 }
-.month-day {
-  min-height: 84px;
-  padding: 4px;
-  cursor: text;
-}
-.month-day .num {
-  margin-bottom: 2px;
-}
-
-/* Week: hours down the side, thin grey lines like a paper calendar */
-.week-scroll {
-  position: relative;   /* so planner.js can scroll to 08:00 inside this box */
-  max-height: 60vh;
-  overflow: auto;
-  border-top: 1px solid #1D1D1F;
-}
-.week {
-  display: grid;
-  grid-template-columns: 52px repeat(7, minmax(72px, 1fr));
-  min-width: 560px;
-}
-.week-head {
-  position: sticky;   /* the day names stay on top while you scroll */
-  top: 0;
-  padding: 6px 0;
-  text-align: center;
-  background: #F5F5F5;
-  border-bottom: 1px solid #1D1D1F;
-}
-.week-time {
-  padding: 2px 6px 0 0;
-  font-size: 11px;
-  color: #6E6E73;
-  text-align: right;
-}
-.week-slot {
-  min-height: 40px;
-  border-left: 1px solid #DCDCDC;
-  border-bottom: 1px solid #DCDCDC;
-}
-/* An event on the week or month. Drag it to move it. */
-.event {
-  margin: 2px 0;
-  padding: 1px 4px;
-  overflow: hidden;
-  font-size: 11px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background: #FFFFFF;
-  border: 1px solid #1D1D1F;
-  border-radius: 3px;
-  cursor: grab;
-}
-.week-slot {
-  padding: 0 2px;
-  cursor: text;
-}
-/* on the week, long event names wrap instead of being cut */
-.week-slot .event {
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-.week-allday {
-  position: sticky;
-  z-index: 1;
-  background: #F5F5F5;
-  border-bottom: 1px solid #1D1D1F !important;
-}
-/* where an event will land while you drag it */
-.over {
-  background: #E6E6E6;
-}
-/* the small box for typing a new event */
-.type-here {
+#week textarea {
+  display: block;
   box-sizing: border-box;
   width: 100%;
-  padding: 1px 4px;
+  min-height: 55vh;
+  padding: 0;
+  overflow: hidden;   /* it grows instead of scrolling */
   font: inherit;
-  font-size: 11px;
-  border: 1px solid #1D1D1F;
-  border-radius: 3px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: inherit;
+  background: none;
+  border: 0;
   outline: none;
+  resize: none;
+}
+/* phones: 7 columns are too narrow, so the days go in a list */
+@media (max-width: 700px) {
+  #week {
+    grid-template-columns: 1fr;
+    border-left: 0;
+  }
+  .week-day {
+    padding: 0 0 16px;
+    border-right: 0;
+  }
+  #week textarea {
+    min-height: 3.6em;
+  }
 }
 
 /* Phones: the bullet bar above the keyboard */
