@@ -100,6 +100,18 @@ function sampleCard(s) {
     li.textContent = point;
     card.querySelector('.why').appendChild(li);
   });
+
+  // Credit where the paragraph came from (only if source is filled in)
+  if (s.source) {
+    const credit = document.createElement('p');
+    credit.className = 'source';
+    credit.textContent = '出典：';
+    const link = document.createElement('a');
+    link.textContent = s.source;
+    link.href = s.source_url;
+    credit.appendChild(link);
+    card.appendChild(credit);
+  }
   return card;
 }
 
