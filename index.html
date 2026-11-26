@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -17,8 +17,12 @@
     <details class="box">
       <summary>
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-          <path d="M4 7.5v9L12 21l8-4.5v-9M4 7.5 12 12l8-4.5M12 12v9"/>
-          <path class="lid" d="M4 7.5 12 3l8 4.5L12 12z"/>
+          <!-- box body: left side, bottom, right side -->
+          <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+          <!-- inner edges: the "V" at the top and the line down the middle -->
+          <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+          <!-- lid: the diamond on top (its own shape so CSS can tilt it) -->
+          <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
         </svg>
       </summary>
 
@@ -29,7 +33,15 @@
     </details>
   </header>
 
-  <main></main>
+  <main>
+    <!-- Your work log. To add one, copy an <article> block and change it. Newest goes on top. -->
+
+    <article class="entry">
+      <p class="date">WED-15-07-2026</p>
+      <p class="text"><span class="tag">site</span><span class="sep">|</span>Started building po.wor.</p>
+    </article>
+
+  </main>
 
   <footer>&copy; 2026 po.wor</footer>
 

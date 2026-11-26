@@ -98,6 +98,52 @@ header {
 /* ===== Middle and bottom ===== */
 main {
   flex: 1;
+  padding: 8px 20px 40px;
+}
+
+/* ===== Work log: date on the left, TAG | text on the right ===== */
+.entry {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid #DCDCDC;
+}
+.entry:first-of-type {
+  border-top: none;
+}
+
+.date {
+  margin: 0;
+  padding-top: 3px;
+  font-size: 11px;
+  color: #6E6E73;
+  white-space: nowrap;
+}
+
+.text {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tag {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #4B5560;
+}
+
+.sep {
+  margin: 0 10px;
+  color: #DCDCDC;
+}
+
+/* on phones the date goes above the text */
+@media (max-width: 520px) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
 
 footer {
