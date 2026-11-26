@@ -1,98 +1,98 @@
-/* po.wor — colors and font, change them here */
-:root {
-  --bg: #F5F5F5;
-  --text: #1D1D1F;
-  --dim: #6E6E73;
-  --line: #DCDCDC;
-  --font: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-* { box-sizing: border-box; }
-
+/* ===== Whole page ===== */
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font);
+  background: #F5F5F5;
+  color: #1D1D1F;
+  font-family: 'Lucida Grande', Verdana, sans-serif;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* ---------- header: logo left, box right ---------- */
-
-.bar {
-  padding: 40px 20px 24px;
+/* ===== Header: logo on the left, box on the right ===== */
+header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px 24px;
 }
 
-.logo { display: block; width: 36px; height: 36px; }
-.logo:hover { opacity: 0.7; }
+.logo {
+  width: 36px;
+  height: 36px;
+}
 
-/* ---------- the box: click it, the lid opens, the panel drops out ---------- */
+/* ===== The box ===== */
+.box {
+  position: relative;
+}
 
-.box-menu { position: relative; }
-
-.box-toggle {
-  display: flex;
-  padding: 6px;
-  border: 0;
-  background: none;
-  color: var(--text);
+/* the box icon you click */
+.box summary {
+  list-style: none;   /* hide the default arrow */
   cursor: pointer;
+  padding: 6px;
+}
+.box summary::-webkit-details-marker {
+  display: none;      /* hide the arrow in Safari */
 }
 
-.box-lid {
+/* the lid tilts up when the box is open */
+.lid {
   transform-origin: 4px 7.5px;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s;
 }
-.box-menu.open .box-lid { transform: translate(-1px, -3px) rotate(-28deg); }
+.box[open] .lid {
+  transform: rotate(-28deg);
+}
 
-.box-panel {
+/* the panel that drops out of the box */
+.panel {
   position: absolute;
-  top: calc(100% + 8px);
   right: 0;
+  top: 44px;
   min-width: 180px;
   min-height: 44px;
   padding: 6px;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
-  border: 1px solid var(--line);
+  background: #F5F5F5;
+  border: 1px solid #DCDCDC;
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  transform-origin: top right;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px) scale(0.92);
-  transition: opacity 0.2s, transform 0.25s, visibility 0s 0.25s;
-}
-.box-menu.open .box-panel {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition: opacity 0.2s 0.1s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+  animation: drop 0.3s;
 }
 
-.box-panel a { padding: 9px 12px; border-radius: 8px; font-size: 14px; color: var(--dim); }
-.box-panel a:hover { background: var(--line); color: var(--text); }
+@keyframes drop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-/* ---------- page + footer ---------- */
+.panel a {
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #6E6E73;
+}
+.panel a:hover {
+  background: #DCDCDC;
+  color: #1D1D1F;
+}
 
-main { flex: 1; padding: 8px 20px 40px; }
+/* ===== Middle and bottom ===== */
+main {
+  flex: 1;
+}
 
-.foot {
+footer {
   padding: 24px 20px 60px;
   text-align: right;
   font-size: 12px;
-  color: var(--dim);
-  border-top: 1px solid var(--line);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition-duration: 0.001ms !important; }
+  color: #6E6E73;
+  border-top: 1px solid #DCDCDC;
 }

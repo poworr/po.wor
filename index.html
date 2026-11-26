@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>po.wor</title>
-<link rel="icon" href="P-logo-small.png" type="image/png">
-<link rel="stylesheet" href="style.css?v=13">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>po.wor</title>
+  <link rel="icon" href="P-logo-small.png">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
-<header class="bar">
-  <a href="index.html"><img class="logo" src="P-logo-small.png" alt="po.wor"></a>
+  <header>
+    <!-- Logo (left) -->
+    <a href="index.html"><img class="logo" src="P-logo-small.png" alt="po.wor"></a>
 
-  <div class="box-menu">
-    <button type="button" class="box-toggle" id="box-toggle" aria-expanded="false" aria-label="Projects">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 7.5v9L12 21l8-4.5v-9M4 7.5 12 12l8-4.5M12 12v9"/>
-        <path class="box-lid" d="M4 7.5 12 3l8 4.5L12 12z"/>
-      </svg>
-    </button>
-    <nav class="box-panel">
-      <!-- put your links here, e.g. <a href="work.html">Work</a> -->
-    </nav>
-  </div>
-</header>
+    <!-- Box (right): click to open, click again to close -->
+    <details class="box">
+      <summary>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+          <path d="M4 7.5v9L12 21l8-4.5v-9M4 7.5 12 12l8-4.5M12 12v9"/>
+          <path class="lid" d="M4 7.5 12 3l8 4.5L12 12z"/>
+        </svg>
+      </summary>
 
-<main></main>
+      <nav class="panel">
+        <!-- Put your links here, for example: -->
+        <!-- <a href="work.html">Work</a> -->
+      </nav>
+    </details>
+  </header>
 
-<footer class="foot">&copy; <span id="year"></span> po.wor</footer>
+  <main></main>
 
-<script src="script.js?v=8"></script>
+  <footer>&copy; 2026 po.wor</footer>
+
 </body>
 </html>
