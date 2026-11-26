@@ -5,16 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>日本語の作文練習 — po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="css/japanese.css?v=3">
+  <!-- Pixel font (works for Japanese too) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap">
+  <link rel="stylesheet" href="css/mac.css?v=1">
 </head>
 <body>
 
-  <div class="page">
-    <a class="back" href="index.html"><img src="images/logo.png" alt="ホーム"></a>
+  <!-- Menu bar along the top, with the logo (goes home) -->
+  <div class="menubar">
+    <a href="index.html"><img src="images/logo.png" alt="ホーム"></a>
+    <span>po.wor</span>
+  </div>
 
-    <h1>日本語の作文練習</h1>
+  <!-- The window -->
+  <div class="window">
+    <div class="titlebar">
+      <a class="close" href="projects.html" aria-label="閉じる"></a>
+      <h1>日本語の作文練習</h1>
+    </div>
 
-    <!-- Tabs (segmented control) -->
+    <div class="content">
+
+    <!-- Tabs -->
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tab-practice" aria-controls="practice" aria-selected="true">練習</button>
       <button class="tab" role="tab" id="tab-good" aria-controls="good" aria-selected="false">お手本</button>
@@ -42,6 +54,8 @@
     <section id="good" role="tabpanel" aria-labelledby="tab-good" hidden>
       <div id="gallery"></div>
     </section>
+
+    </div>
   </div>
 
   <script src="js/japanese-data.js?v=3"></script>

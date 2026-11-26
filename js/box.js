@@ -37,16 +37,15 @@ box.addEventListener('click', function (event) {
   setTimeout(function () { location.href = box.href; }, 1400);   // open the page
 });
 
-// Phones have no hover, so tapping the logo or あ shows its bubble
+// Phones have no hover, so tapping the logo shows its bubble
 // and bounce first, then opens the page a moment later.
+const home = document.querySelector('.home');
 const phone = matchMedia('(hover: none)').matches;
-document.querySelectorAll('.home, .write').forEach(function (link) {
-  link.addEventListener('click', function (event) {
-    if (!phone) return; // computers already saw the bubble on hover
-    event.preventDefault();
-    link.classList.add('tapped');
-    setTimeout(function () { location.href = link.href; }, 900);
-  });
+home.addEventListener('click', function (event) {
+  if (!phone) return; // computers already saw the bubble on hover
+  event.preventDefault();
+  home.classList.add('tapped');
+  setTimeout(function () { location.href = home.href; }, 900);
 });
 
 // If you come back with the browser's Back button, reset everything and remove the copy.

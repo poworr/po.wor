@@ -28,19 +28,6 @@ header {
   height: 36px;
 }
 
-/* ===== あ: a link to the Japanese writing practice page ===== */
-.write {
-  margin-left: auto;   /* sits on the right, next to the box */
-  padding: 6px;
-  font-size: 20px;
-  line-height: 24px;
-}
-.write span {
-  display: block;
-  width: 24px;
-  text-align: center;
-}
-
 /* ===== The box: a link to the projects page ===== */
 .box {
   display: flex;
@@ -61,7 +48,7 @@ header {
   transform: none;
 }
 
-/* ===== The bounce: the logo, the あ and the box bounce a little
+/* ===== The bounce: the logo and the box bounce a little
    when you point at them (or tap them on a phone, see js/box.js) ===== */
 [data-tip]:hover > *,
 [data-tip].tapped > * {
@@ -123,9 +110,7 @@ header {
 /* logo bubble opens to the right, the others open to the left */
 .home::after  { left: 0; }
 .home::before { left: 14px; }
-.write::after,
 .box::after   { right: 0; }
-.write::before,
 .box::before  { right: 14px; }
 
 /* show the bubble on hover (or tap on a phone), after a short pause */
