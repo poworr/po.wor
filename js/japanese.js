@@ -90,13 +90,15 @@ function sampleCard(s) {
     '<span class="tag"></span>' +
     '<h2 class="sample-title"></h2>' +
     '<p class="label"></p>' +
+    '<p class="sample-text"></p>' +
     '<p class="label">ここがいい</p>' +
     '<ul class="why"></ul>';
   card.querySelector('.tag').textContent = s.level;
   card.querySelector('.sample-title').textContent = s.title;
-  // How many characters (line breaks don't count), then the paragraph on 原稿用紙
+  // How many characters (line breaks don't count), the plain paragraph, then the same on 原稿用紙
   card.querySelector('.label').textContent = '文字数：' + [...s.text_ja.replace(/\n/g, '')].length + '字';
-  card.querySelector('.label').after(genko(s.title, s.text_ja));
+  card.querySelector('.sample-text').textContent = s.text_ja;
+  card.querySelector('.sample-text').after(genko(s.title, s.text_ja));
   s.why_good.forEach(function (point) {
     const li = document.createElement('li');
     li.textContent = point;

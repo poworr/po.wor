@@ -310,6 +310,12 @@ footer {
   font-size: 18px;
   font-weight: normal;
 }
+.sample-text {
+  margin: 16px 0 0;
+  line-height: 1.8;
+  white-space: pre-line;   /* keep the paragraph breaks from the data file */
+}
+
 /* 原稿用紙: 20 squares per row. Sizes use cqi (1% of the paper's width) so it fits any screen. */
 .genko {
   container-type: inline-size;
