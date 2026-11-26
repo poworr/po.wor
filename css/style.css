@@ -27,72 +27,21 @@ header {
   height: 36px;
 }
 
-/* ===== The box ===== */
+/* ===== The box: a link to the projects page ===== */
 .box {
-  position: relative;
-}
-
-/* the box icon you click */
-.box summary {
-  list-style: none;   /* hide the default arrow */
-  cursor: pointer;
+  display: flex;
   padding: 6px;
 }
-.box summary::-webkit-details-marker {
-  display: none;      /* hide the arrow in Safari */
-}
 
-/* when open, an invisible layer covers the page.
-   it belongs to the box button, so clicking anywhere outside closes the box */
-.box[open] summary::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  cursor: default;
-}
-
-/* the lid tilts up when the box is open */
+/* the lid tilts open when you point at the box,
+   and stays open on the projects page (class="box open") */
 .lid {
   transform-origin: 4px 7.5px;
   transition: transform 0.3s;
 }
-.box[open] .lid {
+.box:hover .lid,
+.box.open .lid {
   transform: rotate(-28deg);
-}
-
-/* the panel that drops out of the box */
-.panel {
-  position: absolute;
-  right: 0;
-  top: 44px;
-  z-index: 2;         /* sits above the invisible layer, so its links still work */
-  min-width: 180px;
-  min-height: 44px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  background: #F5F5F5;
-  border: 1px solid #DCDCDC;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  animation: drop 0.3s;
-}
-
-@keyframes drop {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.panel a {
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #6E6E73;
-}
-.panel a:hover {
-  background: #DCDCDC;
-  color: #1D1D1F;
 }
 
 /* ===== Middle and bottom ===== */

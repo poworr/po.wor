@@ -13,9 +13,8 @@
     <!-- Logo (left) -->
     <a href="index.html"><img class="logo" src="images/logo.png" alt="po.wor"></a>
 
-    <!-- Box (right): click to open, click it again or anywhere outside to close -->
-    <details class="box">
-      <summary>
+    <!-- Box (right): point at it and the lid opens, click it to go to the projects page -->
+    <a class="box" href="projects.html" aria-label="Projects">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
           <!-- box body: left side, bottom, right side -->
           <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
@@ -24,13 +23,7 @@
           <!-- lid: the diamond on top (its own shape so CSS can tilt it) -->
           <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
         </svg>
-      </summary>
-
-      <nav class="panel">
-        <!-- Put your links here, for example: -->
-        <!-- <a href="work.html">Work</a> -->
-      </nav>
-    </details>
+    </a>
   </header>
 
   <main>
