@@ -6,9 +6,12 @@ No JavaScript: the box is an HTML `<details>` element, which opens and closes by
 
 ## Files
 
-- `index.html`: the page. Add links inside `<nav class="box-panel">` to fill the box.
-- `style.css`: the look. Colors and font are at the top.
-- `P-logo-small.png`: the logo and browser-tab icon.
+```
+po.wor/
+  index.html        the page. Add links inside <nav class="panel"> to fill the box.
+  css/style.css     the look: colors, font, the box animation
+  images/logo.png   the logo and browser-tab icon
+```
 
 ## Preview on your Mac
 
@@ -27,5 +30,5 @@ git push
 ```
 
 GitHub Pages updates https://poworr.github.io/po.wor/ in a minute or two.
-If you change `style.css`, bump the `?v=` number in `index.html`
+If you change `css/style.css`, bump the `?v=` number in `index.html`
 so browsers load the new version. The year in the footer is typed in `index.html`.

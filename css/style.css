@@ -42,6 +42,16 @@ header {
   display: none;      /* hide the arrow in Safari */
 }
 
+/* when open, an invisible layer covers the page.
+   it belongs to the box button, so clicking anywhere outside closes the box */
+.box[open] summary::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  cursor: default;
+}
+
 /* the lid tilts up when the box is open */
 .lid {
   transform-origin: 4px 7.5px;
@@ -56,6 +66,7 @@ header {
   position: absolute;
   right: 0;
   top: 44px;
+  z-index: 2;         /* sits above the invisible layer, so its links still work */
   min-width: 180px;
   min-height: 44px;
   padding: 6px;
