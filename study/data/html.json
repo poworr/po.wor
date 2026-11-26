@@ -1,0 +1,74 @@
+[
+  {
+    "id": "seed-1",
+    "category": "Structure",
+    "syntax": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>My page</title>\n</head>\n<body>\n  <h1>Hello</h1>\n</body>\n</html>",
+    "explain": "The frame every web page starts with. head holds information, body holds what you see.",
+    "example": "The first thing you type in every new .html file.",
+    "mastered": false
+  },
+  {
+    "id": "seed-2",
+    "category": "Structure",
+    "syntax": "<header>Logo</header>\n<main>Content</main>\n<section>A part of the page</section>\n<footer>© 2026</footer>",
+    "explain": "Tags that name the parts of a page. They work like div, but say what each part is for.",
+    "example": "A blog: header with the logo, main with the posts, footer with the copyright.",
+    "mastered": false
+  },
+  {
+    "id": "seed-3",
+    "category": "Structure",
+    "syntax": "<div class=\"card\">\n  <h2>Title</h2>\n  <p>Text</p>\n</div>",
+    "explain": "div is a plain box for grouping things, usually so CSS can style the group.",
+    "example": "Wrapping each product on a shop page in a card.",
+    "mastered": false
+  },
+  {
+    "id": "seed-4",
+    "category": "Text",
+    "syntax": "<h1>Biggest heading</h1>\n<h2>Smaller heading</h2>\n<p>A paragraph of text.</p>",
+    "explain": "Headings go from h1 (biggest) to h6 (smallest). p is a paragraph.",
+    "example": "An article title, section titles, and the body text.",
+    "mastered": false
+  },
+  {
+    "id": "seed-5",
+    "category": "Text",
+    "syntax": "<a href=\"https://example.com\">Visit</a>",
+    "explain": "A link. href is where it goes.",
+    "example": "A menu that links to your other pages.",
+    "mastered": false
+  },
+  {
+    "id": "seed-6",
+    "category": "Media",
+    "syntax": "<img src=\"photo.jpg\" alt=\"My cat on the sofa\">",
+    "explain": "Shows an image. alt describes it for screen readers, and shows if the image fails to load.",
+    "example": "Product photos and profile pictures.",
+    "mastered": false
+  },
+  {
+    "id": "seed-7",
+    "category": "Forms",
+    "syntax": "<form>\n  <label for=\"email\">Email</label>\n  <input id=\"email\" type=\"email\" placeholder=\"you@example.com\">\n  <button>Sign up</button>\n</form>",
+    "explain": "A form: a label, a box to type in, and a button.",
+    "example": "A newsletter sign-up box.",
+    "mastered": false
+  },
+  {
+    "id": "seed-8",
+    "category": "Attributes",
+    "syntax": "<p id=\"intro\" class=\"lead\">Hi</p>",
+    "explain": "id names one unique element. class groups many. CSS and JavaScript use both to find elements.",
+    "example": "Styling every .lead paragraph, and finding #intro from JavaScript.",
+    "mastered": false
+  },
+  {
+    "id": "seed-9",
+    "category": "Lists",
+    "syntax": "<ul>\n  <li>One</li>\n  <li>Two</li>\n</ul>",
+    "explain": "A bulleted list. Use ol instead of ul for a numbered list.",
+    "example": "Navigation menus and feature lists.",
+    "mastered": false
+  }
+]

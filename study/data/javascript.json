@@ -1,0 +1,82 @@
+[
+  {
+    "id": "seed-18",
+    "category": "Variables",
+    "syntax": "const name = \"Ada\";\nlet count = 0;\ncount = count + 1;\nconsole.log(name, count);",
+    "explain": "const cannot be given a new value; let can.",
+    "example": "Storing a username and a click counter.",
+    "mastered": false
+  },
+  {
+    "id": "seed-19",
+    "category": "Functions",
+    "syntax": "const add = (a, b) => a + b;\nconsole.log(add(2, 3));",
+    "explain": "An arrow function: a short way to write a function that returns a + b.",
+    "example": "Small helpers like formatting a price.",
+    "mastered": false
+  },
+  {
+    "id": "seed-20",
+    "category": "Strings",
+    "syntax": "const name = \"Ada\";\nconsole.log(`Hello, ${name}!`);",
+    "explain": "Backticks make a template string. A dollar sign and curly brackets put a value inside.",
+    "example": "Building messages like \"Welcome back, Ada\".",
+    "mastered": false
+  },
+  {
+    "id": "seed-21",
+    "category": "Arrays",
+    "syntax": "const nums = [1, 2, 3, 4];\nconsole.log(nums.map(n => n * 2));\nconsole.log(nums.filter(n => n > 2));",
+    "explain": "map changes every item into a new list. filter keeps only items that pass a test.",
+    "example": "Showing only products that are in stock.",
+    "mastered": false
+  },
+  {
+    "id": "seed-22",
+    "category": "Objects",
+    "syntax": "const user = { name: \"Ada\", age: 36 };\nconsole.log(user.name);\nuser.age = 37;",
+    "explain": "An object groups values under names (keys). Read and change them with a dot.",
+    "example": "Keeping all the details about one user together.",
+    "mastered": false
+  },
+  {
+    "id": "seed-23",
+    "category": "Conditions",
+    "syntax": "const age = 20;\nif (age >= 18) {\n  console.log(\"adult\");\n} else {\n  console.log(\"minor\");\n}",
+    "explain": "if runs a block only when the check is true; else runs otherwise.",
+    "example": "Showing a different page to logged-in users.",
+    "mastered": false
+  },
+  {
+    "id": "seed-24",
+    "category": "Loops",
+    "syntax": "for (const item of [\"a\", \"b\", \"c\"]) {\n  console.log(item);\n}",
+    "explain": "for...of goes through a list one item at a time.",
+    "example": "Drawing every task in a to-do list.",
+    "mastered": false
+  },
+  {
+    "id": "seed-25",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = \"<h1>Hi</h1>\";\nconst title = document.querySelector(\"h1\");\ntitle.textContent = \"Changed!\";",
+    "explain": "querySelector finds an element using a CSS selector. textContent changes its text.",
+    "example": "Updating a score on a game page.",
+    "mastered": false
+  },
+  {
+    "id": "seed-26",
+    "category": "Events",
+    "syntax": "const button = document.createElement(\"button\");\nbutton.textContent = \"Click me\";\nbutton.addEventListener(\"click\", () => console.log(\"clicked\"));\ndocument.body.appendChild(button);",
+    "explain": "addEventListener runs a function every time something happens, like a click.",
+    "example": "Opening a menu when you click its button.",
+    "mastered": false
+  },
+  {
+    "id": "seed-27",
+    "category": "Async",
+    "syntax": "async function load() {\n  const res = await fetch(\"https://jsonplaceholder.typicode.com/todos/1\");\n  const data = await res.json();\n  console.log(data.title);\n}\nload();",
+    "explain": "fetch gets data from a website. await waits for the answer without freezing the page.",
+    "example": "Loading weather or posts from an API.",
+    "mastered": false
+  }
+]

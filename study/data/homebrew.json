@@ -1,0 +1,74 @@
+[
+  {
+    "id": "seed-68",
+    "category": "Installing",
+    "syntax": "brew install <name>",
+    "explain": "Installs a command-line tool, like python or git.",
+    "example": "brew install git",
+    "mastered": false
+  },
+  {
+    "id": "seed-69",
+    "category": "Installing",
+    "syntax": "brew install --cask <name>",
+    "explain": "Installs a desktop app, like visual-studio-code or google-chrome.",
+    "example": "brew install --cask visual-studio-code",
+    "mastered": false
+  },
+  {
+    "id": "seed-70",
+    "category": "Updating",
+    "syntax": "brew update",
+    "explain": "Updates Homebrew's list of available software.",
+    "example": "Run it before upgrading.",
+    "mastered": false
+  },
+  {
+    "id": "seed-71",
+    "category": "Updating",
+    "syntax": "brew upgrade\nbrew upgrade <name>",
+    "explain": "Upgrades all your installed packages, or just one.",
+    "example": "Getting the newest version of node.",
+    "mastered": false
+  },
+  {
+    "id": "seed-72",
+    "category": "Managing",
+    "syntax": "brew list",
+    "explain": "Shows everything you have installed.",
+    "example": "Checking whether python is already installed.",
+    "mastered": false
+  },
+  {
+    "id": "seed-73",
+    "category": "Managing",
+    "syntax": "brew uninstall <name>",
+    "explain": "Removes a package.",
+    "example": "Removing a tool you no longer use.",
+    "mastered": false
+  },
+  {
+    "id": "seed-74",
+    "category": "Managing",
+    "syntax": "brew search <name>\nbrew info <name>",
+    "explain": "search finds available software. info shows version details and dependencies.",
+    "example": "brew info node before installing it.",
+    "mastered": false
+  },
+  {
+    "id": "seed-75",
+    "category": "Maintenance",
+    "syntax": "brew doctor\nbrew cleanup",
+    "explain": "doctor diagnoses problems and broken links. cleanup deletes old downloads to free up space.",
+    "example": "When an install fails, run brew doctor first.",
+    "mastered": false
+  },
+  {
+    "id": "seed-76",
+    "category": "Services",
+    "syntax": "brew services start <name>\nbrew services stop <name>",
+    "explain": "Runs a background tool (like a database) automatically on your Mac, or stops it.",
+    "example": "brew services start postgresql",
+    "mastered": false
+  }
+]

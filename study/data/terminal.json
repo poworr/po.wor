@@ -1,0 +1,74 @@
+[
+  {
+    "id": "seed-59",
+    "category": "Navigation",
+    "syntax": "pwd",
+    "explain": "Print working directory: shows which folder you are in.",
+    "example": "Checking where you are before running a command.",
+    "mastered": false
+  },
+  {
+    "id": "seed-60",
+    "category": "Navigation",
+    "syntax": "ls -la",
+    "explain": "Lists files. -l shows details, -a includes hidden files (names starting with a dot).",
+    "example": "Seeing everything in a project folder, including .gitignore.",
+    "mastered": false
+  },
+  {
+    "id": "seed-61",
+    "category": "Navigation",
+    "syntax": "cd ~/Desktop\ncd ..",
+    "explain": "cd changes folder. ~ is your home folder, .. goes up one level. (The playground cannot cd; try it in Terminal.)",
+    "example": "Moving into your project before running npm start.",
+    "mastered": false
+  },
+  {
+    "id": "seed-62",
+    "category": "Files",
+    "syntax": "mkdir my-project\ntouch my-project/notes.txt",
+    "explain": "mkdir makes a folder. touch makes an empty file.",
+    "example": "Starting a new project folder.",
+    "mastered": false
+  },
+  {
+    "id": "seed-63",
+    "category": "Files",
+    "syntax": "cp notes.txt backup.txt\nmv backup.txt old-notes.txt",
+    "explain": "cp copies a file. mv moves or renames it.",
+    "example": "Making a backup before editing.",
+    "mastered": false
+  },
+  {
+    "id": "seed-64",
+    "category": "Files",
+    "syntax": "rm old-notes.txt",
+    "explain": "Deletes a file right away. It does not go to the Trash, so double-check first.",
+    "example": "Cleaning up files you are sure you no longer need.",
+    "mastered": false
+  },
+  {
+    "id": "seed-65",
+    "category": "Permissions",
+    "syntax": "chmod +x run.sh",
+    "explain": "Makes a file executable, so you can run it with ./run.sh.",
+    "example": "Running your own shell scripts.",
+    "mastered": false
+  },
+  {
+    "id": "seed-66",
+    "category": "Searching",
+    "syntax": "grep -rn \"TODO\" .",
+    "explain": "Searches for text in every file under this folder. -r goes into subfolders, -n shows line numbers.",
+    "example": "Finding every TODO note in your code.",
+    "mastered": false
+  },
+  {
+    "id": "seed-67",
+    "category": "Git",
+    "syntax": "git status\ngit add .\ngit commit -m \"Add notes\"\ngit push",
+    "explain": "See what changed, stage it, save a commit with a message, and upload it.",
+    "example": "Saving and publishing your website changes.",
+    "mastered": false
+  }
+]

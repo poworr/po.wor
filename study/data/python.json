@@ -1,0 +1,74 @@
+[
+  {
+    "id": "seed-35",
+    "category": "Basics",
+    "syntax": "name = \"Ada\"\nprint(f\"Hello, {name}!\")",
+    "explain": "A variable, and an f-string that puts values inside { }.",
+    "example": "Printing a friendly message with a user name.",
+    "mastered": false
+  },
+  {
+    "id": "seed-36",
+    "category": "Indentation",
+    "syntax": "age = 20\nif age >= 18:\n    print(\"adult\")\nelse:\n    print(\"minor\")",
+    "explain": "Python uses a colon and 4 spaces of indentation instead of { }.",
+    "example": "Any decision in a program.",
+    "mastered": false
+  },
+  {
+    "id": "seed-37",
+    "category": "Loops",
+    "syntax": "for i in range(3):\n    print(i)",
+    "explain": "range(3) gives 0, 1, 2. The loop body is indented.",
+    "example": "Repeating a task a set number of times.",
+    "mastered": false
+  },
+  {
+    "id": "seed-38",
+    "category": "Functions",
+    "syntax": "def add(a, b):\n    return a + b\n\nprint(add(2, 3))",
+    "explain": "def makes a function. return sends the result back.",
+    "example": "Reusable steps, like cleaning a line of text.",
+    "mastered": false
+  },
+  {
+    "id": "seed-39",
+    "category": "Lists",
+    "syntax": "fruits = [\"apple\", \"banana\"]\nfruits.append(\"cherry\")\nprint(fruits[0], len(fruits))",
+    "explain": "A list in [ ]. append adds to the end, [0] is the first item, len counts.",
+    "example": "A shopping list or a list of file names.",
+    "mastered": false
+  },
+  {
+    "id": "seed-40",
+    "category": "Dictionaries",
+    "syntax": "user = {\"name\": \"Ada\", \"age\": 36}\nprint(user[\"name\"])\nprint(user.get(\"email\", \"none\"))",
+    "explain": "Values stored under keys. get gives a default instead of crashing.",
+    "example": "Settings, or one row of data.",
+    "mastered": false
+  },
+  {
+    "id": "seed-41",
+    "category": "Comprehensions",
+    "syntax": "squares = [n * n for n in range(5)]\nevens = [n for n in range(10) if n % 2 == 0]\nprint(squares, evens)",
+    "explain": "Build a new list in one line, optionally keeping only some items.",
+    "example": "Turning a list of prices into a list with tax.",
+    "mastered": false
+  },
+  {
+    "id": "seed-42",
+    "category": "Classes",
+    "syntax": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return f\"{self.name} says woof\"\n\nprint(Dog(\"Rex\").speak())",
+    "explain": "A class is a blueprint. __init__ runs when you make one; self is the object.",
+    "example": "Modelling things in a game: players, enemies, items.",
+    "mastered": false
+  },
+  {
+    "id": "seed-43",
+    "category": "Import",
+    "syntax": "import random\nfrom datetime import date\n\nprint(random.randint(1, 6))\nprint(date.today())",
+    "explain": "import loads ready-made modules that come with Python.",
+    "example": "Dice rolls, dates, reading files, web requests.",
+    "mastered": false
+  }
+]

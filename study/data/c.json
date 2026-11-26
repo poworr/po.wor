@@ -1,0 +1,66 @@
+[
+  {
+    "id": "seed-44",
+    "category": "Program shape",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, C!\\n\");\n    return 0;\n}",
+    "explain": "#include brings in a header file. Every C program starts in main. \\n is a new line.",
+    "example": "The start of every C program.",
+    "mastered": false
+  },
+  {
+    "id": "seed-45",
+    "category": "Data types",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int age = 30;\n    char grade = 'A';\n    float price = 9.99f;\n    printf(\"%d %c %.2f\\n\", age, grade, price);\n    return 0;\n}",
+    "explain": "int for whole numbers, char for one character, float for decimals. printf fills %d %c %f in order.",
+    "example": "Storing a score, a letter grade, and a price.",
+    "mastered": false
+  },
+  {
+    "id": "seed-46",
+    "category": "Loops",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 0; i < 3; i++) {\n        printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
+    "explain": "Start at 0, keep going while i < 3, add 1 each time.",
+    "example": "Going through every item in an array.",
+    "mastered": false
+  },
+  {
+    "id": "seed-47",
+    "category": "Functions",
+    "syntax": "#include <stdio.h>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main(void) {\n    printf(\"%d\\n\", add(2, 3));\n    return 0;\n}",
+    "explain": "A function says what type it returns (int) and the type of each input.",
+    "example": "Splitting a program into small named steps.",
+    "mastered": false
+  },
+  {
+    "id": "seed-48",
+    "category": "Pointers",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    int *p = &x;\n    *p = 10;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+    "explain": "&x is the address of x. int *p holds an address. *p reaches the value at that address.",
+    "example": "Letting a function change a variable it was given.",
+    "mastered": false
+  },
+  {
+    "id": "seed-49",
+    "category": "Memory",
+    "syntax": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *nums = malloc(3 * sizeof(int));\n    nums[0] = 7;\n    printf(\"%d\\n\", nums[0]);\n    free(nums);\n    return 0;\n}",
+    "explain": "malloc asks for memory; free gives it back. Every malloc needs a free.",
+    "example": "Arrays whose size you only know while the program runs.",
+    "mastered": false
+  },
+  {
+    "id": "seed-50",
+    "category": "struct",
+    "syntax": "#include <stdio.h>\n\nstruct Point {\n    int x;\n    int y;\n};\n\nint main(void) {\n    struct Point p = {1, 2};\n    printf(\"%d, %d\\n\", p.x, p.y);\n    return 0;\n}",
+    "explain": "struct groups related values into one new type.",
+    "example": "A point on screen, or a player with name and score.",
+    "mastered": false
+  },
+  {
+    "id": "seed-51",
+    "category": "Strings",
+    "syntax": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char name[] = \"Ada\";\n    printf(\"%s has %zu letters\\n\", name, strlen(name));\n    return 0;\n}",
+    "explain": "A string is an array of chars. string.h has helpers like strlen.",
+    "example": "Reading and printing names.",
+    "mastered": false
+  }
+]

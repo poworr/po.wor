@@ -1,0 +1,66 @@
+[
+  {
+    "id": "seed-10",
+    "category": "Box model",
+    "syntax": ".box {\n  width: 300px;\n  padding: 16px;\n  border: 1px solid #ccc;\n  margin: 20px;\n}",
+    "explain": "Size, space inside (padding), a line around (border), space outside (margin).",
+    "example": "Spacing out cards so they do not touch.",
+    "mastered": false
+  },
+  {
+    "id": "seed-11",
+    "category": "Layout",
+    "syntax": ".row {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}",
+    "explain": "Puts the children in a row with gaps between them, centered top to bottom.",
+    "example": "A navigation bar with a logo and links.",
+    "mastered": false
+  },
+  {
+    "id": "seed-12",
+    "category": "Layout",
+    "syntax": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}",
+    "explain": "A grid of 3 equal columns. 1fr means one share of the free space.",
+    "example": "A photo gallery.",
+    "mastered": false
+  },
+  {
+    "id": "seed-13",
+    "category": "Typography",
+    "syntax": "body {\n  font-family: system-ui, sans-serif;\n  font-size: 16px;\n  line-height: 1.6;\n}",
+    "explain": "The font, its size, and the space between lines.",
+    "example": "Making a long article easy to read.",
+    "mastered": false
+  },
+  {
+    "id": "seed-14",
+    "category": "Colors",
+    "syntax": ".button {\n  color: white;\n  background: #0071e3;\n}\n.button:hover {\n  background: #005bb5;\n}",
+    "explain": "Text and background colors, and a different color while the mouse is over it.",
+    "example": "Buttons that react when you point at them.",
+    "mastered": false
+  },
+  {
+    "id": "seed-15",
+    "category": "Positioning",
+    "syntax": ".parent { position: relative; }\n.badge  { position: absolute; top: 0; right: 0; }",
+    "explain": "absolute places an element by its nearest parent that has position: relative.",
+    "example": "A red notification count on the corner of an icon.",
+    "mastered": false
+  },
+  {
+    "id": "seed-16",
+    "category": "Responsive",
+    "syntax": "@media (max-width: 600px) {\n  .grid { grid-template-columns: 1fr; }\n}",
+    "explain": "Rules inside only apply on screens 600px wide or less.",
+    "example": "One column on phones, three columns on laptops.",
+    "mastered": false
+  },
+  {
+    "id": "seed-17",
+    "category": "Selectors",
+    "syntax": ".nav a:hover {\n  text-decoration: underline;\n}",
+    "explain": "Picks links inside .nav, but only while the mouse is over them.",
+    "example": "Menu links that underline when you point at them.",
+    "mastered": false
+  }
+]

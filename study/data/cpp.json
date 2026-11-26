@@ -1,0 +1,58 @@
+[
+  {
+    "id": "seed-52",
+    "category": "Program shape",
+    "syntax": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, C++!\" << std::endl;\n    return 0;\n}",
+    "explain": "std::cout prints. << sends values to it. std::endl ends the line.",
+    "example": "The start of every C++ program.",
+    "mastered": false
+  },
+  {
+    "id": "seed-53",
+    "category": "std::string",
+    "syntax": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name = \"Ada\";\n    name += \" Lovelace\";\n    std::cout << name << \" (\" << name.size() << \")\" << std::endl;\n    return 0;\n}",
+    "explain": "std::string is text that grows by itself. += adds to it, size() counts letters.",
+    "example": "Building messages and file names.",
+    "mastered": false
+  },
+  {
+    "id": "seed-54",
+    "category": "std::vector",
+    "syntax": "#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> nums = {1, 2, 3};\n    nums.push_back(4);\n    for (int n : nums) {\n        std::cout << n << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+    "explain": "std::vector is a list that grows. push_back adds to the end. for (int n : nums) goes through it.",
+    "example": "A list of scores, players, or files.",
+    "mastered": false
+  },
+  {
+    "id": "seed-55",
+    "category": "References",
+    "syntax": "#include <iostream>\n\nvoid addOne(int& n) {\n    n++;\n}\n\nint main() {\n    int x = 5;\n    addOne(x);\n    std::cout << x << std::endl;\n    return 0;\n}",
+    "explain": "int& is a reference: another name for the same variable, so the function changes the original.",
+    "example": "Updating a big object without copying it.",
+    "mastered": false
+  },
+  {
+    "id": "seed-56",
+    "category": "Classes",
+    "syntax": "#include <iostream>\n#include <string>\n\nclass Dog {\npublic:\n    Dog(std::string name) : name(name) {}\n    void speak() { std::cout << name << \" says woof\" << std::endl; }\nprivate:\n    std::string name;\n};\n\nint main() {\n    Dog rex(\"Rex\");\n    rex.speak();\n    return 0;\n}",
+    "explain": "A class bundles data and functions. public parts can be used outside; private parts cannot.",
+    "example": "Game characters, bank accounts, shapes.",
+    "mastered": false
+  },
+  {
+    "id": "seed-57",
+    "category": "Templates",
+    "syntax": "#include <iostream>\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    std::cout << biggest(3, 7) << \" \" << biggest(2.5, 1.5) << std::endl;\n    return 0;\n}",
+    "explain": "A template writes one function that works for many types (T).",
+    "example": "Containers and helpers that work with any data, like std::vector itself.",
+    "mastered": false
+  },
+  {
+    "id": "seed-58",
+    "category": "std::map",
+    "syntax": "#include <iostream>\n#include <map>\n#include <string>\n\nint main() {\n    std::map<std::string, int> ages;\n    ages[\"Ada\"] = 36;\n    ages[\"Lin\"] = 24;\n    for (const auto& pair : ages) {\n        std::cout << pair.first << \": \" << pair.second << std::endl;\n    }\n    return 0;\n}",
+    "explain": "std::map stores values under keys, kept in sorted order. auto lets the compiler work out the type.",
+    "example": "Counting words, or looking up a user by name.",
+    "mastered": false
+  }
+]

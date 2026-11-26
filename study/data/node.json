@@ -1,0 +1,58 @@
+[
+  {
+    "id": "seed-28",
+    "category": "Modules",
+    "syntax": "const path = require(\"path\");\nconsole.log(path.join(\"folder\", \"file.txt\"));",
+    "explain": "require loads a module. path builds file paths that work on every computer.",
+    "example": "Finding the data folder next to server.js.",
+    "mastered": false
+  },
+  {
+    "id": "seed-29",
+    "category": "Files",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"note.txt\", \"hello\");\nconsole.log(fs.readFileSync(\"note.txt\", \"utf8\"));",
+    "explain": "fs reads and writes files. Sync versions wait until the file is done.",
+    "example": "This app saves your notes to /data this way.",
+    "mastered": false
+  },
+  {
+    "id": "seed-30",
+    "category": "Async files",
+    "syntax": "const fs = require(\"fs/promises\");\n\nasync function main() {\n  await fs.writeFile(\"a.txt\", \"hi\");\n  console.log(await fs.readFile(\"a.txt\", \"utf8\"));\n}\nmain();",
+    "explain": "The promise version of fs, used with async and await so other work can go on meanwhile.",
+    "example": "A server that reads files without blocking other visitors.",
+    "mastered": false
+  },
+  {
+    "id": "seed-31",
+    "category": "JSON",
+    "syntax": "const data = JSON.parse('{\"likes\": 3}');\ndata.likes++;\nconsole.log(JSON.stringify(data));",
+    "explain": "JSON.parse turns text into an object. JSON.stringify turns it back into text.",
+    "example": "Reading and saving a JSON settings file.",
+    "mastered": false
+  },
+  {
+    "id": "seed-32",
+    "category": "Process",
+    "syntax": "console.log(process.version);\nconsole.log(process.argv);\nconsole.log(process.env.HOME);",
+    "explain": "process tells you about the running program: the Node version, the command-line words, and environment variables.",
+    "example": "Reading a secret API key from an environment variable.",
+    "mastered": false
+  },
+  {
+    "id": "seed-33",
+    "category": "Server",
+    "syntax": "const express = require(\"express\");\nconst app = express();\n\napp.get(\"/\", (req, res) => res.send(\"Hello\"));\napp.listen(3000);",
+    "explain": "Express makes a web server. app.get answers a page request. It needs npm install express, so read it rather than run it here.",
+    "example": "This is how study/server.js starts.",
+    "mastered": false
+  },
+  {
+    "id": "seed-34",
+    "category": "npm",
+    "syntax": "npm init -y\nnpm install express\nnpm start",
+    "explain": "Terminal commands: create package.json, install a package, run the start script.",
+    "example": "Setting up any new Node project.",
+    "mastered": false
+  }
+]
