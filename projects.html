@@ -5,47 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inside the box — po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap">
-  <link rel="stylesheet" href="css/mac.css?v=1">
+  <link rel="stylesheet" href="css/style.css?v=24">
 </head>
 <body>
 
-  <!-- Menu bar along the top, with the logo (goes home) -->
-  <div class="menubar">
-    <a href="index.html"><img src="images/logo.png" alt="Home"></a>
-    <span>po.wor</span>
-  </div>
+  <!-- Same header as the homepage -->
+  <header>
+    <a class="home" href="index.html" data-tip="you want to go home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <a class="box" href="projects.html" aria-label="Projects" data-tip="ready to ride">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+        <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+        <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
+      </svg>
+    </a>
+  </header>
 
-  <!-- The window -->
-  <div class="window">
-    <div class="titlebar">
-      <a class="close" href="index.html" aria-label="Close"></a>
-      <h1>Projects</h1>
-    </div>
+  <main>
+    <h1 class="page-title">Projects</h1>
 
-    <div class="content">
+    <!-- To add a project: copy one <li> ... </li> block and change the link and text. -->
 
-      <!-- ===== Coding ===== -->
-      <h2>Coding</h2>
-      <ul class="projects">
-        <li>
-          <a href="japanese.html">日本語の作文練習</a>
-          <p>Japanese writing practice, N2 and up.</p>
-        </li>
-      </ul>
+    <p class="tag">Coding</p>
+    <ul class="projects">
+      <li>
+        <a href="code.html">Code study</a>
+        <p>Practice HTML, CSS and JavaScript, line by line.</p>
+      </li>
+      <li>
+        <a href="japanese.html">日本語の作文練習</a>
+        <p>Japanese writing practice, N2 and up.</p>
+      </li>
+    </ul>
 
-      <!-- ===== Artistry ===== -->
-      <h2>Artistry</h2>
-      <p>Nothing here yet.</p>
-      <!-- To add a project, put this inside a <ul class="projects"> like the one above:
-        <li>
-          <a href="link-to-your-work">Name of the work</a>
-          <p>One short line about it.</p>
-        </li>
-      -->
+    <p class="tag">Artistry</p>
+    <ul class="projects">
+      <li>
+        <p>Nothing here yet.</p>
+      </li>
+    </ul>
+  </main>
 
-    </div>
-  </div>
+  <footer>&copy; 2026 po.wor</footer>
 
 </body>
 </html>

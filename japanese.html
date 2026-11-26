@@ -5,61 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>日本語の作文練習 — po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <!-- Pixel font (works for Japanese too) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap">
-  <link rel="stylesheet" href="css/mac.css?v=1">
+  <link rel="stylesheet" href="css/style.css?v=24">
 </head>
 <body>
 
-  <!-- Menu bar along the top, with the logo (goes home) -->
-  <div class="menubar">
-    <a href="index.html"><img src="images/logo.png" alt="ホーム"></a>
-    <span>po.wor</span>
-  </div>
+  <!-- Same header as the homepage -->
+  <header>
+    <a class="home" href="index.html" data-tip="you want to go home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <a class="box" href="projects.html" aria-label="Projects" data-tip="ready to ride">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+        <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+        <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
+      </svg>
+    </a>
+  </header>
 
-  <!-- The window -->
-  <div class="window">
-    <div class="titlebar">
-      <a class="close" href="projects.html" aria-label="閉じる"></a>
-      <h1>日本語の作文練習</h1>
-    </div>
-
-    <div class="content">
+  <main>
+    <h1 class="page-title">日本語の作文練習</h1>
 
     <!-- Tabs -->
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="tab-practice" aria-controls="practice" aria-selected="true">練習</button>
-      <button class="tab" role="tab" id="tab-good" aria-controls="good" aria-selected="false">お手本</button>
+    <div class="buttons" role="tablist">
+      <button class="btn tab" role="tab" id="tab-practice" aria-controls="practice" aria-selected="true">練習</button>
+      <button class="btn tab" role="tab" id="tab-good" aria-controls="good" aria-selected="false">お手本</button>
     </div>
 
     <!-- ===== Part 1: Practice ===== -->
     <section id="practice" role="tabpanel" aria-labelledby="tab-practice">
-      <div class="card">
-        <p class="level" id="q-level"></p>
+      <div class="panel">
+        <span class="tag" id="q-level"></span>
         <p class="question" id="q-text"></p>
 
         <p class="label">キーワード</p>
         <ul class="keywords" id="q-keywords"></ul>
       </div>
 
-      <div class="actions">
-        <button class="btn primary" id="next">次の問題</button>
+      <div class="buttons">
+        <button class="btn" id="next">次の問題</button>
         <button class="btn" id="show-example" aria-expanded="false">お手本を見る</button>
       </div>
 
-      <div class="card example" id="example" hidden></div>
+      <div class="panel" id="example" hidden></div>
     </section>
 
     <!-- ===== Part 2: Good Writing ===== -->
     <section id="good" role="tabpanel" aria-labelledby="tab-good" hidden>
       <div id="gallery"></div>
     </section>
+  </main>
 
-    </div>
-  </div>
+  <footer>&copy; 2026 po.wor</footer>
 
   <script src="js/japanese-data.js?v=3"></script>
-  <script src="js/japanese.js?v=3"></script>
+  <script src="js/japanese.js?v=4"></script>
 
 </body>
 </html>

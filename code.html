@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code study — po.wor</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css?v=24">
+</head>
+<body>
+
+  <!-- Same header as the homepage -->
+  <header>
+    <a class="home" href="index.html" data-tip="you want to go home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <a class="box" href="projects.html" aria-label="Projects" data-tip="ready to ride">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+        <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+        <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
+      </svg>
+    </a>
+  </header>
+
+  <main>
+    <h1 class="page-title">Code study</h1>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="btn" id="open-picker">Missions ⌘P</button>
+      <button class="btn" data-mode="learn">Learn</button>
+      <button class="btn" data-mode="recall">Recall</button>
+      <button class="btn" data-mode="free">Free</button>
+      <button class="btn" id="next">Next →</button>
+      <button class="btn" id="run">Run ⌘↵</button>
+    </div>
+
+    <!-- The mission: LANGUAGE | title, then the goal -->
+    <p class="text"><span class="tag" id="lang"></span><span class="sep">|</span><span id="title"></span></p>
+    <p class="muted" id="goal"></p>
+
+    <!-- The editor (Monaco, the editor inside VS Code, fills this box) -->
+    <div id="editor"></div>
+
+    <!-- The result: a page preview (HTML, CSS) or printed lines (JS) -->
+    <p class="label">Result</p>
+    <iframe id="preview" sandbox="allow-scripts" title="Result"></iframe>
+    <div id="console"></div>
+
+    <!-- Explanations (Learn) or check results (Recall) -->
+    <div id="notes"></div>
+
+    <p class="keys">⌘↵ run · ⌘P missions · ⌘⇧P or F1 all commands · ⌘/ comment · ⌥↑ ⌥↓ move line · ⌘D select next match</p>
+  </main>
+
+  <footer>&copy; 2026 po.wor</footer>
+
+  <!-- ⌘P mission picker -->
+  <dialog id="picker">
+    <input id="picker-search" placeholder="Search missions…" aria-label="Search missions">
+    <ul id="picker-list"></ul>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+  <script src="js/code-missions.js?v=1"></script>
+  <script src="js/code.js?v=1"></script>
+
+</body>
+</html>

@@ -87,12 +87,12 @@ $('show-example').addEventListener('click', function () {
 function sampleCard(s) {
   const card = document.createElement('article');
   card.innerHTML =
-    '<p class="level"></p>' +
+    '<span class="tag"></span>' +
     '<h2 class="sample-title"></h2>' +
     '<p class="sample-text"></p>' +
     '<p class="label">ここがいい</p>' +
     '<ul class="why"></ul>';
-  card.querySelector('.level').textContent = s.level;
+  card.querySelector('.tag').textContent = s.level;
   card.querySelector('.sample-title').textContent = s.title;
   card.querySelector('.sample-text').textContent = s.text_ja;
   s.why_good.forEach(function (point) {
@@ -118,7 +118,7 @@ function sampleCard(s) {
 // ===== Good Writing tab: one card per sample =====
 SAMPLES.forEach(function (s) {
   const card = sampleCard(s);
-  card.className = 'card';
+  card.className = 'panel';
   $('gallery').appendChild(card);
 });
 
