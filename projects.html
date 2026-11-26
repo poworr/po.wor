@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inside the box — po.wor</title>
   <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=24">
+  <link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body>
 
@@ -22,24 +22,29 @@
   </header>
 
   <main>
-    <h1 class="page-title">Projects</h1>
+    <h1 class="page-title">Inside the box</h1>
 
-    <!-- To add a project: copy one <li> ... </li> block and change the link and text. -->
+    <!-- Left brain: logic. Right brain: creativity.
+         To add a project: copy one <a class="icon" ...>...</a> line into the right side,
+         then change the link (href), the bubble text (data-tip) and the icon. -->
+    <div class="brain">
 
-    <p class="tag">Coding</p>
-    <ul class="projects">
-      <li>
-        <a href="japanese.html">日本語の作文練習</a>
-        <p>Japanese writing practice, N2 and up.</p>
-      </li>
-    </ul>
+      <section>
+        <p class="tag">Logic</p>
+        <div class="icons">
+          <a class="icon" href="japanese.html" aria-label="Japanese writing practice" data-tip="日本語の作文練習"><span lang="ja">あ</span></a>
+          <a class="icon" href="planner.html" aria-label="Planner" data-tip="planner"><span>•</span></a>
+        </div>
+      </section>
 
-    <p class="tag">Artistry</p>
-    <ul class="projects">
-      <li>
-        <p>Nothing here yet.</p>
-      </li>
-    </ul>
+      <section>
+        <p class="tag">Creativity</p>
+        <div class="icons">
+          <p class="muted">Nothing here yet.</p>
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <footer>&copy; 2026 po.wor</footer>

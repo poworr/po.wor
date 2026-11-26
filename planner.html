@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planner — po.wor</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css?v=26">
+</head>
+<body>
+
+  <!-- Same header as the homepage -->
+  <header>
+    <a class="home" href="index.html" data-tip="you want to go home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <a class="box" href="projects.html" aria-label="Projects" data-tip="ready to ride">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+        <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+        <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
+      </svg>
+    </a>
+  </header>
+
+  <!-- A plain-text bullet journal. Everything is saved in this browser only. -->
+  <main class="planner">
+
+    <div class="planner-bar">
+      <span>
+        <button data-view="day">day</button>
+        <button data-view="week">week</button>
+        <button data-view="month">month</button>
+      </span>
+      <span>
+        <button id="prev" aria-label="Back">&lt;</button>
+        <button id="today">today</button>
+        <button id="next" aria-label="Forward">&gt;</button>
+      </span>
+    </div>
+
+    <h1 class="planner-title" id="title"></h1>
+
+    <!-- Day: free space to write -->
+    <section id="day-view">
+      <textarea id="page" spellcheck="false" aria-label="Today's page" placeholder="• start writing…"></textarea>
+    </section>
+
+    <!-- Week: hours down the side, events (○ 14:00 ...) from each day's page -->
+    <section id="week-view" hidden>
+      <div class="week-scroll" id="week-scroll">
+        <div class="week" id="week"></div>
+      </div>
+    </section>
+
+    <!-- Month: a plain calendar, today has a circle -->
+    <section id="month-view" hidden>
+      <div class="month" id="month"></div>
+    </section>
+
+    <!-- Shows while you hold ⌘ -->
+    <pre class="legend" id="legend" hidden></pre>
+
+    <!-- Phones: bullets just above the keyboard -->
+    <div class="bullet-bar" id="bullet-bar" hidden></div>
+  </main>
+
+  <footer>&copy; 2026 po.wor</footer>
+
+  <script src="js/planner.js?v=2"></script>
+</body>
+</html>
