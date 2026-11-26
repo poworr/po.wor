@@ -1,6 +1,6 @@
-// When you click the box: the lid opens, a copy of the P logo pops up,
-// gets thrown in an arc into the box, the lid closes, then the projects page opens.
-// The logo on the left stays where it is.
+// When you click the box: a small P pops up next to the box,
+// gets tossed into it like a hand throwing it, the lid closes,
+// then the projects page opens. The logo on the left doesn't move.
 
 const box = document.querySelector('.box');
 const logo = document.querySelector('.logo');
@@ -8,32 +8,33 @@ const logo = document.querySelector('.logo');
 box.addEventListener('click', function (event) {
   event.preventDefault(); // don't open the page yet, play the animation first
 
-  // Make a copy of the logo, placed exactly on top of the real one
-  const start = logo.getBoundingClientRect();
-  const copy = logo.cloneNode();
-  copy.style.position = 'fixed';
-  copy.style.left = start.left + 'px';
-  copy.style.top = start.top + 'px';
-  copy.style.margin = '0';
-  document.body.appendChild(copy);
+  // Where the box is on the screen
+  const b = box.getBoundingClientRect();
+  const size = 28;   // size of the popped-up P
+  const gap = 48;    // how far left of the box it appears
 
-  // How far the copy has to travel to reach the middle of the box
-  const end = box.getBoundingClientRect();
-  const x = (end.left + end.width / 2) - (start.left + start.width / 2);
-  const y = (end.top + end.height / 2) - (start.top + start.height / 2);
+  // Make a small copy of the logo, just left of the box
+  const p = logo.cloneNode();
+  p.style.position = 'fixed';
+  p.style.width = size + 'px';
+  p.style.height = size + 'px';
+  p.style.left = (b.left + b.width / 2 - size / 2 - gap) + 'px';
+  p.style.top = (b.top + b.height / 2 - size / 2) + 'px';
+  document.body.appendChild(p);
 
-  box.classList.add('open'); // 1. lid opens
+  box.classList.add('open'); // lid opens
 
-  // 2. pop up, fly in an arc, drop into the box
-  copy.animate([
-    { transform: 'translate(0, 0) scale(1)' },                                  // start on the logo
-    { transform: 'translate(0, -16px) scale(1.4)', offset: 0.2 },               // pop up
-    { transform: 'translate(' + x / 2 + 'px, -80px) scale(0.9) rotate(180deg)' }, // top of the arc
-    { transform: 'translate(' + x + 'px, ' + y + 'px) scale(0.2) rotate(360deg)', opacity: 0 } // into the box
-  ], { duration: 900, easing: 'ease-in', fill: 'forwards' });
+  p.animate([
+    { transform: 'scale(0)', opacity: 0 },                                        // nothing
+    { transform: 'scale(1.2)', opacity: 1, offset: 0.2 },                         // pop up
+    { transform: 'scale(1)', offset: 0.3 },                                       // settle
+    { transform: 'translate(-8px, 6px) rotate(-25deg)', offset: 0.5 },            // wind up (pull back)
+    { transform: 'translate(' + gap * 0.6 + 'px, -36px) rotate(120deg) scale(0.8)', offset: 0.75 }, // toss up and over
+    { transform: 'translate(' + gap + 'px, 0) rotate(220deg) scale(0.2)', opacity: 0 } // drop into the box
+  ], { duration: 1100, easing: 'ease-in-out', fill: 'forwards' });
 
-  setTimeout(function () { box.classList.add('shut'); }, 900);   // 3. lid closes
-  setTimeout(function () { location.href = box.href; }, 1200);   // 4. open the page
+  setTimeout(function () { box.classList.add('shut'); }, 1100);  // lid closes
+  setTimeout(function () { location.href = box.href; }, 1400);   // open the page
 });
 
 // If you come back with the browser's Back button, reset the box and remove the copy.
