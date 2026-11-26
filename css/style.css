@@ -310,10 +310,49 @@ footer {
   font-size: 18px;
   font-weight: normal;
 }
-.sample-text {
+/* 原稿用紙: 20 squares per row. Sizes use cqi (1% of the paper's width) so it fits any screen. */
+.genko {
+  container-type: inline-size;
   margin: 16px 0 0;
-  line-height: 1.8;
-  white-space: pre-line;   /* keep the paragraph breaks from the data file */
+  padding-right: 30px;   /* room for the 100, 200 ... numbers */
+}
+.genko-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  margin-bottom: 1.2cqi;   /* the thin gap between rows, like real paper */
+  background: #FFFFFF;
+  border: 1px solid #A8B8A8;
+}
+.genko-row span {
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3cqi;
+  line-height: 1;
+}
+.genko-row span + span {
+  border-left: 1px solid #C8D4C8;
+}
+.genko-row .two {
+  font-size: 2.2cqi;
+  letter-spacing: -0.1em;
+}
+/* 。and 、sit in the bottom-left of their square */
+.genko-row .mark {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 0.6cqi 0.8cqi;
+}
+.genko-row[data-count]::after {
+  content: attr(data-count);
+  position: absolute;
+  right: -30px;
+  bottom: 0;
+  font-size: 9px;
+  color: #6E6E73;
 }
 .why {
   margin: 0;
