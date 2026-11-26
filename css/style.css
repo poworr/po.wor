@@ -33,8 +33,7 @@ header {
   padding: 6px;
 }
 
-/* the lid tilts open when you point at the box,
-   and stays open on the projects page (class="box open") */
+/* the lid tilts open when you point at the box (or click it) */
 .lid {
   transform-origin: 4px 7.5px;
   transition: transform 0.3s;
@@ -42,6 +41,16 @@ header {
 .box:hover .lid,
 .box.open .lid {
   transform: rotate(-28deg);
+}
+/* js/box.js adds "shut" to close the lid once the P is inside */
+.box.shut .lid {
+  transform: none;
+}
+
+/* the P logo flying into the box (js/box.js adds "flying") */
+.logo.flying {
+  transition: transform 0.7s ease-in, opacity 0.2s ease-in 0.55s;
+  opacity: 0;
 }
 
 /* ===== Middle and bottom ===== */
