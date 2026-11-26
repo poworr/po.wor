@@ -117,7 +117,7 @@ let lastBox = $('page');   // the box you're writing in, for the phone bullet ba
 function setBullet(box, symbol) {
   const caret = box.selectionStart;
   const start = box.value.lastIndexOf('\n', caret - 1) + 1;
-  const hasBullet = BULLETS.some((b) => box.value.startsWith(b.symbol + ' ', start));
+  const hasBullet = BULLETS.some((b) => box.value.startsWith(b.symbol + ' ', start)) || box.value.startsWith('⊗ ', start);
   const end = hasBullet ? start + 2 : start;
   box.value = box.value.slice(0, start) + symbol + ' ' + box.value.slice(end);
   box.selectionStart = box.selectionEnd = caret + (hasBullet ? 0 : 2);
@@ -150,13 +150,40 @@ function writingBox(box, dateOf) {
     }
   });
 
+  // Click a • and the task is done (×). Click a ○ once: done (⊗). Twice: cancelled (crossed out).
+  // Clicking again goes back to the start.
+  box.addEventListener('click', () => {
+    const caret = box.selectionStart;
+    if (caret !== box.selectionEnd) return;
+    const start = box.value.lastIndexOf('\n', caret - 1) + 1;
+    let end = box.value.indexOf('\n', start);
+    if (end === -1) end = box.value.length;
+    const symbol = box.value[start];
+    if (caret - start > 1 || box.value[start + 1] !== ' ') return;
+
+    let text = box.value.slice(start + 2, end);
+    const cancelled = text.includes('\u0336');
+    let next;
+    if (symbol === '•') next = '×';
+    else if (symbol === '×') next = '•';
+    else if (symbol === '○' && cancelled) { next = '○'; text = text.replace(/\u0336/g, ''); }
+    else if (symbol === '○') next = '⊗';
+    else if (symbol === '⊗') { next = '○'; text = text.replace(/[^\u0336]/g, '$&\u0336'); }   // cross out every letter
+    else return;
+
+    box.value = box.value.slice(0, start) + next + ' ' + text + box.value.slice(end);
+    box.selectionStart = box.selectionEnd = caret;
+    box.dispatchEvent(new Event('input'));   // save it
+  });
+
   phoneBar(box);
 }
 
 // ===== Hold ⌘ to see the bullets =====
 
 $('legend').textContent = BULLETS.map((b) =>
-  b.symbol + '  ' + b.name.padEnd(6) + '  ctrl+' + b.ctrl + '   or type ' + b.type + ' and space').join('\n');
+  b.symbol + '  ' + b.name.padEnd(6) + '  ctrl+' + b.ctrl + '   or type ' + b.type + ' and space').join('\n') +
+  '\n\nclick •  done\nclick ○  done, click again  cancelled';
 
 document.addEventListener('keydown', (event) => { if (event.key === 'Meta') $('legend').hidden = false; });
 document.addEventListener('keyup', (event) => { if (event.key === 'Meta') $('legend').hidden = true; });
