@@ -62,5 +62,309 @@
     "explain": "Picks links inside .nav, but only while the mouse is over them.",
     "example": "Menu links that underline when you point at them.",
     "mastered": false
+  },
+  {
+    "id": "css-1",
+    "category": "Selectors",
+    "syntax": "p { color: gray; }\n.note { color: blue; }\n#title { color: black; }",
+    "explain": "Select by tag name, by .class, or by #id.",
+    "example": "Styling all paragraphs, some boxes, one heading.",
+    "mastered": false
+  },
+  {
+    "id": "css-2",
+    "category": "Selectors",
+    "syntax": "nav a { color: white; }\nul > li { list-style: none; }",
+    "explain": "A space means \"anywhere inside\". > means \"direct child only\".",
+    "example": "Links only inside the menu.",
+    "mastered": false
+  },
+  {
+    "id": "css-3",
+    "category": "Selectors",
+    "syntax": "h1, h2, h3 { font-weight: normal; }",
+    "explain": "A comma gives several selectors the same style.",
+    "example": "All headings at once.",
+    "mastered": false
+  },
+  {
+    "id": "css-4",
+    "category": "Selectors",
+    "syntax": "input[type=\"email\"] { border-color: blue; }\na[href^=\"https\"] { color: green; }",
+    "explain": "[attr=\"value\"] selects by attribute. ^= means \"starts with\".",
+    "example": "Styling only email inputs.",
+    "mastered": false
+  },
+  {
+    "id": "css-5",
+    "category": "Selectors",
+    "syntax": "li:first-child { font-weight: bold; }\nli:last-child { border: none; }\ntr:nth-child(even) { background: #EEE; }",
+    "explain": "Pick elements by their position. even/odd or 2n+1 also work.",
+    "example": "Striped table rows.",
+    "mastered": false
+  },
+  {
+    "id": "css-6",
+    "category": "Selectors",
+    "syntax": ".tip::before { content: \"💡 \"; }\n.link::after { content: \" →\"; }",
+    "explain": "::before and ::after add content before or after an element using CSS.",
+    "example": "Icons and arrows without extra HTML.",
+    "mastered": false
+  },
+  {
+    "id": "css-7",
+    "category": "Selectors",
+    "syntax": "input:focus { outline: 2px solid blue; }\nbutton:disabled { opacity: 0.5; }\nli:not(.done) { color: black; }",
+    "explain": ":focus is the box you're typing in, :disabled is a turned-off button, :not() excludes something.",
+    "example": "Showing which field is active.",
+    "mastered": false
+  },
+  {
+    "id": "css-8",
+    "category": "Selectors",
+    "syntax": "* { box-sizing: border-box; }",
+    "explain": "* selects every element.",
+    "example": "A reset at the top of a stylesheet.",
+    "mastered": false
+  },
+  {
+    "id": "css-9",
+    "category": "Box model",
+    "syntax": ".card {\n  margin: 10px 20px;\n  padding: 10px 20px 30px 40px;\n}",
+    "explain": "Shorthand: two values = top/bottom then left/right; four = top, right, bottom, left (clockwise).",
+    "example": "Spacing around and inside boxes.",
+    "mastered": false
+  },
+  {
+    "id": "css-10",
+    "category": "Box model",
+    "syntax": ".center {\n  width: 600px;\n  max-width: 100%;\n  margin: 0 auto;\n}",
+    "explain": "margin: 0 auto centers a block that has a width. max-width stops it overflowing on phones.",
+    "example": "A centered page column.",
+    "mastered": false
+  },
+  {
+    "id": "css-11",
+    "category": "Box model",
+    "syntax": ".box {\n  border: 1px solid #CCC;\n  border-radius: 8px;\n}",
+    "explain": "border is width, style and color. border-radius rounds the corners.",
+    "example": "Cards and buttons.",
+    "mastered": false
+  },
+  {
+    "id": "css-12",
+    "category": "Box model",
+    "syntax": ".box { min-height: 100vh; overflow: auto; }",
+    "explain": "min-height sets the smallest height. overflow: auto adds a scrollbar when content is too big.",
+    "example": "A full-screen section, a scrolling list.",
+    "mastered": false
+  },
+  {
+    "id": "css-13",
+    "category": "Layout",
+    "syntax": "span { display: inline-block; }\n.hide { display: none; }",
+    "explain": "block takes a full line, inline flows with text, inline-block flows but can have a width. none hides it.",
+    "example": "Hiding a menu, sizing badges.",
+    "mastered": false
+  },
+  {
+    "id": "css-14",
+    "category": "Layout",
+    "syntax": ".row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}",
+    "explain": "justify-content spaces items along the row, align-items lines them up across it.",
+    "example": "A header with logo left and menu right.",
+    "mastered": false
+  },
+  {
+    "id": "css-15",
+    "category": "Layout",
+    "syntax": ".stack { display: flex; flex-direction: column; gap: 12px; }",
+    "explain": "flex-direction: column stacks items top to bottom. gap adds space between them.",
+    "example": "A form with fields under each other.",
+    "mastered": false
+  },
+  {
+    "id": "css-16",
+    "category": "Layout",
+    "syntax": ".grow { flex: 1; }\n.wrap { display: flex; flex-wrap: wrap; }",
+    "explain": "flex: 1 makes an item take the leftover space. flex-wrap lets items go to the next line.",
+    "example": "A search box that fills the bar; tags that wrap.",
+    "mastered": false
+  },
+  {
+    "id": "css-17",
+    "category": "Layout",
+    "syntax": ".gallery {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  gap: 16px;\n}",
+    "explain": "Makes as many 200px+ columns as fit. It changes by itself with the screen size.",
+    "example": "A photo gallery that works on any screen.",
+    "mastered": false
+  },
+  {
+    "id": "css-18",
+    "category": "Layout",
+    "syntax": ".wide { grid-column: span 2; }\n.full { grid-column: 1 / -1; }",
+    "explain": "span 2 takes two columns. 1 / -1 goes from the first to the last column.",
+    "example": "A big featured card in a grid.",
+    "mastered": false
+  },
+  {
+    "id": "css-19",
+    "category": "Layout",
+    "syntax": ".middle { display: grid; place-items: center; }",
+    "explain": "place-items: center puts the content in the exact middle.",
+    "example": "Centering a login box on the screen.",
+    "mastered": false
+  },
+  {
+    "id": "css-20",
+    "category": "Positioning",
+    "syntax": ".top-bar { position: sticky; top: 0; }\n.chat { position: fixed; bottom: 20px; right: 20px; }",
+    "explain": "sticky stays on screen once you scroll to it. fixed always stays in the same spot on the screen.",
+    "example": "Sticky headers, a chat button.",
+    "mastered": false
+  },
+  {
+    "id": "css-21",
+    "category": "Positioning",
+    "syntax": ".popup { position: absolute; z-index: 10; }",
+    "explain": "z-index decides what is on top. Bigger numbers go in front.",
+    "example": "Menus that cover the page.",
+    "mastered": false
+  },
+  {
+    "id": "css-22",
+    "category": "Typography",
+    "syntax": "html { font-size: 16px; }\nh1 { font-size: 2rem; }\np { line-height: 1.6; }",
+    "explain": "rem is relative to the html font size. line-height is the space between lines.",
+    "example": "Easy-to-read text.",
+    "mastered": false
+  },
+  {
+    "id": "css-23",
+    "category": "Typography",
+    "syntax": ".title {\n  font-weight: 700;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n}",
+    "explain": "Boldness, alignment, capital letters, and space between letters.",
+    "example": "Small labels like \"NEW\".",
+    "mastered": false
+  },
+  {
+    "id": "css-24",
+    "category": "Typography",
+    "syntax": "@import url(\"https://fonts.googleapis.com/css2?family=Inter&display=swap\");\nbody { font-family: \"Inter\", sans-serif; }",
+    "explain": "Load a font from Google Fonts, then use it. The second name is a backup.",
+    "example": "Using a custom font.",
+    "mastered": false
+  },
+  {
+    "id": "css-25",
+    "category": "Typography",
+    "syntax": ".cut {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}",
+    "explain": "Keeps text on one line and adds \"...\" when it doesn't fit.",
+    "example": "Long file names in a list.",
+    "mastered": false
+  },
+  {
+    "id": "css-26",
+    "category": "Colors",
+    "syntax": ".a { color: #1D1D1F; }\n.b { color: rgb(255, 0, 0); }\n.c { color: rgba(0, 0, 0, 0.5); }\n.d { color: hsl(200, 80%, 50%); }",
+    "explain": "Four ways to write a color. The last number in rgba is see-through-ness (0 to 1).",
+    "example": "Matching brand colors.",
+    "mastered": false
+  },
+  {
+    "id": "css-27",
+    "category": "Colors",
+    "syntax": ".hero { background: linear-gradient(to right, #FF7E5F, #FEB47B); }",
+    "explain": "A gradient fades from one color to another.",
+    "example": "Colorful banners.",
+    "mastered": false
+  },
+  {
+    "id": "css-28",
+    "category": "Colors",
+    "syntax": ".card { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }",
+    "explain": "box-shadow: x, y, blur, color. It makes the box look lifted.",
+    "example": "Cards that float above the page.",
+    "mastered": false
+  },
+  {
+    "id": "css-29",
+    "category": "Variables",
+    "syntax": ":root {\n  --main: #0071E3;\n}\n.button { background: var(--main); }",
+    "explain": "--name stores a value. var(--name) uses it. Change it once, it changes everywhere.",
+    "example": "Theme colors.",
+    "mastered": false
+  },
+  {
+    "id": "css-30",
+    "category": "Effects",
+    "syntax": ".button { transition: background 0.3s; }\n.button:hover { background: black; }",
+    "explain": "transition makes changes smooth instead of instant.",
+    "example": "Buttons that fade when you hover.",
+    "mastered": false
+  },
+  {
+    "id": "css-31",
+    "category": "Effects",
+    "syntax": ".icon:hover { transform: scale(1.1) rotate(10deg); }",
+    "explain": "transform moves, grows, or turns an element without moving others.",
+    "example": "A playful hover effect.",
+    "mastered": false
+  },
+  {
+    "id": "css-32",
+    "category": "Effects",
+    "syntax": "@keyframes spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n.loader { animation: spin 1s linear infinite; }",
+    "explain": "@keyframes describes an animation; animation plays it.",
+    "example": "A loading spinner.",
+    "mastered": false
+  },
+  {
+    "id": "css-33",
+    "category": "Effects",
+    "syntax": "a { cursor: pointer; }\n.faded { opacity: 0.4; }",
+    "explain": "cursor changes the mouse pointer. opacity makes an element see-through.",
+    "example": "Showing something is clickable or disabled.",
+    "mastered": false
+  },
+  {
+    "id": "css-34",
+    "category": "Responsive",
+    "syntax": "@media (min-width: 900px) {\n  .grid { grid-template-columns: 1fr 1fr 1fr; }\n}",
+    "explain": "min-width rules apply on screens this wide or wider. Start with phones, add for big screens.",
+    "example": "Mobile-first layouts.",
+    "mastered": false
+  },
+  {
+    "id": "css-35",
+    "category": "Responsive",
+    "syntax": "img { max-width: 100%; height: auto; }",
+    "explain": "Images shrink to fit their box and keep their shape.",
+    "example": "Photos that never overflow on phones.",
+    "mastered": false
+  },
+  {
+    "id": "css-36",
+    "category": "Responsive",
+    "syntax": "h1 { font-size: clamp(24px, 5vw, 48px); }",
+    "explain": "clamp(min, preferred, max). vw is 1% of the screen width.",
+    "example": "Headings that grow with the screen.",
+    "mastered": false
+  },
+  {
+    "id": "css-37",
+    "category": "Responsive",
+    "syntax": "@media (prefers-color-scheme: dark) {\n  body { background: #111; color: #EEE; }\n}",
+    "explain": "Applies when the computer is in dark mode.",
+    "example": "Dark mode.",
+    "mastered": false
+  },
+  {
+    "id": "css-38",
+    "category": "Sizing",
+    "syntax": ".side { width: calc(100% - 200px); }\n.photo { aspect-ratio: 16 / 9; object-fit: cover; }",
+    "explain": "calc() does math with units. aspect-ratio keeps a shape; object-fit: cover fills it without stretching.",
+    "example": "Video thumbnails.",
+    "mastered": false
   }
 ]

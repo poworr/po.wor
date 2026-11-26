@@ -6,7 +6,10 @@
 // What it does:
 //   1. Serves the web page (the files in /public).
 //   2. Reads and saves your syntax notes (the JSON files in /data).
-//   3. Runs code from the Practice Playground on your Mac (/api/run).
+//   3. Sends the lessons (data/lessons.json).
+//   4. Runs Python, Node.js, C and C++ code on your Mac (/api/run).
+//      Terminal and Homebrew use the practice terminal in the page (terminal.js),
+//      so nothing you type there touches your real Mac.
 
 const express = require('express');               // the web server library
 const fs = require('fs');                         // read and write files
@@ -19,7 +22,7 @@ const PORT = 3000;
 const DATA = path.join(__dirname, 'data');
 
 // The 9 technologies. "id" is also the JSON file name in /data.
-// "runs" says where the playground runs it: in the browser, or on the server.
+// "runs" says where code runs: in the browser, on the server, or in the practice terminal.
 const LANGS = [
   { id: 'html',       name: 'HTML',         runs: 'browser' },
   { id: 'css',        name: 'CSS',          runs: 'browser' },
@@ -28,8 +31,8 @@ const LANGS = [
   { id: 'python',     name: 'Python',       runs: 'server' },
   { id: 'c',          name: 'C',            runs: 'server' },
   { id: 'cpp',        name: 'C++',          runs: 'server' },
-  { id: 'terminal',   name: 'Mac Terminal', runs: 'server' },
-  { id: 'homebrew',   name: 'Homebrew',     runs: 'server' }
+  { id: 'terminal',   name: 'Mac Terminal', runs: 'terminal' },
+  { id: 'homebrew',   name: 'Homebrew',     runs: 'terminal' }
 ];
 
 app.use(express.json());                                    // read JSON sent by the page
@@ -88,6 +91,11 @@ app.post('/api/syntax/:lang', function (req, res) {
   res.json(item);
 });
 
+// GET /api/lessons: every lesson (task, solution, and what the answer must print)
+app.get('/api/lessons', function (req, res) {
+  res.json(readItems('lessons'));
+});
+
 // ===== Playground: run code on this Mac =====
 
 // Run one program and wait for it. Always resolves with { ok, text }.
@@ -101,31 +109,6 @@ function run(command, args, cwd, seconds) {
         resolve({ ok: !error, text: text || '(no output)' });
       });
   });
-}
-
-// Terminal and Homebrew: only commands that look at things, never ones that change things.
-const SAFE_COMMANDS = ['pwd', 'ls', 'echo', 'date', 'whoami', 'uname', 'which', 'cat', 'head', 'tail', 'wc', 'grep', 'cal'];
-const SAFE_BREW = ['list', 'info', 'search', 'doctor', 'config', 'outdated', 'leaves', 'deps', '--version'];
-
-async function runCommands(code) {
-  let output = '';
-  const lines = code.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
-
-  for (const line of lines) {
-    // Split into words; "quoted text" stays one word. No shell, so | > ; && do nothing special.
-    const words = line.match(/"[^"]*"|'[^']*'|\S+/g).map(function (w) { return w.replace(/^["']|["']$/g, ''); });
-    const command = words[0];
-    const args = words.slice(1);
-    const allowed = SAFE_COMMANDS.includes(command) || (command === 'brew' && SAFE_BREW.includes(args[0]));
-
-    output += '$ ' + line + '\n';
-    if (!allowed) {
-      output += 'Not run here: the playground only runs read-only commands. Try this one in Terminal yourself.\n\n';
-      continue;
-    }
-    output += (await run(command, args, os.homedir(), 30)).text + '\n';
-  }
-  return output;
 }
 
 async function runCode(lang, code, dir) {
@@ -146,9 +129,6 @@ async function runCode(lang, code, dir) {
     const build = await run(compiler, flags.concat([file, '-o', 'main']), dir, 20);
     if (!build.ok) return build.text;
     return (await run(path.join(dir, 'main'), [], dir, 10)).text;
-  }
-  if (lang === 'terminal' || lang === 'homebrew') {
-    return runCommands(code);
   }
   return 'This one runs in the browser, not on the server.';
 }

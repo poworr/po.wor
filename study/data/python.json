@@ -70,5 +70,341 @@
     "explain": "import loads ready-made modules that come with Python.",
     "example": "Dice rolls, dates, reading files, web requests.",
     "mastered": false
+  },
+  {
+    "id": "python-1",
+    "category": "Strings",
+    "syntax": "name = \"Ada\"\nage = 36\nprint(f\"{name} is {age}. Next year: {age + 1}\")",
+    "explain": "f-strings put values inside text with {}.",
+    "example": "Building messages.",
+    "mastered": false
+  },
+  {
+    "id": "python-2",
+    "category": "Strings",
+    "syntax": "price = 3.14159\nprint(f\"{price:.2f}\", f\"{42:>5}\", f\"{1000000:,}\")",
+    "explain": "After : you can format: 2 decimals, right-align in 5 spaces, commas.",
+    "example": "Money and tables.",
+    "mastered": false
+  },
+  {
+    "id": "python-3",
+    "category": "Input",
+    "syntax": "name = input(\"Your name: \")\nage = int(input(\"Your age: \"))\nprint(name, age)",
+    "explain": "input() reads text typed by the user. int() turns it into a number.",
+    "example": "Small interactive programs.",
+    "mastered": false
+  },
+  {
+    "id": "python-4",
+    "category": "Types",
+    "syntax": "print(int(\"5\") + 1, str(5) + \"!\", float(\"2.5\"), type(5))",
+    "explain": "Convert between numbers and text. type() tells you what something is.",
+    "example": "Reading numbers from a file.",
+    "mastered": false
+  },
+  {
+    "id": "python-5",
+    "category": "Conditions",
+    "syntax": "score = 75\nif score >= 90:\n    print(\"A\")\nelif score >= 70:\n    print(\"B\")\nelse:\n    print(\"C\")",
+    "explain": "elif checks the next condition when the first is false.",
+    "example": "Grades and levels.",
+    "mastered": false
+  },
+  {
+    "id": "python-6",
+    "category": "Conditions",
+    "syntax": "x = 5\nprint(0 < x < 10, x == 5 and x != 6, not True)",
+    "explain": "Python can chain comparisons. and, or, not combine conditions.",
+    "example": "Checking a number is in range.",
+    "mastered": false
+  },
+  {
+    "id": "python-7",
+    "category": "Loops",
+    "syntax": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1\nprint(\"Go!\")",
+    "explain": "while repeats as long as the condition is true.",
+    "example": "Countdowns, retry loops.",
+    "mastered": false
+  },
+  {
+    "id": "python-8",
+    "category": "Loops",
+    "syntax": "for n in range(10):\n    if n == 2:\n        continue\n    if n == 5:\n        break\n    print(n)",
+    "explain": "continue skips to the next round, break stops the loop.",
+    "example": "Stopping when you find what you need.",
+    "mastered": false
+  },
+  {
+    "id": "python-9",
+    "category": "Loops",
+    "syntax": "for i in range(0, 10, 3):\n    print(i)",
+    "explain": "range(start, stop, step). Stop is not included.",
+    "example": "Every 3rd item.",
+    "mastered": false
+  },
+  {
+    "id": "python-10",
+    "category": "Loops",
+    "syntax": "for i, fruit in enumerate([\"apple\", \"kiwi\"], start=1):\n    print(i, fruit)",
+    "explain": "enumerate gives the position and the item together.",
+    "example": "Numbered lists.",
+    "mastered": false
+  },
+  {
+    "id": "python-11",
+    "category": "Loops",
+    "syntax": "names = [\"Ada\", \"Bo\"]\nages = [36, 25]\nfor name, age in zip(names, ages):\n    print(name, age)",
+    "explain": "zip walks through two lists side by side.",
+    "example": "Pairing columns of data.",
+    "mastered": false
+  },
+  {
+    "id": "python-12",
+    "category": "Lists",
+    "syntax": "nums = [3, 1, 2]\nnums.append(4)\nnums.insert(0, 9)\nnums.remove(1)\nlast = nums.pop()\nnums.sort()\nprint(nums, last, len(nums))",
+    "explain": "Add, insert, remove, pop and sort change the list itself.",
+    "example": "A to-do list.",
+    "mastered": false
+  },
+  {
+    "id": "python-13",
+    "category": "Lists",
+    "syntax": "letters = [\"a\", \"b\", \"c\", \"d\", \"e\"]\nprint(letters[0], letters[-1], letters[1:3], letters[::-1])",
+    "explain": "[i] picks one, [-1] is the last, [a:b] slices, [::-1] reverses.",
+    "example": "Taking the first 10 results.",
+    "mastered": false
+  },
+  {
+    "id": "python-14",
+    "category": "Lists",
+    "syntax": "print(len([1, 2]), sum([1, 2, 3]), min([4, 2]), max([4, 2]))\nprint(sorted([\"b\", \"a\"]), sorted([1, 3, 2], reverse=True))",
+    "explain": "Built-in helpers for lists. sorted makes a new sorted list.",
+    "example": "Stats about scores.",
+    "mastered": false
+  },
+  {
+    "id": "python-15",
+    "category": "Lists",
+    "syntax": "print(any(n > 2 for n in [1, 3]), all(n > 0 for n in [1, 3]))",
+    "explain": "any: at least one is true. all: every one is true.",
+    "example": "Checking if any task is late.",
+    "mastered": false
+  },
+  {
+    "id": "python-16",
+    "category": "Tuples",
+    "syntax": "point = (3, 4)\nx, y = point\na, b = 1, 2\na, b = b, a\nprint(x, y, a, b)",
+    "explain": "A tuple is a list that can't change. Unpacking assigns several variables at once.",
+    "example": "Coordinates, swapping two values.",
+    "mastered": false
+  },
+  {
+    "id": "python-17",
+    "category": "Sets",
+    "syntax": "tags = {\"a\", \"b\", \"a\"}\ntags.add(\"c\")\nprint(tags, \"a\" in tags, {1, 2} & {2, 3}, {1, 2} | {2, 3})",
+    "explain": "A set keeps only unique values. & is \"in both\", | is \"in either\".",
+    "example": "Removing duplicates, finding shared friends.",
+    "mastered": false
+  },
+  {
+    "id": "python-18",
+    "category": "Dictionaries",
+    "syntax": "user = {\"name\": \"Ada\"}\nprint(user.get(\"age\", 0))\nuser[\"age\"] = 36\nfor key, value in user.items():\n    print(key, value)",
+    "explain": "get returns a default instead of crashing. items() gives key-value pairs.",
+    "example": "Reading settings safely.",
+    "mastered": false
+  },
+  {
+    "id": "python-19",
+    "category": "Dictionaries",
+    "syntax": "words = [\"hi\", \"hello\"]\nlengths = {w: len(w) for w in words}\nprint(lengths)",
+    "explain": "A dict comprehension builds a dictionary in one line.",
+    "example": "Building a lookup table.",
+    "mastered": false
+  },
+  {
+    "id": "python-20",
+    "category": "Strings",
+    "syntax": "s = \"  Hello, World  \"\nprint(s.strip().lower(), s.replace(\"World\", \"Ada\"), \"a,b,c\".split(\",\"), \"-\".join([\"a\", \"b\"]))",
+    "explain": "Clean up, change case, replace, split into a list, join a list into text.",
+    "example": "Cleaning data from a CSV file.",
+    "mastered": false
+  },
+  {
+    "id": "python-21",
+    "category": "Strings",
+    "syntax": "s = \"python\"\nprint(s.upper(), s.startswith(\"py\"), s.find(\"th\"), s.count(\"o\"), s[0:2])",
+    "explain": "Text has many helpers. Text can be sliced like a list.",
+    "example": "Checking file names.",
+    "mastered": false
+  },
+  {
+    "id": "python-22",
+    "category": "Functions",
+    "syntax": "def greet(name, greeting=\"Hi\"):\n    return f\"{greeting}, {name}\"\nprint(greet(\"Ada\"), greet(\"Bo\", greeting=\"Hello\"))",
+    "explain": "greeting=\"Hi\" is a default. You can also pass arguments by name.",
+    "example": "Functions with options.",
+    "mastered": false
+  },
+  {
+    "id": "python-23",
+    "category": "Functions",
+    "syntax": "def show(*args, **kwargs):\n    print(args, kwargs)\nshow(1, 2, color=\"red\")",
+    "explain": "*args collects extra values into a tuple, **kwargs collects named ones into a dict.",
+    "example": "Flexible helper functions.",
+    "mastered": false
+  },
+  {
+    "id": "python-24",
+    "category": "Functions",
+    "syntax": "square = lambda n: n * n\nprint(square(4))\nprint(sorted([\"kiwi\", \"fig\", \"apple\"], key=len))",
+    "explain": "lambda is a tiny one-line function. key= tells sorted what to sort by.",
+    "example": "Sorting by length, by date, by price.",
+    "mastered": false
+  },
+  {
+    "id": "python-25",
+    "category": "Functions",
+    "syntax": "print(list(map(str.upper, [\"a\", \"b\"])), list(filter(lambda n: n > 1, [1, 2, 3])))",
+    "explain": "map changes every item, filter keeps some. Comprehensions often read better.",
+    "example": "Quick data clean-up.",
+    "mastered": false
+  },
+  {
+    "id": "python-26",
+    "category": "Errors",
+    "syntax": "try:\n    n = int(\"abc\")\nexcept ValueError as e:\n    print(\"Not a number:\", e)\nfinally:\n    print(\"done\")",
+    "explain": "try runs code; except handles a kind of error; finally always runs.",
+    "example": "Handling bad input.",
+    "mastered": false
+  },
+  {
+    "id": "python-27",
+    "category": "Errors",
+    "syntax": "def withdraw(balance, amount):\n    if amount > balance:\n        raise ValueError(\"Not enough money\")\n    return balance - amount\nprint(withdraw(10, 3))",
+    "explain": "raise stops the function with an error.",
+    "example": "Rejecting invalid actions.",
+    "mastered": false
+  },
+  {
+    "id": "python-28",
+    "category": "Files",
+    "syntax": "with open(\"notes.txt\", \"w\") as f:\n    f.write(\"line 1\\nline 2\\n\")\nwith open(\"notes.txt\") as f:\n    for line in f:\n        print(line.strip())",
+    "explain": "with open closes the file for you. \"w\" writes, \"a\" appends, no letter reads.",
+    "example": "Saving and reading notes.",
+    "mastered": false
+  },
+  {
+    "id": "python-29",
+    "category": "Files",
+    "syntax": "import json\nwith open(\"data.json\", \"w\") as f:\n    json.dump({\"count\": 1}, f)\nwith open(\"data.json\") as f:\n    print(json.load(f))",
+    "explain": "json saves Python data to a file and loads it back.",
+    "example": "Saving settings or game scores.",
+    "mastered": false
+  },
+  {
+    "id": "python-30",
+    "category": "Files",
+    "syntax": "from pathlib import Path\np = Path(\"demo.txt\")\np.write_text(\"hello\")\nprint(p.exists(), p.read_text(), p.suffix, list(Path(\".\").glob(\"*.txt\")))",
+    "explain": "pathlib makes working with files and folders easy.",
+    "example": "Finding all .txt files in a folder.",
+    "mastered": false
+  },
+  {
+    "id": "python-31",
+    "category": "Classes",
+    "syntax": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def __str__(self):\n        return f\"Dog({self.name})\"\nprint(Dog(\"Rex\"))",
+    "explain": "__str__ decides what print() shows for your object.",
+    "example": "Readable output for your own types.",
+    "mastered": false
+  },
+  {
+    "id": "python-32",
+    "category": "Classes",
+    "syntax": "class Animal:\n    def speak(self):\n        return \"...\"\nclass Cat(Animal):\n    def speak(self):\n        return \"Meow\"\nprint(Cat().speak())",
+    "explain": "class Cat(Animal) inherits from Animal and can replace its methods.",
+    "example": "Shared behavior with small differences.",
+    "mastered": false
+  },
+  {
+    "id": "python-33",
+    "category": "Classes",
+    "syntax": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int = 0\nprint(Point(3), Point(1, 2) == Point(1, 2))",
+    "explain": "@dataclass writes __init__, printing and == for you.",
+    "example": "Simple data records.",
+    "mastered": false
+  },
+  {
+    "id": "python-34",
+    "category": "Generators",
+    "syntax": "def countdown(n):\n    while n > 0:\n        yield n\n        n -= 1\nprint(list(countdown(3)))",
+    "explain": "yield gives values one at a time instead of building a whole list.",
+    "example": "Reading huge files line by line.",
+    "mastered": false
+  },
+  {
+    "id": "python-35",
+    "category": "Decorators",
+    "syntax": "def shout(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n@shout\ndef hello():\n    return \"hello\"\nprint(hello())",
+    "explain": "A decorator wraps a function to add behavior. @name applies it.",
+    "example": "Timing functions, checking logins (Flask uses these).",
+    "mastered": false
+  },
+  {
+    "id": "python-36",
+    "category": "Type hints",
+    "syntax": "def add(a: int, b: int) -> int:\n    return a + b\nprint(add(2, 3))",
+    "explain": "Type hints say what types are expected. Python doesn't enforce them; editors use them.",
+    "example": "Catching mistakes early in big projects.",
+    "mastered": false
+  },
+  {
+    "id": "python-37",
+    "category": "Main",
+    "syntax": "def main():\n    print(\"running\")\n\nif __name__ == \"__main__\":\n    main()",
+    "explain": "This code runs only when the file is run directly, not when it's imported.",
+    "example": "Scripts that are also importable modules.",
+    "mastered": false
+  },
+  {
+    "id": "python-38",
+    "category": "Modules",
+    "syntax": "from math import sqrt, pi\nimport datetime\nprint(sqrt(16), round(pi, 2), datetime.date.today())",
+    "explain": "from x import y takes just what you need from a module.",
+    "example": "Math and dates.",
+    "mastered": false
+  },
+  {
+    "id": "python-39",
+    "category": "Modules",
+    "syntax": "import random\nprint(random.choice([\"rock\", \"paper\", \"scissors\"]), random.randint(1, 6))\nnums = [1, 2, 3]\nrandom.shuffle(nums)\nprint(nums)",
+    "explain": "choice picks one, randint picks a whole number, shuffle mixes a list.",
+    "example": "Games.",
+    "mastered": false
+  },
+  {
+    "id": "python-40",
+    "category": "Modules",
+    "syntax": "from collections import Counter\nprint(Counter(\"hello world\").most_common(2))",
+    "explain": "Counter counts how many times each thing appears.",
+    "example": "Most common words in a text.",
+    "mastered": false
+  },
+  {
+    "id": "python-41",
+    "category": "None",
+    "syntax": "result = None\nif result is None:\n    print(\"nothing yet\")",
+    "explain": "None means \"no value\". Check it with is None.",
+    "example": "Functions that may find nothing.",
+    "mastered": false
+  },
+  {
+    "id": "python-42",
+    "category": "Setup",
+    "syntax": "python3 -m venv .venv\nsource .venv/bin/activate\npip install requests\npip freeze > requirements.txt",
+    "explain": "A venv keeps each project's packages separate. pip installs packages.",
+    "example": "Starting a new Python project.",
+    "mastered": false
   }
 ]

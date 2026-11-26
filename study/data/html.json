@@ -70,5 +70,349 @@
     "explain": "A bulleted list. Use ol instead of ul for a numbered list.",
     "example": "Navigation menus and feature lists.",
     "mastered": false
+  },
+  {
+    "id": "html-1",
+    "category": "Text",
+    "syntax": "<p>A paragraph of text.</p>",
+    "explain": "p is a paragraph. Browsers add space above and below it.",
+    "example": "Any block of normal text on a page.",
+    "mastered": false
+  },
+  {
+    "id": "html-2",
+    "category": "Text",
+    "syntax": "<strong>Important</strong> and <em>stressed</em>",
+    "explain": "strong makes text bold and important, em makes it italic and stressed.",
+    "example": "Warning words like \"Do not unplug\".",
+    "mastered": false
+  },
+  {
+    "id": "html-3",
+    "category": "Text",
+    "syntax": "Line one<br>\nLine two",
+    "explain": "br breaks the line without starting a new paragraph.",
+    "example": "Lines of an address or a poem.",
+    "mastered": false
+  },
+  {
+    "id": "html-4",
+    "category": "Text",
+    "syntax": "<hr>",
+    "explain": "hr draws a line to separate two parts of the page.",
+    "example": "Between two topics in an article.",
+    "mastered": false
+  },
+  {
+    "id": "html-5",
+    "category": "Text",
+    "syntax": "<blockquote>Stay hungry, stay foolish.</blockquote>",
+    "explain": "blockquote shows a quote from somewhere else, indented.",
+    "example": "Quoting a person in a blog post.",
+    "mastered": false
+  },
+  {
+    "id": "html-6",
+    "category": "Text",
+    "syntax": "<p>Run <code>npm start</code> to begin.</p>\n<pre>line 1\n  line 2 keeps its spaces</pre>",
+    "explain": "code marks a bit of code inline. pre keeps spaces and line breaks exactly.",
+    "example": "Showing commands in a tutorial.",
+    "mastered": false
+  },
+  {
+    "id": "html-7",
+    "category": "Text",
+    "syntax": "<p>Price: <span class=\"price\">$5</span></p>",
+    "explain": "span wraps part of a line so CSS or JavaScript can target it. It does nothing by itself.",
+    "example": "Coloring just the price in a sentence.",
+    "mastered": false
+  },
+  {
+    "id": "html-8",
+    "category": "Text",
+    "syntax": "<h2>Section</h2>\n<h3>Smaller section</h3>",
+    "explain": "h1 to h6 are headings, from biggest to smallest. Use one h1 per page.",
+    "example": "Titles of the parts of an article.",
+    "mastered": false
+  },
+  {
+    "id": "html-9",
+    "category": "Text",
+    "syntax": "<p>Save <mark>today</mark> only. <small>Terms apply.</small></p>",
+    "explain": "mark highlights text, small is for side notes and fine print.",
+    "example": "Highlighting search results, legal notes.",
+    "mastered": false
+  },
+  {
+    "id": "html-10",
+    "category": "Text",
+    "syntax": "<!-- This is a comment. The browser ignores it. -->",
+    "explain": "A comment is a note for people reading the code. It does not show on the page.",
+    "example": "Explaining a tricky part of the page.",
+    "mastered": false
+  },
+  {
+    "id": "html-11",
+    "category": "Text",
+    "syntax": "&copy; &amp; &lt;p&gt; &nbsp;",
+    "explain": "Entities write special characters: © & < > and a space that never breaks.",
+    "example": "Writing \"<p>\" on a page without it becoming a tag.",
+    "mastered": false
+  },
+  {
+    "id": "html-12",
+    "category": "Lists",
+    "syntax": "<ol>\n  <li>First</li>\n  <li>Second</li>\n</ol>",
+    "explain": "ol is a numbered list. Each item is an li.",
+    "example": "Steps of a recipe.",
+    "mastered": false
+  },
+  {
+    "id": "html-13",
+    "category": "Lists",
+    "syntax": "<ul>\n  <li>Fruit\n    <ul>\n      <li>Apple</li>\n    </ul>\n  </li>\n</ul>",
+    "explain": "A list can go inside an li to make a nested list.",
+    "example": "Menus with sub-menus.",
+    "mastered": false
+  },
+  {
+    "id": "html-14",
+    "category": "Lists",
+    "syntax": "<dl>\n  <dt>HTML</dt>\n  <dd>The structure of a page.</dd>\n</dl>",
+    "explain": "dl is a list of terms (dt) and their descriptions (dd).",
+    "example": "A glossary or FAQ.",
+    "mastered": false
+  },
+  {
+    "id": "html-15",
+    "category": "Links",
+    "syntax": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener\">Open in new tab</a>",
+    "explain": "target=\"_blank\" opens a new tab. rel=\"noopener\" keeps the new page from controlling yours.",
+    "example": "Links to other websites.",
+    "mastered": false
+  },
+  {
+    "id": "html-16",
+    "category": "Links",
+    "syntax": "<a href=\"mailto:me@example.com\">Email me</a>\n<a href=\"tel:+15551234567\">Call me</a>",
+    "explain": "mailto: opens the email app, tel: opens the phone app.",
+    "example": "Contact links on a portfolio.",
+    "mastered": false
+  },
+  {
+    "id": "html-17",
+    "category": "Links",
+    "syntax": "<a href=\"#contact\">Jump to contact</a>\n<section id=\"contact\">...</section>",
+    "explain": "href=\"#id\" jumps to the element with that id on the same page.",
+    "example": "A table of contents.",
+    "mastered": false
+  },
+  {
+    "id": "html-18",
+    "category": "Links",
+    "syntax": "<a href=\"report.pdf\" download>Download the report</a>",
+    "explain": "download saves the file instead of opening it.",
+    "example": "Download buttons for PDFs.",
+    "mastered": false
+  },
+  {
+    "id": "html-19",
+    "category": "Media",
+    "syntax": "<video src=\"clip.mp4\" controls width=\"320\"></video>",
+    "explain": "video plays a video. controls shows play, pause and volume.",
+    "example": "A product demo clip.",
+    "mastered": false
+  },
+  {
+    "id": "html-20",
+    "category": "Media",
+    "syntax": "<audio src=\"song.mp3\" controls></audio>",
+    "explain": "audio plays sound with play and pause controls.",
+    "example": "A podcast episode.",
+    "mastered": false
+  },
+  {
+    "id": "html-21",
+    "category": "Media",
+    "syntax": "<figure>\n  <img src=\"chart.png\" alt=\"Sales chart\">\n  <figcaption>Sales in 2026</figcaption>\n</figure>",
+    "explain": "figure groups an image with its caption (figcaption).",
+    "example": "Photos with a caption in an article.",
+    "mastered": false
+  },
+  {
+    "id": "html-22",
+    "category": "Media",
+    "syntax": "<iframe src=\"https://example.com\" width=\"300\" height=\"200\" title=\"Example\"></iframe>",
+    "explain": "iframe shows another web page inside your page.",
+    "example": "Embedding a map or a video.",
+    "mastered": false
+  },
+  {
+    "id": "html-23",
+    "category": "Media",
+    "syntax": "<svg width=\"100\" height=\"100\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"tomato\" />\n</svg>",
+    "explain": "svg draws shapes with code. They stay sharp at any size.",
+    "example": "Icons and logos.",
+    "mastered": false
+  },
+  {
+    "id": "html-24",
+    "category": "Media",
+    "syntax": "<picture>\n  <source srcset=\"photo.webp\" type=\"image/webp\">\n  <img src=\"photo.jpg\" alt=\"Beach\">\n</picture>",
+    "explain": "picture lets the browser pick the best image format it supports.",
+    "example": "Faster images for new browsers.",
+    "mastered": false
+  },
+  {
+    "id": "html-25",
+    "category": "Tables",
+    "syntax": "<table>\n  <thead>\n    <tr><th>Name</th><th>Age</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Ada</td><td>36</td></tr>\n  </tbody>\n</table>",
+    "explain": "table holds rows (tr). th is a heading cell, td is a normal cell.",
+    "example": "A price list or a schedule.",
+    "mastered": false
+  },
+  {
+    "id": "html-26",
+    "category": "Tables",
+    "syntax": "<td colspan=\"2\">Spans two columns</td>",
+    "explain": "colspan makes a cell wider, rowspan makes it taller.",
+    "example": "A total row at the bottom of a table.",
+    "mastered": false
+  },
+  {
+    "id": "html-27",
+    "category": "Forms",
+    "syntax": "<label for=\"email\">Email</label>\n<input id=\"email\" type=\"email\" placeholder=\"you@example.com\" required>",
+    "explain": "label names an input; for= must match the input's id. required means it can't be empty.",
+    "example": "A sign-up form.",
+    "mastered": false
+  },
+  {
+    "id": "html-28",
+    "category": "Forms",
+    "syntax": "<input type=\"password\">\n<input type=\"number\" min=\"1\" max=\"10\">\n<input type=\"date\">\n<input type=\"range\" min=\"0\" max=\"100\">\n<input type=\"file\">",
+    "explain": "The type changes what the input is: hidden text, numbers, a date picker, a slider, a file picker.",
+    "example": "Settings pages and upload forms.",
+    "mastered": false
+  },
+  {
+    "id": "html-29",
+    "category": "Forms",
+    "syntax": "<label><input type=\"checkbox\" checked> Remember me</label>\n<label><input type=\"radio\" name=\"size\" value=\"s\"> Small</label>\n<label><input type=\"radio\" name=\"size\" value=\"l\"> Large</label>",
+    "explain": "A checkbox is on or off. Radios with the same name let you pick only one.",
+    "example": "Options in an order form.",
+    "mastered": false
+  },
+  {
+    "id": "html-30",
+    "category": "Forms",
+    "syntax": "<select name=\"country\">\n  <option value=\"th\">Thailand</option>\n  <option value=\"jp\" selected>Japan</option>\n</select>",
+    "explain": "select is a dropdown. Each option is one choice; selected picks the default.",
+    "example": "Choosing a country.",
+    "mastered": false
+  },
+  {
+    "id": "html-31",
+    "category": "Forms",
+    "syntax": "<textarea name=\"message\" rows=\"4\"></textarea>\n<button type=\"submit\">Send</button>",
+    "explain": "textarea is a big box for many lines. A submit button sends the form.",
+    "example": "A contact form.",
+    "mastered": false
+  },
+  {
+    "id": "html-32",
+    "category": "Forms",
+    "syntax": "<fieldset>\n  <legend>Shipping</legend>\n  <input name=\"city\">\n</fieldset>",
+    "explain": "fieldset groups related inputs; legend is the group's title.",
+    "example": "Separating shipping and billing details.",
+    "mastered": false
+  },
+  {
+    "id": "html-33",
+    "category": "Forms",
+    "syntax": "<input list=\"langs\">\n<datalist id=\"langs\">\n  <option value=\"Python\"><option value=\"C++\">\n</datalist>",
+    "explain": "datalist gives an input a list of suggestions while you type.",
+    "example": "Autocomplete for a search box.",
+    "mastered": false
+  },
+  {
+    "id": "html-34",
+    "category": "Structure",
+    "syntax": "<nav><a href=\"/\">Home</a> <a href=\"/about\">About</a></nav>\n<main>The main content</main>",
+    "explain": "nav holds the main links. main holds the page's main content (only one per page).",
+    "example": "The menu at the top of a website.",
+    "mastered": false
+  },
+  {
+    "id": "html-35",
+    "category": "Structure",
+    "syntax": "<section><h2>News</h2></section>\n<article><h2>Post title</h2></article>\n<aside>Related links</aside>",
+    "explain": "section is a part of the page, article is something that stands alone, aside is extra info on the side.",
+    "example": "A blog: posts are articles, the sidebar is an aside.",
+    "mastered": false
+  },
+  {
+    "id": "html-36",
+    "category": "Head",
+    "syntax": "<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "explain": "charset lets the page show any language. viewport makes it fit phone screens.",
+    "example": "The first lines of every page's head.",
+    "mastered": false
+  },
+  {
+    "id": "html-37",
+    "category": "Head",
+    "syntax": "<title>My page</title>\n<meta name=\"description\" content=\"What this page is about\">\n<link rel=\"icon\" href=\"logo.png\">",
+    "explain": "title shows on the browser tab, description shows in search results, icon is the tab's little picture.",
+    "example": "Making a page look good in Google and in tabs.",
+    "mastered": false
+  },
+  {
+    "id": "html-38",
+    "category": "Head",
+    "syntax": "<link rel=\"stylesheet\" href=\"style.css\">\n<script src=\"app.js\" defer></script>",
+    "explain": "link loads a CSS file. script loads JavaScript; defer runs it after the page is built.",
+    "example": "Connecting your CSS and JS files.",
+    "mastered": false
+  },
+  {
+    "id": "html-39",
+    "category": "Interactive",
+    "syntax": "<details>\n  <summary>Show answer</summary>\n  42\n</details>",
+    "explain": "details hides content until you click its summary. No JavaScript needed.",
+    "example": "FAQs and spoilers.",
+    "mastered": false
+  },
+  {
+    "id": "html-40",
+    "category": "Interactive",
+    "syntax": "<dialog open>Hello! <form method=\"dialog\"><button>Close</button></form></dialog>",
+    "explain": "dialog is a pop-up box. A form with method=\"dialog\" closes it.",
+    "example": "Confirm boxes and pop-up forms.",
+    "mastered": false
+  },
+  {
+    "id": "html-41",
+    "category": "Attributes",
+    "syntax": "<button data-id=\"42\" hidden>Delete</button>",
+    "explain": "data-* stores your own info for JavaScript. hidden hides the element.",
+    "example": "Remembering which item a button belongs to.",
+    "mastered": false
+  },
+  {
+    "id": "html-42",
+    "category": "Attributes",
+    "syntax": "<html lang=\"en\">\n<button aria-label=\"Close\">×</button>",
+    "explain": "lang tells screen readers the language. aria-label names a button that has no words.",
+    "example": "Making a site usable with a screen reader.",
+    "mastered": false
+  },
+  {
+    "id": "html-43",
+    "category": "Attributes",
+    "syntax": "<p style=\"color: red;\">Red text</p>",
+    "explain": "style puts CSS right on one element. Fine for a quick test; use a CSS file for real work.",
+    "example": "Quick experiments.",
+    "mastered": false
   }
 ]

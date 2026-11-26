@@ -54,5 +54,293 @@
     "explain": "std::map stores values under keys, kept in sorted order. auto lets the compiler work out the type.",
     "example": "Counting words, or looking up a user by name.",
     "mastered": false
+  },
+  {
+    "id": "cpp-1",
+    "category": "Output",
+    "syntax": "std::cout << \"Sum: \" << 2 + 3 << \"\\n\";\nstd::cerr << \"Something went wrong\\n\";",
+    "explain": "cout prints, cerr prints errors. << sends each piece in order.",
+    "example": "Printing results and errors.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-2",
+    "category": "Input",
+    "syntax": "int age;\nstd::cin >> age;\nstd::string line;\nstd::getline(std::cin, line);",
+    "explain": "cin >> reads one word or number. getline reads the whole line.",
+    "example": "Reading user input.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-3",
+    "category": "Basics",
+    "syntax": "using namespace std;\nauto n = 42;\nauto name = string(\"Ada\");",
+    "explain": "using namespace std lets you skip std::. auto lets the compiler pick the type.",
+    "example": "Shorter code in small programs.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-4",
+    "category": "Loops",
+    "syntax": "std::vector<int> nums = {1, 2, 3};\nfor (int n : nums) std::cout << n << \" \";\nfor (int i = 0; i < 3; i++) std::cout << i;",
+    "explain": "Range-for goes through every item. The classic for counts.",
+    "example": "Going through a list.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-5",
+    "category": "Loops",
+    "syntax": "for (const auto& name : names) {\n    std::cout << name << \"\\n\";\n}",
+    "explain": "const auto& reads each item without copying it.",
+    "example": "Fast loops over big strings or objects.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-6",
+    "category": "std::string",
+    "syntax": "std::string s = \"hello world\";\nstd::cout << s.size() << \" \" << s.substr(0, 5) << \" \" << s.find(\"world\") << \"\\n\";",
+    "explain": "size, substr(start, length), find (gives std::string::npos if not found).",
+    "example": "Splitting and searching text.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-7",
+    "category": "std::string",
+    "syntax": "std::string a = \"Hi\";\na += \" there\";\nint n = std::stoi(\"42\");\nstd::string t = std::to_string(3.5);",
+    "explain": "+= joins text. stoi turns text into int, to_string turns numbers into text.",
+    "example": "Building messages with numbers.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-8",
+    "category": "std::vector",
+    "syntax": "std::vector<int> v;\nv.push_back(4);\nv.pop_back();\nv.insert(v.begin(), 9);\nstd::cout << v.size() << \" \" << v.at(0) << \" \" << v.empty();",
+    "explain": "push_back adds to the end, pop_back removes, at() checks the index is safe.",
+    "example": "Lists that grow and shrink.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-9",
+    "category": "Algorithms",
+    "syntax": "#include <algorithm>\nstd::vector<int> v = {3, 1, 2};\nstd::sort(v.begin(), v.end());\nstd::reverse(v.begin(), v.end());",
+    "explain": "sort and reverse work on a range: from begin() to end().",
+    "example": "Sorting scores.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-10",
+    "category": "Algorithms",
+    "syntax": "auto it = std::find(v.begin(), v.end(), 2);\nif (it != v.end()) std::cout << \"found\\n\";\nint biggest = *std::max_element(v.begin(), v.end());",
+    "explain": "find gives an iterator; end() means \"not found\". max_element finds the biggest.",
+    "example": "Searching lists.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-11",
+    "category": "Algorithms",
+    "syntax": "#include <numeric>\nint total = std::accumulate(v.begin(), v.end(), 0);",
+    "explain": "accumulate adds up everything, starting from 0.",
+    "example": "Totals and sums.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-12",
+    "category": "Algorithms",
+    "syntax": "std::sort(people.begin(), people.end(), [](const Person& a, const Person& b) {\n    return a.age < b.age;\n});",
+    "explain": "Give sort a lambda to choose how to compare.",
+    "example": "Sorting by age, price, or name.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-13",
+    "category": "Lambdas",
+    "syntax": "auto add = [](int a, int b) { return a + b; };\nint base = 10;\nauto addBase = [base](int x) { return x + base; };\nstd::cout << add(1, 2) << \" \" << addBase(5);",
+    "explain": "[] is the capture list: which outside variables the lambda can use.",
+    "example": "Small helper functions inside other functions.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-14",
+    "category": "Containers",
+    "syntax": "std::array<int, 3> a = {1, 2, 3};\nstd::cout << a.size();",
+    "explain": "std::array is a fixed-size array that knows its size.",
+    "example": "Fixed lists like RGB colors.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-15",
+    "category": "Containers",
+    "syntax": "std::map<std::string, int> ages = {{\"Ada\", 36}};\nfor (const auto& [name, age] : ages) std::cout << name << \" \" << age << \"\\n\";\nif (ages.count(\"Bo\") == 0) std::cout << \"no Bo\\n\";",
+    "explain": "[name, age] unpacks each pair. count says if a key exists.",
+    "example": "Phone books, word counts.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-16",
+    "category": "Containers",
+    "syntax": "#include <unordered_map>\nstd::unordered_map<std::string, int> counts;\ncounts[\"apple\"]++;",
+    "explain": "unordered_map is faster than map but not sorted. [] makes the key if missing.",
+    "example": "Counting words.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-17",
+    "category": "Containers",
+    "syntax": "#include <set>\nstd::set<int> s = {3, 1, 3};\ns.insert(2);\nstd::cout << s.size();",
+    "explain": "set keeps unique values, sorted.",
+    "example": "Unique visitors.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-18",
+    "category": "Containers",
+    "syntax": "std::pair<std::string, int> p = {\"Ada\", 36};\nstd::cout << p.first << \" \" << p.second;",
+    "explain": "pair holds two values together.",
+    "example": "Returning two things from a function.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-19",
+    "category": "Classes",
+    "syntax": "class Point {\npublic:\n    Point(int x, int y) : x(x), y(y) {}\n    int getX() const { return x; }\nprivate:\n    int x, y;\n};",
+    "explain": ": x(x), y(y) is an initializer list. const after a method means it doesn't change the object.",
+    "example": "Safe, simple classes.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-20",
+    "category": "Classes",
+    "syntax": "struct Person {\n    std::string name;\n    int age = 0;\n};\nPerson p{\"Ada\", 36};",
+    "explain": "A struct is a class where everything is public. Good for plain data.",
+    "example": "Records.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-21",
+    "category": "Classes",
+    "syntax": "class Counter {\npublic:\n    static int total;\n    Counter() { total++; }\n};\nint Counter::total = 0;",
+    "explain": "static belongs to the class, shared by all objects.",
+    "example": "Counting how many objects exist.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-22",
+    "category": "Inheritance",
+    "syntax": "class Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\nclass Square : public Shape {\npublic:\n    Square(double s) : s(s) {}\n    double area() const override { return s * s; }\nprivate:\n    double s;\n};",
+    "explain": "= 0 makes a pure virtual (must be written by children). override checks you really replace one.",
+    "example": "Many shapes, one way to use them.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-23",
+    "category": "Destructors",
+    "syntax": "class File {\npublic:\n    File() { std::cout << \"open\\n\"; }\n    ~File() { std::cout << \"close\\n\"; }\n};",
+    "explain": "The destructor ~Name runs by itself when the object goes away.",
+    "example": "Closing files and freeing memory automatically.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-24",
+    "category": "Memory",
+    "syntax": "int* p = new int(5);\ndelete p;\nint* arr = new int[10];\ndelete[] arr;",
+    "explain": "new makes memory by hand, delete gives it back. Prefer smart pointers.",
+    "example": "Old-style code you'll see in tutorials.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-25",
+    "category": "Memory",
+    "syntax": "#include <memory>\nauto p = std::make_unique<int>(5);\nauto shared = std::make_shared<std::string>(\"hi\");\nstd::cout << *p << \" \" << *shared;",
+    "explain": "Smart pointers free memory by themselves. unique_ptr has one owner, shared_ptr many.",
+    "example": "Modern, leak-free C++.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-26",
+    "category": "Templates",
+    "syntax": "template <typename T>\nclass Box {\npublic:\n    Box(T v) : value(v) {}\n    T get() const { return value; }\nprivate:\n    T value;\n};\nBox<int> b(5);",
+    "explain": "A class template works for any type T.",
+    "example": "Containers like vector are made this way.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-27",
+    "category": "Operators",
+    "syntax": "struct Vec {\n    int x, y;\n    Vec operator+(const Vec& o) const { return {x + o.x, y + o.y}; }\n};",
+    "explain": "Operator overloading makes + work for your own types.",
+    "example": "Math with points and vectors.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-28",
+    "category": "Errors",
+    "syntax": "try {\n    throw std::runtime_error(\"bad value\");\n} catch (const std::exception& e) {\n    std::cout << \"Error: \" << e.what() << \"\\n\";\n}",
+    "explain": "throw sends an error, catch handles it. what() gives the message.",
+    "example": "Handling bad input or missing files.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-29",
+    "category": "Optional",
+    "syntax": "#include <optional>\nstd::optional<int> findAge(bool known) {\n    if (known) return 36;\n    return std::nullopt;\n}\nauto age = findAge(false);\nstd::cout << age.value_or(0);",
+    "explain": "optional may or may not hold a value. value_or gives a fallback.",
+    "example": "Searches that may find nothing.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-30",
+    "category": "enum class",
+    "syntax": "enum class Color { Red, Green };\nColor c = Color::Green;\nif (c == Color::Green) std::cout << \"go\\n\";",
+    "explain": "enum class keeps names inside the enum: Color::Red.",
+    "example": "Game states, settings.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-31",
+    "category": "Namespaces",
+    "syntax": "namespace game {\n    int score = 0;\n}\ngame::score = 10;",
+    "explain": "A namespace groups names so they don't clash with others.",
+    "example": "Big projects and libraries.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-32",
+    "category": "References",
+    "syntax": "int x = 5;\nint& ref = x;\nref = 10;\nstd::cout << x;",
+    "explain": "A reference is another name for the same variable.",
+    "example": "Changing a variable inside a function.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-33",
+    "category": "Files",
+    "syntax": "#include <fstream>\nstd::ofstream out(\"notes.txt\");\nout << \"hello\\n\";\nout.close();\nstd::ifstream in(\"notes.txt\");\nstd::string line;\nwhile (std::getline(in, line)) std::cout << line << \"\\n\";",
+    "explain": "ofstream writes a file, ifstream reads one.",
+    "example": "Saving and loading data.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-34",
+    "category": "Strings",
+    "syntax": "#include <sstream>\nstd::stringstream ss(\"10 20 30\");\nint n, total = 0;\nwhile (ss >> n) total += n;\nstd::cout << total;",
+    "explain": "stringstream reads numbers and words out of a string.",
+    "example": "Parsing lines of a file.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-35",
+    "category": "Compile",
+    "syntax": "g++ -std=c++17 -Wall -o main main.cpp\n./main\ng++ -std=c++17 main.cpp utils.cpp -o app",
+    "explain": "-std=c++17 picks the C++ version, -Wall shows warnings.",
+    "example": "Building in Terminal.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-36",
+    "category": "Headers",
+    "syntax": "// point.h\n#pragma once\nclass Point { public: int x = 0; };\n// main.cpp\n#include \"point.h\"",
+    "explain": "#pragma once stops a header being included twice. \"\" includes your own files.",
+    "example": "Splitting classes into files.",
+    "mastered": false
   }
 ]

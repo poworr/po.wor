@@ -4,11 +4,14 @@
 //   GET  /api/syntax          all languages and their items
 //   POST /api/syntax/<lang>   save one item (new or edited)
 //   POST /api/run             run code on the Mac, get the output back
+//
+// The Lessons and Test tabs live in practice.js. The practice terminal is terminal.js.
 
 const $ = (id) => document.getElementById(id);   // a short way to find an element by id
 
 let langs = [];            // [{ id, name, runs, items: [...] }, ...]
 let current = 'html';      // the language shown in the sidebar
+let mode = 'syntax';       // which tab is open: syntax, lessons or test
 
 // ===== Start: load the data, then draw the page =====
 async function start() {
@@ -20,8 +23,22 @@ async function start() {
 // ===== Draw everything =====
 function render() {
   renderSidebar();
-  renderCards();
-  updatePlayground();
+  $('syntax').hidden = mode !== 'syntax';
+  $('playground').hidden = mode !== 'syntax';
+  $('lessons').hidden = mode !== 'lessons';
+  $('test').hidden = mode !== 'test';
+  if (mode === 'syntax') { renderCards(); updatePlayground(); }
+  if (mode === 'lessons') renderLessons();   // in practice.js
+  if (mode === 'test') startTest();          // in practice.js
+}
+
+// The Syntax / Lessons / Test buttons
+for (const button of document.querySelectorAll('#modes .btn')) {
+  button.addEventListener('click', () => {
+    mode = button.dataset.mode;
+    for (const b of document.querySelectorAll('#modes .btn')) b.setAttribute('aria-pressed', b === button);
+    render();
+  });
 }
 
 // Sidebar: one button per language, with "mastered / total"
@@ -101,13 +118,14 @@ function makeCard(lang, item) {
     render();
   });
 
-  // Put the syntax in the playground
+  // Put the syntax in the playground (for Terminal and Homebrew: the first line, in the terminal)
   card.querySelector('.try').addEventListener('click', () => {
     current = lang.id;
     render();
-    $('code').value = item.syntax;
-    $('code').scrollIntoView({ behavior: 'smooth' });
-    $('code').focus();
+    const box = lang.runs === 'terminal' ? $('term-input') : $('code');
+    box.value = lang.runs === 'terminal' ? item.syntax.split('\n')[0] : item.syntax;
+    box.scrollIntoView({ behavior: 'smooth' });
+    box.focus();
   });
 
   card.querySelector('.edit').addEventListener('click', () => openForm(lang.id, item));
@@ -201,16 +219,20 @@ async function runCode() {
   } else if (lang.id === 'javascript') {
     preview.srcdoc = CATCH_CONSOLE + '<script>' + code + '<\/script>';
   } else {
-    // Everything else runs on the Mac, through server.js
+    // Python, Node.js, C and C++ run on the Mac, through server.js
     $('output').textContent = 'Running…';
-    const response = await fetch('/api/run', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lang: lang.id, code: code })
-    });
-    const result = await response.json();
-    $('output').textContent = result.output;
+    $('output').textContent = await runOnServer(lang.id, code);
   }
+}
+
+// Send code to server.js, get back what it printed
+async function runOnServer(langId, code) {
+  const response = await fetch('/api/run', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ lang: langId, code: code })
+  });
+  return (await response.json()).output;
 }
 
 // Printed lines coming back from the frame
@@ -219,34 +241,34 @@ window.addEventListener('message', (event) => {
   $('output').textContent += event.data + '\n';
 });
 
-// Show the frame only for HTML, CSS and browser JavaScript, and say where code runs
+// Terminal and Homebrew get the practice terminal; the rest get the code box.
+// The frame is only for HTML, CSS and browser JavaScript.
 function updatePlayground() {
   const lang = langs.find((l) => l.id === current);
   $('playground-title').textContent = 'Playground · ' + lang.name;
+  $('editor').hidden = lang.runs === 'terminal';
+  $('terminal').hidden = lang.runs !== 'terminal';
   $('preview').hidden = lang.runs !== 'browser';
-  $('run-note').textContent = lang.runs === 'browser'
-    ? 'Runs in the page.'
-    : lang.id === 'terminal' || lang.id === 'homebrew'
-      ? 'Runs on your Mac. Only read-only commands (like ls, pwd, brew list, brew info).'
-      : 'Runs on your Mac.';
+  $('run-note').textContent = lang.runs === 'browser' ? 'Runs in the page.' : 'Runs on your Mac.';
 }
 
 $('run').addEventListener('click', runCode);
 
-$('code').addEventListener('keydown', (event) => {
-  // ⌘↵ (or Ctrl+Enter) runs the code
-  if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
-    event.preventDefault();
-    runCode();
-  }
-  // Tab types two spaces instead of leaving the box
-  if (event.key === 'Tab') {
-    event.preventDefault();
-    const box = event.target;
-    const at = box.selectionStart;
-    box.value = box.value.slice(0, at) + '  ' + box.value.slice(box.selectionEnd);
-    box.selectionStart = box.selectionEnd = at + 2;
-  }
-});
+// Keys for any code box: ⌘↵ (or Ctrl+Enter) runs, Tab types two spaces instead of leaving the box
+function codeKeys(box, run) {
+  box.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+      run();
+    }
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      const at = box.selectionStart;
+      box.value = box.value.slice(0, at) + '  ' + box.value.slice(box.selectionEnd);
+      box.selectionStart = box.selectionEnd = at + 2;
+    }
+  });
+}
+codeKeys($('code'), runCode);
 
 start();

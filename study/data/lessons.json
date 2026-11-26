@@ -1,0 +1,778 @@
+[
+  {
+    "id": "html-1",
+    "lang": "html",
+    "level": "Beginner",
+    "title": "Your first heading",
+    "task": "Make a big heading that says Hello, and a paragraph under it that says I am learning HTML.",
+    "solution": "<h1>Hello</h1>\n<p>I am learning HTML.</p>",
+    "mustInclude": [
+      "<h1>Hello</h1>",
+      "<p>"
+    ]
+  },
+  {
+    "id": "html-2",
+    "lang": "html",
+    "level": "Beginner",
+    "title": "A link",
+    "task": "Make a link with the text Google that goes to https://google.com and opens in a new tab.",
+    "solution": "<a href=\"https://google.com\" target=\"_blank\">Google</a>",
+    "mustInclude": [
+      "<a",
+      "href=\"https://google.com\"",
+      "target=\"_blank\"",
+      ">Google</a>"
+    ]
+  },
+  {
+    "id": "html-3",
+    "lang": "html",
+    "level": "Intermediate",
+    "title": "A shopping list",
+    "task": "Make a bulleted list with three items: Milk, Eggs, Bread.",
+    "solution": "<ul>\n  <li>Milk</li>\n  <li>Eggs</li>\n  <li>Bread</li>\n</ul>",
+    "mustInclude": [
+      "<ul>",
+      "<li>Milk</li>",
+      "<li>Eggs</li>",
+      "<li>Bread</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": "html-4",
+    "lang": "html",
+    "level": "Intermediate",
+    "title": "An image with alt text",
+    "task": "Show the image https://picsum.photos/200 with the alt text A random photo, inside a figure with the caption Random.",
+    "solution": "<figure>\n  <img src=\"https://picsum.photos/200\" alt=\"A random photo\">\n  <figcaption>Random</figcaption>\n</figure>",
+    "mustInclude": [
+      "<figure>",
+      "src=\"https://picsum.photos/200\"",
+      "alt=\"A random photo\"",
+      "<figcaption>Random</figcaption>"
+    ]
+  },
+  {
+    "id": "html-5",
+    "lang": "html",
+    "level": "Advanced",
+    "title": "A sign-up form",
+    "task": "Make a form with a labeled email input (id email, required) and a Sign up submit button.",
+    "solution": "<form>\n  <label for=\"email\">Email</label>\n  <input id=\"email\" type=\"email\" required>\n  <button type=\"submit\">Sign up</button>\n</form>",
+    "mustInclude": [
+      "<form",
+      "<label for=\"email\"",
+      "id=\"email\"",
+      "type=\"email\"",
+      "required",
+      "type=\"submit\"",
+      "Sign up"
+    ]
+  },
+  {
+    "id": "html-6",
+    "lang": "html",
+    "level": "Advanced",
+    "title": "A table",
+    "task": "Make a table with a header row Name | Age and one row Ada | 36.",
+    "solution": "<table>\n  <tr><th>Name</th><th>Age</th></tr>\n  <tr><td>Ada</td><td>36</td></tr>\n</table>",
+    "mustInclude": [
+      "<table>",
+      "<th>Name</th>",
+      "<th>Age</th>",
+      "<td>Ada</td>",
+      "<td>36</td>"
+    ]
+  },
+  {
+    "id": "html-7",
+    "lang": "html",
+    "level": "Master",
+    "title": "A page layout",
+    "task": "Build a page with a header, a nav with two links, a main with an article, and a footer.",
+    "solution": "<header>My site</header>\n<nav><a href=\"/\">Home</a> <a href=\"/about\">About</a></nav>\n<main>\n  <article><h2>Post</h2><p>Text</p></article>\n</main>\n<footer>© 2026</footer>",
+    "mustInclude": [
+      "<header>",
+      "<nav>",
+      "<main>",
+      "<article>",
+      "<footer>"
+    ]
+  },
+  {
+    "id": "html-8",
+    "lang": "html",
+    "level": "Master",
+    "title": "An FAQ without JavaScript",
+    "task": "Make a question that hides its answer until clicked: the summary is What is HTML? and the answer is The structure of a web page.",
+    "solution": "<details>\n  <summary>What is HTML?</summary>\n  The structure of a web page.\n</details>",
+    "mustInclude": [
+      "<details>",
+      "<summary>What is HTML?</summary>",
+      "The structure of a web page."
+    ]
+  },
+  {
+    "id": "css-1",
+    "lang": "css",
+    "level": "Beginner",
+    "title": "Color a heading",
+    "task": "Make every h1 red.",
+    "solution": "h1 { color: red; }",
+    "mustInclude": [
+      "h1",
+      "color:red"
+    ]
+  },
+  {
+    "id": "css-2",
+    "lang": "css",
+    "level": "Beginner",
+    "title": "Rounded box",
+    "task": "Give .box a 1px solid black border, 10px of padding and rounded corners of 8px.",
+    "solution": ".box {\n  border: 1px solid black;\n  padding: 10px;\n  border-radius: 8px;\n}",
+    "mustInclude": [
+      ".box",
+      "border:1pxsolidblack",
+      "padding:10px",
+      "border-radius:8px"
+    ]
+  },
+  {
+    "id": "css-3",
+    "lang": "css",
+    "level": "Intermediate",
+    "title": "Side by side",
+    "task": "Make .row put its children side by side with flexbox and a 12px gap.",
+    "solution": ".row { display: flex; gap: 12px; }",
+    "mustInclude": [
+      ".row",
+      "display:flex",
+      "gap:12px"
+    ]
+  },
+  {
+    "id": "css-4",
+    "lang": "css",
+    "level": "Intermediate",
+    "title": "Hover button",
+    "task": "Make .button turn black with white text when you point at it.",
+    "solution": ".button:hover { background: black; color: white; }",
+    "mustInclude": [
+      ".button:hover",
+      "background",
+      "black",
+      "color:white"
+    ]
+  },
+  {
+    "id": "css-5",
+    "lang": "css",
+    "level": "Advanced",
+    "title": "A 3-column grid",
+    "task": "Make .grid a grid with 3 equal columns.",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }",
+    "mustInclude": [
+      ".grid",
+      "display:grid",
+      "grid-template-columns"
+    ]
+  },
+  {
+    "id": "css-6",
+    "lang": "css",
+    "level": "Advanced",
+    "title": "Center anything",
+    "task": "Center the content of .parent both ways using grid.",
+    "solution": ".parent { display: grid; place-items: center; }",
+    "mustInclude": [
+      ".parent",
+      "display:grid",
+      "place-items:center"
+    ]
+  },
+  {
+    "id": "css-7",
+    "lang": "css",
+    "level": "Master",
+    "title": "Theme variables",
+    "task": "Make a --main color variable on :root set to tomato, and use it as the background of .button.",
+    "solution": ":root { --main: tomato; }\n.button { background: var(--main); }",
+    "mustInclude": [
+      ":root",
+      "--main:tomato",
+      "var(--main)"
+    ]
+  },
+  {
+    "id": "css-8",
+    "lang": "css",
+    "level": "Master",
+    "title": "Mobile first",
+    "task": "Make .grid one column by default, and 3 columns on screens 900px or wider.",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr; }\n@media (min-width: 900px) {\n  .grid { grid-template-columns: repeat(3, 1fr); }\n}",
+    "mustInclude": [
+      "@media",
+      "min-width:900px",
+      "grid-template-columns:1fr"
+    ]
+  },
+  {
+    "id": "javascript-1",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Say hello",
+    "task": "Print Hello, world! with console.log.",
+    "solution": "console.log(\"Hello, world!\");",
+    "expected": "Hello, world!"
+  },
+  {
+    "id": "javascript-2",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Variables",
+    "task": "Make a const name set to \"Ada\" and print Hi Ada using a template string.",
+    "solution": "const name = \"Ada\";\nconsole.log(`Hi ${name}`);",
+    "expected": "Hi Ada"
+  },
+  {
+    "id": "javascript-3",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Count to five",
+    "task": "Use a for loop to print the numbers 1 to 5, one per line.",
+    "solution": "for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}",
+    "expected": "1\n2\n3\n4\n5"
+  },
+  {
+    "id": "javascript-4",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Even numbers",
+    "task": "From [1, 2, 3, 4, 5, 6] print only the even numbers as an array, using filter.",
+    "solution": "const nums = [1, 2, 3, 4, 5, 6];\nconsole.log(nums.filter((n) => n % 2 === 0));",
+    "expected": "[ 2, 4, 6 ]"
+  },
+  {
+    "id": "javascript-5",
+    "lang": "javascript",
+    "level": "Advanced",
+    "title": "Total price",
+    "task": "The cart is [{ price: 3 }, { price: 7 }, { price: 10 }]. Print the total using reduce.",
+    "solution": "const cart = [{ price: 3 }, { price: 7 }, { price: 10 }];\nconsole.log(cart.reduce((sum, item) => sum + item.price, 0));",
+    "expected": "20"
+  },
+  {
+    "id": "javascript-6",
+    "lang": "javascript",
+    "level": "Advanced",
+    "title": "FizzBuzz",
+    "task": "Print 1 to 15. For multiples of 3 print Fizz, of 5 print Buzz, of both print FizzBuzz.",
+    "solution": "for (let i = 1; i <= 15; i++) {\n  if (i % 15 === 0) console.log(\"FizzBuzz\");\n  else if (i % 3 === 0) console.log(\"Fizz\");\n  else if (i % 5 === 0) console.log(\"Buzz\");\n  else console.log(i);\n}",
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz"
+  },
+  {
+    "id": "javascript-7",
+    "lang": "javascript",
+    "level": "Master",
+    "title": "Count words",
+    "task": "Count each word in \"the cat and the hat\" and print the object, like { the: 2, cat: 1, ... }.",
+    "solution": "const counts = {};\nfor (const word of \"the cat and the hat\".split(\" \")) {\n  counts[word] = (counts[word] || 0) + 1;\n}\nconsole.log(counts);",
+    "expected": "{ the: 2, cat: 1, and: 1, hat: 1 }"
+  },
+  {
+    "id": "javascript-8",
+    "lang": "javascript",
+    "level": "Master",
+    "title": "A class",
+    "task": "Make a class BankAccount with deposit(amount) and a balance. Deposit 50 then 25, then print the balance.",
+    "solution": "class BankAccount {\n  constructor() { this.balance = 0; }\n  deposit(amount) { this.balance += amount; }\n}\nconst account = new BankAccount();\naccount.deposit(50);\naccount.deposit(25);\nconsole.log(account.balance);",
+    "expected": "75"
+  },
+  {
+    "id": "node-1",
+    "lang": "node",
+    "level": "Beginner",
+    "title": "Built-in modules",
+    "task": "Load the built-in os module with require, and print what type os.homedir() gives back (use typeof).",
+    "solution": "const os = require(\"os\");\nconsole.log(typeof os.homedir());",
+    "expected": "string"
+  },
+  {
+    "id": "node-2",
+    "lang": "node",
+    "level": "Beginner",
+    "title": "Join paths",
+    "task": "Use path.join to join \"users\", \"ada\" and \"notes.txt\" and print it.",
+    "solution": "const path = require(\"path\");\nconsole.log(path.join(\"users\", \"ada\", \"notes.txt\"));",
+    "expected": "users/ada/notes.txt"
+  },
+  {
+    "id": "node-3",
+    "lang": "node",
+    "level": "Intermediate",
+    "title": "Write and read a file",
+    "task": "Write Hello file into hello.txt, then read it back and print it.",
+    "solution": "const fs = require(\"fs\");\nfs.writeFileSync(\"hello.txt\", \"Hello file\");\nconsole.log(fs.readFileSync(\"hello.txt\", \"utf8\"));",
+    "expected": "Hello file"
+  },
+  {
+    "id": "node-4",
+    "lang": "node",
+    "level": "Intermediate",
+    "title": "JSON file",
+    "task": "Save { \"score\": 10 } to score.json, read it back, add 5 and print the new score.",
+    "solution": "const fs = require(\"fs\");\nfs.writeFileSync(\"score.json\", JSON.stringify({ score: 10 }));\nconst data = JSON.parse(fs.readFileSync(\"score.json\", \"utf8\"));\nconsole.log(data.score + 5);",
+    "expected": "15"
+  },
+  {
+    "id": "node-5",
+    "lang": "node",
+    "level": "Advanced",
+    "title": "Wait with await",
+    "task": "Write an async function that waits 200 ms with timers/promises, then prints done.",
+    "solution": "const { setTimeout: wait } = require(\"timers/promises\");\nasync function main() {\n  await wait(200);\n  console.log(\"done\");\n}\nmain();",
+    "expected": "done"
+  },
+  {
+    "id": "node-6",
+    "lang": "node",
+    "level": "Advanced",
+    "title": "Events",
+    "task": "Make an EventEmitter. Listen for \"order\" and print Order for <item>. Emit it with \"coffee\".",
+    "solution": "const EventEmitter = require(\"events\");\nconst shop = new EventEmitter();\nshop.on(\"order\", (item) => console.log(\"Order for \" + item));\nshop.emit(\"order\", \"coffee\");",
+    "expected": "Order for coffee"
+  },
+  {
+    "id": "node-7",
+    "lang": "node",
+    "level": "Master",
+    "title": "List files by type",
+    "task": "Create a.txt, b.txt and c.js, then print only the .txt file names, sorted, one per line.",
+    "solution": "const fs = require(\"fs\");\nconst path = require(\"path\");\nfor (const f of [\"a.txt\", \"b.txt\", \"c.js\"]) fs.writeFileSync(f, \"\");\nfs.readdirSync(\".\").filter((f) => path.extname(f) === \".txt\").sort().forEach((f) => console.log(f));",
+    "expected": "a.txt\nb.txt"
+  },
+  {
+    "id": "node-8",
+    "lang": "node",
+    "level": "Master",
+    "title": "Missing file",
+    "task": "Try to read missing.txt with fs/promises. Catch the error and print its code.",
+    "solution": "const fs = require(\"fs/promises\");\nasync function main() {\n  try {\n    await fs.readFile(\"missing.txt\", \"utf8\");\n  } catch (err) {\n    console.log(err.code);\n  }\n}\nmain();",
+    "expected": "ENOENT"
+  },
+  {
+    "id": "python-1",
+    "lang": "python",
+    "level": "Beginner",
+    "title": "Say hello",
+    "task": "Print Hello, world!",
+    "solution": "print(\"Hello, world!\")",
+    "expected": "Hello, world!"
+  },
+  {
+    "id": "python-2",
+    "lang": "python",
+    "level": "Beginner",
+    "title": "f-strings",
+    "task": "Make name = \"Ada\" and age = 36, then print Ada is 36 using an f-string.",
+    "solution": "name = \"Ada\"\nage = 36\nprint(f\"{name} is {age}\")",
+    "expected": "Ada is 36"
+  },
+  {
+    "id": "python-3",
+    "lang": "python",
+    "level": "Intermediate",
+    "title": "Count to five",
+    "task": "Use a for loop and range to print 1 to 5.",
+    "solution": "for i in range(1, 6):\n    print(i)",
+    "expected": "1\n2\n3\n4\n5"
+  },
+  {
+    "id": "python-4",
+    "lang": "python",
+    "level": "Intermediate",
+    "title": "Squares",
+    "task": "Use a list comprehension to make the squares of 1 to 5 and print the list.",
+    "solution": "print([n * n for n in range(1, 6)])",
+    "expected": "[1, 4, 9, 16, 25]"
+  },
+  {
+    "id": "python-5",
+    "lang": "python",
+    "level": "Advanced",
+    "title": "Grades",
+    "task": "Write a function grade(score) that returns A for 90+, B for 70+, otherwise C. Print grade(95), grade(75), grade(10).",
+    "solution": "def grade(score):\n    if score >= 90:\n        return \"A\"\n    elif score >= 70:\n        return \"B\"\n    return \"C\"\nprint(grade(95), grade(75), grade(10))",
+    "expected": "A B C"
+  },
+  {
+    "id": "python-6",
+    "lang": "python",
+    "level": "Advanced",
+    "title": "FizzBuzz",
+    "task": "Print 1 to 15. For multiples of 3 print Fizz, of 5 print Buzz, of both print FizzBuzz.",
+    "solution": "for i in range(1, 16):\n    if i % 15 == 0:\n        print(\"FizzBuzz\")\n    elif i % 3 == 0:\n        print(\"Fizz\")\n    elif i % 5 == 0:\n        print(\"Buzz\")\n    else:\n        print(i)",
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz"
+  },
+  {
+    "id": "python-7",
+    "lang": "python",
+    "level": "Master",
+    "title": "Word count",
+    "task": "Count the words in \"the cat and the hat\" with a dictionary, then print each word and count, one per line, like the 2.",
+    "solution": "counts = {}\nfor word in \"the cat and the hat\".split():\n    counts[word] = counts.get(word, 0) + 1\nfor word, n in counts.items():\n    print(word, n)",
+    "expected": "the 2\ncat 1\nand 1\nhat 1"
+  },
+  {
+    "id": "python-8",
+    "lang": "python",
+    "level": "Master",
+    "title": "A class",
+    "task": "Make a class BankAccount with a deposit method. Deposit 50 then 25, then print the balance.",
+    "solution": "class BankAccount:\n    def __init__(self):\n        self.balance = 0\n    def deposit(self, amount):\n        self.balance += amount\naccount = BankAccount()\naccount.deposit(50)\naccount.deposit(25)\nprint(account.balance)",
+    "expected": "75"
+  },
+  {
+    "id": "c-1",
+    "lang": "c",
+    "level": "Beginner",
+    "title": "Say hello",
+    "task": "Print Hello, world! with printf.",
+    "solution": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}",
+    "expected": "Hello, world!"
+  },
+  {
+    "id": "c-2",
+    "lang": "c",
+    "level": "Beginner",
+    "title": "Variables",
+    "task": "Make int age = 36 and double price = 9.5, then print Age 36 price 9.50.",
+    "solution": "#include <stdio.h>\n\nint main(void) {\n    int age = 36;\n    double price = 9.5;\n    printf(\"Age %d price %.2f\\n\", age, price);\n    return 0;\n}",
+    "expected": "Age 36 price 9.50"
+  },
+  {
+    "id": "c-3",
+    "lang": "c",
+    "level": "Intermediate",
+    "title": "Count to five",
+    "task": "Use a for loop to print 1 to 5, one per line.",
+    "solution": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
+    "expected": "1\n2\n3\n4\n5"
+  },
+  {
+    "id": "c-4",
+    "lang": "c",
+    "level": "Intermediate",
+    "title": "Sum an array",
+    "task": "Add up the array {4, 8, 15, 16, 23, 42} and print the total.",
+    "solution": "#include <stdio.h>\n\nint main(void) {\n    int nums[] = {4, 8, 15, 16, 23, 42};\n    int total = 0;\n    for (int i = 0; i < 6; i++) total += nums[i];\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+    "expected": "108"
+  },
+  {
+    "id": "c-5",
+    "lang": "c",
+    "level": "Advanced",
+    "title": "A function",
+    "task": "Write int max(int a, int b) and print max(3, 9).",
+    "solution": "#include <stdio.h>\n\nint max(int a, int b) {\n    return a > b ? a : b;\n}\n\nint main(void) {\n    printf(\"%d\\n\", max(3, 9));\n    return 0;\n}",
+    "expected": "9"
+  },
+  {
+    "id": "c-6",
+    "lang": "c",
+    "level": "Advanced",
+    "title": "Swap with pointers",
+    "task": "Write void swap(int *a, int *b). Swap x = 1 and y = 2, then print x=2 y=1.",
+    "solution": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\nint main(void) {\n    int x = 1, y = 2;\n    swap(&x, &y);\n    printf(\"x=%d y=%d\\n\", x, y);\n    return 0;\n}",
+    "expected": "x=2 y=1"
+  },
+  {
+    "id": "c-7",
+    "lang": "c",
+    "level": "Master",
+    "title": "A struct",
+    "task": "Make a struct with name and age for Ada, 36. Print Ada is 36.",
+    "solution": "#include <stdio.h>\n\ntypedef struct {\n    char name[20];\n    int age;\n} Person;\n\nint main(void) {\n    Person p = {\"Ada\", 36};\n    printf(\"%s is %d\\n\", p.name, p.age);\n    return 0;\n}",
+    "expected": "Ada is 36"
+  },
+  {
+    "id": "c-8",
+    "lang": "c",
+    "level": "Master",
+    "title": "Reverse a string",
+    "task": "Reverse the text \"hello\" in place and print olleh.",
+    "solution": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[] = \"hello\";\n    int n = strlen(s);\n    for (int i = 0; i < n / 2; i++) {\n        char t = s[i];\n        s[i] = s[n - 1 - i];\n        s[n - 1 - i] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+    "expected": "olleh"
+  },
+  {
+    "id": "cpp-1",
+    "lang": "cpp",
+    "level": "Beginner",
+    "title": "Say hello",
+    "task": "Print Hello, world! with std::cout.",
+    "solution": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, world!\\n\";\n    return 0;\n}",
+    "expected": "Hello, world!"
+  },
+  {
+    "id": "cpp-2",
+    "lang": "cpp",
+    "level": "Beginner",
+    "title": "Strings",
+    "task": "Make std::string name = \"Ada\" and print Hi Ada.",
+    "solution": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name = \"Ada\";\n    std::cout << \"Hi \" << name << \"\\n\";\n    return 0;\n}",
+    "expected": "Hi Ada"
+  },
+  {
+    "id": "cpp-3",
+    "lang": "cpp",
+    "level": "Intermediate",
+    "title": "Vector loop",
+    "task": "Make a vector {1, 2, 3} and print each number with a range-for, one per line.",
+    "solution": "#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> nums = {1, 2, 3};\n    for (int n : nums) std::cout << n << \"\\n\";\n    return 0;\n}",
+    "expected": "1\n2\n3"
+  },
+  {
+    "id": "cpp-4",
+    "lang": "cpp",
+    "level": "Intermediate",
+    "title": "Sort",
+    "task": "Sort the vector {5, 2, 9, 1} and print it on one line separated by spaces.",
+    "solution": "#include <algorithm>\n#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> v = {5, 2, 9, 1};\n    std::sort(v.begin(), v.end());\n    for (int n : v) std::cout << n << \" \";\n    std::cout << \"\\n\";\n    return 0;\n}",
+    "expected": "1 2 5 9"
+  },
+  {
+    "id": "cpp-5",
+    "lang": "cpp",
+    "level": "Advanced",
+    "title": "A class",
+    "task": "Make a class Rectangle with width and height and an area() method. Print the area of 3 x 4.",
+    "solution": "#include <iostream>\n\nclass Rectangle {\npublic:\n    Rectangle(int w, int h) : w(w), h(h) {}\n    int area() const { return w * h; }\nprivate:\n    int w, h;\n};\n\nint main() {\n    Rectangle r(3, 4);\n    std::cout << r.area() << \"\\n\";\n    return 0;\n}",
+    "expected": "12"
+  },
+  {
+    "id": "cpp-6",
+    "lang": "cpp",
+    "level": "Advanced",
+    "title": "Word count with map",
+    "task": "Count the words in \"the cat and the hat\" with std::map and print each word and count, one per line (map sorts them).",
+    "solution": "#include <iostream>\n#include <map>\n#include <sstream>\n#include <string>\n\nint main() {\n    std::map<std::string, int> counts;\n    std::stringstream ss(\"the cat and the hat\");\n    std::string word;\n    while (ss >> word) counts[word]++;\n    for (const auto& [w, n] : counts) std::cout << w << \" \" << n << \"\\n\";\n    return 0;\n}",
+    "expected": "and 1\ncat 1\nhat 1\nthe 2"
+  },
+  {
+    "id": "cpp-7",
+    "lang": "cpp",
+    "level": "Master",
+    "title": "Shapes",
+    "task": "Make an abstract Shape with virtual area(), and Square and Circle (use 3.14). Print the areas of Square(2) and Circle(1).",
+    "solution": "#include <iostream>\n#include <memory>\n#include <vector>\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Square : public Shape {\npublic:\n    Square(double s) : s(s) {}\n    double area() const override { return s * s; }\nprivate:\n    double s;\n};\n\nclass Circle : public Shape {\npublic:\n    Circle(double r) : r(r) {}\n    double area() const override { return 3.14 * r * r; }\nprivate:\n    double r;\n};\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Square>(2));\n    shapes.push_back(std::make_unique<Circle>(1));\n    for (const auto& s : shapes) std::cout << s->area() << \"\\n\";\n    return 0;\n}",
+    "expected": "4\n3.14"
+  },
+  {
+    "id": "cpp-8",
+    "lang": "cpp",
+    "level": "Master",
+    "title": "A template",
+    "task": "Write a template function biggest(a, b). Print biggest(3, 7) and biggest(2.5, 1.5).",
+    "solution": "#include <iostream>\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    std::cout << biggest(3, 7) << \" \" << biggest(2.5, 1.5) << \"\\n\";\n    return 0;\n}",
+    "expected": "7 2.5"
+  },
+  {
+    "id": "terminal-1",
+    "lang": "terminal",
+    "level": "Beginner",
+    "title": "Where am I?",
+    "task": "Show the folder you are in, then list the files in it.",
+    "solution": "pwd\nls",
+    "mustInclude": [
+      "pwd",
+      "ls"
+    ]
+  },
+  {
+    "id": "terminal-2",
+    "lang": "terminal",
+    "level": "Beginner",
+    "title": "Go to the Desktop",
+    "task": "Move into the Desktop folder, then list what's there.",
+    "solution": "cd Desktop\nls",
+    "mustInclude": [
+      "cd",
+      "Desktop",
+      "ls"
+    ]
+  },
+  {
+    "id": "terminal-3",
+    "lang": "terminal",
+    "level": "Intermediate",
+    "title": "A new project",
+    "task": "Make a folder called my-site, go into it, and make an empty index.html.",
+    "solution": "mkdir my-site\ncd my-site\ntouch index.html",
+    "mustInclude": [
+      "mkdir my-site",
+      "cd my-site",
+      "touch index.html"
+    ]
+  },
+  {
+    "id": "terminal-4",
+    "lang": "terminal",
+    "level": "Intermediate",
+    "title": "Write into a file",
+    "task": "Write the line hello into notes.txt with echo, then show the file.",
+    "solution": "echo hello > notes.txt\ncat notes.txt",
+    "mustInclude": [
+      "echo",
+      "> notes.txt",
+      "cat notes.txt"
+    ]
+  },
+  {
+    "id": "terminal-5",
+    "lang": "terminal",
+    "level": "Advanced",
+    "title": "Copy and rename",
+    "task": "Copy notes.txt to backup.txt, then rename backup.txt to old.txt.",
+    "solution": "cp notes.txt backup.txt\nmv backup.txt old.txt",
+    "mustInclude": [
+      "cp notes.txt backup.txt",
+      "mv backup.txt old.txt"
+    ]
+  },
+  {
+    "id": "terminal-6",
+    "lang": "terminal",
+    "level": "Advanced",
+    "title": "Search",
+    "task": "Search every file in this folder and below for TODO, showing line numbers.",
+    "solution": "grep -rn TODO .",
+    "mustInclude": [
+      "grep",
+      "-rn",
+      "TODO"
+    ]
+  },
+  {
+    "id": "terminal-7",
+    "lang": "terminal",
+    "level": "Master",
+    "title": "Clean up",
+    "task": "Make a folder trash-me with a file inside, then delete the whole folder.",
+    "solution": "mkdir trash-me\ntouch trash-me/file.txt\nrm -r trash-me",
+    "mustInclude": [
+      "mkdir trash-me",
+      "rm -r trash-me"
+    ]
+  },
+  {
+    "id": "terminal-8",
+    "lang": "terminal",
+    "level": "Master",
+    "title": "Save with git",
+    "task": "Check what changed, add everything, commit with the message \"First commit\", and push.",
+    "solution": "git status\ngit add .\ngit commit -m \"First commit\"\ngit push",
+    "mustInclude": [
+      "git status",
+      "git add",
+      "git commit -m",
+      "git push"
+    ]
+  },
+  {
+    "id": "homebrew-1",
+    "lang": "homebrew",
+    "level": "Beginner",
+    "title": "What do I have?",
+    "task": "List everything Homebrew has installed.",
+    "solution": "brew list",
+    "mustInclude": [
+      "brew list"
+    ]
+  },
+  {
+    "id": "homebrew-2",
+    "lang": "homebrew",
+    "level": "Beginner",
+    "title": "Install a tool",
+    "task": "Install the package tree.",
+    "solution": "brew install tree",
+    "mustInclude": [
+      "brew install tree"
+    ]
+  },
+  {
+    "id": "homebrew-3",
+    "lang": "homebrew",
+    "level": "Intermediate",
+    "title": "Install an app",
+    "task": "Install the app visual-studio-code (it is a cask).",
+    "solution": "brew install --cask visual-studio-code",
+    "mustInclude": [
+      "brew install",
+      "--cask",
+      "visual-studio-code"
+    ]
+  },
+  {
+    "id": "homebrew-4",
+    "lang": "homebrew",
+    "level": "Intermediate",
+    "title": "Learn about a package",
+    "task": "Search for python, then show the info for python.",
+    "solution": "brew search python\nbrew info python",
+    "mustInclude": [
+      "brew search python",
+      "brew info python"
+    ]
+  },
+  {
+    "id": "homebrew-5",
+    "lang": "homebrew",
+    "level": "Advanced",
+    "title": "Update everything",
+    "task": "Update Homebrew itself, then upgrade all your packages.",
+    "solution": "brew update\nbrew upgrade",
+    "mustInclude": [
+      "brew update",
+      "brew upgrade"
+    ]
+  },
+  {
+    "id": "homebrew-6",
+    "lang": "homebrew",
+    "level": "Advanced",
+    "title": "Remove a package",
+    "task": "Uninstall tree, then clean up old downloads.",
+    "solution": "brew uninstall tree\nbrew cleanup",
+    "mustInclude": [
+      "brew uninstall tree",
+      "brew cleanup"
+    ]
+  },
+  {
+    "id": "homebrew-7",
+    "lang": "homebrew",
+    "level": "Master",
+    "title": "Health check",
+    "task": "Check your Homebrew for problems.",
+    "solution": "brew doctor",
+    "mustInclude": [
+      "brew doctor"
+    ]
+  },
+  {
+    "id": "homebrew-8",
+    "lang": "homebrew",
+    "level": "Master",
+    "title": "Background service",
+    "task": "Start the postgresql service, then stop it.",
+    "solution": "brew services start postgresql\nbrew services stop postgresql",
+    "mustInclude": [
+      "brew services start postgresql",
+      "brew services stop postgresql"
+    ]
+  }
+]

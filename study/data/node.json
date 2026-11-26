@@ -54,5 +54,309 @@
     "explain": "Terminal commands: create package.json, install a package, run the start script.",
     "example": "Setting up any new Node project.",
     "mastered": false
+  },
+  {
+    "id": "node-1",
+    "category": "Modules",
+    "syntax": "// greet.js\nmodule.exports = function greet(name) { return \"Hi \" + name; };\n// app.js\nconst greet = require(\"./greet\");",
+    "explain": "module.exports shares something from a file; require loads it.",
+    "example": "Splitting a server into files.",
+    "mastered": false
+  },
+  {
+    "id": "node-2",
+    "category": "Modules",
+    "syntax": "// in package.json: \"type\": \"module\"\nimport fs from \"node:fs\";\nexport const answer = 42;",
+    "explain": "The newer import/export style. Turn it on with \"type\": \"module\".",
+    "example": "Modern Node projects.",
+    "mastered": false
+  },
+  {
+    "id": "node-3",
+    "category": "Files",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"hello.txt\", \"Hello!\\n\");\nconsole.log(fs.readFileSync(\"hello.txt\", \"utf8\"));",
+    "explain": "Write a file, then read it back as text (\"utf8\").",
+    "example": "Saving notes or settings.",
+    "mastered": false
+  },
+  {
+    "id": "node-4",
+    "category": "Files",
+    "syntax": "const fs = require(\"fs\");\nfs.appendFileSync(\"log.txt\", \"one more line\\n\");\nconsole.log(fs.existsSync(\"log.txt\"));",
+    "explain": "appendFileSync adds to the end. existsSync checks if a file is there.",
+    "example": "Writing a log.",
+    "mastered": false
+  },
+  {
+    "id": "node-5",
+    "category": "Files",
+    "syntax": "const fs = require(\"fs\");\nfs.mkdirSync(\"out/images\", { recursive: true });\nconsole.log(fs.readdirSync(\".\"));",
+    "explain": "mkdirSync makes folders (recursive makes the parents too). readdirSync lists a folder.",
+    "example": "Making an output folder.",
+    "mastered": false
+  },
+  {
+    "id": "node-6",
+    "category": "Files",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"old.txt\", \"x\");\nfs.renameSync(\"old.txt\", \"new.txt\");\nfs.unlinkSync(\"new.txt\");\nconsole.log(\"renamed and deleted\");",
+    "explain": "renameSync renames or moves a file. unlinkSync deletes it.",
+    "example": "Cleaning up temporary files.",
+    "mastered": false
+  },
+  {
+    "id": "node-7",
+    "category": "Paths",
+    "syntax": "const path = require(\"path\");\nconsole.log(path.basename(\"/a/b/photo.jpg\"), path.extname(\"photo.jpg\"), path.dirname(\"/a/b/photo.jpg\"));",
+    "explain": "Get the file name, the extension, and the folder from a path.",
+    "example": "Sorting files by type.",
+    "mastered": false
+  },
+  {
+    "id": "node-8",
+    "category": "Paths",
+    "syntax": "console.log(__dirname);\nconsole.log(__filename);",
+    "explain": "__dirname is the folder of this file, __filename is the file itself.",
+    "example": "Finding files next to your script.",
+    "mastered": false
+  },
+  {
+    "id": "node-9",
+    "category": "Process",
+    "syntax": "console.log(process.argv.slice(2));",
+    "explain": "process.argv holds the words typed after \"node file.js\". slice(2) skips node and the file name.",
+    "example": "A command-line tool: node app.js hello.",
+    "mastered": false
+  },
+  {
+    "id": "node-10",
+    "category": "Process",
+    "syntax": "const port = process.env.PORT || 3000;\nconsole.log(\"port\", port);",
+    "explain": "process.env holds environment variables. || gives a default.",
+    "example": "Secret keys and settings that change per computer.",
+    "mastered": false
+  },
+  {
+    "id": "node-11",
+    "category": "Process",
+    "syntax": "if (process.argv.length < 3) {\n  console.error(\"Usage: node app.js <name>\");\n  process.exit(1);\n}",
+    "explain": "console.error prints to the error stream. process.exit(1) stops with a \"failed\" code.",
+    "example": "Stopping when the user forgot something.",
+    "mastered": false
+  },
+  {
+    "id": "node-12",
+    "category": "OS",
+    "syntax": "const os = require(\"os\");\nconsole.log(os.platform(), os.homedir(), os.cpus().length);",
+    "explain": "os tells you about the computer: system, home folder, number of CPU cores.",
+    "example": "Scripts that work on Mac and Windows.",
+    "mastered": false
+  },
+  {
+    "id": "node-13",
+    "category": "HTTP",
+    "syntax": "const http = require(\"http\");\nhttp.createServer((req, res) => {\n  res.writeHead(200, { \"Content-Type\": \"text/plain\" });\n  res.end(\"Hello from Node\");\n}).listen(3000);",
+    "explain": "A web server without any library. Every request runs the function.",
+    "example": "Understanding how Express works inside.",
+    "mastered": false
+  },
+  {
+    "id": "node-14",
+    "category": "URL",
+    "syntax": "const url = new URL(\"https://example.com/search?q=cats&page=2\");\nconsole.log(url.hostname, url.searchParams.get(\"q\"));",
+    "explain": "URL splits a web address into parts.",
+    "example": "Reading values from a link.",
+    "mastered": false
+  },
+  {
+    "id": "node-15",
+    "category": "Events",
+    "syntax": "const EventEmitter = require(\"events\");\nconst bus = new EventEmitter();\nbus.on(\"hello\", (name) => console.log(\"hello\", name));\nbus.emit(\"hello\", \"Ada\");",
+    "explain": "on listens for an event, emit sends one.",
+    "example": "Letting parts of an app talk to each other.",
+    "mastered": false
+  },
+  {
+    "id": "node-16",
+    "category": "Async",
+    "syntax": "const { setTimeout: wait } = require(\"timers/promises\");\n(async () => {\n  await wait(300);\n  console.log(\"waited\");\n})();",
+    "explain": "await pauses an async function until the Promise is done.",
+    "example": "Waiting between retries.",
+    "mastered": false
+  },
+  {
+    "id": "node-17",
+    "category": "Async",
+    "syntax": "async function main() {\n  const results = await Promise.all([Promise.resolve(1), Promise.resolve(2)]);\n  console.log(results);\n}\nmain();",
+    "explain": "Promise.all waits for many things at once.",
+    "example": "Loading several files at the same time.",
+    "mastered": false
+  },
+  {
+    "id": "node-18",
+    "category": "Async",
+    "syntax": "const fs = require(\"fs/promises\");\nasync function main() {\n  try {\n    await fs.readFile(\"missing.txt\", \"utf8\");\n  } catch (err) {\n    console.log(\"error code:\", err.code);\n  }\n}\nmain();",
+    "explain": "With await, use try/catch for errors. ENOENT means \"file not found\".",
+    "example": "Handling a missing settings file.",
+    "mastered": false
+  },
+  {
+    "id": "node-19",
+    "category": "JSON",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"data.json\", JSON.stringify({ count: 1 }, null, 2));\nconst data = JSON.parse(fs.readFileSync(\"data.json\", \"utf8\"));\nconsole.log(data.count);",
+    "explain": "Save data as a JSON file and load it back. null, 2 makes it neat.",
+    "example": "A tiny database in a file.",
+    "mastered": false
+  },
+  {
+    "id": "node-20",
+    "category": "Fetch",
+    "syntax": "(async () => {\n  const res = await fetch(\"https://api.github.com\");\n  console.log(res.status);\n})();",
+    "explain": "fetch is built into Node 18+. It downloads from a URL.",
+    "example": "Calling an API.",
+    "mastered": false
+  },
+  {
+    "id": "node-21",
+    "category": "Input",
+    "syntax": "const readline = require(\"readline/promises\");\n(async () => {\n  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });\n  const name = await rl.question(\"Name? \");\n  console.log(\"Hi \" + name);\n  rl.close();\n})();",
+    "explain": "readline asks a question in the terminal and waits for an answer.",
+    "example": "Interactive command-line tools.",
+    "mastered": false
+  },
+  {
+    "id": "node-22",
+    "category": "Child process",
+    "syntax": "const { execSync } = require(\"child_process\");\nconsole.log(execSync(\"echo hi from the shell\").toString());",
+    "explain": "execSync runs a terminal command and gives back what it printed.",
+    "example": "Build scripts.",
+    "mastered": false
+  },
+  {
+    "id": "node-23",
+    "category": "Buffer",
+    "syntax": "const buf = Buffer.from(\"hi\");\nconsole.log(buf, buf.toString(\"base64\"));",
+    "explain": "A Buffer is raw bytes. It can turn text into base64 and back.",
+    "example": "Images and binary files.",
+    "mastered": false
+  },
+  {
+    "id": "node-24",
+    "category": "Crypto",
+    "syntax": "const crypto = require(\"crypto\");\nconsole.log(crypto.randomUUID());\nconsole.log(crypto.createHash(\"sha256\").update(\"hello\").digest(\"hex\"));",
+    "explain": "Make unique ids and hashes.",
+    "example": "Ids for new records; checking a file didn't change.",
+    "mastered": false
+  },
+  {
+    "id": "node-25",
+    "category": "Streams",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"big.txt\", \"line\\n\".repeat(3));\nfs.createReadStream(\"big.txt\", \"utf8\").on(\"data\", (chunk) => console.log(chunk.length));",
+    "explain": "A stream reads a file piece by piece, so huge files don't fill memory.",
+    "example": "Reading a big log file.",
+    "mastered": false
+  },
+  {
+    "id": "node-26",
+    "category": "Testing",
+    "syntax": "const assert = require(\"assert\");\nassert.strictEqual(1 + 1, 2);\nconsole.log(\"test passed\");",
+    "explain": "assert stops with an error if something is not what you expect.",
+    "example": "Small tests.",
+    "mastered": false
+  },
+  {
+    "id": "node-27",
+    "category": "Testing",
+    "syntax": "// math.test.js   run: node --test\nconst test = require(\"node:test\");\nconst assert = require(\"assert\");\ntest(\"adds\", () => assert.strictEqual(1 + 2, 3));",
+    "explain": "Node has a built-in test runner.",
+    "example": "Testing without installing anything.",
+    "mastered": false
+  },
+  {
+    "id": "node-28",
+    "category": "npm",
+    "syntax": "npm install express\nnpm install --save-dev nodemon\nnpm uninstall express",
+    "explain": "install adds a package (saved in package.json). --save-dev is for tools you only need while building.",
+    "example": "Adding libraries to a project.",
+    "mastered": false
+  },
+  {
+    "id": "node-29",
+    "category": "npm",
+    "syntax": "npm run start\nnpx create-vite my-app\nnpm list\nnpm outdated",
+    "explain": "npm run runs a script from package.json. npx runs a tool without installing it.",
+    "example": "Starting projects and checking versions.",
+    "mastered": false
+  },
+  {
+    "id": "node-30",
+    "category": "npm",
+    "syntax": "{\n  \"scripts\": {\n    \"start\": \"node server.js\",\n    \"dev\": \"node --watch server.js\"\n  }\n}",
+    "explain": "scripts in package.json are short names for commands. --watch restarts when files change.",
+    "example": "npm run dev while coding.",
+    "mastered": false
+  },
+  {
+    "id": "node-31",
+    "category": "Express",
+    "syntax": "const express = require(\"express\");\nconst app = express();\napp.get(\"/hello/:name\", (req, res) => res.send(\"Hi \" + req.params.name));\napp.listen(3000);",
+    "explain": ":name in a route becomes req.params.name.",
+    "example": "Pages like /users/42.",
+    "mastered": false
+  },
+  {
+    "id": "node-32",
+    "category": "Express",
+    "syntax": "app.get(\"/search\", (req, res) => {\n  res.json({ q: req.query.q });\n});",
+    "explain": "req.query holds the ?key=value parts. res.json sends JSON.",
+    "example": "A search API.",
+    "mastered": false
+  },
+  {
+    "id": "node-33",
+    "category": "Express",
+    "syntax": "app.use(express.json());\napp.post(\"/notes\", (req, res) => {\n  res.status(201).json(req.body);\n});",
+    "explain": "express.json() reads JSON sent to you into req.body. status sets the result code.",
+    "example": "Saving data sent from a form.",
+    "mastered": false
+  },
+  {
+    "id": "node-34",
+    "category": "Express",
+    "syntax": "app.use(express.static(\"public\"));",
+    "explain": "Serves every file in the public folder (HTML, CSS, images).",
+    "example": "Hosting a website with Express.",
+    "mastered": false
+  },
+  {
+    "id": "node-35",
+    "category": "Express",
+    "syntax": "app.use((req, res, next) => {\n  console.log(req.method, req.url);\n  next();\n});",
+    "explain": "Middleware runs before your routes. next() passes to the next one.",
+    "example": "Logging every request; checking logins.",
+    "mastered": false
+  },
+  {
+    "id": "node-36",
+    "category": "Express",
+    "syntax": "app.use((req, res) => res.status(404).send(\"Not found\"));",
+    "explain": "A last app.use with no path catches anything nothing else answered.",
+    "example": "A custom 404 page.",
+    "mastered": false
+  },
+  {
+    "id": "node-37",
+    "category": "Timers",
+    "syntax": "let n = 0;\nconst id = setInterval(() => {\n  n++;\n  console.log(\"tick\", n);\n  if (n === 3) clearInterval(id);\n}, 200);",
+    "explain": "setInterval repeats; clearInterval stops it.",
+    "example": "Polling for updates.",
+    "mastered": false
+  },
+  {
+    "id": "node-38",
+    "category": "Running",
+    "syntax": "node app.js\nnode --watch app.js\nnode -e \"console.log(1 + 1)\"",
+    "explain": "Run a file, run and restart on changes, or run one line.",
+    "example": "Everyday Node commands.",
+    "mastered": false
   }
 ]

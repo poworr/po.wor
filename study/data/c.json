@@ -62,5 +62,293 @@
     "explain": "A string is an array of chars. string.h has helpers like strlen.",
     "example": "Reading and printing names.",
     "mastered": false
+  },
+  {
+    "id": "c-1",
+    "category": "Output",
+    "syntax": "printf(\"%d %f %.2f %c %s\\n\", 42, 3.5, 3.14159, 'A', \"hi\");",
+    "explain": "printf placeholders: %d whole number, %f decimal, %.2f two decimals, %c one letter, %s text.",
+    "example": "Printing any kind of value.",
+    "mastered": false
+  },
+  {
+    "id": "c-2",
+    "category": "Input",
+    "syntax": "int age;\nprintf(\"Age: \");\nscanf(\"%d\", &age);",
+    "explain": "scanf reads typed input. & gives scanf the address to store it in.",
+    "example": "Simple interactive programs.",
+    "mastered": false
+  },
+  {
+    "id": "c-3",
+    "category": "Input",
+    "syntax": "char name[50];\nfgets(name, sizeof name, stdin);",
+    "explain": "fgets reads a whole line safely, never more than the size of the array.",
+    "example": "Reading a name with spaces.",
+    "mastered": false
+  },
+  {
+    "id": "c-4",
+    "category": "Data types",
+    "syntax": "int count = 10;\nfloat price = 9.99f;\ndouble big = 3.14159265;\nchar letter = 'A';",
+    "explain": "int whole numbers, float/double decimals (double is more exact), char one character.",
+    "example": "Choosing the right box for each value.",
+    "mastered": false
+  },
+  {
+    "id": "c-5",
+    "category": "Data types",
+    "syntax": "#include <stdbool.h>\nbool done = false;",
+    "explain": "C has no true/false built in; stdbool.h adds bool, true, false.",
+    "example": "Flags like \"game over\".",
+    "mastered": false
+  },
+  {
+    "id": "c-6",
+    "category": "Constants",
+    "syntax": "#define MAX_USERS 100\nconst double PI = 3.14159;",
+    "explain": "#define replaces a name with a value before compiling. const makes a variable read-only.",
+    "example": "Limits and fixed numbers.",
+    "mastered": false
+  },
+  {
+    "id": "c-7",
+    "category": "Conditions",
+    "syntax": "if (score >= 90) {\n    printf(\"A\\n\");\n} else if (score >= 70) {\n    printf(\"B\\n\");\n} else {\n    printf(\"C\\n\");\n}",
+    "explain": "Run different code for different cases.",
+    "example": "Grades.",
+    "mastered": false
+  },
+  {
+    "id": "c-8",
+    "category": "Conditions",
+    "syntax": "switch (choice) {\n    case 1: printf(\"Start\\n\"); break;\n    case 2: printf(\"Quit\\n\"); break;\n    default: printf(\"Unknown\\n\");\n}",
+    "explain": "switch picks a case by number or char. break stops it falling into the next case.",
+    "example": "Menu choices.",
+    "mastered": false
+  },
+  {
+    "id": "c-9",
+    "category": "Conditions",
+    "syntax": "int max = (a > b) ? a : b;",
+    "explain": "condition ? ifTrue : ifFalse in one line.",
+    "example": "Picking the bigger number.",
+    "mastered": false
+  },
+  {
+    "id": "c-10",
+    "category": "Loops",
+    "syntax": "int i = 0;\nwhile (i < 3) {\n    printf(\"%d\\n\", i);\n    i++;\n}",
+    "explain": "while repeats as long as the condition is true.",
+    "example": "Reading until the end of a file.",
+    "mastered": false
+  },
+  {
+    "id": "c-11",
+    "category": "Loops",
+    "syntax": "int n;\ndo {\n    printf(\"Enter 1-9: \");\n    scanf(\"%d\", &n);\n} while (n < 1 || n > 9);",
+    "explain": "do-while always runs at least once, then checks.",
+    "example": "Asking until the input is valid.",
+    "mastered": false
+  },
+  {
+    "id": "c-12",
+    "category": "Loops",
+    "syntax": "for (int i = 0; i < 10; i++) {\n    if (i == 2) continue;\n    if (i == 5) break;\n    printf(\"%d\\n\", i);\n}",
+    "explain": "continue skips to the next round, break stops the loop.",
+    "example": "Stopping a search early.",
+    "mastered": false
+  },
+  {
+    "id": "c-13",
+    "category": "Arrays",
+    "syntax": "int nums[5] = {1, 2, 3, 4, 5};\nint size = sizeof nums / sizeof nums[0];\nfor (int i = 0; i < size; i++) printf(\"%d \", nums[i]);",
+    "explain": "An array holds many values of one type. sizeof math gives how many.",
+    "example": "A list of scores.",
+    "mastered": false
+  },
+  {
+    "id": "c-14",
+    "category": "Arrays",
+    "syntax": "int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\nprintf(\"%d\\n\", grid[1][2]);",
+    "explain": "A 2D array is rows and columns. grid[row][column].",
+    "example": "Game boards, tables.",
+    "mastered": false
+  },
+  {
+    "id": "c-15",
+    "category": "Strings",
+    "syntax": "#include <string.h>\nchar a[20] = \"Hi\";\nstrcat(a, \" there\");\nprintf(\"%zu %d\\n\", strlen(a), strcmp(\"abc\", \"abc\"));",
+    "explain": "Text is an array of char ending with '\\0'. strlen length, strcat join, strcmp gives 0 when equal.",
+    "example": "Comparing passwords, building messages.",
+    "mastered": false
+  },
+  {
+    "id": "c-16",
+    "category": "Strings",
+    "syntax": "char copy[20];\nstrcpy(copy, \"hello\");\nsnprintf(copy, sizeof copy, \"n=%d\", 5);",
+    "explain": "strcpy copies text. snprintf writes formatted text into an array safely.",
+    "example": "Building file names like \"photo-5.jpg\".",
+    "mastered": false
+  },
+  {
+    "id": "c-17",
+    "category": "Strings",
+    "syntax": "#include <stdlib.h>\nint n = atoi(\"42\");\ndouble d = atof(\"3.5\");",
+    "explain": "atoi turns text into int, atof into double.",
+    "example": "Reading numbers from command-line arguments.",
+    "mastered": false
+  },
+  {
+    "id": "c-18",
+    "category": "Functions",
+    "syntax": "int add(int a, int b);   /* prototype: says the function exists */\n\nint main(void) { printf(\"%d\\n\", add(2, 3)); return 0; }\n\nint add(int a, int b) { return a + b; }",
+    "explain": "A prototype lets you use a function before its full code.",
+    "example": "Putting main at the top of the file.",
+    "mastered": false
+  },
+  {
+    "id": "c-19",
+    "category": "Functions",
+    "syntax": "int factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}",
+    "explain": "Recursion: a function that calls itself, with a case that stops it.",
+    "example": "Tree and folder walking.",
+    "mastered": false
+  },
+  {
+    "id": "c-20",
+    "category": "Functions",
+    "syntax": "void count(void) {\n    static int times = 0;\n    times++;\n    printf(\"%d\\n\", times);\n}",
+    "explain": "static keeps a local variable's value between calls.",
+    "example": "Counting how many times a function ran.",
+    "mastered": false
+  },
+  {
+    "id": "c-21",
+    "category": "Pointers",
+    "syntax": "void swap(int *a, int *b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\nswap(&x, &y);",
+    "explain": "Pass addresses so a function can change the caller's variables.",
+    "example": "Functions that need to return two things.",
+    "mastered": false
+  },
+  {
+    "id": "c-22",
+    "category": "Pointers",
+    "syntax": "int nums[3] = {10, 20, 30};\nint *p = nums;\nprintf(\"%d %d\\n\", *p, *(p + 2));",
+    "explain": "An array name is a pointer to its first item. p + 2 moves two items forward.",
+    "example": "Walking through arrays fast.",
+    "mastered": false
+  },
+  {
+    "id": "c-23",
+    "category": "Pointers",
+    "syntax": "int *p = NULL;\nif (p != NULL) printf(\"%d\\n\", *p);",
+    "explain": "NULL means \"points to nothing\". Always check before using a pointer.",
+    "example": "Avoiding crashes.",
+    "mastered": false
+  },
+  {
+    "id": "c-24",
+    "category": "Memory",
+    "syntax": "int *nums = calloc(5, sizeof(int));\nnums = realloc(nums, 10 * sizeof(int));\nfree(nums);",
+    "explain": "calloc makes memory filled with zeros. realloc makes it bigger. free gives it back.",
+    "example": "Lists that grow.",
+    "mastered": false
+  },
+  {
+    "id": "c-25",
+    "category": "struct",
+    "syntax": "typedef struct {\n    char name[20];\n    int age;\n} Person;\nPerson p = {\"Ada\", 36};\nprintf(\"%s\\n\", p.name);",
+    "explain": "typedef lets you write Person instead of struct Person.",
+    "example": "Records like users or products.",
+    "mastered": false
+  },
+  {
+    "id": "c-26",
+    "category": "struct",
+    "syntax": "Person *ptr = &p;\nptr->age = 37;",
+    "explain": "-> reaches a field through a pointer. Same as (*ptr).age.",
+    "example": "Changing a record inside a function.",
+    "mastered": false
+  },
+  {
+    "id": "c-27",
+    "category": "enum",
+    "syntax": "enum Color { RED, GREEN, BLUE };\nenum Color c = GREEN;\nprintf(\"%d\\n\", c);",
+    "explain": "enum gives names to numbers (RED=0, GREEN=1, BLUE=2).",
+    "example": "States like MENU, PLAYING, GAME_OVER.",
+    "mastered": false
+  },
+  {
+    "id": "c-28",
+    "category": "Files",
+    "syntax": "FILE *f = fopen(\"out.txt\", \"w\");\nif (f == NULL) return 1;\nfprintf(f, \"score: %d\\n\", 10);\nfclose(f);",
+    "explain": "fopen opens a file (\"w\" write, \"r\" read, \"a\" append). Always fclose it.",
+    "example": "Saving results.",
+    "mastered": false
+  },
+  {
+    "id": "c-29",
+    "category": "Files",
+    "syntax": "FILE *f = fopen(\"out.txt\", \"r\");\nchar line[100];\nwhile (fgets(line, sizeof line, f) != NULL) printf(\"%s\", line);\nfclose(f);",
+    "explain": "Read a file one line at a time.",
+    "example": "Reading a config file.",
+    "mastered": false
+  },
+  {
+    "id": "c-30",
+    "category": "Arguments",
+    "syntax": "int main(int argc, char *argv[]) {\n    for (int i = 0; i < argc; i++) printf(\"%s\\n\", argv[i]);\n    return 0;\n}",
+    "explain": "argc is how many words were typed, argv holds them. argv[0] is the program.",
+    "example": "./main hello world",
+    "mastered": false
+  },
+  {
+    "id": "c-31",
+    "category": "Casting",
+    "syntax": "int a = 7, b = 2;\ndouble result = (double) a / b;\nprintf(\"%.1f\\n\", result);",
+    "explain": "(double) changes a type. Without it, 7 / 2 is 3 (whole-number division).",
+    "example": "Averages.",
+    "mastered": false
+  },
+  {
+    "id": "c-32",
+    "category": "Operators",
+    "syntax": "int x = 6;\nx += 2;\nprintf(\"%d %d %d\\n\", x % 3, x & 1, x << 1);",
+    "explain": "+= adds to itself, % remainder, & bitwise AND, << shift left (times 2).",
+    "example": "Even/odd checks, flags.",
+    "mastered": false
+  },
+  {
+    "id": "c-33",
+    "category": "Random",
+    "syntax": "#include <stdlib.h>\n#include <time.h>\nsrand(time(NULL));\nint dice = rand() % 6 + 1;",
+    "explain": "srand seeds the generator with the time; rand() % 6 + 1 gives 1 to 6.",
+    "example": "Dice games.",
+    "mastered": false
+  },
+  {
+    "id": "c-34",
+    "category": "Math",
+    "syntax": "#include <math.h>\nprintf(\"%.2f %.2f\\n\", sqrt(16.0), pow(2, 10));",
+    "explain": "math.h has sqrt, pow, and more. Compile with -lm on Linux.",
+    "example": "Distance between points.",
+    "mastered": false
+  },
+  {
+    "id": "c-35",
+    "category": "Headers",
+    "syntax": "/* math_utils.h */\n#ifndef MATH_UTILS_H\n#define MATH_UTILS_H\nint add(int a, int b);\n#endif",
+    "explain": "A header lists functions for other files. The #ifndef guard stops it being included twice.",
+    "example": "Splitting a program into files.",
+    "mastered": false
+  },
+  {
+    "id": "c-36",
+    "category": "Compile",
+    "syntax": "gcc -Wall -o main main.c\n./main\ngcc -g main.c utils.c -o app",
+    "explain": "-Wall shows warnings, -o names the program, -g adds debug info. List several .c files to join them.",
+    "example": "Building a program in Terminal.",
+    "mastered": false
   }
 ]

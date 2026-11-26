@@ -70,5 +70,293 @@
     "explain": "Runs a background tool (like a database) automatically on your Mac, or stops it.",
     "example": "brew services start postgresql",
     "mastered": false
+  },
+  {
+    "id": "homebrew-1",
+    "category": "Installing",
+    "syntax": "brew install node python git",
+    "explain": "Install several packages in one command.",
+    "example": "Setting up a new Mac.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-2",
+    "category": "Installing",
+    "syntax": "brew install node@20",
+    "explain": "Install a specific version with @version.",
+    "example": "A project that needs an older Node.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-3",
+    "category": "Installing",
+    "syntax": "brew reinstall git",
+    "explain": "Removes and installs a package again.",
+    "example": "Fixing a broken install.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-4",
+    "category": "Installing",
+    "syntax": "brew install --cask visual-studio-code google-chrome",
+    "explain": "Casks are apps with windows. They go into /Applications.",
+    "example": "Installing your apps from the terminal.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-5",
+    "category": "Installing",
+    "syntax": "brew fetch wget",
+    "explain": "Downloads a package without installing it.",
+    "example": "Getting things ready before going offline.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-6",
+    "category": "Updating",
+    "syntax": "brew outdated",
+    "explain": "Lists installed packages that have newer versions.",
+    "example": "Seeing what upgrade would change.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-7",
+    "category": "Updating",
+    "syntax": "brew upgrade node\nbrew upgrade --cask",
+    "explain": "Upgrade one package, or all your casks.",
+    "example": "Updating only what you need.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-8",
+    "category": "Updating",
+    "syntax": "brew pin node\nbrew unpin node",
+    "explain": "pin stops a package from being upgraded. unpin allows it again.",
+    "example": "Keeping the version your project needs.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-9",
+    "category": "Managing",
+    "syntax": "brew list --cask\nbrew list --versions",
+    "explain": "List only apps, or list packages with their versions.",
+    "example": "Checking what you installed.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-10",
+    "category": "Managing",
+    "syntax": "brew leaves",
+    "explain": "Shows packages you installed yourself (not ones pulled in by others).",
+    "example": "Cleaning up things you no longer use.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-11",
+    "category": "Managing",
+    "syntax": "brew uninstall --cask firefox\nbrew autoremove",
+    "explain": "Uninstall an app. autoremove deletes packages nothing needs any more.",
+    "example": "Freeing disk space.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-12",
+    "category": "Managing",
+    "syntax": "brew deps node\nbrew uses --installed openssl",
+    "explain": "deps: what a package needs. uses: what needs a package.",
+    "example": "Checking before you uninstall something.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-13",
+    "category": "Searching",
+    "syntax": "brew search --cask chrome",
+    "explain": "Search only apps.",
+    "example": "Finding the exact name to install.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-14",
+    "category": "Searching",
+    "syntax": "brew info --cask visual-studio-code\nbrew desc git",
+    "explain": "info shows details for an app; desc gives a one-line description.",
+    "example": "Learning what a package is.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-15",
+    "category": "Searching",
+    "syntax": "brew home git",
+    "explain": "Opens the package's website.",
+    "example": "Reading a tool's docs.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-16",
+    "category": "Maintenance",
+    "syntax": "brew cleanup -n\nbrew cleanup --prune=all",
+    "explain": "-n shows what would be deleted without deleting. --prune=all removes all old downloads.",
+    "example": "Freeing space safely.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-17",
+    "category": "Maintenance",
+    "syntax": "brew missing",
+    "explain": "Checks if any package is missing something it needs.",
+    "example": "Fixing errors after an update.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-18",
+    "category": "Maintenance",
+    "syntax": "brew config\nbrew --version",
+    "explain": "Shows your Homebrew setup and version.",
+    "example": "Information to include when asking for help.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-19",
+    "category": "Maintenance",
+    "syntax": "brew --prefix\nbrew --prefix node\nbrew --cache",
+    "explain": "Where Homebrew lives, where one package lives, and where downloads are kept.",
+    "example": "Setting paths in config files.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-20",
+    "category": "Services",
+    "syntax": "brew services list",
+    "explain": "Lists background services and whether they're running.",
+    "example": "Checking if your database is running.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-21",
+    "category": "Services",
+    "syntax": "brew services stop postgresql\nbrew services restart postgresql",
+    "explain": "Stop or restart a background service.",
+    "example": "Restarting a database after changing settings.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-22",
+    "category": "Services",
+    "syntax": "brew services run redis",
+    "explain": "Runs a service now, but does not start it at login.",
+    "example": "Using a database only today.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-23",
+    "category": "Linking",
+    "syntax": "brew link node@20 --force\nbrew unlink node",
+    "explain": "link makes a version the one the terminal uses; unlink removes it.",
+    "example": "Switching between Node versions.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-24",
+    "category": "Taps",
+    "syntax": "brew tap\nbrew tap homebrew/cask-fonts\nbrew untap homebrew/cask-fonts",
+    "explain": "A tap is an extra list of packages. tap with no name lists the ones you have.",
+    "example": "Getting packages that aren't in the main list.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-25",
+    "category": "Bundle",
+    "syntax": "brew bundle dump\nbrew bundle",
+    "explain": "dump writes everything you installed into a Brewfile. bundle installs everything in it.",
+    "example": "Setting up a new Mac exactly like your old one.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-26",
+    "category": "Bundle",
+    "syntax": "brew \"git\"\nbrew \"node\"\ncask \"visual-studio-code\"",
+    "explain": "A Brewfile: one line per package. Keep it in your dotfiles.",
+    "example": "Sharing your setup.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-27",
+    "category": "Setup",
+    "syntax": "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"",
+    "explain": "The official command to install Homebrew itself (from brew.sh).",
+    "example": "A brand-new Mac.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-28",
+    "category": "Setup",
+    "syntax": "eval \"$(/opt/homebrew/bin/brew shellenv)\"",
+    "explain": "Adds Homebrew to your PATH. Put it in ~/.zprofile on Apple Silicon Macs.",
+    "example": "\"brew: command not found\" after installing.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-29",
+    "category": "Help",
+    "syntax": "brew help\nbrew commands\nbrew help install",
+    "explain": "Lists commands and explains one.",
+    "example": "Learning new commands.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-30",
+    "category": "Help",
+    "syntax": "brew analytics off",
+    "explain": "Stops Homebrew from sending anonymous usage data.",
+    "example": "Privacy.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-31",
+    "category": "Help",
+    "syntax": "brew log git",
+    "explain": "Shows the history of changes to a package's formula.",
+    "example": "Seeing what changed in an update.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-32",
+    "category": "Help",
+    "syntax": "brew update-reset",
+    "explain": "Resets Homebrew's own files when brew update keeps failing.",
+    "example": "Fixing a broken Homebrew.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-33",
+    "category": "Popular",
+    "syntax": "brew install wget tree jq htop",
+    "explain": "wget downloads, tree shows folders as a tree, jq reads JSON, htop shows running programs.",
+    "example": "Handy tools for developers.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-34",
+    "category": "Popular",
+    "syntax": "brew install gh\ngh auth login",
+    "explain": "gh is GitHub's command-line tool.",
+    "example": "Making pull requests from the terminal.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-35",
+    "category": "Popular",
+    "syntax": "brew install --cask rectangle iterm2",
+    "explain": "Rectangle snaps windows, iTerm2 is a popular terminal app.",
+    "example": "Making your Mac nicer to code on.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-36",
+    "category": "Popular",
+    "syntax": "brew install postgresql@16\nbrew services start postgresql@16",
+    "explain": "Install a database and start it in the background.",
+    "example": "Local database for a web app.",
+    "mastered": false
   }
 ]

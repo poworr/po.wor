@@ -19,7 +19,7 @@
     "id": "seed-61",
     "category": "Navigation",
     "syntax": "cd ~/Desktop\ncd ..",
-    "explain": "cd changes folder. ~ is your home folder, .. goes up one level. (The playground cannot cd; try it in Terminal.)",
+    "explain": "cd changes folder. ~ is your home folder, .. goes up one level. Try it in the practice terminal.",
     "example": "Moving into your project before running npm start.",
     "mastered": false
   },
@@ -69,6 +69,294 @@
     "syntax": "git status\ngit add .\ngit commit -m \"Add notes\"\ngit push",
     "explain": "See what changed, stage it, save a commit with a message, and upload it.",
     "example": "Saving and publishing your website changes.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-1",
+    "category": "Navigation",
+    "syntax": "ls\nls -l\nls Desktop",
+    "explain": "ls lists files. -l shows details. Add a folder name to look inside it.",
+    "example": "Seeing what's in a folder.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-2",
+    "category": "Navigation",
+    "syntax": "cd ..\ncd ~\ncd -",
+    "explain": ".. goes up one folder, ~ goes home, - goes back to where you just were.",
+    "example": "Moving around quickly.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-3",
+    "category": "Navigation",
+    "syntax": "cd ~/Desktop/my-project",
+    "explain": "Paths: ~ is your home folder, / separates folders.",
+    "example": "Jumping straight into a project.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-4",
+    "category": "Navigation",
+    "syntax": "open .\nopen notes.txt\nopen -a \"Visual Studio Code\" .",
+    "explain": "open opens a folder in Finder or a file in its app. -a picks the app.",
+    "example": "Opening a project in VS Code.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-5",
+    "category": "Files",
+    "syntax": "touch index.html style.css",
+    "explain": "touch makes empty files (or updates the time on existing ones).",
+    "example": "Starting a new website.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-6",
+    "category": "Files",
+    "syntax": "mkdir -p projects/site/images",
+    "explain": "-p makes all the folders in the path, even if the parents don't exist yet.",
+    "example": "Making nested folders in one go.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-7",
+    "category": "Files",
+    "syntax": "cat notes.txt\nless big-log.txt",
+    "explain": "cat prints a whole file. less shows it page by page (q quits).",
+    "example": "Reading files.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-8",
+    "category": "Files",
+    "syntax": "head -n 5 notes.txt\ntail -n 5 notes.txt\ntail -f server.log",
+    "explain": "head shows the start, tail the end. tail -f keeps showing new lines as they're added.",
+    "example": "Watching a log while a server runs.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-9",
+    "category": "Files",
+    "syntax": "wc -l notes.txt",
+    "explain": "wc counts. -l counts lines.",
+    "example": "How long is this file?",
+    "mastered": false
+  },
+  {
+    "id": "terminal-10",
+    "category": "Files",
+    "syntax": "echo \"hello\" > notes.txt\necho \"more\" >> notes.txt",
+    "explain": "> writes into a file (replacing it). >> adds to the end.",
+    "example": "Quick notes from the terminal.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-11",
+    "category": "Files",
+    "syntax": "mv draft.txt final.txt\nmv final.txt Documents/",
+    "explain": "mv renames a file, or moves it into a folder.",
+    "example": "Organizing files.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-12",
+    "category": "Files",
+    "syntax": "cp -r site site-backup\nrm -r old-folder",
+    "explain": "-r means \"the folder and everything in it\". Be careful: rm does not use the Trash.",
+    "example": "Backing up and deleting folders.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-13",
+    "category": "Files",
+    "syntax": "ln -s ~/Documents/notes.txt notes-link.txt",
+    "explain": "ln -s makes a shortcut (symbolic link) to a file.",
+    "example": "Using one file from two places.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-14",
+    "category": "Files",
+    "syntax": "nano notes.txt",
+    "explain": "nano is a simple text editor inside the terminal. Ctrl+O saves, Ctrl+X quits.",
+    "example": "Editing a config file.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-15",
+    "category": "Searching",
+    "syntax": "find . -name \"*.txt\"",
+    "explain": "find searches folders for files by name. * matches anything.",
+    "example": "Finding every .txt file in a project.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-16",
+    "category": "Searching",
+    "syntax": "grep -i \"error\" server.log\ngrep -c \"TODO\" app.js",
+    "explain": "-i ignores upper/lower case, -c counts matching lines.",
+    "example": "Searching logs.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-17",
+    "category": "Pipes",
+    "syntax": "ls | wc -l\ncat names.txt | sort | uniq\nhistory | grep git",
+    "explain": "| sends one command's output into the next command.",
+    "example": "Counting files, removing duplicate lines.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-18",
+    "category": "Pipes",
+    "syntax": "npm test && git push",
+    "explain": "&& runs the next command only if the first one worked.",
+    "example": "Only push when the tests pass.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-19",
+    "category": "Info",
+    "syntax": "whoami\ndate\nwhich python3",
+    "explain": "whoami your user name, date the time, which shows where a program lives.",
+    "example": "Checking which Python you are using.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-20",
+    "category": "Info",
+    "syntax": "man ls\nls --help",
+    "explain": "man shows the manual for a command (q quits).",
+    "example": "Learning what flags a command has.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-21",
+    "category": "Info",
+    "syntax": "history\nclear",
+    "explain": "history lists commands you typed. clear wipes the screen. ↑ brings back the last command.",
+    "example": "Re-running something from earlier.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-22",
+    "category": "Info",
+    "syntax": "du -sh *\ndf -h",
+    "explain": "du shows how big files and folders are, df how much disk space is free. -h means human-readable.",
+    "example": "Finding what fills your disk.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-23",
+    "category": "Processes",
+    "syntax": "ps aux | grep node\nkill 12345\ntop",
+    "explain": "ps lists running programs, kill stops one by its number (PID), top shows live CPU use (q quits).",
+    "example": "Stopping a stuck server.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-24",
+    "category": "Processes",
+    "syntax": "lsof -i :3000",
+    "explain": "Shows which program is using port 3000.",
+    "example": "\"Port already in use\" errors.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-25",
+    "category": "Network",
+    "syntax": "curl https://api.github.com\ncurl -O https://example.com/file.zip\nping -c 3 google.com",
+    "explain": "curl downloads from a URL (-O saves the file). ping checks if a site answers.",
+    "example": "Testing an API, checking the internet.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-26",
+    "category": "Permissions",
+    "syntax": "chmod 755 deploy.sh\nls -l deploy.sh",
+    "explain": "7 = read+write+run for you, 5 = read+run for others. ls -l shows the permissions.",
+    "example": "Making a script runnable.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-27",
+    "category": "Permissions",
+    "syntax": "sudo some-command",
+    "explain": "sudo runs a command as the admin. It asks for your password. Only use it when you trust the command.",
+    "example": "Installing system tools.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-28",
+    "category": "Shell",
+    "syntax": "export PATH=\"$HOME/bin:$PATH\"\necho $PATH",
+    "explain": "PATH is the list of folders where the terminal looks for programs.",
+    "example": "Using tools you installed yourself.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-29",
+    "category": "Shell",
+    "syntax": "alias ll=\"ls -la\"\nsource ~/.zshrc",
+    "explain": "alias makes a shortcut. Put it in ~/.zshrc to keep it, then source reloads the file.",
+    "example": "Your own short commands.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-30",
+    "category": "Shell",
+    "syntax": "./run.sh\nbash run.sh",
+    "explain": "./ runs a program in this folder. Or give the script to bash.",
+    "example": "Running your own scripts.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-31",
+    "category": "Shortcuts",
+    "syntax": "Ctrl+C    stop the running command\nCtrl+A    jump to the start of the line\nCtrl+E    jump to the end of the line\nCtrl+R    search your history\nTab       finish a file name for you",
+    "explain": "Keyboard shortcuts that save a lot of typing.",
+    "example": "Every day in the terminal.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-32",
+    "category": "Git",
+    "syntax": "git init\ngit clone https://github.com/user/repo.git",
+    "explain": "init starts a new repository here. clone downloads an existing one.",
+    "example": "Starting or copying a project.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-33",
+    "category": "Git",
+    "syntax": "git add .\ngit commit -m \"Add contact page\"\ngit push",
+    "explain": "add picks changes, commit saves them with a message, push uploads them.",
+    "example": "Saving and sharing your work.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-34",
+    "category": "Git",
+    "syntax": "git pull\ngit log --oneline\ngit diff",
+    "explain": "pull downloads new changes, log shows history, diff shows what you changed.",
+    "example": "Staying up to date with the team.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-35",
+    "category": "Git",
+    "syntax": "git branch\ngit switch -c new-feature\ngit switch main\ngit merge new-feature",
+    "explain": "Branches let you try things without breaking main. merge brings the work back.",
+    "example": "Working on a feature safely.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-36",
+    "category": "Git",
+    "syntax": "git restore index.html\ngit stash\ngit stash pop",
+    "explain": "restore throws away changes to a file. stash hides changes for later; pop brings them back.",
+    "example": "Undoing a mistake.",
     "mastered": false
   }
 ]

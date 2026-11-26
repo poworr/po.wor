@@ -100,6 +100,11 @@ footer {
 .btn:hover {
   border-color: #A0A0A0;
 }
+.btn[aria-pressed="true"] {
+  color: #FFFFFF;
+  background: #1D1D1F;
+  border-color: #1D1D1F;
+}
 .btn.small {
   padding: 2px 10px;
   font-size: 12px;
@@ -169,7 +174,7 @@ textarea {
 
 /* Code: monospace, keeps spaces and line breaks */
 pre,
-#code {
+.code {
   font-family: Menlo, Monaco, monospace;
   font-size: 13px;
 }
@@ -193,8 +198,8 @@ pre {
   margin-right: auto;
 }
 
-/* ===== Playground ===== */
-#code {
+/* ===== Code boxes (playground, lessons, test) ===== */
+.code {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -203,7 +208,7 @@ pre {
   line-height: 1.5;
   tab-size: 2;
 }
-#preview {
+.preview {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -213,13 +218,61 @@ pre {
   border: 1px solid #DCDCDC;
   border-radius: 6px;
 }
-#preview[hidden] {
+.preview[hidden] {
   display: none;
 }
-#output {
+.output {
   min-height: 40px;
   white-space: pre-wrap;
   background: #FFFFFF;
+}
+
+/* ===== Practice terminal: dark, like Terminal.app ===== */
+#terminal {
+  padding: 12px;
+  background: #1D1D1F;
+  border-radius: 6px;
+  cursor: text;
+}
+#term-output {
+  max-height: 320px;
+  padding: 0;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  color: #F5F5F5;
+  background: none;
+  border: 0;
+}
+.term-line {
+  display: flex;
+  gap: 8px;
+  font-family: Menlo, Monaco, monospace;
+  font-size: 13px;
+  color: #9BE39B;
+}
+#term-input {
+  flex: 1;
+  padding: 0;
+  font-family: inherit;
+  color: #F5F5F5;
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+/* ===== Lessons and Test ===== */
+.lesson-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+.test-question {
+  font-size: 18px;
+}
+#playground,
+#lessons .card,
+#test .card {
+  margin-bottom: 40px;
 }
 
 /* ===== Add / edit form ===== */

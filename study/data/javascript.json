@@ -78,5 +78,325 @@
     "explain": "fetch gets data from a website. await waits for the answer without freezing the page.",
     "example": "Loading weather or posts from an API.",
     "mastered": false
+  },
+  {
+    "id": "javascript-1",
+    "category": "Variables",
+    "syntax": "let count = 0;\ncount = count + 1;\nconst PI = 3.14;\nconsole.log(count, PI);",
+    "explain": "let can change later, const cannot. Use const unless you need to change it.",
+    "example": "A counter vs. a fixed setting.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-2",
+    "category": "Strings",
+    "syntax": "const name = \"Ada\";\nconsole.log(`Hello, ${name}! You have ${2 + 3} messages.`);",
+    "explain": "Backticks make a template string. ${...} puts a value inside.",
+    "example": "Building messages.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-3",
+    "category": "Types",
+    "syntax": "console.log(typeof 42, typeof \"hi\", typeof true, typeof [], typeof null);",
+    "explain": "typeof tells you what kind of value something is.",
+    "example": "Checking input before using it.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-4",
+    "category": "Conditions",
+    "syntax": "console.log(1 == \"1\");\nconsole.log(1 === \"1\");",
+    "explain": "== converts types first, === does not. Always use ===.",
+    "example": "Avoiding surprise bugs.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-5",
+    "category": "Conditions",
+    "syntax": "const age = 20;\nconst label = age >= 18 ? \"adult\" : \"child\";\nconsole.log(label);",
+    "explain": "condition ? ifTrue : ifFalse is a short if/else.",
+    "example": "Picking a word to show.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-6",
+    "category": "Conditions",
+    "syntax": "const day = \"sat\";\nswitch (day) {\n  case \"sat\":\n  case \"sun\":\n    console.log(\"weekend\");\n    break;\n  default:\n    console.log(\"weekday\");\n}",
+    "explain": "switch compares one value to many cases. break stops it falling into the next case.",
+    "example": "Menus with many options.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-7",
+    "category": "Loops",
+    "syntax": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}",
+    "explain": "Start; keep going while true; step. Prints 0, 1, 2.",
+    "example": "Repeating something a set number of times.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-8",
+    "category": "Loops",
+    "syntax": "let n = 3;\nwhile (n > 0) {\n  console.log(n);\n  n--;\n}",
+    "explain": "while repeats as long as the condition is true.",
+    "example": "Retrying until something works.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-9",
+    "category": "Loops",
+    "syntax": "for (const n of [1, 2, 3, 4]) {\n  if (n === 2) continue;\n  if (n === 4) break;\n  console.log(n);\n}",
+    "explain": "continue skips to the next round, break stops the loop.",
+    "example": "Skipping bad data.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-10",
+    "category": "Arrays",
+    "syntax": "const nums = [1, 2, 3];\nconsole.log(nums.map((n) => n * 2));",
+    "explain": "map makes a new array by changing every item.",
+    "example": "Turning prices into prices with tax.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-11",
+    "category": "Arrays",
+    "syntax": "const nums = [1, 2, 3, 4];\nconsole.log(nums.filter((n) => n % 2 === 0));",
+    "explain": "filter keeps only the items where the function returns true.",
+    "example": "Showing only unfinished tasks.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-12",
+    "category": "Arrays",
+    "syntax": "const nums = [1, 2, 3, 4];\nconsole.log(nums.reduce((total, n) => total + n, 0));",
+    "explain": "reduce boils an array down to one value. 0 is the starting total.",
+    "example": "The total of a shopping cart.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-13",
+    "category": "Arrays",
+    "syntax": "const users = [{ id: 1, name: \"Ada\" }, { id: 2, name: \"Bo\" }];\nconsole.log(users.find((u) => u.id === 2));\nconsole.log([1, 2, 3].includes(2));",
+    "explain": "find returns the first match. includes says if a value is in the array.",
+    "example": "Looking up a user by id.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-14",
+    "category": "Arrays",
+    "syntax": "const list = [\"a\", \"b\"];\nlist.push(\"c\");\nconst lastOne = list.pop();\nconsole.log(list, lastOne, list.length);",
+    "explain": "push adds to the end, pop removes from the end. length is how many.",
+    "example": "A stack of undo steps.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-15",
+    "category": "Arrays",
+    "syntax": "const letters = [\"a\", \"b\", \"c\", \"d\"];\nconsole.log(letters.slice(1, 3));\nletters.splice(1, 1);\nconsole.log(letters);",
+    "explain": "slice copies a part (start, end). splice removes items from the array itself.",
+    "example": "Pages of results; deleting one item.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-16",
+    "category": "Arrays",
+    "syntax": "const nums = [10, 1, 5];\nnums.sort((a, b) => a - b);\nconsole.log(nums);",
+    "explain": "sort with (a, b) => a - b sorts numbers small to big. Without it, numbers sort like words.",
+    "example": "Sorting scores.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-17",
+    "category": "Arrays",
+    "syntax": "[\"a\", \"b\"].forEach((item, i) => console.log(i, item));\nconsole.log(\"a,b,c\".split(\",\"), [\"a\", \"b\"].join(\" + \"));",
+    "explain": "forEach runs a function for each item. split turns text into an array, join does the opposite.",
+    "example": "Reading CSV text.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-18",
+    "category": "Spread",
+    "syntax": "const a = [1, 2];\nconst b = [...a, 3];\nconst user = { name: \"Ada\" };\nconst copy = { ...user, age: 36 };\nconsole.log(b, copy);",
+    "explain": "... spreads the items of an array or object into a new one.",
+    "example": "Copying and adding without changing the original.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-19",
+    "category": "Destructuring",
+    "syntax": "const [first, second] = [\"x\", \"y\"];\nconst { name, age } = { name: \"Ada\", age: 36 };\nconsole.log(first, second, name, age);",
+    "explain": "Pull values out of arrays and objects into variables in one line.",
+    "example": "Reading fields from API data.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-20",
+    "category": "Functions",
+    "syntax": "function greet(name = \"friend\") {\n  return \"Hi \" + name;\n}\nconsole.log(greet(), greet(\"Ada\"));",
+    "explain": "name = \"friend\" is a default, used when nothing is passed.",
+    "example": "Optional settings.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-21",
+    "category": "Functions",
+    "syntax": "function sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}\nconsole.log(sum(1, 2, 3));",
+    "explain": "...nums collects all the arguments into an array.",
+    "example": "Functions that take any number of values.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-22",
+    "category": "Functions",
+    "syntax": "function makeCounter() {\n  let count = 0;\n  return () => ++count;\n}\nconst next = makeCounter();\nconsole.log(next(), next());",
+    "explain": "A closure: the inner function remembers the variables around it.",
+    "example": "Private state, like a counter.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-23",
+    "category": "Objects",
+    "syntax": "const user = { name: \"Ada\", age: 36 };\nconsole.log(Object.keys(user));\nfor (const [key, value] of Object.entries(user)) console.log(key, value);",
+    "explain": "Object.keys lists the names, Object.entries gives [name, value] pairs.",
+    "example": "Showing every field of a record.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-24",
+    "category": "Objects",
+    "syntax": "const user = { address: null };\nconsole.log(user.address?.city);\nconsole.log(user.nickname ?? \"no nickname\");",
+    "explain": "?. stops instead of crashing when something is missing. ?? gives a fallback for null/undefined.",
+    "example": "Reading API data that may be missing fields.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-25",
+    "category": "Errors",
+    "syntax": "try {\n  JSON.parse(\"not json\");\n} catch (error) {\n  console.log(\"Could not read it:\", error.message);\n} finally {\n  console.log(\"done\");\n}",
+    "explain": "try runs code, catch handles errors, finally always runs.",
+    "example": "Handling a bad file or network error.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-26",
+    "category": "Errors",
+    "syntax": "function divide(a, b) {\n  if (b === 0) throw new Error(\"Cannot divide by zero\");\n  return a / b;\n}\nconsole.log(divide(6, 3));",
+    "explain": "throw stops the function and sends an error to whoever called it.",
+    "example": "Rejecting bad input.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-27",
+    "category": "Classes",
+    "syntax": "class Animal {\n  constructor(name) { this.name = name; }\n  speak() { return this.name + \" makes a sound\"; }\n}\nclass Dog extends Animal {\n  speak() { return this.name + \" barks\"; }\n}\nconsole.log(new Dog(\"Rex\").speak());",
+    "explain": "extends makes a class based on another. It can replace methods.",
+    "example": "Different kinds of users or shapes.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-28",
+    "category": "Async",
+    "syntax": "const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\nwait(500).then(() => console.log(\"half a second later\"));",
+    "explain": "A Promise is a value that arrives later. then runs when it does.",
+    "example": "Waiting before showing a message.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-29",
+    "category": "Async",
+    "syntax": "setTimeout(() => console.log(\"later\"), 1000);\nconst id = setInterval(() => console.log(\"tick\"), 300);\nsetTimeout(() => clearInterval(id), 1000);",
+    "explain": "setTimeout runs once after a delay; setInterval repeats until cleared.",
+    "example": "Clocks, auto-save.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-30",
+    "category": "JSON",
+    "syntax": "const text = JSON.stringify({ name: \"Ada\", tags: [\"a\"] });\nconsole.log(text);\nconsole.log(JSON.parse(text).name);",
+    "explain": "stringify turns data into text, parse turns text back into data.",
+    "example": "Saving data and sending it to a server.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-31",
+    "category": "Math",
+    "syntax": "console.log(Math.round(2.5), Math.floor(2.9), Math.max(1, 5, 3));\nconsole.log(Math.floor(Math.random() * 6) + 1);",
+    "explain": "Math has rounding, max/min, and random (0 up to 1). The last line is a dice roll.",
+    "example": "Games and rounding prices.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-32",
+    "category": "Numbers",
+    "syntax": "console.log(Number(\"42\") + 1, parseInt(\"10px\"), (3.14159).toFixed(2));",
+    "explain": "Turn text into numbers. toFixed(2) keeps 2 decimals.",
+    "example": "Reading numbers typed into a form.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-33",
+    "category": "Strings",
+    "syntax": "const s = \"  Hello World  \";\nconsole.log(s.trim().toUpperCase());\nconsole.log(s.replace(\"World\", \"Ada\"), s.includes(\"Hello\"));",
+    "explain": "trim removes outside spaces; toUpperCase, replace and includes do what they say.",
+    "example": "Cleaning up user input.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-34",
+    "category": "Dates",
+    "syntax": "const now = new Date();\nconsole.log(now.getFullYear(), now.toISOString());",
+    "explain": "Date holds a moment in time.",
+    "example": "Showing today's date.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-35",
+    "category": "Collections",
+    "syntax": "const tags = new Set([\"a\", \"b\", \"a\"]);\nconsole.log(tags.size, [...tags]);\nconst ages = new Map([[\"Ada\", 36]]);\nconsole.log(ages.get(\"Ada\"));",
+    "explain": "A Set keeps only unique values. A Map stores key → value pairs.",
+    "example": "Removing duplicates.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-36",
+    "category": "DOM",
+    "syntax": "const title = document.querySelector(\"h1\");\nconst items = document.querySelectorAll(\".item\");",
+    "explain": "querySelector finds the first match, querySelectorAll finds all of them (CSS selectors).",
+    "example": "Grabbing elements to change them.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-37",
+    "category": "DOM",
+    "syntax": "const box = document.querySelector(\".box\");\nbox.classList.add(\"open\");\nbox.classList.toggle(\"dark\");\nbox.textContent = \"Hello\";",
+    "explain": "classList adds or removes classes. textContent sets the text safely.",
+    "example": "Opening a menu, dark mode switches.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-38",
+    "category": "DOM",
+    "syntax": "const li = document.createElement(\"li\");\nli.textContent = \"New item\";\ndocument.querySelector(\"ul\").appendChild(li);",
+    "explain": "Create an element, fill it, then put it on the page.",
+    "example": "Adding items to a to-do list.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-39",
+    "category": "Storage",
+    "syntax": "localStorage.setItem(\"theme\", \"dark\");\nconsole.log(localStorage.getItem(\"theme\"));",
+    "explain": "localStorage keeps small text values in the browser, even after closing it.",
+    "example": "Remembering a setting.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-40",
+    "category": "Modules",
+    "syntax": "// math.js\nexport function add(a, b) { return a + b; }\n// app.js\nimport { add } from \"./math.js\";",
+    "explain": "export shares code from a file, import uses it. Needs <script type=\"module\">.",
+    "example": "Splitting a big app into files.",
+    "mastered": false
   }
 ]

@@ -23,29 +23,92 @@
     </nav>
 
     <main>
-      <!-- ===== Search, filter, add ===== -->
-      <div class="bar">
-        <input id="search" type="search" placeholder="Search everything…" aria-label="Search">
-        <select id="filter" aria-label="Show">
-          <option value="all">All</option>
-          <option value="learning">Still learning</option>
-          <option value="mastered">Mastered</option>
-        </select>
-        <button class="btn" id="add">+ Add syntax</button>
+      <!-- ===== The three modes ===== -->
+      <div class="bar" id="modes">
+        <button class="btn" data-mode="syntax" aria-pressed="true">Syntax</button>
+        <button class="btn" data-mode="lessons">Lessons</button>
+        <button class="btn" data-mode="test">Test</button>
       </div>
 
-      <!-- ===== Syntax cards (filled in by app.js) ===== -->
-      <div id="cards"></div>
+      <!-- ===== Mode 1: Syntax cards ===== -->
+      <section id="syntax">
+        <div class="bar">
+          <input id="search" type="search" placeholder="Search everything…" aria-label="Search">
+          <select id="filter" aria-label="Show">
+            <option value="all">All</option>
+            <option value="learning">Still learning</option>
+            <option value="mastered">Mastered</option>
+          </select>
+          <button class="btn" id="add">+ Add syntax</button>
+        </div>
 
-      <!-- ===== Practice Playground ===== -->
-      <h2 class="tag" id="playground-title">Playground</h2>
-      <textarea id="code" spellcheck="false" placeholder="Type code here. ⌘↵ runs it."></textarea>
-      <div class="bar">
-        <button class="btn" id="run">Run ⌘↵</button>
-        <span class="muted" id="run-note"></span>
-      </div>
-      <iframe id="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
-      <pre id="output"></pre>
+        <!-- Syntax cards (filled in by app.js) -->
+        <div id="cards"></div>
+      </section>
+
+      <!-- ===== Mode 2: Lessons. A task; you write the code; Check tells you if it's right. ===== -->
+      <section id="lessons" hidden>
+        <div class="bar" id="lesson-list"></div>
+        <div class="card">
+          <p class="tag" id="lesson-level"></p>
+          <h2 class="lesson-title" id="lesson-title"></h2>
+          <p id="lesson-task"></p>
+          <textarea id="lesson-code" class="code" spellcheck="false" placeholder="Write your code here. ⌘↵ runs it."></textarea>
+          <div class="bar">
+            <button class="btn" id="lesson-run">Run ⌘↵</button>
+            <button class="btn" id="lesson-check">Check</button>
+            <button class="btn" id="lesson-show">Show solution</button>
+            <span id="lesson-result"></span>
+          </div>
+          <iframe id="lesson-preview" class="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
+          <pre id="lesson-output" class="output"></pre>
+          <pre id="lesson-solution" hidden></pre>
+        </div>
+      </section>
+
+      <!-- ===== Mode 3: Test. Read what a syntax does, type it from memory. ===== -->
+      <section id="test" hidden>
+        <div class="card">
+          <p class="muted" id="test-progress"></p>
+          <p class="tag" id="test-category"></p>
+          <p class="test-question" id="test-question"></p>
+          <textarea id="test-answer" class="code" spellcheck="false" placeholder="Type the syntax from memory…"></textarea>
+          <div class="bar" id="test-ask">
+            <button class="btn" id="test-reveal">Show answer</button>
+          </div>
+          <div id="test-check" hidden>
+            <pre id="test-solution"></pre>
+            <div class="bar">
+              <button class="btn" id="test-right">I got it</button>
+              <button class="btn" id="test-wrong">Not yet</button>
+            </div>
+          </div>
+          <div id="test-done" hidden>
+            <p class="test-question" id="test-score"></p>
+            <button class="btn" id="test-again">Test again</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Practice Playground (under the syntax cards) ===== -->
+      <section id="playground">
+        <h2 class="tag" id="playground-title">Playground</h2>
+        <div id="editor">
+          <textarea id="code" class="code" spellcheck="false" placeholder="Type code here. ⌘↵ runs it."></textarea>
+          <div class="bar">
+            <button class="btn" id="run">Run ⌘↵</button>
+            <span class="muted" id="run-note"></span>
+          </div>
+          <iframe id="preview" class="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
+          <pre id="output" class="output"></pre>
+        </div>
+
+        <!-- The practice terminal (terminal.js): for Mac Terminal and Homebrew -->
+        <div id="terminal" hidden>
+          <pre id="term-output"></pre>
+          <div class="term-line"><span id="term-prompt"></span><input id="term-input" spellcheck="false" autocomplete="off" aria-label="Type a command"></div>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -86,7 +149,9 @@
     </form>
   </dialog>
 
+  <script src="/terminal.js"></script>
   <script src="/app.js"></script>
+  <script src="/practice.js"></script>
 
 </body>
 </html>
