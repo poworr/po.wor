@@ -47,12 +47,6 @@ header {
   transform: none;
 }
 
-/* the P logo flying into the box (js/box.js adds "flying") */
-.logo.flying {
-  transition: transform 0.7s ease-in, opacity 0.2s ease-in 0.55s;
-  opacity: 0;
-}
-
 /* ===== Middle and bottom ===== */
 main {
   flex: 1;
