@@ -23,6 +23,7 @@ header {
 }
 
 .logo {
+  display: block;   /* removes the small gap browsers add under images */
   width: 36px;
   height: 36px;
 }
