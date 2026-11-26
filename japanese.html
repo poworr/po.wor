@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日本語の作文練習 — po.wor</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/japanese.css?v=2">
+</head>
+<body>
+
+  <div class="page">
+    <a class="back" href="index.html"><img src="images/logo.png" alt="ホーム"></a>
+
+    <h1>日本語の作文練習</h1>
+
+    <!-- Tabs (segmented control) -->
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-practice" aria-controls="practice" aria-selected="true">練習</button>
+      <button class="tab" role="tab" id="tab-good" aria-controls="good" aria-selected="false">お手本</button>
+    </div>
+
+    <!-- ===== Part 1: Practice ===== -->
+    <section id="practice" role="tabpanel" aria-labelledby="tab-practice">
+      <div class="card">
+        <p class="level" id="q-level"></p>
+        <p class="question" id="q-text"></p>
+
+        <p class="label">キーワード</p>
+        <ul class="keywords" id="q-keywords"></ul>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="next">次の問題</button>
+        <button class="btn" id="show-example" aria-expanded="false">お手本を見る</button>
+      </div>
+
+      <div class="card example" id="example" hidden></div>
+    </section>
+
+    <!-- ===== Part 2: Good Writing ===== -->
+    <section id="good" role="tabpanel" aria-labelledby="tab-good" hidden>
+      <div id="gallery"></div>
+    </section>
+  </div>
+
+  <script src="js/japanese-data.js?v=2"></script>
+  <script src="js/japanese.js?v=2"></script>
+
+</body>
+</html>

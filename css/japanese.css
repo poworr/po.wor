@@ -1,0 +1,219 @@
+/* ===== Japanese Writing Practice page ===== */
+
+/* Colors (light) */
+:root {
+  --bg: #F5F5F7;
+  --card: #FFFFFF;
+  --text: #1D1D1F;
+  --gray: #6E6E73;
+  --line: #D2D2D7;
+  --button: #E8E8ED;
+  --button-hover: #DCDCE1;
+  --blue: #0071E3;
+  --blue-hover: #0077ED;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Colors (dark mode) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --card: #1C1C1E;
+    --text: #F5F5F7;
+    --gray: #98989D;
+    --line: #38383A;
+    --button: #2C2C2E;
+    --button-hover: #3A3A3C;
+    --blue: #0A84FF;
+    --blue-hover: #409CFF;
+    --shadow: none;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "SF Pro", "Helvetica Neue", Helvetica, Arial,
+               "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Centered column */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 80px;
+}
+
+.back img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+h1 {
+  margin: 32px 0 28px;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+/* ===== Tabs (segmented control) ===== */
+.tabs {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--button);
+  border-radius: 9px;
+  width: fit-content;
+  margin: 0 auto 32px;
+}
+.tab {
+  padding: 6px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.tab[aria-selected="true"] {
+  background: var(--card);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Cards ===== */
+.card {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.level {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.question {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.label {
+  margin: 20px 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray);
+}
+
+/* Keywords */
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.keywords li {
+  padding: 6px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 15px;
+}
+.keywords small {
+  display: block;
+  font-size: 11px;
+  color: var(--gray);
+}
+
+/* ===== Buttons ===== */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.btn {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 980px;
+  background: var(--button);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: var(--button-hover);
+}
+.btn.primary {
+  background: var(--blue);
+  color: #FFFFFF;
+}
+.btn.primary:hover {
+  background: var(--blue-hover);
+}
+
+/* Keyboard focus ring for everything you can Tab to */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ===== Model writing (example + gallery) ===== */
+.example {
+  margin-top: 24px;
+}
+#gallery .card + .card {
+  margin-top: 20px;
+}
+
+.sample-title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 400;
+}
+.sample-text {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.8;
+  white-space: pre-line;  /* keep the paragraph breaks from the data file */
+}
+
+.why {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== Phones ===== */
+@media (max-width: 520px) {
+  h1 {
+    font-size: 30px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .actions .btn {
+    flex: 1 1 100%;  /* full-width buttons are easier to tap */
+  }
+}

@@ -22,7 +22,7 @@ box.addEventListener('click', function (event) {
   p.style.top = (b.top + b.height / 2 - size / 2) + 'px';
   document.body.appendChild(p);
 
-  box.classList.add('open'); // lid opens
+  box.classList.add('open', 'tapped'); // lid opens, bubble shows (for phones)
 
   p.animate([
     { transform: 'scale(0)', opacity: 0 },                                        // nothing
@@ -37,8 +37,21 @@ box.addEventListener('click', function (event) {
   setTimeout(function () { location.href = box.href; }, 1400);   // open the page
 });
 
-// If you come back with the browser's Back button, reset the box and remove the copy.
+// Phones have no hover, so tapping the logo or あ shows its bubble
+// and bounce first, then opens the page a moment later.
+const phone = matchMedia('(hover: none)').matches;
+document.querySelectorAll('.home, .write').forEach(function (link) {
+  link.addEventListener('click', function (event) {
+    if (!phone) return; // computers already saw the bubble on hover
+    event.preventDefault();
+    link.classList.add('tapped');
+    setTimeout(function () { location.href = link.href; }, 900);
+  });
+});
+
+// If you come back with the browser's Back button, reset everything and remove the copy.
 window.addEventListener('pageshow', function () {
   box.classList.remove('open', 'shut');
+  document.querySelectorAll('.tapped').forEach(function (link) { link.classList.remove('tapped'); });
   document.querySelectorAll('body > .logo').forEach(function (copy) { copy.remove(); });
 });
