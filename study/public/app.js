@@ -43,13 +43,22 @@ function render() {
 }
 
 // The Syntax / Lessons / Test buttons
-for (const button of document.querySelectorAll('#modes .btn')) {
+for (const button of document.querySelectorAll('#modes [data-mode]')) {
   button.addEventListener('click', () => {
     mode = button.dataset.mode;
-    for (const b of document.querySelectorAll('#modes .btn')) b.setAttribute('aria-pressed', b === button);
+    for (const b of document.querySelectorAll('#modes [data-mode]')) b.setAttribute('aria-pressed', b === button);
     render();
   });
 }
+
+// The explorer toggle at the bottom of the activity bar: hide or show the explorer
+$('toggle-explorer').addEventListener('click', () => {
+  const explorer = document.querySelector('.explorer');
+  explorer.hidden = !explorer.hidden;
+  document.querySelector('.layout').classList.toggle('no-explorer', explorer.hidden);
+  $('toggle-explorer').setAttribute('aria-pressed', !explorer.hidden);
+  $('toggle-explorer').title = explorer.hidden ? 'Show the explorer' : 'Hide the explorer';
+});
 
 // Sidebar: "All" at the top, then one button per language, with "mastered / total"
 function renderSidebar() {

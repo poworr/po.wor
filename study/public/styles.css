@@ -43,6 +43,9 @@ body {
   grid-template-columns: 44px 200px 1fr;
   height: 100vh;
 }
+.layout.no-explorer {
+  grid-template-columns: 44px 1fr;   /* explorer hidden: the editor gets the room */
+}
 
 /* ===== Activity bar (S, L, T) ===== */
 .activity {
@@ -52,10 +55,18 @@ body {
   border-right: 1px solid var(--line);
 }
 .activity .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 44px;
-  font-size: 14px;
   color: var(--faint);
   border-left: 2px solid transparent;
+}
+.activity .toggle {
+  margin-top: auto;   /* at the bottom, like VS Code's settings */
+}
+.activity .toggle[aria-pressed="true"] {
+  border-left-color: transparent;   /* a switch, not a mode: no line */
 }
 .activity .btn:hover {
   color: var(--text);
@@ -401,7 +412,8 @@ dialog::backdrop {
 
 /* ===== Phones: everything in one column ===== */
 @media (max-width: 700px) {
-  .layout {
+  .layout,
+  .layout.no-explorer {
     grid-template-columns: 1fr;
     height: auto;
   }
@@ -415,6 +427,11 @@ dialog::backdrop {
   }
   .activity .btn[aria-pressed="true"] {
     border-bottom-color: var(--text);
+  }
+  .activity .toggle,
+  .activity .toggle[aria-pressed="true"] {
+    margin-top: 0;
+    border-bottom-color: transparent;
   }
   .explorer {
     max-height: 30vh;
