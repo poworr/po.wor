@@ -3,7 +3,8 @@
 // Lessons come from data/lessons.json. Each lesson is one block like this:
 //   { "id": "python-1", "lang": "python", "level": "Beginner", "title": "Say hello",
 //     "task": "Print Hello, world!", "solution": "print(\"Hello, world!\")",
-//     "expected": "Hello, world!", "remember": "a tip for remembering it (optional)" }
+//     "expected": "Hello, world!", "remember": "a tip for remembering it (optional)",
+//     "walkthrough": "how the solution works, line by line, then a common mistake" }
 // "expected" is what your code must print. HTML, CSS, Terminal, Homebrew and Git can't be
 // checked by output, so they use "mustInclude": the pieces your code must contain.
 
@@ -13,7 +14,8 @@ const drafts = {};        // what you typed in each lesson, so switching doesn't
 
 fetch('/api/lessons').then((r) => r.json()).then((data) => { lessons = data; });
 
-// Lessons you solved, remembered in this browser
+// Lessons you solved, remembered in this browser.
+// If storage is blocked (a private window), the ✓ marks just aren't kept: nothing else breaks.
 let solved = [];
 try { solved = JSON.parse(localStorage.getItem('study-solved')) || []; } catch (e) {}
 function saveSolved() {
@@ -61,6 +63,8 @@ function renderLessons() {
   $('lesson-code').value = drafts[lesson.id] !== undefined ? drafts[lesson.id] : STARTERS[lesson.lang] || '';
   $('lesson-solution').textContent = lesson.solution;
   $('lesson-solution').hidden = true;
+  $('lesson-walkthrough').textContent = lesson.walkthrough || '';
+  $('lesson-explain').hidden = true;
   $('lesson-output').textContent = '';
   $('lesson-result').textContent = '';
   $('lesson-preview').hidden = lesson.lang !== 'html' && lesson.lang !== 'css';
@@ -116,6 +120,7 @@ async function checkLesson() {
   }
 
   $('lesson-result').textContent = right ? '✓ Correct!' : 'Not yet, try again.';
+  if (right) $('lesson-explain').hidden = !lesson.walkthrough;   // now see why it works
   if (right && !solved.includes(lesson.id)) {
     solved.push(lesson.id);
     saveSolved();
@@ -126,7 +131,11 @@ async function checkLesson() {
 $('lesson-code').addEventListener('input', () => { drafts[lessonId] = $('lesson-code').value; });
 $('lesson-run').addEventListener('click', runLesson);
 $('lesson-check').addEventListener('click', checkLesson);
-$('lesson-show').addEventListener('click', () => { $('lesson-solution').hidden = !$('lesson-solution').hidden; });
+$('lesson-show').addEventListener('click', () => {
+  const show = $('lesson-solution').hidden;
+  $('lesson-solution').hidden = !show;
+  $('lesson-explain').hidden = !show || !openLesson().walkthrough;   // the solution comes with how it works
+});
 codeKeys($('lesson-code'), runLesson);   // codeKeys is in app.js
 
 // ===== Test: 10 random syntax cards of this language. Type each from memory. =====

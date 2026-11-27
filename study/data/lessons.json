@@ -11,7 +11,8 @@
       "Hello",
       "</p>"
     ],
-    "remember": "Open, fill, close."
+    "remember": "Open, fill, close.",
+    "walkthrough": "<p opens a paragraph element; p is the tag name.\nclass=\"note\" is an attribute: a name, an equals sign, and a value in quotes. CSS and JavaScript can find the element by this class.\nHello is the content, the text people see.\n</p> closes the element. The / means \"end of p\".\nCommon mistake: putting the attribute in the closing tag (</p class=\"note\">). Attributes only go in the opening tag."
   },
   {
     "id": "html-core-2",
@@ -27,7 +28,8 @@
       "</ul>",
       "<img src=\"logo.svg\" alt=\"logo\">"
     ],
-    "remember": "Close inner before outer. img is void."
+    "remember": "Close inner before outer. img is void.",
+    "walkthrough": "<ul> opens an unordered list, a list with bullets.\n<li>One</li> is a list item. It sits inside the ul, so it is nested: each li opens and closes before the ul closes.\nThe indent is only for people reading the code. The browser ignores it.\n<img src=\"logo.svg\" alt=\"logo\"> is a void element. It has no content, so it has no closing tag. src is the file to show, alt is the text used when the image cannot be seen.\nCommon mistake: writing </img>. There is no such closing tag; the browser treats it as an error and ignores it."
   },
   {
     "id": "html-1",
@@ -39,7 +41,8 @@
     "mustInclude": [
       "<h1>Hello</h1>",
       "<p>"
-    ]
+    ],
+    "walkthrough": "<h1>Hello</h1> is a level 1 heading, the top level. Headings go from h1 (most important) to h6 (least).\nIt shows big and bold because of the browser's default styles. You can change the look with CSS.\n<p>I am learning HTML.</p> is a paragraph. It starts on its own line because p is a block element.\nThe two elements sit next to each other, not inside each other. They are siblings.\nCommon mistake: picking h1, h2 or h3 for their size. Pick the level by meaning, and set the size with CSS."
   },
   {
     "id": "html-2",
@@ -53,7 +56,8 @@
       "href=\"https://google.com\"",
       "target=\"_blank\"",
       ">Google</a>"
-    ]
+    ],
+    "walkthrough": "<a starts an anchor element, which is a link.\nhref=\"https://google.com\" is the address the link goes to. Without href, an a is not a real link and Tab does not stop on it.\ntarget=\"_blank\" tells the browser to open the address in a new tab or window.\nGoogle is the content, the text people click. </a> closes the link.\nCommon mistake: writing href=\"google.com\" without https://. The browser reads it as a file next to the current page, not as the Google site."
   },
   {
     "id": "html-3",
@@ -68,7 +72,8 @@
       "<li>Eggs</li>",
       "<li>Bread</li>",
       "</ul>"
-    ]
+    ],
+    "walkthrough": "<ul> opens an unordered list. Each item gets a bullet.\n<li>Milk</li> is one list item. All three li elements are children of the ul.\nEach li closes before the next one opens, and the ul closes after the last li.\nThe order in the code is the order on the page.\nCommon mistake: putting text or a p straight inside the ul. Only li elements belong directly inside a ul; put everything else inside an li."
   },
   {
     "id": "html-4",
@@ -82,7 +87,8 @@
       "src=\"https://picsum.photos/200\"",
       "alt=\"A random photo\"",
       "<figcaption>Random</figcaption>"
-    ]
+    ],
+    "walkthrough": "<figure> groups a self-contained piece, like an image, with its caption.\n<img src=\"https://picsum.photos/200\" ...> is a void element: no content, no closing tag. src is where the image comes from.\nalt=\"A random photo\" describes the image. Screen readers read it, and the browser shows it if the image fails to load.\n<figcaption>Random</figcaption> is the caption. It goes inside the figure, as its first or last child.\nCommon mistake: leaving out alt. A screen reader may then read the file name instead. For a purely decorative image, write alt=\"\"."
   },
   {
     "id": "html-5",
@@ -99,7 +105,8 @@
       "required",
       "type=\"submit\"",
       "Sign up"
-    ]
+    ],
+    "walkthrough": "<form> wraps the fields that are sent together.\n<label for=\"email\">Email</label> names the field. for matches the input's id, so clicking the label focuses the input and screen readers read the label with it.\n<input id=\"email\" type=\"email\" required> is a void element. type=\"email\" makes the browser check the text looks like an email address.\nrequired is a boolean attribute: just being there means true, no value needed. The form will not send while the field is empty.\n<button type=\"submit\">Sign up</button> sends the form when clicked.\nCommon mistake: making for match the input's name or class instead of its id. Then the label is not linked to the field."
   },
   {
     "id": "html-6",
@@ -114,7 +121,8 @@
       "<th>Age</th>",
       "<td>Ada</td>",
       "<td>36</td>"
-    ]
+    ],
+    "walkthrough": "<table> opens the table.\n<tr> is a table row. Each row holds cells.\n<th>Name</th> is a header cell. It labels its column, and browsers show it bold and centered by default.\n<td>Ada</td> is a data cell, a normal value. The second row has two td, so they line up under the two th.\nThe browser adds a tbody around the rows for you, even though it is not written.\nCommon mistake: giving rows different numbers of cells. The table gets a ragged edge, with a gap where a cell is missing."
   },
   {
     "id": "html-7",
@@ -129,7 +137,8 @@
       "<main>",
       "<article>",
       "<footer>"
-    ]
+    ],
+    "walkthrough": "<header>My site</header> holds the intro of the page, like the site name.\n<nav> holds the main navigation links. href=\"/\" is the root of the site; href=\"/about\" is the about page on the same site.\n<main> holds the main content of the page. A page should have only one visible main.\n<article> is a piece that stands on its own, like a blog post. Here it nests an h2 and a p.\n<footer> holds closing info, like the copyright line.\nCommon mistake: using div for all of these. It looks the same, but screen readers lose the meaning, so users cannot jump straight to the nav or the main content."
   },
   {
     "id": "html-8",
@@ -142,7 +151,8 @@
       "<details>",
       "<summary>What is HTML?</summary>",
       "The structure of a web page."
-    ]
+    ],
+    "walkthrough": "<details> makes a box that opens and closes. It starts closed.\n<summary>What is HTML?</summary> is the part that is always shown. Clicking it opens or closes the box.\nThe text after the summary is the answer. It shows only while the box is open.\nThe browser does the toggling, so no JavaScript is needed. Add the open attribute to start it open.\nCommon mistake: leaving out summary. The browser then shows its own label, usually \"Details\", which tells the reader nothing."
   },
   {
     "id": "html-9",
@@ -156,7 +166,8 @@
       "aria-hidden=\"true\"",
       "tabindex=\"-1\"",
       ">Planner</a>"
-    ]
+    ],
+    "walkthrough": "<a href=\"planner.html\" ...>•</a> is a link to a file in the same folder as the current page.\naria-hidden=\"true\" hides the element from screen readers. A dot means nothing when read aloud.\ntabindex=\"-1\" takes it out of the Tab order. A mouse can still click it.\nThe second link, with the text Planner, is the one screen readers and keyboard users get. Nobody hears or tabs through the same link twice.\nCommon mistake: using aria-hidden=\"true\" without tabindex=\"-1\". Keyboard users can still Tab onto the link, and a screen reader lands on something it was told to hide."
   },
   {
     "id": "html-10",
@@ -173,7 +184,8 @@
       "d=\"M4 7.5",
       "Z\"",
       "fill=\"none\""
-    ]
+    ],
+    "walkthrough": "<svg opens a drawing. viewBox=\"0 0 24 24\" sets its own grid: start at 0 0, 24 units wide, 24 tall. width and height set the size on the page.\nfill=\"none\" means no fill inside shapes. stroke=\"currentColor\" draws the outline in the current text color. The path inside inherits both.\n<path d=\"...\"/> is the shape. d is a list of drawing commands. M4 7.5 moves the pen to x 4, y 7.5 without drawing.\nL12 3 draws a straight line to 12 3, and so on. Z closes the shape with a line back to the start.\nThe /> closes the path in the same tag, which is allowed inside SVG.\nCommon mistake: forgetting that y grows downward in SVG. 12 3 is near the top; 12 12 is lower down."
   },
   {
     "id": "html-11",
@@ -190,7 +202,8 @@
       "aria-controls=",
       "role=\"tabpanel\"",
       "hidden"
-    ]
+    ],
+    "walkthrough": "<div role=\"tablist\"> tells screen readers this div is a row of tabs. role changes what assistive tech says the element is, not how it looks or works.\n<button role=\"tab\"> is one tab. aria-controls=\"practice\" points at the id of the panel this tab controls.\naria-selected=\"true\" marks the current tab; the other has \"false\". You must change these yourself with JavaScript when the user switches tabs.\n<section id=\"practice\" role=\"tabpanel\"> is the content for one tab. Its id is what aria-controls points at.\nhidden is a boolean attribute. The browser does not show the element.\nCommon mistake: thinking the roles make the tabs work. They only describe. Clicking does nothing until a script swaps aria-selected and hidden."
   },
   {
     "id": "html-12",
@@ -205,7 +218,8 @@
       "addEventListener(\"click\"",
       "event.stopPropagation()"
     ],
-    "remember": "Events bubble up; stopPropagation pops the bubble."
+    "remember": "Events bubble up; stopPropagation pops the bubble.",
+    "walkthrough": "<div id=\"day\"> holds a button with id=\"dot\". The button is nested inside the div.\naddEventListener(\"click\", ...) runs a function each time the element is clicked. The day's function adds the text \" open\".\nA click on the dot bubbles: the dot's listener runs, then the click travels up to the day and its listener runs too.\nevent.stopPropagation() stops that trip up, so the day's listener never runs. event.target is the element clicked, the button, and its text becomes \"tick\".\nThe script comes after the HTML, so the elements already exist when getElementById looks for them.\nCommon mistake: writing event.stopPropagation without (). That only names the method and does not call it, so the click still bubbles."
   },
   {
     "id": "css-core-1",
@@ -220,7 +234,8 @@
       "padding:10px;",
       "}"
     ],
-    "remember": "WHO { WHAT: HOW; }"
+    "remember": "WHO { WHAT: HOW; }",
+    "walkthrough": ".note is the selector. The dot means \"class\", so it picks every element with class=\"note\".\nThe curly braces hold the declarations for that selector.\ncolor: red; is one declaration: a property, a colon, a value, a semicolon. color sets the text color.\npadding: 10px; adds 10px of space inside the element, between its content and its border. That is the padding layer of the box model.\nCommon mistake: forgetting the dot and writing note { ... }. That looks for a tag called note, so nothing matches."
   },
   {
     "id": "css-core-2",
@@ -235,7 +250,8 @@
       "@media(max-width:600px){",
       "font-size:14px"
     ],
-    "remember": "-- makes it, var() uses it, @media wraps rules."
+    "remember": "-- makes it, var() uses it, @media wraps rules.",
+    "walkthrough": ":root picks the top element of the page, the html element. --ink: blue; makes a custom property. Its name must start with two dashes.\nCustom properties inherit, so every element on the page can read --ink.\np { color: var(--ink); } reads it back. var() puts the value in its place, so the text is blue.\n@media (max-width: 600px) is an at-rule. It wraps normal rules and applies them only while the viewport is 600px wide or less.\nInside it, p { font-size: 14px; } is an ordinary rule.\nCommon mistake: writing var(ink) or var(-ink). The name in var() must match exactly, both dashes included, or the declaration does not work."
   },
   {
     "id": "css-1",
@@ -247,7 +263,8 @@
     "mustInclude": [
       "h1",
       "color:red"
-    ]
+    ],
+    "walkthrough": "h1 is a type selector. With no dot or hash, it matches a tag name, so it picks every h1 on the page.\n{ opens the declaration block and } closes it.\ncolor: red; sets the text color. color is the property, red is a named color value.\nThe last semicolon in a block is optional, but writing it keeps you safe when you add another line.\nCommon mistake: writing colour: red. CSS uses American spelling. The browser drops a property it does not know, and the text keeps its default color."
   },
   {
     "id": "css-2",
@@ -261,7 +278,8 @@
       "border:1pxsolidblack",
       "padding:10px",
       "border-radius:8px"
-    ]
+    ],
+    "walkthrough": ".box picks every element with class=\"box\".\nborder: 1px solid black; is a shorthand. It sets the width, the style and the color of all four borders in one line.\npadding: 10px; puts 10px of space inside the border, around the content. In the box model, padding sits between content and border.\nborder-radius: 8px; rounds each corner with an 8px radius. The background and the border follow the curve.\nCommon mistake: leaving out the style, as in border: 1px black. The style then defaults to none, so no border shows."
   },
   {
     "id": "css-3",
@@ -274,7 +292,8 @@
       ".row",
       "display:flex",
       "gap:12px"
-    ]
+    ],
+    "walkthrough": ".row { display: flex; } makes .row a flex container. Its direct children become flex items and line up in a row by default.\nOnly direct children are affected. Elements nested deeper keep their normal layout.\ngap: 12px; puts 12px of space between items, but not before the first or after the last.\nCommon mistake: putting display: flex on the children instead of the parent. Flex is set on the container; the items line up because their parent is flex."
   },
   {
     "id": "css-4",
@@ -288,7 +307,8 @@
       "background",
       "black",
       "color:white"
-    ]
+    ],
+    "walkthrough": ".button:hover is a selector with a pseudo-class. :hover matches while the mouse pointer is over the element.\nThe rule applies only during hover. When the pointer leaves, the button goes back to its normal styles.\nbackground: black; is a shorthand; here it sets the background color.\ncolor: white; sets the text color, so the text stays readable on black.\nCommon mistake: adding a space, as in .button :hover. That means \"any hovered element inside .button\", not the button itself."
   },
   {
     "id": "css-5",
@@ -301,7 +321,8 @@
       ".grid",
       "display:grid",
       "grid-template-columns"
-    ]
+    ],
+    "walkthrough": "display: grid; makes .grid a grid container. Its direct children become grid items.\ngrid-template-columns sets the columns. Each value in the list is one column.\n1fr means one fraction of the free space. Three 1fr values split the width into three equal columns.\nItems fill the cells left to right, then start a new row by themselves.\nCommon mistake: writing grid-template-columns: 3; to mean three columns. That value is invalid, so the browser ignores it. Use 1fr 1fr 1fr or repeat(3, 1fr)."
   },
   {
     "id": "css-6",
@@ -314,7 +335,8 @@
       ".parent",
       "display:grid",
       "place-items:center"
-    ]
+    ],
+    "walkthrough": "display: grid; makes .parent a grid container. With no columns set, there is one column, and each child gets its own row.\nplace-items: center; is a shorthand for align-items and justify-items. It centers each item in its grid area, both up and down and side to side.\nTo see the up-and-down centering, the parent must be taller than its content, for example by giving it a height.\nCommon mistake: putting place-items: center on the child. It belongs on the grid container; the child moves because its parent says so."
   },
   {
     "id": "css-7",
@@ -327,7 +349,8 @@
       ":root",
       "--main:tomato",
       "var(--main)"
-    ]
+    ],
+    "walkthrough": ":root picks the html element, the top of the page. A variable set there reaches everything, because custom properties inherit.\n--main: tomato; defines a custom property. tomato is a real CSS named color.\n.button { background: var(--main); } reads the variable. var() puts tomato in its place.\nChange --main in one place and every rule that uses it changes too. That is why themes use variables.\nCommon mistake: defining the variable inside .button and using it in another selector. A custom property only reaches its element and that element's descendants, so elsewhere var(--main) finds nothing."
   },
   {
     "id": "css-8",
@@ -340,7 +363,8 @@
       "@media",
       "min-width:900px",
       "grid-template-columns:1fr"
-    ]
+    ],
+    "walkthrough": "The first rule is the default for every screen: .grid is a grid with one column, and 1fr takes all the width.\n@media (min-width: 900px) is an at-rule. The rules inside apply only when the viewport is 900px wide or more.\nInside it, the .grid rule changes only grid-template-columns. display: grid still comes from the first rule.\nrepeat(3, 1fr) is short for 1fr 1fr 1fr: three equal columns.\nBoth rules use the same selector, so when the media query matches, the later one in the file wins. That is the cascade.\nCommon mistake: putting the @media block before the default rule. With equal specificity the default then comes later and wins, so the 3 columns never show."
   },
   {
     "id": "css-9",
@@ -354,7 +378,8 @@
       "@media",
       "max-width: 520px",
       "grid-template-columns: 1fr"
-    ]
+    ],
+    "walkthrough": "@media (max-width: 520px) wraps rules that apply only when the viewport is 520px wide or less.\nInside it, .row { ... } is an ordinary rule nested in the at-rule.\ndisplay: grid; switches .row to a grid. It beats the earlier display value because it comes later in the file with the same selector.\ngrid-template-columns: 1fr; makes one column that takes the full width, so the boxes stack.\nAbove 520px the query does not match, and the side-by-side layout stays.\nCommon mistake: leaving out the parentheses, as in @media max-width: 520px. The query is invalid, so the rules inside never apply."
   },
   {
     "id": "css-10",
@@ -369,7 +394,8 @@
       "counter-increment",
       "::before",
       "content: counter("
-    ]
+    ],
+    "walkthrough": ".row { counter-reset: n; } creates a counter named n on .row and sets it to 0.\n.row div { counter-increment: n; } adds 1 to n for each div inside .row. The space in the selector means \"inside\".\n.row div::before makes a pseudo-element: an extra box placed as the first child of each div.\ncontent: counter(n) \". \"; fills that box with the counter's current value, then the text \". \". You see 1. 2. 3.\nWithout content, ::before is not drawn at all.\nCommon mistake: putting counter-reset on each div. Every div then starts again at 0 and adds 1, so every box shows 1."
   },
   {
     "id": "css-11",
@@ -385,7 +411,8 @@
       "translateY(-5px)",
       ":hover",
       "animation: bounce 0.6s"
-    ]
+    ],
+    "walkthrough": "@keyframes bounce is an at-rule that names an animation. Inside it are steps, not selectors.\n0%, 30% and 100% are keyframes: points in time along the animation. Each one says what transform is at that moment.\ntranslateY(-5px) moves up 5px, because negative y is up. scale(1.12) makes it 12% bigger. Both go in one transform, separated by a space.\nThe browser fills in the frames between the steps.\nh1:hover { animation: bounce 0.6s ease; } plays it while the pointer is over the h1. animation is a shorthand: name, duration, timing function.\nCommon mistake: leaving out the duration. It defaults to 0s, so the animation finishes instantly and you see nothing."
   },
   {
     "id": "css-12",
@@ -402,7 +429,8 @@
       "position: absolute",
       "top: calc(100% + 10px)",
       "pointer-events: none"
-    ]
+    ],
+    "walkthrough": ".button { position: relative; } makes the button the reference box for absolutely positioned things inside it. On its own it does not move the button.\n.button::after adds a pseudo-element as the last child of the button. content: attr(class); fills it with the text of the button's class attribute.\nposition: absolute; takes the bubble out of normal flow and places it against the nearest positioned ancestor, here the button.\ntop: calc(100% + 10px); puts the bubble's top edge 10px below the bottom of the button. left: 0; lines it up with the button's left edge.\npointer-events: none; lets clicks pass through the bubble to whatever is under it.\nCommon mistake: forgetting position: relative on the button. The bubble then positions itself against an outer element, often the whole page, and lands far away."
   },
   {
     "id": "css-13",
@@ -415,7 +443,8 @@
       ".plan{margin-left:auto;",
       ".footer-nav .plan{margin-left:0"
     ],
-    "remember": "Count the classes: more wins."
+    "remember": "Count the classes: more wins.",
+    "walkthrough": ".plan { margin-left: auto; } sets the left margin to auto. In a flex row, an auto margin takes up the spare space, which pushes the plan to the right.\n.footer-nav .plan has two class selectors with a space between: a .plan that is inside a .footer-nav.\nBoth rules set margin-left on the same element. The cascade picks the more specific selector, and two classes beat one.\nSo in the footer, margin-left: 0 wins and the plan sits on the left. Everywhere else the first rule still applies.\nSpecificity counts before order: even if you swapped the two rules, the footer one would still win.\nCommon mistake: writing .footer-nav.plan with no space. That means one element with both classes, not a .plan inside a .footer-nav."
   },
   {
     "id": "javascript-core-1",
@@ -425,7 +454,8 @@
     "task": "Make a function add(a, b) that returns a + b. Store add(2, 3) in a const called total and print it.",
     "solution": "function add(a, b) {\n  return a + b;\n}\nconst total = add(2, 3);\nconsole.log(total);",
     "remember": "Name it, ( ) to call it, return to answer.",
-    "expected": "5"
+    "expected": "5",
+    "walkthrough": "function add(a, b) makes a function named add with two inputs, a and b.\nreturn a + b sends the sum back to whoever called it.\nadd(2, 3) calls it: a is 2, b is 3, so it returns 5.\nconst total keeps that 5 under a name, and console.log(total) prints 5.\nCommon mistake: forgetting return. The function then gives back undefined, and undefined is printed."
   },
   {
     "id": "javascript-core-2",
@@ -435,7 +465,8 @@
     "task": "Make an object pet with name \"Mo\" and a method speak() that returns name + \" says hi\". Print pet.speak().",
     "solution": "const pet = {\n  name: \"Mo\",\n  speak() { return this.name + \" says hi\"; }\n};\nconsole.log(pet.speak());",
     "remember": "A method is a function inside an object.",
-    "expected": "Mo says hi"
+    "expected": "Mo says hi",
+    "walkthrough": "const pet = { ... } makes an object: a bundle of named values.\nname: \"Mo\" is a plain value. speak() { ... } is a function stored inside the object, which is called a method.\npet.speak() uses the dot to reach the method, and the ( ) call it.\nInside the method, this is the object before the dot, so this.name is \"Mo\" and it returns \"Mo says hi\".\nconsole.log prints that string: Mo says hi.\nCommon mistake: writing speak as an arrow function, speak: () => this.name + \" says hi\". Arrow functions do not get their own this, so this.name is undefined and it prints \"undefined says hi\"."
   },
   {
     "id": "javascript-core-3",
@@ -445,7 +476,8 @@
     "task": "Make a function run(fn) that calls fn twice. Call run with an arrow function that prints tick. (This is how addEventListener works.)",
     "solution": "function run(fn) {\n  fn();\n  fn();\n}\nrun(() => console.log(\"tick\"));",
     "remember": "Pass the function, don't call it: fn, not fn().",
-    "expected": "tick\ntick"
+    "expected": "tick\ntick",
+    "walkthrough": "function run(fn) takes one input, fn, and expects it to be a function.\nInside, fn(); fn(); calls that function twice.\nrun(() => console.log(\"tick\")) passes an arrow function as the argument. It is not called yet, just handed over.\nrun calls it two times, so tick is printed on two lines.\nCommon mistake: writing run(console.log(\"tick\")). That calls console.log right away, prints tick once, and passes its result, undefined, to run. Then fn() fails with TypeError: fn is not a function."
   },
   {
     "id": "javascript-1",
@@ -454,7 +486,8 @@
     "title": "Say hello",
     "task": "Print Hello, world! with console.log.",
     "solution": "console.log(\"Hello, world!\");",
-    "expected": "Hello, world!"
+    "expected": "Hello, world!",
+    "walkthrough": "console is an object Node gives you, and log is a method on it. The dot reaches the method.\nThe ( ) call it, and what goes inside is the value to print.\n\"Hello, world!\" is a string value. The quotes mark where the text starts and ends; they are not printed.\nSo the line prints Hello, world!\nCommon mistake: leaving out the quotes. JavaScript then tries to read Hello as code, not text, and the line fails with an error."
   },
   {
     "id": "javascript-2",
@@ -463,7 +496,8 @@
     "title": "Variables",
     "task": "Make a const name set to \"Ada\" and print Hi Ada using a template string.",
     "solution": "const name = \"Ada\";\nconsole.log(`Hi ${name}`);",
-    "expected": "Hi Ada"
+    "expected": "Hi Ada",
+    "walkthrough": "const name = \"Ada\" stores the string \"Ada\" under the name name. const means it cannot be reassigned later.\n`Hi ${name}` is a template literal: a string written with backticks.\n${name} inside it is replaced by the value of name, so the string becomes \"Hi Ada\".\nconsole.log prints Hi Ada.\nCommon mistake: using normal quotes, \"Hi ${name}\". Only backticks fill in ${ }, so it prints Hi ${name} as plain text."
   },
   {
     "id": "javascript-3",
@@ -472,7 +506,8 @@
     "title": "Count to five",
     "task": "Use a for loop to print the numbers 1 to 5, one per line.",
     "solution": "for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}",
-    "expected": "1\n2\n3\n4\n5"
+    "expected": "1\n2\n3\n4\n5",
+    "walkthrough": "for (let i = 1; i <= 5; i++) has three parts: start, condition, step.\nlet i = 1 makes a counter that starts at 1. let is used because the value changes.\nBefore each round, i <= 5 is checked. If it is true, the body runs; if false, the loop stops.\nThe body console.log(i) prints the current number, then i++ adds 1.\nSo it prints 1, 2, 3, 4, 5, each on its own line.\nCommon mistake: writing i < 5. The loop stops before 5, so only 1 to 4 are printed."
   },
   {
     "id": "javascript-4",
@@ -481,7 +516,8 @@
     "title": "Even numbers",
     "task": "From [1, 2, 3, 4, 5, 6] print only the even numbers as an array, using filter.",
     "solution": "const nums = [1, 2, 3, 4, 5, 6];\nconsole.log(nums.filter((n) => n % 2 === 0));",
-    "expected": "[ 2, 4, 6 ]"
+    "expected": "[ 2, 4, 6 ]",
+    "walkthrough": "const nums = [1, 2, 3, 4, 5, 6] makes an array, an ordered list of values.\nnums.filter(...) is a method call that takes a function and keeps only the items where that function returns true.\n(n) => n % 2 === 0 gets each number as n. % gives the remainder after dividing by 2, and === 0 checks it is zero, so it is true for even numbers.\nfilter returns a new array [2, 4, 6] and leaves nums unchanged. console.log prints it as [ 2, 4, 6 ].\nCommon mistake: adding braces, (n) => { n % 2 === 0 }. With braces the arrow needs return, so every call gives undefined and the result is []."
   },
   {
     "id": "javascript-5",
@@ -490,7 +526,8 @@
     "title": "Total price",
     "task": "The cart is [{ price: 3 }, { price: 7 }, { price: 10 }]. Print the total using reduce.",
     "solution": "const cart = [{ price: 3 }, { price: 7 }, { price: 10 }];\nconsole.log(cart.reduce((sum, item) => sum + item.price, 0));",
-    "expected": "20"
+    "expected": "20",
+    "walkthrough": "cart is an array of objects, each with a price.\ncart.reduce(fn, 0) walks the array and carries one running value. The 0 is where that value starts.\nFor each item, (sum, item) => sum + item.price returns the new running total: 0 + 3 = 3, 3 + 7 = 10, 10 + 10 = 20.\nreduce returns the last total, 20, and console.log prints 20.\nCommon mistake: leaving out the 0. Then the first object itself becomes sum, and adding a number to an object makes a string, so it prints [object Object]710."
   },
   {
     "id": "javascript-6",
@@ -499,7 +536,8 @@
     "title": "FizzBuzz",
     "task": "Print 1 to 15. For multiples of 3 print Fizz, of 5 print Buzz, of both print FizzBuzz.",
     "solution": "for (let i = 1; i <= 15; i++) {\n  if (i % 15 === 0) console.log(\"FizzBuzz\");\n  else if (i % 3 === 0) console.log(\"Fizz\");\n  else if (i % 5 === 0) console.log(\"Buzz\");\n  else console.log(i);\n}",
-    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz"
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+    "walkthrough": "The for loop runs i from 1 to 15.\ni % 15 === 0 checks if i divides evenly by 15. If so it prints FizzBuzz and skips the other branches.\nelse if checks the next condition only when the one before was false: divisible by 3 prints Fizz, by 5 prints Buzz.\nThe final else prints the number itself when none matched.\nSo 3 prints Fizz, 5 prints Buzz, 15 prints FizzBuzz, and the rest print as numbers.\nCommon mistake: checking % 3 first. Then 15 matches that branch, prints Fizz, and FizzBuzz never shows."
   },
   {
     "id": "javascript-7",
@@ -508,7 +546,8 @@
     "title": "Count words",
     "task": "Count each word in \"the cat and the hat\" and print the object, like { the: 2, cat: 1, ... }.",
     "solution": "const counts = {};\nfor (const word of \"the cat and the hat\".split(\" \")) {\n  counts[word] = (counts[word] || 0) + 1;\n}\nconsole.log(counts);",
-    "expected": "{ the: 2, cat: 1, and: 1, hat: 1 }"
+    "expected": "{ the: 2, cat: 1, and: 1, hat: 1 }",
+    "walkthrough": "const counts = {} makes an empty object. It will map each word to how many times it appears.\n\"the cat and the hat\".split(\" \") cuts the string at each space and returns an array of 5 words.\nfor (const word of ...) gives you one word at a time.\ncounts[word] uses square brackets because the key is in a variable. (counts[word] || 0) is 0 the first time, since a missing key is undefined; then 1 is added and stored back.\nAfter the loop, console.log(counts) prints { the: 2, cat: 1, and: 1, hat: 1 }.\nCommon mistake: writing counts.word. The dot uses the literal key \"word\", so everything is counted under one key named word."
   },
   {
     "id": "javascript-8",
@@ -517,7 +556,8 @@
     "title": "A class",
     "task": "Make a class BankAccount with deposit(amount) and a balance. Deposit 50 then 25, then print the balance.",
     "solution": "class BankAccount {\n  constructor() { this.balance = 0; }\n  deposit(amount) { this.balance += amount; }\n}\nconst account = new BankAccount();\naccount.deposit(50);\naccount.deposit(25);\nconsole.log(account.balance);",
-    "expected": "75"
+    "expected": "75",
+    "walkthrough": "class BankAccount { ... } is a blueprint for making objects.\nconstructor() runs once when an object is made. this.balance = 0 gives the new object a balance of 0.\ndeposit(amount) is a method. this.balance += amount adds the amount to that object's balance.\nnew BankAccount() makes the object. account.deposit(50) then account.deposit(25) bring balance to 75.\nconsole.log(account.balance) reads the property with the dot and prints 75.\nCommon mistake: forgetting new, BankAccount(). Classes cannot be called that way, and you get TypeError: Class constructor BankAccount cannot be invoked without 'new'."
   },
   {
     "id": "javascript-9",
@@ -527,7 +567,8 @@
     "task": "Print how many characters \"日本語😀\" has, counting the emoji as one.",
     "remember": "Spread it out, then count: [...text].length.",
     "solution": "const text = \"日本語😀\";\nconsole.log([...text].length);",
-    "expected": "4"
+    "expected": "4",
+    "walkthrough": "const text = \"日本語😀\" is a string of four characters as you see them.\nJavaScript stores strings as UTF-16 code units. The emoji needs two of them, so text.length is 5.\n[...text] spreads the string into an array. Spreading goes by code point, so the emoji stays as one item.\nThe array has 4 items, so [...text].length is 4 and that is printed.\nCommon mistake: using text.length to count characters. It prints 5 here, because it counts code units, not characters."
   },
   {
     "id": "javascript-10",
@@ -537,7 +578,8 @@
     "task": "Make an object KEYS where d gives \"day\" and w gives \"week\" (each as a function). Print what KEYS[\"w\"] gives when you call it.",
     "remember": "Look it up, then call it: KEYS[key]().",
     "solution": "const KEYS = {\n  d: () => \"day\",\n  w: () => \"week\"\n};\nconsole.log(KEYS[\"w\"]());",
-    "expected": "week"
+    "expected": "week",
+    "walkthrough": "const KEYS = { ... } is an object where each value is a function.\nd: () => \"day\" is an arrow function that returns \"day\". w returns \"week\".\nKEYS[\"w\"] looks up the key \"w\" with square brackets and gets the function, not its result.\nThe () after it calls that function, which returns \"week\". console.log prints week.\nCommon mistake: leaving off the (). KEYS[\"w\"] alone is the function itself, so Node prints [Function: w] instead of week."
   },
   {
     "id": "javascript-11",
@@ -547,7 +589,8 @@
     "task": "From new Date(2026, 0, 5), print 2026-01-05 (with the zeros).",
     "remember": "getMonth() + 1 because January is 0. padStart(2, \"0\") adds the zero.",
     "solution": "const d = new Date(2026, 0, 5);\nconst key = d.getFullYear() + \"-\" +\n  String(d.getMonth() + 1).padStart(2, \"0\") + \"-\" +\n  String(d.getDate()).padStart(2, \"0\");\nconsole.log(key);",
-    "expected": "2026-01-05"
+    "expected": "2026-01-05",
+    "walkthrough": "new Date(2026, 0, 5) makes a date. The month is counted from 0, so 0 means January: this is 5 January 2026.\nd.getFullYear() gives 2026. d.getMonth() gives 0, so + 1 turns it into the real month number, 1.\nString(...) turns the number into text, and .padStart(2, \"0\") adds a 0 in front until it is 2 characters long: \"01\". The day becomes \"05\" the same way.\nThe + signs join the pieces into one string, and console.log(key) prints 2026-01-05.\nCommon mistake: forgetting the + 1 on getMonth(). January comes out as 00, so it prints 2026-00-05."
   },
   {
     "id": "javascript-12",
@@ -557,7 +600,8 @@
     "task": "Write kind(line): for a line starting with 1 to 6 # and a space, give \"h\" + the number of # + \": \" + the rest; otherwise \"text: \" + the line. Print kind(\"## Shopping\") and kind(\"hello\").",
     "remember": "match gives null or [whole, group 1, group 2]. ( ) = capture.",
     "solution": "function kind(line) {\n  const m = line.match(/^(#{1,6}) (.*)/);\n  if (m) return \"h\" + m[1].length + \": \" + m[2];\n  return \"text: \" + line;\n}\nconsole.log(kind(\"## Shopping\"));\nconsole.log(kind(\"hello\"));",
-    "expected": "h2: Shopping\ntext: hello"
+    "expected": "h2: Shopping\ntext: hello",
+    "walkthrough": "function kind(line) takes one line of text and returns a label for it.\nline.match(/^(#{1,6}) (.*)/) tests a regular expression: ^ is the start, #{1,6} is 1 to 6 # signs, then a space, then (.*) is the rest. The ( ) parts are captured.\nIf it matches, m is an array: m[1] is the # signs and m[2] is the rest. If not, m is null.\nFor \"## Shopping\", m[1] is \"##\" with length 2, so it returns \"h2: Shopping\".\nFor \"hello\", m is null, the if is skipped, and it returns \"text: hello\". The two console.log lines print those two results.\nCommon mistake: using m[0] for the text. m[0] is the whole match, \"## Shopping\", not just the part after the space."
   },
   {
     "id": "javascript-13",
@@ -567,7 +611,8 @@
     "task": "Write markDone(line): \"• x\" becomes \"× x\", \"× x\" becomes \"• x\", anything else stays the same. Print markDone(\"• buy milk\"), markDone(\"× buy milk\") and markDone(\"– a note\").",
     "remember": "line[0] is the bullet, line.slice(2) is the text after \"• \".",
     "solution": "function markDone(line) {\n  const text = line.slice(2);\n  if (line[0] === \"•\") return \"× \" + text;\n  if (line[0] === \"×\") return \"• \" + text;\n  return line;\n}\nconsole.log(markDone(\"• buy milk\"));\nconsole.log(markDone(\"× buy milk\"));\nconsole.log(markDone(\"– a note\"));",
-    "expected": "× buy milk\n• buy milk\n– a note"
+    "expected": "× buy milk\n• buy milk\n– a note",
+    "walkthrough": "function markDone(line) takes a line and returns it with its mark flipped.\nline.slice(2) drops the first 2 characters, the mark and the space, so text is \"buy milk\".\nline[0] reads the first character. If it is •, it returns \"× \" + text. If it is ×, it returns \"• \" + text.\nreturn ends the function right there, so only one branch ever runs. Any other line, like the – note, falls through to return line unchanged.\nThe three calls print × buy milk, • buy milk, and – a note.\nCommon mistake: using line.slice(1). That keeps the space after the mark, so the result has two spaces, like ×  buy milk."
   },
   {
     "id": "javascript-14",
@@ -577,7 +622,8 @@
     "task": "Like the planner's /t: write timeStamp(text, date). If text ends with \"/t \" (at the start or after a space), swap it for the time from date as HH:MM and a space; otherwise give text back. Print timeStamp(\"meeting /t \", new Date(2026, 10, 27, 14, 5)), timeStamp(\"/t \", new Date(2026, 10, 27, 9, 30)) and timeStamp(\"a/t \", new Date()).",
     "remember": "toTimeString().slice(0, 5) = HH:MM. An object of functions: SLASH[word](date).",
     "solution": "const SLASH = {\n  t: (date) => date.toTimeString().slice(0, 5)\n};\n\nfunction timeStamp(text, date) {\n  const word = text.match(/(?:^|\\s)\\/(\\w+) $/);\n  if (!word || !SLASH[word[1]]) return text;\n  const start = text.length - word[1].length - 2;   // where the / is\n  return text.slice(0, start) + SLASH[word[1]](date) + \" \";\n}\n\nconsole.log(timeStamp(\"meeting /t \", new Date(2026, 10, 27, 14, 5)));\nconsole.log(timeStamp(\"/t \", new Date(2026, 10, 27, 9, 30)));\nconsole.log(timeStamp(\"a/t \", new Date()));",
-    "expected": "meeting 14:05 \n09:30 \na/t "
+    "expected": "meeting 14:05 \n09:30 \na/t ",
+    "walkthrough": "SLASH is an object whose t key holds a function. date.toTimeString() gives text like \"14:05:00 GMT...\", and .slice(0, 5) keeps \"14:05\".\nIn timeStamp, text.match(...) looks for a / at the start or after a space, then a word, then one space at the very end. (\\w+) captures the word, so word[1] is \"t\".\nIf there is no match, or SLASH has no function for that word, it returns the text unchanged. The ! means \"not\".\nstart = text.length - word[1].length - 2 finds where the / is: the 2 counts the / and the final space.\nIt keeps the text before the /, adds SLASH[\"t\"](date), which calls the function, and adds a space back. So it prints \"meeting 14:05 \" and \"09:30 \".\nCommon mistake: expecting \"a/t \" to change. The / must be at the start or after a space, so the match fails and it prints a/t unchanged, which is on purpose here."
   },
   {
     "id": "javascript-15",
@@ -587,7 +633,8 @@
     "task": "lines is [\"a\", \"bc\", \"d\"]. Like pressing Enter in the middle of \"bc\": replace it with \"b\" and \"c\" using splice, then print the lines joined with commas.",
     "remember": "splice(where, how many to remove, …what to add).",
     "solution": "const lines = [\"a\", \"bc\", \"d\"];\nlines.splice(1, 1, \"b\", \"c\");\nconsole.log(lines.join(\",\"));",
-    "expected": "a,b,c,d"
+    "expected": "a,b,c,d",
+    "walkthrough": "const lines = [\"a\", \"bc\", \"d\"] makes an array. const stops you reassigning lines, but the array itself can still change.\nlines.splice(1, 1, \"b\", \"c\") goes to index 1, removes 1 item (\"bc\"), and puts \"b\" and \"c\" in its place.\nsplice changes the array itself, so lines is now [\"a\", \"b\", \"c\", \"d\"].\nlines.join(\",\") glues the items into one string with commas between them, and console.log prints a,b,c,d.\nCommon mistake: doing const result = lines.splice(...) and printing result. splice returns the removed items, so you get [ 'bc' ], not the new array."
   },
   {
     "id": "javascript-16",
@@ -597,7 +644,8 @@
     "task": "Write monday(date) that gives the Monday of that week (weeks start on Monday). Print the day of the month for new Date(2026, 10, 27) (a Friday) and new Date(2026, 10, 29) (a Sunday).",
     "remember": "getDay: Sunday is 0. (getDay() + 6) % 7 = days since Monday.",
     "solution": "function monday(date) {\n  const copy = new Date(date);\n  copy.setDate(copy.getDate() - (copy.getDay() + 6) % 7);\n  return copy;\n}\nconsole.log(monday(new Date(2026, 10, 27)).getDate());\nconsole.log(monday(new Date(2026, 10, 29)).getDate());",
-    "expected": "23\n23"
+    "expected": "23\n23",
+    "walkthrough": "function monday(date) returns the Monday of the same week.\nnew Date(date) makes a copy, so the date passed in is not changed.\ncopy.getDay() gives 0 for Sunday up to 6 for Saturday. (getDay() + 6) % 7 turns that into days since Monday: Monday 0, Sunday 6.\ncopy.setDate(copy.getDate() - that) moves the copy back that many days.\n27 November 2026 is a Friday, 4 days after Monday, so 27 - 4 = 23. The 29th is a Sunday, 6 days after Monday, so 29 - 6 = 23. Both lines print 23.\nCommon mistake: using copy.getDay() - 1. For a Sunday that is -1, so it moves forward one day to the next Monday instead of back."
   },
   {
     "id": "javascript-17",
@@ -607,7 +655,8 @@
     "task": "Write nextDay(today, word) that finds the day name starting with word (like \"fri\") and returns how many days until the next one (not today: use 7 then). Today is a Friday (day 5). Print nextDay(5, \"fri\"), nextDay(5, \"mon\") and nextDay(5, \"sat\").",
     "solution": "const DAYS = [\"sunday\", \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\"];\n\nfunction nextDay(today, word) {\n  const n = DAYS.findIndex((name) => name.startsWith(word));\n  return (n - today + 7) % 7 || 7;\n}\n\nconsole.log(nextDay(5, \"fri\"));\nconsole.log(nextDay(5, \"mon\"));\nconsole.log(nextDay(5, \"sat\"));",
     "expected": "7\n3\n1",
-    "remember": "% 7 wraps the week around; || 7 turns \"0 days\" into \"next week\"."
+    "remember": "% 7 wraps the week around; || 7 turns \"0 days\" into \"next week\".",
+    "walkthrough": "DAYS is an array of day names; each index is the day number, with sunday at 0.\nDAYS.findIndex(...) returns the index of the first name where the function is true. name.startsWith(word) lets \"fri\" match \"friday\", giving 5.\n(n - today + 7) % 7 counts days forward. The + 7 keeps it from going negative before the %.\n|| 7 replaces a 0 with 7, because 0 is falsy. So the same day means next week, not today.\nWith today = 5 (Friday): fri gives 0 then 7, mon gives 3, sat gives 1. It prints 7, 3, 1.\nCommon mistake: leaving out || 7. Then asking for Friday on a Friday returns 0, meaning today."
   },
   {
     "id": "javascript-18",
@@ -617,7 +666,8 @@
     "task": "Today is Friday 27 November 2026. Write moveTo(line): if the line ends with @ and a day name (like @fri or @mon), print the line without the @word, then the date of the next one as \"Fri 4 Dec\". Try \"• call mum @fri\" and \"• pay rent @mon\".",
     "solution": "const DAYS = [\"sun\", \"mon\", \"tue\", \"wed\", \"thu\", \"fri\", \"sat\"];\nconst MONTHS = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"];\nconst today = new Date(2026, 10, 27);\n\nfunction moveTo(line) {\n  const m = line.match(/(?:^|\\s)@(\\w+)\\s*$/);\n  const n = DAYS.findIndex((name) => m[1].startsWith(name));\n  const date = new Date(today);\n  date.setDate(today.getDate() + ((n - today.getDay() + 7) % 7 || 7));\n  console.log(line.replace(/\\s*@\\w+\\s*$/, \"\"));\n  console.log(DAYS[date.getDay()][0].toUpperCase() + DAYS[date.getDay()].slice(1) + \" \" + date.getDate() + \" \" + MONTHS[date.getMonth()]);\n}\n\nmoveTo(\"• call mum @fri\");\nmoveTo(\"• pay rent @mon\");",
     "remember": "Find the @word with a regex, the day with findIndex, the gap with % 7 || 7.",
-    "expected": "• call mum\nFri 4 Dec\n• pay rent\nMon 30 Nov"
+    "expected": "• call mum\nFri 4 Dec\n• pay rent\nMon 30 Nov",
+    "walkthrough": "today is a fixed date, 27 November 2026, a Friday. DAYS and MONTHS are arrays used to turn numbers into names.\nline.match(...) finds @word at the end of the line, so m[1] is \"fri\". findIndex gives its day number n, here 5.\nnew Date(today) copies today. setDate(today.getDate() + ...) moves the copy forward by the days until that weekday, using 7 if it is the same day. setDate handles rolling into December.\nline.replace(/\\s*@\\w+\\s*$/, \"\") removes the @word and the spaces around it, so it prints • call mum.\nThe next line builds a name: DAYS[...][0].toUpperCase() makes the first letter capital, .slice(1) adds the rest, then the day number and month name. It prints Fri 4 Dec, then • pay rent and Mon 30 Nov.\nCommon mistake: forgetting the copy and calling setDate on today itself. today then changes, and the second call counts from the wrong day."
   },
   {
     "id": "javascript-19",
@@ -627,7 +677,8 @@
     "task": "Write countDown(n) that prints n, then calls itself with n - 1, and prints go when n is 0. Call countDown(3).",
     "solution": "function countDown(n) {\n  if (n === 0) {\n    console.log(\"go\");\n    return;\n  }\n  console.log(n);\n  countDown(n - 1);\n}\n\ncountDown(3);",
     "remember": "A stop case first, then a smaller step.",
-    "expected": "3\n2\n1\ngo"
+    "expected": "3\n2\n1\ngo",
+    "walkthrough": "function countDown(n) is recursive: it calls itself.\nif (n === 0) is the base case. It prints go, and return stops this call.\nOtherwise it prints n, then calls countDown(n - 1) with a smaller number.\ncountDown(3) prints 3, then countDown(2) prints 2, then 1, then countDown(0) prints go.\nCommon mistake: forgetting the return in the base case. After go it keeps going, prints 0, calls countDown(-1), never reaches 0 again, and crashes with RangeError: Maximum call stack size exceeded."
   },
   {
     "id": "javascript-20",
@@ -637,7 +688,8 @@
     "task": "Here is a list of projects: home (index.html) and planner (planner.html). Add a third object for japanese (japanese.html). Then loop over the list with for...of and print each one as \"name: href\".",
     "solution": "const PROJECTS = [\n  { name: \"home\", href: \"index.html\" },\n  { name: \"planner\", href: \"planner.html\" },\n  { name: \"japanese\", href: \"japanese.html\" }\n];\n\nfor (const project of PROJECTS) {\n  console.log(project.name + \": \" + project.href);\n}",
     "remember": "Data in a list, code in a loop. Add a line, not code.",
-    "expected": "home: index.html\nplanner: planner.html\njapanese: japanese.html"
+    "expected": "home: index.html\nplanner: planner.html\njapanese: japanese.html",
+    "walkthrough": "PROJECTS is an array of objects. Each object has two properties, name and href.\nfor (const project of PROJECTS) gives you each object in order, one per round.\nproject.name and project.href read the properties with the dot.\nThe + signs join them with \": \" in between, so it prints home: index.html, then the planner and japanese lines.\nCommon mistake: using for...in instead of for...of. for...in gives the indexes \"0\", \"1\", \"2\", which have no name, so it prints undefined: undefined."
   },
   {
     "id": "javascript-21",
@@ -647,7 +699,8 @@
     "task": "Sort [\"notes\", \"• call mum\", \"idea\", \"• buy milk\", \"end\"] so the lines starting with \"• \" come first, and the other lines keep their order. Use sort with a comparator that subtracts two booleans. Print each line.",
     "solution": "const lines = [\"notes\", \"• call mum\", \"idea\", \"• buy milk\", \"end\"];\nconst isTask = (line) => line.startsWith(\"• \");\n\nconst sorted = [...lines].sort((a, b) => isTask(b) - isTask(a));\nfor (const line of sorted) console.log(line);",
     "remember": "true - false = 1, so b - a puts the trues first. Sort keeps ties in order.",
-    "expected": "• call mum\n• buy milk\nnotes\nidea\nend"
+    "expected": "• call mum\n• buy milk\nnotes\nidea\nend",
+    "walkthrough": "lines is an array of strings. isTask is an arrow function that returns true when a line starts with \"• \".\n[...lines] copies the array first, because sort changes the array it is called on.\n.sort((a, b) => isTask(b) - isTask(a)) compares two lines at a time. Subtracting booleans turns them into numbers, 1 for true and 0 for false.\nIf b is a task and a is not, the result is 1, which puts b first. When both are the same, it is 0, and sort keeps their original order.\nSo the two tasks come first, then notes, idea, end, and the for...of loop prints each line.\nCommon mistake: sorting lines directly without the copy. It works, but the original lines array is changed too, which surprises any code that still uses it."
   },
   {
     "id": "node-core-1",
@@ -657,7 +710,8 @@
     "task": "require the path module and print path.join(\"data\", \"css.json\").",
     "solution": "const path = require(\"path\");\nconsole.log(path.join(\"data\", \"css.json\"));",
     "remember": "require = give me that toolbox.",
-    "expected": "data/css.json"
+    "expected": "data/css.json",
+    "walkthrough": "require(\"path\") loads Node's built-in path module and returns an object full of functions.\nconst path keeps that object under a name.\npath.join is a method on that object. It joins its string arguments with the right separator for the system.\nOn macOS or Linux the separator is /, so it prints data/css.json. On Windows it would use a backslash.\nCommon mistake: using path without the require line. In a script file it is not defined, so you get ReferenceError: path is not defined."
   },
   {
     "id": "node-core-2",
@@ -667,7 +721,8 @@
     "task": "Print first, then use setTimeout with 0 ms to print second, then print third. Watch the order.",
     "solution": "console.log(\"first\");\nsetTimeout(() => console.log(\"second\"), 0);\nconsole.log(\"third\");",
     "remember": "Callbacks run after the rest of your code.",
-    "expected": "first\nthird\nsecond"
+    "expected": "first\nthird\nsecond",
+    "walkthrough": "console.log(\"first\") runs right away and prints first.\nsetTimeout(fn, 0) does not run fn now. It schedules it to run later, after at least 0 ms.\nNode keeps going, and console.log(\"third\") prints third.\nOnly after the rest of the code has finished does Node run the timer callback, which prints second.\nCommon mistake: thinking a 0 delay means \"right now\". The callback still waits until the current code is done, so second comes last."
   },
   {
     "id": "node-1",
@@ -676,7 +731,8 @@
     "title": "Built-in modules",
     "task": "Load the built-in os module with require, and print what type os.homedir() gives back (use typeof).",
     "solution": "const os = require(\"os\");\nconsole.log(typeof os.homedir());",
-    "expected": "string"
+    "expected": "string",
+    "walkthrough": "require(\"os\") loads the built-in os module, an object with information about the computer.\nos.homedir() calls a method that returns the path of your home folder as a string.\ntypeof is an operator that gives the type of a value as text.\nSo typeof os.homedir() is \"string\" and console.log prints string.\nCommon mistake: leaving off the (), typeof os.homedir. That asks about the method itself, not its result, so it prints function."
   },
   {
     "id": "node-2",
@@ -685,7 +741,8 @@
     "title": "Join paths",
     "task": "Use path.join to join \"users\", \"ada\" and \"notes.txt\" and print it.",
     "solution": "const path = require(\"path\");\nconsole.log(path.join(\"users\", \"ada\", \"notes.txt\"));",
-    "expected": "users/ada/notes.txt"
+    "expected": "users/ada/notes.txt",
+    "walkthrough": "require(\"path\") loads the built-in path module, and const path stores it.\npath.join(\"users\", \"ada\", \"notes.txt\") takes three strings and joins them into one path.\nIt puts the system's separator between them, / on macOS and Linux, and cleans up doubled slashes.\nconsole.log prints users/ada/notes.txt.\nCommon mistake: writing require(\"Path\") with a capital P. Module names must match exactly, so Node throws Cannot find module 'Path'."
   },
   {
     "id": "node-3",
@@ -694,7 +751,8 @@
     "title": "Write and read a file",
     "task": "Write Hello file into hello.txt, then read it back and print it.",
     "solution": "const fs = require(\"fs\");\nfs.writeFileSync(\"hello.txt\", \"Hello file\");\nconsole.log(fs.readFileSync(\"hello.txt\", \"utf8\"));",
-    "expected": "Hello file"
+    "expected": "Hello file",
+    "walkthrough": "require(\"fs\") loads the built-in file system module.\nfs.writeFileSync(\"hello.txt\", \"Hello file\") creates the file, or replaces it, with that text. Sync means Node waits until it is done before the next line.\nfs.readFileSync(\"hello.txt\", \"utf8\") reads the file back. The \"utf8\" tells it to return a string.\nconsole.log prints that string: Hello file.\nCommon mistake: leaving out \"utf8\". readFileSync then returns a Buffer, raw bytes, and it prints something like <Buffer 48 65 6c 6c 6f ...>."
   },
   {
     "id": "node-4",
@@ -703,7 +761,8 @@
     "title": "JSON file",
     "task": "Save { \"score\": 10 } to score.json, read it back, add 5 and print the new score.",
     "solution": "const fs = require(\"fs\");\nfs.writeFileSync(\"score.json\", JSON.stringify({ score: 10 }));\nconst data = JSON.parse(fs.readFileSync(\"score.json\", \"utf8\"));\nconsole.log(data.score + 5);",
-    "expected": "15"
+    "expected": "15",
+    "walkthrough": "JSON.stringify({ score: 10 }) turns the object into the text {\"score\":10}, because files can only hold text or bytes.\nfs.writeFileSync saves that text to score.json.\nfs.readFileSync(\"score.json\", \"utf8\") reads it back as a string, and JSON.parse turns the string back into an object.\ndata.score is the number 10, so data.score + 5 is 15, and 15 is printed.\nCommon mistake: skipping JSON.parse. data is then a string, data.score is undefined, and undefined + 5 prints NaN."
   },
   {
     "id": "node-5",
@@ -712,7 +771,8 @@
     "title": "Wait with await",
     "task": "Write an async function that waits 200 ms with timers/promises, then prints done.",
     "solution": "const { setTimeout: wait } = require(\"timers/promises\");\nasync function main() {\n  await wait(200);\n  console.log(\"done\");\n}\nmain();",
-    "expected": "done"
+    "expected": "done",
+    "walkthrough": "require(\"timers/promises\") returns an object. { setTimeout: wait } takes its setTimeout property and names it wait.\nThis setTimeout returns a promise that settles after the given milliseconds.\nasync function main() is a function that may use await inside it.\nawait wait(200) pauses main for 200 ms without blocking Node, then console.log prints done.\nmain() starts it.\nCommon mistake: leaving out await. Then main does not pause, and done is printed right away instead of after 200 ms."
   },
   {
     "id": "node-6",
@@ -721,7 +781,8 @@
     "title": "Events",
     "task": "Make an EventEmitter. Listen for \"order\" and print Order for <item>. Emit it with \"coffee\".",
     "solution": "const EventEmitter = require(\"events\");\nconst shop = new EventEmitter();\nshop.on(\"order\", (item) => console.log(\"Order for \" + item));\nshop.emit(\"order\", \"coffee\");",
-    "expected": "Order for coffee"
+    "expected": "Order for coffee",
+    "walkthrough": "require(\"events\") returns the EventEmitter class, and new EventEmitter() makes an object that can send and receive named events.\nshop.on(\"order\", fn) is a method call with a function as an argument. It registers fn to run whenever \"order\" happens.\nshop.emit(\"order\", \"coffee\") fires the event. Every listener for \"order\" is called right then, with \"coffee\" as its argument.\nSo item is \"coffee\" and it prints Order for coffee.\nCommon mistake: calling emit before on. No listener exists yet, so nothing is printed."
   },
   {
     "id": "node-7",
@@ -730,7 +791,8 @@
     "title": "List files by type",
     "task": "Create a.txt, b.txt and c.js, then print only the .txt file names, sorted, one per line.",
     "solution": "const fs = require(\"fs\");\nconst path = require(\"path\");\nfor (const f of [\"a.txt\", \"b.txt\", \"c.js\"]) fs.writeFileSync(f, \"\");\nfs.readdirSync(\".\").filter((f) => path.extname(f) === \".txt\").sort().forEach((f) => console.log(f));",
-    "expected": "a.txt\nb.txt"
+    "expected": "a.txt\nb.txt",
+    "walkthrough": "The for...of loop calls fs.writeFileSync for each name, making three empty files: a.txt, b.txt, c.js.\nfs.readdirSync(\".\") returns an array of file names in the current folder.\n.filter(...) keeps names where path.extname(f) is \".txt\". extname returns the ending from the last dot, including the dot.\n.sort() puts them in order, and .forEach calls console.log for each one. The methods chain, each working on the array the last one returned.\nIt prints a.txt and b.txt.\nCommon mistake: comparing to \"txt\" without the dot. extname returns \".txt\", so nothing matches and nothing is printed."
   },
   {
     "id": "node-8",
@@ -739,7 +801,8 @@
     "title": "Missing file",
     "task": "Try to read missing.txt with fs/promises. Catch the error and print its code.",
     "solution": "const fs = require(\"fs/promises\");\nasync function main() {\n  try {\n    await fs.readFile(\"missing.txt\", \"utf8\");\n  } catch (err) {\n    console.log(err.code);\n  }\n}\nmain();",
-    "expected": "ENOENT"
+    "expected": "ENOENT",
+    "walkthrough": "require(\"fs/promises\") loads the promise version of fs. Its readFile returns a promise instead of the data directly.\nasync function main() lets you use await, which waits for the promise.\nThe file does not exist, so the promise is rejected. Because of await, that rejection is thrown inside try.\ncatch (err) catches it. err.code is a short error name, and ENOENT means no such file or directory. That is what is printed.\nCommon mistake: leaving out await. try then finishes before the read fails, catch never runs, and Node crashes with an unhandled rejection error."
   },
   {
     "id": "python-core-1",
@@ -749,7 +812,8 @@
     "task": "Loop over [1, 2, 3] and print each number times 10.",
     "solution": "for n in [1, 2, 3]:\n    print(n * 10)",
     "remember": "Colon opens, indent holds.",
-    "expected": "10\n20\n30"
+    "expected": "10\n20\n30",
+    "walkthrough": "for n in [1, 2, 3]: takes each value in the list, one at a time, and puts it in the name n.\nThe colon ends the header. The indented line under it is the block that runs once per value.\nprint(n * 10) multiplies the current n by 10 and prints it, so you get 10, then 20, then 30.\nprint puts each result on its own line, because it adds a newline at the end by default.\nCommon mistake: leaving off the colon after the for line. Python stops with a SyntaxError before running anything."
   },
   {
     "id": "python-core-2",
@@ -759,7 +823,8 @@
     "task": "Write def shout(word) that returns word.upper() + \"!\". Print shout(\"hi\").",
     "solution": "def shout(word):\n    return word.upper() + \"!\"\n\nprint(shout(\"hi\"))",
     "remember": "def + : + indent; dot asks the value.",
-    "expected": "HI!"
+    "expected": "HI!",
+    "walkthrough": "def shout(word): makes a function named shout with one input, word. The colon starts its block.\nThe indented line is the body: word.upper() asks the string for an upper-case copy, then + \"!\" adds an exclamation mark.\nreturn sends that new string back to whoever called the function.\nprint(shout(\"hi\")) calls it with \"hi\" and prints HI!.\nCommon mistake: not indenting the body. Python then raises an IndentationError, because the indent is what puts the line inside the function."
   },
   {
     "id": "python-1",
@@ -768,7 +833,8 @@
     "title": "Say hello",
     "task": "Print Hello, world!",
     "solution": "print(\"Hello, world!\")",
-    "expected": "Hello, world!"
+    "expected": "Hello, world!",
+    "walkthrough": "print is a built-in function. The parentheses call it, and what is inside them is its input.\n\"Hello, world!\" is a string value. The quotes mark where the text starts and ends; they are not printed.\nprint writes the text and then a newline, so the output is Hello, world!\nCommon mistake: writing print \"Hello, world!\" without parentheses, as in old Python 2 code. Python 3 gives a SyntaxError."
   },
   {
     "id": "python-2",
@@ -777,7 +843,8 @@
     "title": "f-strings",
     "task": "Make name = \"Ada\" and age = 36, then print Ada is 36 using an f-string.",
     "solution": "name = \"Ada\"\nage = 36\nprint(f\"{name} is {age}\")",
-    "expected": "Ada is 36"
+    "expected": "Ada is 36",
+    "walkthrough": "name = \"Ada\" puts a string value in the name name. age = 36 puts a number in age.\nThe f before the quotes makes it an f-string: anything inside { } is worked out and its value is dropped into the text.\n{name} becomes Ada and {age} becomes 36, so the string is Ada is 36.\nprint shows that finished string.\nCommon mistake: forgetting the f. Then the braces are just text and Python prints {name} is {age} literally."
   },
   {
     "id": "python-3",
@@ -786,7 +853,8 @@
     "title": "Count to five",
     "task": "Use a for loop and range to print 1 to 5.",
     "solution": "for i in range(1, 6):\n    print(i)",
-    "expected": "1\n2\n3\n4\n5"
+    "expected": "1\n2\n3\n4\n5",
+    "walkthrough": "range(1, 6) gives the numbers from 1 up to, but not including, 6. So 1, 2, 3, 4, 5.\nfor i in ...: puts each of those numbers in i, one at a time. The colon starts the block.\nThe indented print(i) runs once per number and prints it on its own line.\nCommon mistake: writing range(1, 5) or range(5). The stop number is left out, so you get 1 to 4, or 0 to 4."
   },
   {
     "id": "python-4",
@@ -795,7 +863,8 @@
     "title": "Squares",
     "task": "Use a list comprehension to make the squares of 1 to 5 and print the list.",
     "solution": "print([n * n for n in range(1, 6)])",
-    "expected": "[1, 4, 9, 16, 25]"
+    "expected": "[1, 4, 9, 16, 25]",
+    "walkthrough": "The square brackets with a for inside are a list comprehension: a short way to build a new list.\nfor n in range(1, 6) walks through 1 to 5. For each n, the part before the for, n * n, is the value that goes into the list.\nSo the list becomes [1, 4, 9, 16, 25].\nprint shows the whole list, with its brackets and commas.\nCommon mistake: writing n ^ 2 to mean a square. In Python ^ is bitwise XOR, not power; use n * n or n ** 2."
   },
   {
     "id": "python-5",
@@ -804,7 +873,8 @@
     "title": "Grades",
     "task": "Write a function grade(score) that returns A for 90+, B for 70+, otherwise C. Print grade(95), grade(75), grade(10).",
     "solution": "def grade(score):\n    if score >= 90:\n        return \"A\"\n    elif score >= 70:\n        return \"B\"\n    return \"C\"\nprint(grade(95), grade(75), grade(10))",
-    "expected": "A B C"
+    "expected": "A B C",
+    "walkthrough": "def grade(score): makes a function with one input. Everything indented under it is its body.\nif score >= 90: is checked first. If it is true, return \"A\" sends back \"A\" and the function stops right there.\nelif means \"otherwise, if\". It is only checked when the first test failed. 75 fails the first test and passes this one, so it gets \"B\".\nIf no test passed, the code falls through to return \"C\". That is what 10 gets.\nprint(grade(95), grade(75), grade(10)) prints the three results with a space between each: A B C.\nCommon mistake: writing score > 90 instead of score >= 90. Then a score of exactly 90 gets a B."
   },
   {
     "id": "python-6",
@@ -813,7 +883,8 @@
     "title": "FizzBuzz",
     "task": "Print 1 to 15. For multiples of 3 print Fizz, of 5 print Buzz, of both print FizzBuzz.",
     "solution": "for i in range(1, 16):\n    if i % 15 == 0:\n        print(\"FizzBuzz\")\n    elif i % 3 == 0:\n        print(\"Fizz\")\n    elif i % 5 == 0:\n        print(\"Buzz\")\n    else:\n        print(i)",
-    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz"
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+    "walkthrough": "for i in range(1, 16): runs the block for 1 to 15.\ni % 15 is the remainder after dividing by 15. == 0 asks whether it divides evenly. A number divisible by 15 is divisible by both 3 and 5.\nif, elif, elif, else is one chain. Python checks the tests top to bottom and runs only the first one that is true.\nelse catches numbers that matched none of the tests, and print(i) prints the number itself.\nCommon mistake: checking i % 3 before i % 15. Then 15 matches the Fizz test first, and FizzBuzz is never printed."
   },
   {
     "id": "python-7",
@@ -822,7 +893,8 @@
     "title": "Word count",
     "task": "Count the words in \"the cat and the hat\" with a dictionary, then print each word and count, one per line, like the 2.",
     "solution": "counts = {}\nfor word in \"the cat and the hat\".split():\n    counts[word] = counts.get(word, 0) + 1\nfor word, n in counts.items():\n    print(word, n)",
-    "expected": "the 2\ncat 1\nand 1\nhat 1"
+    "expected": "the 2\ncat 1\nand 1\nhat 1",
+    "walkthrough": "counts = {} makes an empty dictionary: a box of key to value pairs.\n\"the cat and the hat\".split() asks the string to cut itself at spaces, giving the list ['the', 'cat', 'and', 'the', 'hat'].\ncounts.get(word, 0) returns the count so far, or 0 if the word is not there yet. + 1 adds one, and counts[word] = stores it back.\ncounts.items() gives each key and value as a pair, and for word, n in unpacks the pair into two names.\nDictionaries keep the order keys were first added, so the output starts with the 2.\nCommon mistake: writing counts[word] += 1 without get. The first time a word appears it is not in the dictionary yet, so Python raises a KeyError."
   },
   {
     "id": "python-8",
@@ -831,7 +903,8 @@
     "title": "A class",
     "task": "Make a class BankAccount with a deposit method. Deposit 50 then 25, then print the balance.",
     "solution": "class BankAccount:\n    def __init__(self):\n        self.balance = 0\n    def deposit(self, amount):\n        self.balance += amount\naccount = BankAccount()\naccount.deposit(50)\naccount.deposit(25)\nprint(account.balance)",
-    "expected": "75"
+    "expected": "75",
+    "walkthrough": "class BankAccount: makes a new type of object. The indented defs inside are its methods.\n__init__ runs automatically when you write BankAccount(). self is the new object, and self.balance = 0 gives it a balance of 0.\ndeposit(self, amount) adds amount to that object's balance with +=.\naccount.deposit(50) is the same as calling deposit with self set to account, so balance goes 0, 50, then 75 after the second call.\nprint(account.balance) reads the value and prints 75.\nCommon mistake: writing def deposit(amount): without self. Python still passes the object in first, so you get a TypeError about too many arguments."
   },
   {
     "id": "c-core-1",
@@ -841,7 +914,8 @@
     "task": "Write int square(int n) that returns n * n, and print square(6) from main.",
     "solution": "#include <stdio.h>\n\nint square(int n) {\n    return n * n;\n}\n\nint main(void) {\n    printf(\"%d\\n\", square(6));\n    return 0;\n}",
     "remember": "Type first, then name.",
-    "expected": "36"
+    "expected": "36",
+    "walkthrough": "#include <stdio.h> brings in the declaration of printf.\nint square(int n) says: a function named square that takes an int and gives back an int. Types come before names in C.\nIts block in { } has one statement, return n * n; and every statement ends with ;.\nmain is where the program starts. square(6) runs first and gives 36, then printf puts it where %d is, followed by \\n, a newline.\nreturn 0; tells the system the program finished fine.\nCommon mistake: forgetting the ; after return n * n. The compiler stops with an error pointing at the next line."
   },
   {
     "id": "c-core-2",
@@ -851,7 +925,8 @@
     "task": "Make int n = 1, a pointer p to it, set *p = 5, and print n.",
     "solution": "#include <stdio.h>\n\nint main(void) {\n    int n = 1;\n    int *p = &n;\n    *p = 5;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
     "remember": "& = where is it, * = go there.",
-    "expected": "5"
+    "expected": "5",
+    "walkthrough": "int n = 1; makes an int variable n holding 1.\nint *p = &n; makes p, a pointer to an int. &n is the address of n, so p now points at n.\n*p = 5; follows the pointer and writes 5 into the thing it points at, which is n itself.\nprintf(\"%d\\n\", n) prints n, which is now 5, even though the code never wrote n = 5.\nCommon mistake: writing p = 5; without the star. That tries to change where p points instead of changing n; the compiler complains, and n would stay 1."
   },
   {
     "id": "c-1",
@@ -860,7 +935,8 @@
     "title": "Say hello",
     "task": "Print Hello, world! with printf.",
     "solution": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}",
-    "expected": "Hello, world!"
+    "expected": "Hello, world!",
+    "walkthrough": "#include <stdio.h> brings in printf from the standard input/output library.\nint main(void) is the function where every C program starts. void means it takes no inputs, and int is the type it returns.\nprintf(\"Hello, world!\\n\"); prints the text. \\n is a newline character. The ; ends the statement.\nreturn 0; ends main and reports success.\nCommon mistake: leaving out the \\n. The text still prints, but no line break follows, so the terminal prompt can end up on the same line."
   },
   {
     "id": "c-2",
@@ -869,7 +945,8 @@
     "title": "Variables",
     "task": "Make int age = 36 and double price = 9.5, then print Age 36 price 9.50.",
     "solution": "#include <stdio.h>\n\nint main(void) {\n    int age = 36;\n    double price = 9.5;\n    printf(\"Age %d price %.2f\\n\", age, price);\n    return 0;\n}",
-    "expected": "Age 36 price 9.50"
+    "expected": "Age 36 price 9.50",
+    "walkthrough": "int age = 36; makes a whole-number variable. double price = 9.5; makes a floating-point one. The type goes before the name.\nIn the printf format string, %d is a slot for an int and %.2f is a slot for a double shown with 2 digits after the point.\nThe values after the string fill the slots in order: age goes into %d, price into %.2f.\n9.5 with two decimals is 9.50, so the line reads Age 36 price 9.50.\nCommon mistake: using %d for the double. The type does not match the slot, which is undefined behaviour, and you usually see a nonsense number."
   },
   {
     "id": "c-3",
@@ -878,7 +955,8 @@
     "title": "Count to five",
     "task": "Use a for loop to print 1 to 5, one per line.",
     "solution": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
-    "expected": "1\n2\n3\n4\n5"
+    "expected": "1\n2\n3\n4\n5",
+    "walkthrough": "for (int i = 1; i <= 5; i++) has three parts split by ;. Start: i is 1. Test: keep going while i <= 5. Step: i++ adds 1 after each run.\nThe block in { } runs once for each value of i.\nprintf(\"%d\\n\", i) prints the current i and a newline, so you get 1 to 5 on separate lines.\nWhen i becomes 6 the test fails and the loop ends.\nCommon mistake: writing i < 5. Then 5 fails the test and the output stops at 4."
   },
   {
     "id": "c-4",
@@ -887,7 +965,8 @@
     "title": "Sum an array",
     "task": "Add up the array {4, 8, 15, 16, 23, 42} and print the total.",
     "solution": "#include <stdio.h>\n\nint main(void) {\n    int nums[] = {4, 8, 15, 16, 23, 42};\n    int total = 0;\n    for (int i = 0; i < 6; i++) total += nums[i];\n    printf(\"%d\\n\", total);\n    return 0;\n}",
-    "expected": "108"
+    "expected": "108",
+    "walkthrough": "int nums[] = {4, 8, 15, 16, 23, 42}; makes an array of ints. The empty [] lets the compiler count the size, here 6.\nint total = 0; starts the sum at zero.\nThe for loop goes i = 0 to 5. Array positions start at 0, so nums[0] is 4 and nums[5] is 42.\ntotal += nums[i] adds each item to total. Without { }, the loop body is just that one statement.\n4 + 8 + 15 + 16 + 23 + 42 = 108, which printf prints.\nCommon mistake: writing i <= 6. nums[6] is past the end of the array, which is undefined behaviour, and C will not stop you."
   },
   {
     "id": "c-5",
@@ -896,7 +975,8 @@
     "title": "A function",
     "task": "Write int max(int a, int b) and print max(3, 9).",
     "solution": "#include <stdio.h>\n\nint max(int a, int b) {\n    return a > b ? a : b;\n}\n\nint main(void) {\n    printf(\"%d\\n\", max(3, 9));\n    return 0;\n}",
-    "expected": "9"
+    "expected": "9",
+    "walkthrough": "int max(int a, int b) is a function that takes two ints and returns an int.\na > b ? a : b is the conditional operator: if a > b is true the result is a, otherwise it is b.\nreturn sends that bigger value back.\nIn main, max(3, 9) compares 3 > 9, which is false, so it gives 9, and printf prints 9.\nCommon mistake: putting max below main with no declaration above it. Modern C does not allow calling an undeclared function, so the compiler warns or errors."
   },
   {
     "id": "c-6",
@@ -905,7 +985,8 @@
     "title": "Swap with pointers",
     "task": "Write void swap(int *a, int *b). Swap x = 1 and y = 2, then print x=2 y=1.",
     "solution": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\nint main(void) {\n    int x = 1, y = 2;\n    swap(&x, &y);\n    printf(\"x=%d y=%d\\n\", x, y);\n    return 0;\n}",
-    "expected": "x=2 y=1"
+    "expected": "x=2 y=1",
+    "walkthrough": "void swap(int *a, int *b) takes two pointers. void means it returns nothing.\nint t = *a; follows a and saves the value it points at. *a = *b; copies the second value over the first. *b = t; puts the saved value in the second.\nIn main, swap(&x, &y) passes the addresses of x and y, so the function works on the real x and y, not copies.\nAfter the call x is 2 and y is 1, and printf prints x=2 y=1.\nCommon mistake: writing swap with plain int a, int b. C passes copies, so only the copies are swapped and main still prints x=1 y=2."
   },
   {
     "id": "c-7",
@@ -914,7 +995,8 @@
     "title": "A struct",
     "task": "Make a struct with name and age for Ada, 36. Print Ada is 36.",
     "solution": "#include <stdio.h>\n\ntypedef struct {\n    char name[20];\n    int age;\n} Person;\n\nint main(void) {\n    Person p = {\"Ada\", 36};\n    printf(\"%s is %d\\n\", p.name, p.age);\n    return 0;\n}",
-    "expected": "Ada is 36"
+    "expected": "Ada is 36",
+    "walkthrough": "struct { ... } groups several values into one: here a name, which is an array of 20 chars, and an int age.\ntypedef gives that struct the short name Person, so you can write Person instead of the full struct type.\nPerson p = {\"Ada\", 36}; fills the fields in order: name gets \"Ada\", age gets 36.\np.name and p.age read the fields with a dot. %s prints a string, %d an int, giving Ada is 36.\nCommon mistake: forgetting the ; after } Person. The compiler errors, usually pointing at the line after it."
   },
   {
     "id": "c-8",
@@ -923,7 +1005,8 @@
     "title": "Reverse a string",
     "task": "Reverse the text \"hello\" in place and print olleh.",
     "solution": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[] = \"hello\";\n    int n = strlen(s);\n    for (int i = 0; i < n / 2; i++) {\n        char t = s[i];\n        s[i] = s[n - 1 - i];\n        s[n - 1 - i] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
-    "expected": "olleh"
+    "expected": "olleh",
+    "walkthrough": "char s[] = \"hello\"; makes a char array holding h e l l o plus a hidden '\\0' that marks the end of the string.\nstrlen(s), from <string.h>, counts the characters before the '\\0', so n is 5.\nThe loop runs while i < n / 2. With ints, 5 / 2 is 2, so it runs for i = 0 and 1; the middle l stays put.\nEach pass swaps s[i] with s[n - 1 - i] through a temporary t: first h and o, then e and the second l.\nprintf with %s prints the changed array: olleh.\nCommon mistake: looping to i < n instead of n / 2. Every pair gets swapped twice, so the string ends up back as hello."
   },
   {
     "id": "cpp-core-1",
@@ -933,7 +1016,8 @@
     "task": "Write void twice(int &n) that doubles n. Call it on x = 4 and print x with std::cout.",
     "solution": "#include <iostream>\n\nvoid twice(int &n) { n = n * 2; }\n\nint main() {\n    int x = 4;\n    twice(x);\n    std::cout << x << \"\\n\";\n    return 0;\n}",
     "remember": "& in a type = the same one.",
-    "expected": "8"
+    "expected": "8",
+    "walkthrough": "void twice(int &n) takes a reference. The & here means n is another name for the caller's variable, not a copy.\nn = n * 2; therefore changes the caller's variable directly.\nIn main, x is 4. twice(x) passes x by reference, so after the call x is 8.\nstd::cout << x << \"\\n\" sends x and then a newline to the output stream. std:: says cout lives in the standard namespace.\nCommon mistake: dropping the & and writing int n. Then twice doubles a copy, and the program prints 4."
   },
   {
     "id": "cpp-core-2",
@@ -943,7 +1027,8 @@
     "task": "Write template <typename T> T first(T a, T b) that returns a. Print first(1, 2) and first('a', 'b') on one line with a space between.",
     "solution": "#include <iostream>\n\ntemplate <typename T>\nT first(T a, T b) { return a; }\n\nint main() {\n    std::cout << first(1, 2) << \" \" << first('a', 'b') << \"\\n\";\n    return 0;\n}",
     "remember": "<T> = any type goes here.",
-    "expected": "1 a"
+    "expected": "1 a",
+    "walkthrough": "template <typename T> says the function below works for some type T that is filled in later.\nT first(T a, T b) takes two values of type T and returns one of type T. Here it just returns a.\nfirst(1, 2): both are ints, so the compiler makes an int version and it returns 1.\nfirst('a', 'b'): both are chars, so it makes a char version that returns 'a', and cout prints a char as its letter.\nThe << pieces print 1, a space, then a, giving 1 a.\nCommon mistake: calling first(1, 'b'). The compiler sees int for one T and char for the other, cannot pick one, and gives a no matching function error."
   },
   {
     "id": "cpp-1",
@@ -952,7 +1037,8 @@
     "title": "Say hello",
     "task": "Print Hello, world! with std::cout.",
     "solution": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, world!\\n\";\n    return 0;\n}",
-    "expected": "Hello, world!"
+    "expected": "Hello, world!",
+    "walkthrough": "#include <iostream> brings in C++ input and output streams.\nint main() is where the program starts. Its body is inside { }.\nstd::cout is the standard output stream. std:: means it is in the standard namespace. << sends the text into it.\n\\n at the end of the string starts a new line. return 0; reports success.\nCommon mistake: writing cout without std:: and without a using line. The compiler says cout is not declared."
   },
   {
     "id": "cpp-2",
@@ -961,7 +1047,8 @@
     "title": "Strings",
     "task": "Make std::string name = \"Ada\" and print Hi Ada.",
     "solution": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name = \"Ada\";\n    std::cout << \"Hi \" << name << \"\\n\";\n    return 0;\n}",
-    "expected": "Hi Ada"
+    "expected": "Hi Ada",
+    "walkthrough": "#include <string> brings in std::string, a string type that manages its own memory.\nstd::string name = \"Ada\"; makes a string object named name, built from the text Ada.\nstd::cout << \"Hi \" << name << \"\\n\" chains three pieces into the output: the text Hi with its space, then the name, then a newline.\nThe output is Hi Ada.\nCommon mistake: leaving out #include <string>. It may compile by luck because another header pulls it in, but that is not guaranteed, so always include what you use."
   },
   {
     "id": "cpp-3",
@@ -970,7 +1057,8 @@
     "title": "Vector loop",
     "task": "Make a vector {1, 2, 3} and print each number with a range-for, one per line.",
     "solution": "#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> nums = {1, 2, 3};\n    for (int n : nums) std::cout << n << \"\\n\";\n    return 0;\n}",
-    "expected": "1\n2\n3"
+    "expected": "1\n2\n3",
+    "walkthrough": "std::vector<int> is a growable array of ints. The <int> is a template argument saying what it holds.\n= {1, 2, 3} fills it with three values.\nfor (int n : nums) is a range-based for loop: it puts each element in n, in order.\nThe body has no { } because it is one statement: print n and a newline. So you get 1, 2 and 3 on separate lines.\nCommon mistake: writing for (int n in nums) out of Python habit. C++ uses a colon there, and in is a compile error."
   },
   {
     "id": "cpp-4",
@@ -979,7 +1067,8 @@
     "title": "Sort",
     "task": "Sort the vector {5, 2, 9, 1} and print it on one line separated by spaces.",
     "solution": "#include <algorithm>\n#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> v = {5, 2, 9, 1};\n    std::sort(v.begin(), v.end());\n    for (int n : v) std::cout << n << \" \";\n    std::cout << \"\\n\";\n    return 0;\n}",
-    "expected": "1 2 5 9"
+    "expected": "1 2 5 9",
+    "walkthrough": "std::vector<int> v = {5, 2, 9, 1}; makes a vector with four ints.\nstd::sort, from <algorithm>, sorts a range. v.begin() points at the first element and v.end() points just past the last.\nBy default it puts the values in ascending order, so v becomes 1, 2, 5, 9.\nThe loop prints each value followed by a space, then a final \"\\n\" ends the line.\nCommon mistake: calling std::sort(v). In C++17 std::sort needs the two iterators, so passing the vector alone does not compile."
   },
   {
     "id": "cpp-5",
@@ -988,7 +1077,8 @@
     "title": "A class",
     "task": "Make a class Rectangle with width and height and an area() method. Print the area of 3 x 4.",
     "solution": "#include <iostream>\n\nclass Rectangle {\npublic:\n    Rectangle(int w, int h) : w(w), h(h) {}\n    int area() const { return w * h; }\nprivate:\n    int w, h;\n};\n\nint main() {\n    Rectangle r(3, 4);\n    std::cout << r.area() << \"\\n\";\n    return 0;\n}",
-    "expected": "12"
+    "expected": "12",
+    "walkthrough": "class Rectangle { ... }; defines a new type. public: parts can be used from outside; private: parts only from inside the class.\nRectangle(int w, int h) : w(w), h(h) {} is the constructor. After the colon, each member is set from the parameter with the same name.\nint area() const returns w * h. const promises this method does not change the object.\nRectangle r(3, 4); calls the constructor, so w is 3 and h is 4. r.area() gives 12, which cout prints.\nCommon mistake: forgetting the ; after the closing } of the class. The compiler errors, often with a confusing message on the next line."
   },
   {
     "id": "cpp-6",
@@ -997,7 +1087,8 @@
     "title": "Word count with map",
     "task": "Count the words in \"the cat and the hat\" with std::map and print each word and count, one per line (map sorts them).",
     "solution": "#include <iostream>\n#include <map>\n#include <sstream>\n#include <string>\n\nint main() {\n    std::map<std::string, int> counts;\n    std::stringstream ss(\"the cat and the hat\");\n    std::string word;\n    while (ss >> word) counts[word]++;\n    for (const auto& [w, n] : counts) std::cout << w << \" \" << n << \"\\n\";\n    return 0;\n}",
-    "expected": "and 1\ncat 1\nhat 1\nthe 2"
+    "expected": "and 1\ncat 1\nhat 1\nthe 2",
+    "walkthrough": "std::map<std::string, int> maps each word to a count. A map keeps its keys sorted.\nstd::stringstream ss(...) treats the string like an input stream. ss >> word reads one space-separated word at a time.\nwhile (ss >> word) keeps going until no words are left. counts[word]++ adds a new key with value 0 if missing, then adds 1.\nfor (const auto& [w, n] : counts) walks the map in key order and splits each pair into w and n. That [ ] form is a structured binding, from C++17.\nSorted alphabetically, the output is and 1, cat 1, hat 1, the 2.\nCommon mistake: expecting the words in the order they appeared. std::map always sorts by key, so and comes first."
   },
   {
     "id": "cpp-7",
@@ -1006,7 +1097,8 @@
     "title": "Shapes",
     "task": "Make an abstract Shape with virtual area(), and Square and Circle (use 3.14). Print the areas of Square(2) and Circle(1).",
     "solution": "#include <iostream>\n#include <memory>\n#include <vector>\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Square : public Shape {\npublic:\n    Square(double s) : s(s) {}\n    double area() const override { return s * s; }\nprivate:\n    double s;\n};\n\nclass Circle : public Shape {\npublic:\n    Circle(double r) : r(r) {}\n    double area() const override { return 3.14 * r * r; }\nprivate:\n    double r;\n};\n\nint main() {\n    std::vector<std::unique_ptr<Shape>> shapes;\n    shapes.push_back(std::make_unique<Square>(2));\n    shapes.push_back(std::make_unique<Circle>(1));\n    for (const auto& s : shapes) std::cout << s->area() << \"\\n\";\n    return 0;\n}",
-    "expected": "4\n3.14"
+    "expected": "4\n3.14",
+    "walkthrough": "Shape has virtual double area() const = 0; which is a pure virtual method. Shape is now abstract: you cannot make a plain Shape.\nvirtual ~Shape() = default; makes the destructor virtual, so deleting a Square or Circle through a Shape pointer cleans up correctly.\nSquare and Circle inherit from Shape with : public Shape and each writes its own area. override asks the compiler to check that it really replaces the base method.\nThe vector holds std::unique_ptr<Shape>, smart pointers that delete their object automatically. std::make_unique<Square>(2) builds a Square with side 2.\ns->area() calls the right version at run time: 2 * 2 = 4 and 3.14 * 1 * 1 = 3.14. cout prints the double 4.0 as 4.\nCommon mistake: leaving off const on Square's area. It no longer matches the base method, so override makes it a compile error."
   },
   {
     "id": "cpp-8",
@@ -1015,7 +1107,8 @@
     "title": "A template",
     "task": "Write a template function biggest(a, b). Print biggest(3, 7) and biggest(2.5, 1.5).",
     "solution": "#include <iostream>\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    std::cout << biggest(3, 7) << \" \" << biggest(2.5, 1.5) << \"\\n\";\n    return 0;\n}",
-    "expected": "7 2.5"
+    "expected": "7 2.5",
+    "walkthrough": "template <typename T> makes biggest work for any type T that supports >.\na > b ? a : b returns a if it is bigger, otherwise b.\nbiggest(3, 7): both ints, so T is int and it returns 7.\nbiggest(2.5, 1.5): both doubles, so T is double and it returns 2.5.\ncout prints 7, a space, then 2.5, giving 7 2.5.\nCommon mistake: calling biggest(\"apple\", \"pear\"). T becomes const char*, so > compares memory addresses, not letters, and the answer means nothing."
   },
   {
     "id": "terminal-core-1",
@@ -1027,7 +1120,8 @@
     "mustInclude": [
       "ls -la Desktop"
     ],
-    "remember": "What, how, on what."
+    "remember": "What, how, on what.",
+    "walkthrough": "ls is the command: it lists what is inside a folder.\n-la is two flags joined: -l means long format (one line per item, with size, owner and date), -a means all, so hidden files that start with a dot show too. It is the same as typing -l -a.\nDesktop is the argument: the folder to look in. It is a relative path, so it works when you are in your home folder (~).\nYou see a line for every item, including . (this folder) and .. (the folder above).\nCommon mistake: leaving out the space, as in ls-la Desktop. The shell looks for a command called ls-la and says command not found."
   },
   {
     "id": "terminal-core-2",
@@ -1041,7 +1135,8 @@
       "|",
       "wc -l"
     ],
-    "remember": "| passes it to the next."
+    "remember": "| passes it to the next.",
+    "walkthrough": "cat notes.txt prints the file's text. Normally that text goes to your screen.\nThe pipe | takes that output and feeds it into the next command instead of the screen.\nwc is word count, and the -l flag tells it to count only lines. It reads the text coming through the pipe, so it needs no file name.\nYou see one number: how many lines notes.txt has.\nCommon mistake: trusting the number when the last line has no newline at the end. wc -l counts newline characters, so it comes out one short."
   },
   {
     "id": "terminal-1",
@@ -1053,7 +1148,8 @@
     "mustInclude": [
       "pwd",
       "ls"
-    ]
+    ],
+    "walkthrough": "pwd means print working directory. It shows the full path of the folder you are in, like /Users/you.\nThat folder is what . means in a path, and every relative path starts from it.\nls with no argument lists the folder you are in right now.\nRun these two whenever you feel lost: first where am I, then what is here.\nCommon mistake: expecting ls to show everything. Hidden files like .git or .zshrc only show with ls -a."
   },
   {
     "id": "terminal-2",
@@ -1066,7 +1162,8 @@
       "cd",
       "Desktop",
       "ls"
-    ]
+    ],
+    "walkthrough": "cd means change directory. Desktop is the argument: the folder to move into.\nDesktop is a relative path, so the shell looks for it inside the folder you are in. From your home folder (~) that works.\ncd prints nothing when it succeeds. The prompt changes to show the new folder.\nls then lists what is on your Desktop. To go back up one level, cd .. moves to the parent folder.\nCommon mistake: running cd Desktop from some other folder. zsh says no such file or directory, because there is no Desktop there. cd ~/Desktop works from anywhere."
   },
   {
     "id": "terminal-3",
@@ -1079,7 +1176,8 @@
       "mkdir my-site",
       "cd my-site",
       "touch index.html"
-    ]
+    ],
+    "walkthrough": "mkdir means make directory. my-site is the name of the new folder, made inside the folder you are in.\ncd my-site moves you into it, so the next command happens there.\ntouch index.html creates an empty file with that name. If the file already exists, touch leaves its contents alone and only updates its date.\nNone of the three prints anything when it works. Run ls to see the file.\nCommon mistake: a name with a space, like mkdir my site. The space splits it into two arguments, so you get two folders, my and site. Use a dash or put the name in quotes."
   },
   {
     "id": "terminal-4",
@@ -1092,7 +1190,8 @@
       "echo",
       "> notes.txt",
       "cat notes.txt"
-    ]
+    ],
+    "walkthrough": "echo prints its argument, here the word hello.\n> is a redirect: instead of the screen, the output goes into the file notes.txt. If the file does not exist, it is created.\ncat notes.txt prints the file, so you see hello and can check it worked.\nCommon mistake: using > when you meant to add a line. > replaces everything already in the file. >> adds to the end instead."
   },
   {
     "id": "terminal-5",
@@ -1104,7 +1203,8 @@
     "mustInclude": [
       "cp notes.txt backup.txt",
       "mv backup.txt old.txt"
-    ]
+    ],
+    "walkthrough": "cp means copy. It takes two arguments: the source first, then the destination. Now notes.txt and backup.txt are two separate files with the same text.\nmv means move. When the destination is a new name in the same folder, moving is renaming. backup.txt is gone and old.txt has its contents.\nBoth commands print nothing when they work. Run ls to see the result.\nCommon mistake: copying or moving onto a name that already exists. cp and mv replace that file without asking. Add -i if you want them to ask first."
   },
   {
     "id": "terminal-6",
@@ -1117,7 +1217,8 @@
       "grep",
       "-rn",
       "TODO"
-    ]
+    ],
+    "walkthrough": "grep searches text for a pattern and prints the lines that match.\n-rn is two flags joined: -r means recursive (go into every folder below), -n means show the line number of each match.\nTODO is the pattern, and . is the argument: start searching here, in the current folder.\nEach result looks like path:line number:the matching line.\nCommon mistake: expecting it to also find todo or Todo. grep is case-sensitive. Add -i to ignore case."
   },
   {
     "id": "terminal-7",
@@ -1129,7 +1230,8 @@
     "mustInclude": [
       "mkdir trash-me",
       "rm -r trash-me"
-    ]
+    ],
+    "walkthrough": "mkdir trash-me makes the folder.\ntouch trash-me/file.txt makes an empty file inside it. The / in the path means inside.\nrm means remove. -r means recursive: delete the folder and everything inside it.\nrm does not use the Trash. What it deletes is gone, so read the path twice before you press Return.\nCommon mistake: rm trash-me without -r. rm refuses and says trash-me is a directory."
   },
   {
     "id": "terminal-8",
@@ -1143,7 +1245,8 @@
       "git add",
       "git commit -m",
       "git push"
-    ]
+    ],
+    "walkthrough": "git status shows what changed in your working folder and what is already staged. It changes nothing.\ngit add . puts every change in this folder and below into the staging area. The . means here.\ngit commit -m \"First commit\" saves the staged changes as one snapshot in your history, with that message. The quotes keep the two words as one argument.\ngit push sends your new commits to the remote, usually called origin, for example GitHub.\nCommon mistake: git push before git commit. Git says Everything up-to-date, because push only sends commits, and there is no new one."
   },
   {
     "id": "homebrew-core-1",
@@ -1156,7 +1259,8 @@
       "brew info git",
       "brew install --cask firefox"
     ],
-    "remember": "brew + what to do + to what."
+    "remember": "brew + what to do + to what.",
+    "walkthrough": "Every Homebrew command has the same shape: brew, then a subcommand that says what to do, then the package name.\nbrew info git shows details about the git formula: its version, what it depends on, and whether it is installed.\nA formula is a command-line tool you run in the terminal. A cask is a regular Mac app with a window, which goes into /Applications.\nbrew install --cask firefox installs Firefox as a cask. --cask is the flag that says I mean the app.\nCommon mistake: putting the words in the wrong order, like brew git info. Homebrew reads git as the subcommand and says unknown command."
   },
   {
     "id": "homebrew-1",
@@ -1167,7 +1271,8 @@
     "solution": "brew list",
     "mustInclude": [
       "brew list"
-    ]
+    ],
+    "walkthrough": "brew is the command, list is the subcommand.\nIt shows what Homebrew itself has installed, with formulae (command-line tools) and casks (apps) in separate groups.\nIt takes no argument here because you are asking about everything.\nCommon mistake: expecting to see every app on your Mac. Apps you installed from the App Store or a download do not appear, because Homebrew did not install them."
   },
   {
     "id": "homebrew-2",
@@ -1178,7 +1283,8 @@
     "solution": "brew install tree",
     "mustInclude": [
       "brew install tree"
-    ]
+    ],
+    "walkthrough": "brew is the command, install is the subcommand, and tree is the argument: the formula to install.\ntree is a command-line tool, so it is a formula and needs no --cask.\nHomebrew downloads it, plus anything it depends on, and puts the command on your path.\nAfter it finishes, typing tree prints the folders and files below you as a tree.\nCommon mistake: typing sudo brew install. Homebrew refuses to run as root. Run brew as your normal user."
   },
   {
     "id": "homebrew-3",
@@ -1191,7 +1297,8 @@
       "brew install",
       "--cask",
       "visual-studio-code"
-    ]
+    ],
+    "walkthrough": "brew install is the usual install command. visual-studio-code is the argument: the name of the cask.\n--cask is the flag that says this is an app, not a command-line tool. Homebrew puts it in /Applications like a normal app.\nIf a formula and a cask have the same name, brew install picks the formula. --cask makes sure you get the app.\nCommon mistake: guessing the name, like vscode. Homebrew says it cannot find it. Run brew search code first to see the exact name."
   },
   {
     "id": "homebrew-4",
@@ -1203,7 +1310,8 @@
     "mustInclude": [
       "brew search python",
       "brew info python"
-    ]
+    ],
+    "walkthrough": "brew search python looks through package names and prints the formulae and casks that contain python.\nUse it when you do not know the exact name. It installs nothing.\nbrew info python then shows details for that one package: the version, a short description, what it depends on, and whether you have it installed.\nSearch first to find the name, info next to check it, install last.\nCommon mistake: expecting search to match what a package does. It matches names. Add --desc to search the descriptions too."
   },
   {
     "id": "homebrew-5",
@@ -1215,7 +1323,8 @@
     "mustInclude": [
       "brew update",
       "brew upgrade"
-    ]
+    ],
+    "walkthrough": "brew update downloads the newest version of Homebrew and its list of packages. It does not change your installed tools.\nbrew upgrade then installs newer versions of every package you have that is out of date.\nWith no argument, upgrade does all of them. brew upgrade tree would do only tree.\nCommon mistake: thinking brew update upgraded your tools. It only refreshed the list. You need brew upgrade for that."
   },
   {
     "id": "homebrew-6",
@@ -1227,7 +1336,8 @@
     "mustInclude": [
       "brew uninstall tree",
       "brew cleanup"
-    ]
+    ],
+    "walkthrough": "brew uninstall tree removes the tree formula. The tree command stops working.\nbrew cleanup deletes old versions of your packages and old downloads Homebrew kept in its cache. It frees disk space.\nNeither needs --cask here, because tree is a formula.\nCommon mistake: uninstalling a package that another one you have depends on. Homebrew refuses and tells you which package still needs it."
   },
   {
     "id": "homebrew-7",
@@ -1238,7 +1348,8 @@
     "solution": "brew doctor",
     "mustInclude": [
       "brew doctor"
-    ]
+    ],
+    "walkthrough": "brew is the command, doctor is the subcommand. It checks your Homebrew setup for known problems.\nIt changes nothing. It only prints warnings, each with a hint on how to fix it.\nIf all is well, it says Your system is ready to brew.\nRun it when an install fails in a way you do not understand.\nCommon mistake: panicking over every warning. Homebrew itself says that if everything you use works fine, you can leave a warning alone."
   },
   {
     "id": "homebrew-8",
@@ -1250,7 +1361,8 @@
     "mustInclude": [
       "brew services start postgresql",
       "brew services stop postgresql"
-    ]
+    ],
+    "walkthrough": "Some formulae are servers that run in the background, like the postgresql database.\nbrew services is the subcommand for them. start is the action, postgresql the argument.\nstart runs it now and also each time you log in.\nstop shuts it down and stops it from starting at login.\nbrew services list shows what is running.\nCommon mistake: forgetting to stop it. The database keeps running in the background and starts again every time you log in."
   },
   {
     "id": "git-core-1",
@@ -1263,7 +1375,8 @@
       "git add index.html",
       "git commit -m \"first\""
     ],
-    "remember": "add packs the box, commit seals it."
+    "remember": "add packs the box, commit seals it.",
+    "walkthrough": "git add index.html puts that file in the staging area: the box of changes for your next commit.\ngit commit saves everything in the staging area as one snapshot in the history.\n-m is a flag meaning message, and \"first\" is the message. The quotes keep it as one argument.\nCommon mistake: committing without git add first. Git then says nothing to commit, because the staging area is empty."
   },
   {
     "id": "git-core-2",
@@ -1275,7 +1388,8 @@
     "mustInclude": [
       "git push origin main"
     ],
-    "remember": "push up, origin = GitHub."
+    "remember": "push up, origin = GitHub.",
+    "walkthrough": "git push sends commits from your history to a remote, a copy of the project on another computer such as GitHub.\norigin is the first argument: the name of the remote. origin is just the usual name for the place you cloned from or connected to.\nmain is the second argument: the branch to send.\nGit prints the commits it sent, or Everything up-to-date if there was nothing new.\nCommon mistake: pushing main when your branch is called master. Git says src refspec main does not match any, because you have no branch named main. git branch shows your branch names."
   },
   {
     "id": "git-1",
@@ -1287,7 +1401,8 @@
     "mustInclude": [
       "git config --global user.name",
       "git config --global user.email"
-    ]
+    ],
+    "walkthrough": "git config is the subcommand for Git's settings. --global means save it for your user on this computer, in the file ~/.gitconfig, so every project uses it.\nuser.name is the setting, and \"Your Name\" is the value. The quotes keep the two words together as one argument.\nThe second line does the same for user.email.\nGit writes this name and email into every commit you make. Both commands print nothing when they work.\nCommon mistake: leaving out --global. Then the setting is saved only for the project you are in, and outside a project Git refuses."
   },
   {
     "id": "git-2",
@@ -1299,7 +1414,8 @@
     "mustInclude": [
       "git init",
       "git status"
-    ]
+    ],
+    "walkthrough": "git init turns the folder you are in into a Git project. It creates a hidden folder called .git, where the history will live.\nYour files are not saved yet. They sit in the working folder, and Git just knows about the folder now.\ngit status shows the branch you are on, says No commits yet, and lists your files as untracked: Git sees them but is not saving them.\nCommon mistake: running git init in your home folder by accident. Then everything in your home is one big project. Check with pwd first."
   },
   {
     "id": "git-3",
@@ -1311,7 +1427,8 @@
     "mustInclude": [
       "git add index.html",
       "git commit -m \"Add home page\""
-    ]
+    ],
+    "walkthrough": "git add index.html moves the file from your working folder into the staging area.\ngit commit takes what is staged and saves it as one snapshot in the history.\n-m \"Add home page\" gives the snapshot its message. The quotes keep the three words as one argument.\nGit prints the branch, a short commit id and how many files changed.\nCommon mistake: git commit without -m. Git opens a text editor, often Vim, to ask for the message. To get out of Vim without saving, press Esc, type :q! and press Return."
   },
   {
     "id": "git-4",
@@ -1323,7 +1440,8 @@
     "mustInclude": [
       "git diff",
       "git log --oneline"
-    ]
+    ],
+    "walkthrough": "git diff shows changes in your working folder that are not staged yet. Lines starting with - were removed, lines with + were added.\ngit log shows the history, newest commit first.\n--oneline is a flag that squeezes each commit onto one line: a short id and the first line of the message.\nIf the output is long, Git shows it a page at a time. Press q to get back to the prompt.\nCommon mistake: running git diff after git add and seeing nothing. The change is staged now, so plain diff skips it. git diff --staged shows it."
   },
   {
     "id": "git-5",
@@ -1335,7 +1453,8 @@
     "mustInclude": [
       "git remote add origin https://github.com/you/my-site.git",
       "git push -u origin main"
-    ]
+    ],
+    "walkthrough": "git remote add saves a remote: a name and the address it stands for. origin is the name, the URL is the address.\nNothing is sent yet. Git just remembers where origin is.\ngit push -u origin main sends your main branch to origin.\n-u links your main to origin's main. After that, plain git push and git pull know where to go.\nCommon mistake: running git remote add origin a second time. Git says remote origin already exists. To change the address, use git remote set-url origin with the new URL."
   },
   {
     "id": "git-6",
@@ -1346,7 +1465,8 @@
     "solution": "git restore --staged secret.txt",
     "mustInclude": [
       "git restore --staged secret.txt"
-    ]
+    ],
+    "walkthrough": "git restore puts files back. --staged is the flag that says work on the staging area.\nsecret.txt is the argument: the file to take out of the staging area.\nThe file stays in your working folder exactly as it is. It just will not be in the next commit.\ngit status now lists it as not staged, or untracked if it is a new file.\nCommon mistake: leaving out --staged. Then git restore works on your working folder instead and throws away edits in the file that were not staged."
   },
   {
     "id": "git-7",
@@ -1361,7 +1481,8 @@
       "git commit -m \"Change header\"",
       "git switch main",
       "git merge new-header"
-    ]
+    ],
+    "walkthrough": "git switch -c new-header creates a branch called new-header and moves you onto it. -c means create.\ngit add . stages everything, and git commit -m \"Change header\" saves it on new-header only. main does not have it yet.\ngit switch main moves you back. Your files change back to how main has them.\ngit merge new-header brings the commits from new-header into the branch you are on, which is main.\nCommon mistake: running git merge while still on new-header. That merges main into new-header, main stays as it was, and Git says Already up to date."
   },
   {
     "id": "git-8",
@@ -1373,6 +1494,7 @@
     "mustInclude": [
       "git revert 1a2b3c4",
       "git push"
-    ]
+    ],
+    "walkthrough": "git revert 1a2b3c4 makes a new commit that undoes the changes of commit 1a2b3c4. The old commit stays in the history.\n1a2b3c4 is the argument: the short id of the bad commit, which you can find with git log --oneline.\nGit opens an editor with a ready-made message. Save and close it to finish.\ngit push sends the new undo commit to GitHub. Nothing that is already there gets rewritten, so it is safe for everyone.\nCommon mistake: using git reset to remove a commit that is already pushed. Your next git push is rejected, because your history no longer matches GitHub's."
   }
 ]

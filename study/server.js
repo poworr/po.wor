@@ -6,9 +6,9 @@
 // What it does:
 //   1. Serves the web page (the files in /public).
 //   2. Reads and saves your syntax notes (the JSON files in /data).
-//   3. Sends the lessons (data/lessons.json).
+//   3. Sends the lessons (data/lessons.json) and the Learn pages (data/learn.json).
 //   4. Runs Python, Node.js, C and C++ code on your Mac (/api/run).
-//      Terminal and Homebrew use the practice terminal in the page (terminal.js),
+//      Terminal, Homebrew and Git use the practice terminal in the page (terminal.js),
 //      so nothing you type there touches your real Mac.
 
 const express = require('express');               // the web server library
@@ -101,6 +101,11 @@ app.post('/api/syntax/:lang', function (req, res) {
 // GET /api/lessons: every lesson (task, solution, and what the answer must print)
 app.get('/api/lessons', function (req, res) {
   res.json(readItems('lessons'));
+});
+
+// GET /api/learn: the Learn pages (what each language is for, clean code, the web)
+app.get('/api/learn', function (req, res) {
+  res.json(readItems('learn'));
 });
 
 // ===== Playground: run code on this Mac =====

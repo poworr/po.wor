@@ -5,14 +5,15 @@
 //   POST /api/syntax/<lang>   save one item (new or edited)
 //   POST /api/run             run code on the Mac, get the output back
 //
-// The Lessons and Test tabs live in practice.js. The practice terminal is terminal.js.
+// The Lessons and Test tabs live in practice.js, the Learn pages in learn.js,
+// and the practice terminal in terminal.js.
 
 const $ = (id) => document.getElementById(id);   // a short way to find an element by id
 
 let langs = [];            // [{ id, name, runs, items: [...] }, ...]
 let current = 'all';       // the language shown in the sidebar ('all' = every language)
 let folded = false;        // the open language's list in the explorer, folded away?
-let mode = 'syntax';       // which tab is open: syntax, lessons or test
+let mode = 'syntax';       // which tab is open: learn, syntax, lessons or test
 let playLang = 'html';     // the language the playground runs
 const lessonList = $('lesson-list');   // practice.js fills it; the explorer shows it under the open language
 let playOpen = false;      // is the playground panel open at the bottom?
@@ -26,6 +27,12 @@ async function start() {
 
 // ===== Draw everything =====
 function render() {
+  $('learn').hidden = mode !== 'learn';
+  if (mode === 'learn') {   // Learn has its own explorer list and tab (learn.js)
+    $('syntax').hidden = $('lessons').hidden = $('test').hidden = $('playground').hidden = true;
+    renderLearn();
+    return;
+  }
   renderSidebar();
   $('tab').textContent = current + '.' + mode;   // like a file name: javascript.syntax
   $('syntax').hidden = mode !== 'syntax';
@@ -43,13 +50,14 @@ function render() {
   if (mode === 'test') startTest();          // in practice.js
 }
 
-// The Syntax / Lessons / Test buttons
+// The Learn / Syntax / Lessons / Test buttons
+function setMode(name) {
+  mode = name;
+  for (const b of document.querySelectorAll('#modes [data-mode]')) b.setAttribute('aria-pressed', b.dataset.mode === name);
+  render();
+}
 for (const button of document.querySelectorAll('#modes [data-mode]')) {
-  button.addEventListener('click', () => {
-    mode = button.dataset.mode;
-    for (const b of document.querySelectorAll('#modes [data-mode]')) b.setAttribute('aria-pressed', b === button);
-    render();
-  });
+  button.addEventListener('click', () => setMode(button.dataset.mode));
 }
 
 // The explorer toggle at the bottom of the activity bar: hide or show the explorer
@@ -113,7 +121,7 @@ function categoryList(lang) {
   return ul;
 }
 
-// Cards: with "All" or while searching, show all 9 languages; otherwise the current one
+// Cards: with "All" or while searching, show every language; otherwise the current one
 function renderCards() {
   const search = $('search').value.trim().toLowerCase();
   const filter = $('filter').value;
@@ -173,7 +181,7 @@ function makeCard(lang, item) {
     render();
   });
 
-  // Put the syntax in the playground (for Terminal and Homebrew: the first line, in the terminal)
+  // Put the syntax in the playground (for Terminal, Homebrew and Git: the first line, in the terminal)
   card.querySelector('.try').addEventListener('click', () => {
     if (current !== 'all') current = lang.id;
     playLang = lang.id;
@@ -304,7 +312,7 @@ window.addEventListener('message', (event) => {
   $('output').textContent += event.data + '\n';
 });
 
-// Terminal and Homebrew get the practice terminal; the rest get the code box.
+// Terminal, Homebrew and Git get the practice terminal; the rest get the code box.
 // The frame is only for HTML, CSS and browser JavaScript.
 function updatePlayground() {
   const lang = langs.find((l) => l.id === playLang);

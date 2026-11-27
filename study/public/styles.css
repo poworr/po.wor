@@ -12,6 +12,8 @@
   --line: #E5E5E5;
   --hover: #EBEBEB;
   --input: #FFFFFF;
+  --bad: #B3261E;          /* ✗ messy */
+  --good: #1E7B34;         /* ✓ clean */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -24,6 +26,8 @@
     --line: #333333;
     --hover: #2A2D2E;
     --input: #313131;
+    --bad: #F48771;
+    --good: #89D185;
   }
 }
 
@@ -47,7 +51,7 @@ body {
   grid-template-columns: 44px 1fr;   /* explorer hidden: the editor gets the room */
 }
 
-/* ===== Activity bar (S, L, T) ===== */
+/* ===== Activity bar: the mode icons ===== */
 .activity {
   display: flex;
   flex-direction: column;
@@ -474,4 +478,80 @@ dialog::backdrop {
 }
 #playground .monaco-box {
   height: 160px;   /* the playground, in the bottom panel */
+}
+
+/* ===== Learn pages: reading text, like a README ===== */
+#learn {
+  max-width: 760px;
+  line-height: 1.7;
+}
+#learn p {
+  margin: 0 0 10px;
+}
+.page-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: normal;
+}
+.section-title {
+  margin: 28px 0 8px;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--faint);
+}
+.section-title::before {
+  content: "## ";
+}
+.code-block {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: var(--side);
+  border: 1px solid var(--line);
+}
+#learn .label {
+  margin: 0 0 4px;
+  font-size: 12px;
+}
+.label.bad {
+  color: var(--bad);
+}
+.label.good {
+  color: var(--good);
+}
+#learn .why {
+  color: var(--muted);
+}
+#learn details {
+  margin-bottom: 8px;
+}
+#learn summary {
+  cursor: pointer;
+}
+#learn details p {
+  margin: 4px 0 0 18px;
+  color: var(--muted);
+}
+.sources a {
+  color: var(--muted);
+}
+
+/* The Learn page list in the explorer */
+#languages .side-title {
+  padding-top: 14px;
+}
+#languages .page-link {
+  justify-content: flex-start;
+  padding-left: 22px;
+}
+#languages > li > .page-link::before {
+  content: none;   /* pages don't fold, so no ▸ */
+}
+#languages .page-link[aria-current="true"] {
+  background: var(--hover);
+}
+
+/* The lesson walkthrough: one line per step */
+.walkthrough {
+  white-space: pre-line;
+  color: var(--muted);
 }

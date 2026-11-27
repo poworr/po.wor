@@ -12,9 +12,10 @@
   <!-- Laid out like VS Code: activity bar | explorer | editor (with a panel at the bottom) -->
   <div class="layout">
 
-    <!-- ===== Activity bar: the three modes ===== -->
+    <!-- ===== Activity bar: the four modes ===== -->
     <nav class="activity" id="modes">
-      <!-- Icons: </> syntax, a book for lessons, a ticked box for test -->
+      <!-- Icons: a light bulb for learn, </> syntax, a book for lessons, a ticked box for test -->
+      <button class="btn" data-mode="learn" title="Learn" aria-label="Learn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></button>
       <button class="btn" data-mode="syntax" aria-pressed="true" title="Syntax" aria-label="Syntax"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></button>
       <button class="btn" data-mode="lessons" title="Lessons" aria-label="Lessons"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg></button>
       <button class="btn" data-mode="test" title="Test" aria-label="Test"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><polyline points="8 12 11 15 16 9"/></svg></button>
@@ -33,6 +34,9 @@
       <div class="tabs"><span class="tab" id="tab"></span></div>
 
       <div class="editor">
+
+      <!-- ===== Learn: plain-language pages (filled in by learn.js) ===== -->
+      <article id="learn" hidden></article>
 
       <!-- ===== Mode 1: Syntax cards ===== -->
       <section id="syntax">
@@ -69,6 +73,10 @@
           <iframe id="lesson-preview" class="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
           <pre id="lesson-output" class="output"></pre>
           <pre id="lesson-solution" hidden></pre>
+          <div id="lesson-explain" hidden>
+            <p class="tag">How it works</p>
+            <p class="walkthrough" id="lesson-walkthrough"></p>
+          </div>
         </div>
       </section>
 
@@ -111,7 +119,7 @@
         <pre id="output" class="output"></pre>
       </div>
 
-      <!-- The practice terminal (terminal.js): for Mac Terminal and Homebrew -->
+      <!-- The practice terminal (terminal.js): for Mac Terminal, Homebrew and Git -->
       <div id="terminal" hidden>
         <pre id="term-output"></pre>
         <div class="term-line"><span id="term-prompt"></span><input id="term-input" spellcheck="false" autocomplete="off" aria-label="Type a command"></div>
@@ -166,6 +174,7 @@
   <script src="/terminal.js"></script>
   <script src="/app.js"></script>
   <script src="/practice.js"></script>
+  <script src="/learn.js"></script>
 
 </body>
 </html>

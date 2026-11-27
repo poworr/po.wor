@@ -1,0 +1,1186 @@
+[
+  {
+    "id": "programming",
+    "group": "Start here",
+    "title": "What programming is",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "A program is a list of exact instructions, written as text, that another program turns into something the computer can run."
+        ]
+      },
+      {
+        "h": "The very literal cook",
+        "p": [
+          "Imagine a cook who does exactly what the recipe says, nothing more. \"Add salt\" with no amount: they stop and complain. \"Stir until done\" with no end: they stir forever. That cook is the computer.",
+          "Most bugs are not the computer being wrong. They are the recipe saying something different from what you meant. Reading code carefully, word by word, is most of the skill."
+        ]
+      },
+      {
+        "h": "From your text to the machine",
+        "p": [
+          "You write source code: plain text in a file. The processor (CPU) can only run machine code, so something has to translate.",
+          "Compiled languages (C, C++) are translated once, before running. gcc turns hello.c into a program file, and that file runs on its own.",
+          "Interpreted languages (Python, JavaScript) are run by another program while it reads them: python3 for Python, the browser or Node for JavaScript. Modern JavaScript engines compile the busy parts on the fly to make them fast.",
+          "HTML and CSS are different again: they don't give instructions at all. They describe a page, and the browser decides how to draw it. That is why people call them markup and style languages, not programming languages."
+        ]
+      },
+      {
+        "h": "The five ideas every language has",
+        "p": [
+          "Values (numbers, text, true/false, lists), names for values (variables), decisions (if), repetition (loops) and named steps (functions). Every language spells them differently, but the ideas are the same. Here is one function in three languages:"
+        ],
+        "code": "# Python\ndef add(a, b):\n    return a + b\n\n// JavaScript\nfunction add(a, b) {\n  return a + b;\n}\n\n// C\nint add(int a, int b) {\n    return a + b;\n}"
+      },
+      {
+        "h": "How bigger syntax is built",
+        "p": [
+          "New syntax is almost never new ideas. It is the five ideas put together. button.addEventListener(\"click\", show) is an object (button), a dot to reach its method, and a call with two values: a string and a function.",
+          "When you meet something new, split it into those blocks. The \"Built from\" line on the cards does that for you, and the Core cards come first in every language for this reason."
+        ]
+      },
+      {
+        "h": "How to learn it: the Feynman way",
+        "p": [
+          "1. Pick one thing, like a for loop.",
+          "2. Explain it out loud in plain words, as if to a 12-year-old. No jargon.",
+          "3. Where you get stuck or reach for a big word, you have found the gap. Go back to the card, the lesson or the docs.",
+          "4. Explain it again, simpler. Then write it from memory in Test.",
+          "If you can't explain it simply, you don't understand it yet. That is not a failure; it shows you exactly what to study next."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Explain what a function is without using the word \"function\".",
+        "a": "A named set of steps. You give it some values, it does the steps, and it can hand one value back. You write it once and use it as often as you like."
+      },
+      {
+        "q": "Why does a C program need gcc but a Python program doesn't?",
+        "a": "C is compiled: gcc translates it into machine code once, before it runs. Python is run by the python3 program, which reads your code while running it."
+      }
+    ],
+    "sources": [
+      {
+        "title": "MDN: How the web works",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+      }
+    ]
+  },
+  {
+    "id": "web",
+    "group": "Start here",
+    "title": "Frontend, backend and the web",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "The frontend is the code that runs in the visitor's browser; the backend is the code that runs on a server and decides what to send back."
+        ]
+      },
+      {
+        "h": "What happens when you open a page",
+        "p": [
+          "1. You type an address. DNS, the internet's phone book, turns the name into the server's number (an IP address).",
+          "2. The browser sends an HTTP request, like GET /planner.html.",
+          "3. The server answers with a status (200 means OK, 404 means not found) and the file.",
+          "4. The browser reads the HTML, asks for the CSS and JavaScript it links to, draws the page and runs the JavaScript."
+        ],
+        "code": "GET /planner.html HTTP/2\nHost: example.com\n\nHTTP/2 200\ncontent-type: text/html\n\n<!DOCTYPE html> …"
+      },
+      {
+        "h": "Frontend: the visitor's side",
+        "p": [
+          "Languages: HTML (what is on the page), CSS (how it looks), JavaScript (what it does).",
+          "It runs on the visitor's device. It can't read the server's files or database, and anyone can read its code with View Source. So never put passwords or secret keys in frontend code."
+        ]
+      },
+      {
+        "h": "Backend: the server's side",
+        "p": [
+          "Languages: almost any. MDN lists PHP, Python, Ruby, C# and JavaScript with Node.js as common ones.",
+          "It runs on a computer you control, with full access to its files and databases. Its jobs: choose what content to send, check who is logged in, save data, send emails, keep secrets secret."
+        ]
+      },
+      {
+        "h": "How the two talk",
+        "p": [
+          "With HTTP requests, usually carrying JSON. This app does it: the page asks, the server answers."
+        ],
+        "code": "// Frontend (study/public/app.js): ask the server\nconst response = await fetch('/api/syntax');\nconst langs = await response.json();\n\n// Backend (study/server.js): answer\napp.get('/api/syntax', function (req, res) {\n  res.json(LANGS.map(function (lang) {\n    return { ...lang, items: readItems(lang.id) };\n  }));\n});"
+      },
+      {
+        "h": "Your two projects",
+        "p": [
+          "po.wor on GitHub Pages is frontend only: GitHub sends the same HTML, CSS and JavaScript files to everyone. The planner saves your tasks in localStorage, which lives in that one browser. That is why your phone can't see the tasks from your Mac: there is no backend to share them.",
+          "This study app is full-stack: a backend (server.js, Node with Express) on your Mac reads and writes data/*.json and runs Python and C for you, and a frontend (public/) draws the page."
+        ]
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Databases: backends keep data in databases, usually queried with SQL. 58.6% of developers in the 2025 Stack Overflow survey use SQL.",
+          "APIs: a backend that only sends JSON is an API. Frontends, phone apps and other servers can all use the same one.",
+          "Full-stack: doing both. A good path is frontend first (you see results at once), then Node, because it is the same JavaScript."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Your planner tasks don't show up on your phone. Why, in one sentence?",
+        "a": "They are saved in localStorage, which belongs to one browser on one device, and the site has no backend to store them anywhere shared."
+      },
+      {
+        "q": "Why must a password check happen on the backend, not in the page's JavaScript?",
+        "a": "Anyone can read and change frontend code in their own browser, so they could skip the check. The backend runs on a computer they can't touch."
+      }
+    ],
+    "sources": [
+      {
+        "title": "MDN: How the web works",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+      },
+      {
+        "title": "MDN: Introduction to the server side",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "map",
+    "group": "Start here",
+    "title": "How the languages connect",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Each language has one main job, and they hand work to each other through files, the browser, the terminal and the network."
+        ]
+      },
+      {
+        "h": "The map",
+        "p": [
+          "Read it from top to bottom: from you, down to the processor."
+        ],
+        "code": "you\n │\n ├─ Terminal (zsh) ── starts every tool below\n ├─ Homebrew ─────── installs node, python, git on your Mac\n ├─ Git ──────────── saves versions, sends them to GitHub\n │\n ▼\nbrowser (frontend)                    server or your Mac (backend)\n  HTML  what is on the page             Node.js  JavaScript outside the browser\n  CSS   how it looks       ◄─ HTTP ─►   Python   scripts, data, AI\n  JS    what it does\n │                                      │\n ▼                                      ▼\nthe browser is written in C++         Node's engine (V8) is C++,\n                                      Python's interpreter is C\n │                                      │\n └──────────────┬───────────────────────┘\n                ▼\n   the operating system, its core written mostly in C\n                ▼\n          the CPU runs machine code"
+      },
+      {
+        "h": "Follow one click",
+        "p": [
+          "Here is what happens when you press Check on a Python lesson in this app:",
+          "1. You started the app in the Terminal with npm start, so Node is running server.js.",
+          "2. The page's JavaScript sends your code to the server with fetch (HTTP, JSON).",
+          "3. Node writes it to a temporary file and runs python3 on it, the Python that Homebrew or macOS installed.",
+          "4. python3 (a program written in C) runs your code and prints. Node collects the text and sends it back as JSON.",
+          "5. The page's JavaScript compares it with the expected output and writes ✓ into the HTML. CSS decides how that looks.",
+          "Six languages and tools for one button. Each one does the part it is good at."
+        ]
+      },
+      {
+        "h": "Why not one language for everything?",
+        "p": [
+          "Because they sit at different distances from the machine. C and C++ are close to it: fast and in full control, but you manage memory yourself. Python and JavaScript are close to the problem: quick to write, and the slow parts are often C or C++ underneath. HTML and CSS only describe. The shell glues programs together.",
+          "Knowing the map tells you which tool to reach for, and where to look when something breaks."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "You run git push and refresh po.wor, and the change isn't there. Which parts of the map are involved?",
+        "a": "Git sends your commits to GitHub; GitHub Pages then rebuilds and serves the new HTML, CSS and JavaScript to browsers. That takes a minute, and the browser may also show an old cached copy."
+      },
+      {
+        "q": "Why can Python be fast at maths even though Python itself is slow per line?",
+        "a": "Libraries like NumPy do the heavy work in C and C++. Python only tells them what to do."
+      }
+    ],
+    "sources": [
+      {
+        "title": "MDN: How the web works",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+      },
+      {
+        "title": "Node.js: Introduction",
+        "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+      },
+      {
+        "title": "Python FAQ: General",
+        "url": "https://docs.python.org/3/faq/general.html"
+      }
+    ]
+  },
+  {
+    "id": "clean",
+    "group": "Start here",
+    "title": "Clean code",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Clean code is code the next person, usually you in three months, can read, change and trust quickly.",
+          "Python's style guide puts it simply: code is read much more often than it is written."
+        ]
+      },
+      {
+        "h": "1. Names say what things are",
+        "p": [],
+        "bad": "let d = 86400;\nfunction proc(x) {\n  return x * d;\n}",
+        "good": "const SECONDS_PER_DAY = 86400;\nfunction daysToSeconds(days) {\n  return days * SECONDS_PER_DAY;\n}",
+        "why": "A good name is free documentation. A bare number like 86400 is a \"magic number\": the reader has to guess what it means."
+      },
+      {
+        "h": "2. One function, one job",
+        "p": [],
+        "bad": "function handle() {\n  const text = localStorage.getItem('tasks');\n  const tasks = text.split('\\n').filter((t) => t.trim());\n  list.innerHTML = '';\n  for (const t of tasks) list.append(row(t));\n  count.textContent = tasks.length;\n}",
+        "good": "function loadTasks() {\n  return localStorage.getItem('tasks').split('\\n').filter((t) => t.trim());\n}\n\nfunction showTasks(tasks) {\n  list.replaceChildren(...tasks.map(row));\n  count.textContent = tasks.length;\n}",
+        "why": "Small functions with one job get short, honest names, and you can change one job without breaking the other. The Linux kernel guide and the C++ Core Guidelines (F.3) both say: keep functions short and simple."
+      },
+      {
+        "h": "3. Return early instead of nesting",
+        "p": [],
+        "bad": "function save(task) {\n  if (task) {\n    if (task.trim() !== '') {\n      tasks.push(task);\n    }\n  }\n}",
+        "good": "function save(task) {\n  if (!task || !task.trim()) return;\n  tasks.push(task);\n}",
+        "why": "Deal with the cases you don't want first, then the main path reads straight down. MDN's style guide: if an if ends with a return, don't add an else."
+      },
+      {
+        "h": "4. Comments say why, not what",
+        "p": [],
+        "bad": "i = i + 1; // add one to i\n// loop over the days\nfor (const day of days) {",
+        "good": "// getDay() counts Sunday as 0; the planner's week starts on Monday\nconst monday = addDays(date, -((date.getDay() + 6) % 7));",
+        "why": "The code already says what it does. A comment earns its place when it explains something the code can't: a reason, a surprise, a rule from outside. The Linux kernel guide: never try to explain how your code works in a comment; write it so it is obvious."
+      },
+      {
+        "h": "5. Don't repeat yourself, but don't build for imaginary needs",
+        "p": [
+          "If the same three lines appear in four places, make a function: a fix then happens once. But don't build a settings system, a plugin layer or a \"flexible\" helper for something used once. That makes code harder to read for a need that may never come."
+        ]
+      },
+      {
+        "h": "6. Be consistent, and let tools check you",
+        "p": [
+          "Same quotes, same naming style, same indentation across the project. Don't argue with yourself about it: use a formatter (Prettier for JS, CSS and HTML; black or ruff for Python; clang-format for C and C++; shfmt for shell) and a linter that finds mistakes (ESLint, Ruff, clang-tidy, ShellCheck)."
+        ]
+      },
+      {
+        "h": "7. Don't hide errors",
+        "p": [],
+        "bad": "try {\n  data = JSON.parse(text);\n} catch (e) {}",
+        "good": "try {\n  data = JSON.parse(text);\n} catch (error) {\n  showMessage('Your saved notes are damaged, so they were not loaded.');\n  data = [];\n}",
+        "why": "An empty catch makes a bug invisible: the program carries on with wrong data. Handle the errors that can really happen and tell someone. Don't write checks for things that can't happen at all."
+      },
+      {
+        "h": "8. Delete dead code",
+        "p": [
+          "Commented-out blocks and unused functions make readers wonder whether they matter. Git remembers the old version, so delete it."
+        ]
+      },
+      {
+        "h": "Human code vs code that looks machine-written",
+        "p": [
+          "Code written by AI tools, or copied without thought, often has these marks: a comment on every line repeating the code; vague names like data, result, item2 or handleClick2; checks for cases that can't happen; one giant function with banner comments instead of small functions; settings and options nobody asked for; a different style from the rest of the project.",
+          "Code a careful person writes uses names from the problem (task, day, bubble), comments only where something is surprising, is small and a bit boring, and looks like the code around it. Use AI to explain and review, then make the code yours: you must be able to explain every line."
+        ]
+      },
+      {
+        "h": "How to get there",
+        "p": [
+          "1. Make it work. 2. Read it as a stranger would. 3. Rename what is unclear, split what does two jobs, delete what isn't used. 4. Run the formatter and linter. 5. Read good code: MDN's examples, the Python standard library, this app's Core cards."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Find a function in your own code that does two jobs. What would you call the two halves?",
+        "a": "If you need \"and\" to name it (loadAndShowTasks), it does two jobs. Split it into loadTasks and showTasks."
+      },
+      {
+        "q": "When is a comment worth writing?",
+        "a": "When it says something the code can't: why a choice was made, a surprising rule, or a warning. Not when it repeats what the line does."
+      }
+    ],
+    "sources": [
+      {
+        "title": "PEP 8: Style Guide for Python Code",
+        "url": "https://peps.python.org/pep-0008/"
+      },
+      {
+        "title": "MDN: JavaScript code style guide",
+        "url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript"
+      },
+      {
+        "title": "Linux kernel coding style",
+        "url": "https://www.kernel.org/doc/html/latest/process/coding-style.html"
+      },
+      {
+        "title": "C++ Core Guidelines",
+        "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines"
+      },
+      {
+        "title": "Google HTML/CSS Style Guide",
+        "url": "https://google.github.io/styleguide/htmlcssguide.html"
+      },
+      {
+        "title": "Google Shell Style Guide",
+        "url": "https://google.github.io/styleguide/shellguide.html"
+      }
+    ]
+  },
+  {
+    "id": "html",
+    "group": "Languages",
+    "title": "HTML: what is on the page",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "HTML describes what is on a page and what each part is, a heading, a link, a list, but it doesn't do anything by itself."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Structure and meaning. Browsers draw it, search engines read it to know what a page is about, and screen readers read it aloud to blind users. It is a markup language: no variables, no if, no loops."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "The browser downloads the HTML, reads it into a tree of elements (the DOM, Document Object Model), then fetches the CSS and JavaScript the page links to."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "<link rel=\"stylesheet\" href=\"css/style.css\"> brings in CSS. <script src=\"js/planner.js\"> brings in JavaScript. JavaScript then reads and changes the DOM. A backend (Node, Python) can build HTML before sending it. Git stores it, and GitHub Pages serves it.",
+          "Many desktop apps are HTML too: VS Code itself is built with HTML, CSS and JavaScript (on Electron)."
+        ]
+      },
+      {
+        "h": "Clean vs messy: use the right element",
+        "p": [],
+        "bad": "<div class=\"title\">Planner</div>\n<div class=\"btn\" onclick=\"save()\">Save</div>",
+        "good": "<h1>Planner</h1>\n<button type=\"button\">Save</button>",
+        "why": "Google's guide: use HTML according to its purpose. A real <button> works with the keyboard and screen readers for free; a <div> doesn't. An <h1> tells search engines the page title."
+      },
+      {
+        "h": "Clean vs messy: keep structure, style and behaviour apart",
+        "p": [],
+        "bad": "<p style=\"color: red\" onclick=\"hide(this)\">Late!</p>",
+        "good": "<p class=\"warning\">Late!</p>\n<!-- colour in style.css, the click in planner.js -->",
+        "why": "HTML for structure, CSS for looks, JavaScript for behaviour. Then you can restyle the whole site from one CSS file."
+      },
+      {
+        "h": "Clean vs messy: describe images",
+        "p": [],
+        "bad": "<img src=\"images/logo.png\">",
+        "good": "<img src=\"images/logo.png\" alt=\"po.wor\">\n<img src=\"images/divider.png\" alt=\"\">",
+        "why": "alt is what screen readers say and what shows if the image fails. Use alt=\"\" for decoration, so it is skipped."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Forms and validation, accessibility (ARIA, keyboard use), SEO, templates that build HTML on a server, and component frameworks: React's JSX looks like HTML inside JavaScript."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "Every web page is HTML. In the 2025 Stack Overflow survey, 61.9% of developers used HTML/CSS."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why is <button> better than <div onclick>?",
+        "a": "A button can be reached with Tab and pressed with Enter or Space, and screen readers announce it as a button. A div does none of that unless you add it yourself."
+      },
+      {
+        "q": "What is the DOM?",
+        "a": "The page as a tree of objects that the browser builds from your HTML. JavaScript changes the page by changing this tree."
+      }
+    ],
+    "sources": [
+      {
+        "title": "HTML Living Standard (WHATWG)",
+        "url": "https://html.spec.whatwg.org/"
+      },
+      {
+        "title": "Google HTML/CSS Style Guide",
+        "url": "https://google.github.io/styleguide/htmlcssguide.html"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "css",
+    "group": "Languages",
+    "title": "CSS: how it looks",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "CSS is a list of rules, each saying \"these elements: look like this\"."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Colours, fonts, spacing, layout (flex and grid), different layouts for phones (media queries), animations, and dark mode."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "The browser matches every rule's selector against the DOM. When two rules set the same property, the cascade decides: the more specific selector wins (#id beats .class beats tag), and if they tie, the later one wins. Then it works out every element's box (content, padding, border, margin), lays them out and paints."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It reads HTML's tags, classes and attributes through selectors. JavaScript changes the look by toggling classes (row.classList.toggle('done')) or setting CSS variables. Tools like Sass and Tailwind produce plain CSS in the end."
+        ]
+      },
+      {
+        "h": "Clean vs messy: name the purpose, not the look",
+        "p": [],
+        "bad": ".red-bold { color: red; font-weight: bold; }",
+        "good": ".warning { color: var(--danger); font-weight: bold; }",
+        "why": "Google's guide: use meaningful class names. When warnings turn orange, .red-bold becomes a lie; .warning stays true."
+      },
+      {
+        "h": "Clean vs messy: one colour, one place",
+        "p": [],
+        "bad": "body { background: #F5F5F5; }\n.panel { border-color: #F5F5F5; }\n.note { color: #F5F5F5; }",
+        "good": ":root { --bg: #F5F5F5; }\nbody { background: var(--bg); }\n.panel { border-color: var(--bg); }",
+        "why": "Custom properties keep a value in one place. po.wor's dark mode works this way: it only changes --bg and friends."
+      },
+      {
+        "h": "Clean vs messy: don't fight the cascade",
+        "p": [],
+        "bad": "#main .list ul li a.link { color: blue !important; }",
+        "good": ".task-link { color: var(--link); }",
+        "why": "Long selectors and !important win today and make every later change a fight. Keep selectors short and flat, mostly single classes."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Grid layouts, container queries, transitions and animation that stay smooth, design tokens and design systems, and accessibility: colour contrast and prefers-reduced-motion."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "Every styled web page uses it. HTML/CSS: 61.9% of developers in the 2025 Stack Overflow survey."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Two rules colour the same paragraph. How do you know which wins?",
+        "a": "The more specific selector wins. If they are equally specific, the one later in the CSS wins."
+      },
+      {
+        "q": "What is the order of the box model from inside out?",
+        "a": "Content, padding, border, margin."
+      }
+    ],
+    "sources": [
+      {
+        "title": "MDN: Introducing the CSS cascade",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade"
+      },
+      {
+        "title": "Google HTML/CSS Style Guide",
+        "url": "https://google.github.io/styleguide/htmlcssguide.html"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "javascript",
+    "group": "Languages",
+    "title": "JavaScript: what the page does",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "JavaScript is the programming language of the web: it makes pages react, and with Node.js it runs servers and tools too."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Behaviour: react to clicks and keys, change the page, fetch data from servers, save things in localStorage. Outside the browser: servers, command-line tools, desktop apps."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "Every browser has an engine: V8 in Chrome, JavaScriptCore in Safari, SpiderMonkey in Firefox. JavaScript runs one thing at a time with an event loop: your script runs, then the engine waits for events (a click, a timer, data arriving) and calls the functions you gave it.",
+          "The language is standardised as ECMAScript by a committee called TC39, with a new edition every year."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It changes HTML through the DOM and CSS through classes and styles. It talks to backends with fetch and JSON. Node runs the same language on servers. TypeScript adds types on top and turns into JavaScript before it runs."
+        ]
+      },
+      {
+        "h": "Clean vs messy: const, let and ===",
+        "p": [],
+        "bad": "var total = 0;\nif (count == \"3\") { total = count + 1; }",
+        "good": "const limit = 3;\nlet total = 0;\nif (count === limit) total = count + 1;",
+        "why": "MDN's guide: const by default, let when it changes, never var. === doesn't convert types, so \"3\" == 3 surprises can't happen."
+      },
+      {
+        "h": "Clean vs messy: text is not HTML",
+        "p": [],
+        "bad": "note.innerHTML = userText;",
+        "good": "note.textContent = userText;",
+        "why": "innerHTML runs any HTML in the text, so a task named <img src=x onerror=alert(1)> runs code. textContent shows it as plain text. Use innerHTML only for HTML you wrote yourself."
+      },
+      {
+        "h": "Clean vs messy: build strings clearly",
+        "p": [],
+        "bad": "const line = \"Moved to \" + day + \", \" + date + \" (\" + count + \" tasks)\";",
+        "good": "const line = `Moved to ${day}, ${date} (${count} tasks)`;",
+        "why": "Template literals read like the final text. MDN recommends them for putting values into strings."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Promises and async/await, modules (import/export), TypeScript, a framework (React, Vue or Svelte), testing, and browser APIs: fetch, storage, canvas, the clipboard."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "The most used language in the 2025 Stack Overflow survey: 66% of developers. TypeScript, its typed version, was used by 43.6%."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "What is the difference between addEventListener('click', go) and addEventListener('click', go())?",
+        "a": "The first hands over the function, to be called later on each click. The second calls go right now and hands over whatever it returned."
+      },
+      {
+        "q": "Why does JavaScript need an event loop?",
+        "a": "It runs one thing at a time. The event loop lets it wait for clicks, timers and network replies without freezing, and run your function when each one arrives."
+      }
+    ],
+    "sources": [
+      {
+        "title": "MDN: JavaScript code style guide",
+        "url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript"
+      },
+      {
+        "title": "ECMAScript specification (TC39)",
+        "url": "https://tc39.es/ecma262/"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "node",
+    "group": "Languages",
+    "title": "Node.js: JavaScript outside the browser",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Node.js runs JavaScript on your computer or a server: Chrome's V8 engine plus tools for files, the network and other programs."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Web servers and APIs (this app's server.js), command-line tools (npm itself), build tools, and scripts that automate your work."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "Node calls itself an asynchronous, event-driven JavaScript runtime. One thread runs your code. When it waits for a file or the network, it doesn't stop: it handles other work and calls your callback when the answer comes. That is why one Node server can handle many visitors at once."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "The same JavaScript as the frontend, so one language covers both sides. npm, which comes with Node, installs packages: this app uses express (the server) and monaco-editor (the code editor). Node can run other programs: this app runs python3 and gcc with child_process. It reads files, talks to databases and serves HTML, CSS and JavaScript."
+        ]
+      },
+      {
+        "h": "Clean vs messy: don't block a busy server",
+        "p": [],
+        "bad": "app.get('/notes', (req, res) => {\n  const text = fs.readFileSync('notes.json', 'utf8');\n  res.send(text);\n});",
+        "good": "app.get('/notes', async (req, res) => {\n  const text = await fs.promises.readFile('notes.json', 'utf8');\n  res.send(text);\n});",
+        "why": "readFileSync makes every other visitor wait while one file is read. In a small local tool like this app it is fine and simpler; on a real server, use the async version."
+      },
+      {
+        "h": "Clean vs messy: secrets don't go in code",
+        "p": [],
+        "bad": "const apiKey = 'sk-live-123abc';",
+        "good": "const apiKey = process.env.API_KEY;   // set outside the code",
+        "why": "Code goes to Git and GitHub; keys in it leak. Environment variables keep secrets on the machine that needs them."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Express and APIs, databases and SQL, logins and sessions, testing with node:test, TypeScript, and putting a server online."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "Node is how JavaScript runs outside the browser, and npm is how most JavaScript tools and libraries are installed, including the editor in this app. JavaScript as a whole: 66% of developers (Stack Overflow 2025)."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why can server.js read data/*.json but the page's JavaScript can't?",
+        "a": "server.js runs in Node with access to the Mac's files. The page runs in the browser, which keeps websites away from your files; it has to ask the server with fetch."
+      },
+      {
+        "q": "What does \"non-blocking\" mean?",
+        "a": "While Node waits for something slow, like a file or a network reply, it keeps doing other work, and comes back to your callback when the result is ready."
+      }
+    ],
+    "sources": [
+      {
+        "title": "About Node.js",
+        "url": "https://nodejs.org/en/about"
+      },
+      {
+        "title": "Node.js: Introduction",
+        "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "python",
+    "group": "Languages",
+    "title": "Python: readable and everywhere",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Python is a general-purpose language built to be easy to read, used for scripts, data, AI, web servers and automation."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Automation scripts, data analysis, machine learning and AI, web backends (Django, Flask, FastAPI), science, and teaching."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "The standard Python, CPython, is itself a program written in C. It turns your file into bytecode and runs it. Line by line that is slower than C, but Python's FAQ notes it is \"extensible in C or C++\": heavy libraries like NumPy do the real work in C, which is why Python is fast enough for big data and AI."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It calls C and C++ libraries. It can be the backend for an HTML and JavaScript frontend. You run it from the Terminal (python3 file.py), install it with Homebrew, and add packages with pip."
+        ]
+      },
+      {
+        "h": "Clean vs messy: PEP 8 names",
+        "p": [],
+        "bad": "def GetT(L):\n    T=0\n    for x in L: T+=x\n    return T",
+        "good": "def total_price(prices):\n    total = 0\n    for price in prices:\n        total += price\n    return total",
+        "why": "PEP 8: functions and variables in lower_case_with_underscores, classes in CapWords, constants in UPPER_CASE, 4 spaces per indent level."
+      },
+      {
+        "h": "Clean vs messy: compare with None using is",
+        "p": [],
+        "bad": "if result == None:",
+        "good": "if result is None:",
+        "why": "PEP 8: compare to None with is or is not. == can be changed by a class; is always means \"this very object\"."
+      },
+      {
+        "h": "Clean vs messy: don't catch everything",
+        "p": [],
+        "bad": "try:\n    age = int(text)\nexcept:\n    pass",
+        "good": "try:\n    age = int(text)\nexcept ValueError:\n    print(\"Please type a number.\")",
+        "why": "A bare except also swallows typos in your own code and Ctrl+C. Catch the one error you expect, and do something about it."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Virtual environments (venv), packages, type hints, testing with pytest, data (pandas, NumPy), AI (PyTorch), web (FastAPI, Django), async."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "57.9% of developers used Python in the 2025 Stack Overflow survey. It is the main language of data science and AI."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why does indentation matter in Python but not in JavaScript?",
+        "a": "In Python the indentation is the block: it decides which lines belong to an if or a def. JavaScript uses { } for that, so its indentation is only for people."
+      },
+      {
+        "q": "How can Python be slow per line but fast for AI?",
+        "a": "The heavy maths runs in libraries written in C and C++. Python just tells them what to do."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Python FAQ: General",
+        "url": "https://docs.python.org/3/faq/general.html"
+      },
+      {
+        "title": "PEP 8: Style Guide for Python Code",
+        "url": "https://peps.python.org/pep-0008/"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "c",
+    "group": "Languages",
+    "title": "C: close to the machine",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "C is a small language that talks almost directly to the machine: you manage memory yourself, and in return it is fast and runs nearly everywhere."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Operating systems (the Linux kernel, the core of macOS), devices with tiny computers inside (cars, routers, washing machines), language interpreters (CPython), databases (SQLite), and anything where speed and control matter most."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "Compiled ahead of time: gcc or clang turns your .c file into machine code for your processor. There is no safety net while it runs. Reading past the end of an array isn't an error message; it is \"undefined behaviour\": anything can happen, including a crash much later."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It sits under almost everything: Python's interpreter is C, operating systems are mostly C, and other languages call C libraries because C is the common language between languages. C++ grew out of C."
+        ]
+      },
+      {
+        "h": "Clean vs messy: check what can fail",
+        "p": [],
+        "bad": "FILE *f = fopen(\"notes.txt\", \"r\");\nfgets(line, sizeof line, f);",
+        "good": "FILE *notes = fopen(\"notes.txt\", \"r\");\nif (notes == NULL) {\n    perror(\"notes.txt\");\n    return 1;\n}\nfgets(line, sizeof line, notes);",
+        "why": "fopen and malloc return NULL when they fail. Using NULL crashes the program. C won't check for you."
+      },
+      {
+        "h": "Clean vs messy: never write past the end",
+        "p": [],
+        "bad": "char name[8];\nstrcpy(name, input);",
+        "good": "char name[8];\nsnprintf(name, sizeof name, \"%s\", input);",
+        "why": "strcpy copies however much input there is; long input overwrites other memory, a classic security hole. snprintf stops at the size you give."
+      },
+      {
+        "h": "Clean vs messy: shallow and named",
+        "p": [],
+        "bad": "if (a) { if (b) { if (c) { do_it(); } } }",
+        "good": "if (!a || !b || !c)\n    return;\ndo_it();",
+        "why": "The Linux kernel guide: if you need more than 3 levels of indentation, fix your program. Return early, and give helper functions clear names."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Pointers and memory (malloc and free), structs, Makefiles, debugging with lldb, finding memory bugs with AddressSanitizer, embedded devices, operating-system ideas. Rust is a modern language that aims at the same jobs with more safety."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "22% of developers used C in the 2025 Stack Overflow survey. The current standard is C23 (ISO/IEC 9899:2024, published October 2024)."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "What does & give you, and what does * do with it?",
+        "a": "&x gives the address of x: where it lives in memory. *p follows an address to the value stored there."
+      },
+      {
+        "q": "Why is reading past the end of an array dangerous in C but only an error in Python?",
+        "a": "Python checks every index and raises IndexError. C doesn't check: it reads whatever memory is there, which can crash or leak data."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Linux kernel coding style",
+        "url": "https://www.kernel.org/doc/html/latest/process/coding-style.html"
+      },
+      {
+        "title": "ISO/IEC 9899:2024 (C23)",
+        "url": "https://www.iso.org/standard/82075.html"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "cpp",
+    "group": "Languages",
+    "title": "C++: big programs, still fast",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "C++ is C plus tools for building big, fast programs: classes, templates and a large standard library, while keeping direct control of memory."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Web browsers (Chrome), JavaScript engines (V8, which runs JavaScript in Chrome and Node), game engines (Unreal), databases, and the fast core of many Python libraries."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "Compiled like C, with clang++ or g++. Its rule is that you shouldn't pay for what you don't use: a std::vector is about as fast as a hand-written C array."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It can use C code directly. It runs underneath JavaScript (V8) and much of Python's AI (PyTorch's core). The browser that draws your HTML and CSS is written in it."
+        ]
+      },
+      {
+        "h": "Clean vs messy: let objects clean up (RAII)",
+        "p": [],
+        "bad": "int *scores = new int[100];\n// ... if anything returns early here, the memory leaks\ndelete[] scores;",
+        "good": "std::vector<int> scores(100);\n// freed automatically when scores goes out of scope",
+        "why": "The C++ Core Guidelines (P.8): don't leak resources. An object that frees its own memory in its destructor can't forget to."
+      },
+      {
+        "h": "Clean vs messy: std::string, not char arrays",
+        "p": [],
+        "bad": "char name[20];\nstrcpy(name, \"Po\");\nstrcat(name, \" Wor\");",
+        "good": "std::string name = \"Po\";\nname += \" Wor\";",
+        "why": "std::string grows by itself and knows its length, so there is no buffer to overflow."
+      },
+      {
+        "h": "Clean vs messy: no changing globals",
+        "p": [],
+        "bad": "int total;   // changed from everywhere\nvoid add(int n) { total += n; }",
+        "good": "int add(int total, int n) { return total + n; }",
+        "why": "Core Guidelines I.2: avoid non-const global variables. A function that takes what it needs and returns its answer is easy to test and to trust."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Smart pointers (std::unique_ptr), move semantics, the standard algorithms, templates and concepts, CMake for building, and the C++23 and C++26 standards."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "23.5% of developers used C++ in the 2025 Stack Overflow survey. The current standard is C++23 (ISO/IEC 14882:2024)."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "What problem does std::vector solve that a C array doesn't?",
+        "a": "It knows its own size, grows when you add items, and frees its memory by itself when it goes out of scope."
+      },
+      {
+        "q": "Why is V8 relevant to you even if you never write C++?",
+        "a": "V8 is the engine that runs your JavaScript in Chrome and in Node, and it is written in C++."
+      }
+    ],
+    "sources": [
+      {
+        "title": "C++ Core Guidelines",
+        "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines"
+      },
+      {
+        "title": "The C++ Standard (isocpp.org)",
+        "url": "https://isocpp.org/std/the-standard"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "terminal",
+    "group": "Tools",
+    "title": "Terminal: talking to your Mac in text",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "The Terminal is a text conversation with your computer: you type a command, it runs a program and prints the answer."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Run programs (node, python3, git, brew), move around and change files, and automate repeated work with scripts."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "The program reading your typing is a shell; on a Mac it is zsh, the default since macOS 10.15. It splits your line into the command, its flags and its arguments, finds that program and runs it. | pipes one program's output into the next, and > saves it to a file."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "Everything else starts here: npm start for this app, git push, brew install, gcc. The terminal inside VS Code is the same thing. Shell scripts glue tools together."
+        ]
+      },
+      {
+        "h": "Clean vs messy: quote your variables",
+        "p": [],
+        "bad": "rm -rf $folder/build",
+        "good": "rm -rf \"${folder}/build\"",
+        "why": "Google's shell guide: always quote variables. If folder is empty, the bad line becomes rm -rf /build; if it has a space, it deletes two wrong things."
+      },
+      {
+        "h": "Clean vs messy: $( ) not backticks",
+        "p": [],
+        "bad": "today=`date +%F`",
+        "good": "today=\"$(date +%F)\"",
+        "why": "$( ) is easier to read and can be nested. The style guide prefers it."
+      },
+      {
+        "h": "Know when to stop",
+        "p": [
+          "The same guide says: if a shell script grows past about 100 lines, rewrite it in a structured language like Python. Shell is great glue, and poor at being a program."
+        ]
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Environment variables and PATH, permissions (chmod), ssh to remote servers, text tools (grep, sed, awk), scheduled jobs, and shell scripts for your own chores."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "Bash/Shell was used by 48.7% of developers in the 2025 Stack Overflow survey. Every server you will ever deploy to is run from a shell."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "In grep -rn \"todo\" js, which part is the command, the flags and the arguments?",
+        "a": "grep is the command; -rn are two flags (search folders, show line numbers); \"todo\" and js are the arguments (what to look for, and where)."
+      },
+      {
+        "q": "What is the difference between > and >>?",
+        "a": "> replaces the file with the output. >> adds the output to the end of the file."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Apple: Use zsh as the default shell on your Mac",
+        "url": "https://support.apple.com/en-us/102360"
+      },
+      {
+        "title": "Google Shell Style Guide",
+        "url": "https://google.github.io/styleguide/shellguide.html"
+      },
+      {
+        "title": "Stack Overflow Developer Survey 2025: languages used",
+        "url": "https://survey.stackoverflow.co/2025/technology"
+      }
+    ]
+  },
+  {
+    "id": "homebrew",
+    "group": "Tools",
+    "title": "Homebrew: installing your tools",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Homebrew is the Mac's package manager: one command installs, updates and removes developer tools."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Install command-line tools (formulae, like git, node and python) and apps (casks, like visual-studio-code), and keep them up to date."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "brew reads a recipe, the formula, written in Ruby, downloads a ready-built copy and puts it in /opt/homebrew on Apple Silicon Macs (/usr/local on Intel ones). Then the tool is on your PATH, so the Terminal can find it."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It installs the languages you use here: node to run this app, python3, git. It is one of three kinds of installer you will meet: brew for tools on your Mac, npm for JavaScript libraries inside one project (package.json), pip for Python libraries."
+        ]
+      },
+      {
+        "h": "Good habits",
+        "p": [
+          "Update now and then: brew update, then brew upgrade.",
+          "Don't run brew with sudo; Homebrew is designed to work without admin rights.",
+          "Write your tools down in a Brewfile (brew bundle dump), so a new Mac is one command away: brew bundle."
+        ]
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "brew services to run databases in the background, taps for extra formulae, and writing your own formula."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "It is the usual way developers install tools on a Mac. The same idea exists everywhere: apt on Ubuntu, winget on Windows."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "What is the difference between brew install git and npm install express?",
+        "a": "brew installs a tool for your whole Mac. npm install puts a library in one project's node_modules and lists it in that project's package.json."
+      },
+      {
+        "q": "Formula or cask?",
+        "a": "A formula is a command-line tool; a cask (--cask) is an app with a window."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Homebrew FAQ",
+        "url": "https://docs.brew.sh/FAQ"
+      },
+      {
+        "title": "Homebrew Bundle",
+        "url": "https://docs.brew.sh/Brew-Bundle-and-Brewfile"
+      }
+    ]
+  },
+  {
+    "id": "git",
+    "group": "Tools",
+    "title": "Git: saving every version",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Git saves snapshots of your project, so you can go back, see what changed, and work with others without overwriting each other."
+        ]
+      },
+      {
+        "h": "Its job",
+        "p": [
+          "Version control. The Linux community, led by Linus Torvalds, built it in 2005 to manage the Linux kernel, a huge project with thousands of people."
+        ]
+      },
+      {
+        "h": "How it runs",
+        "p": [
+          "Three places: your working folder (the files you edit), the staging area (what goes into the next snapshot, filled with git add) and the history (snapshots, made with git commit). Each commit has a message and an id. A branch is a line of commits. A remote, like origin on GitHub, is another copy; push and pull keep them in step."
+        ]
+      },
+      {
+        "h": "How it connects",
+        "p": [
+          "It stores every language's files. GitHub keeps a copy online, and GitHub Pages turns your po.wor repository into the live website. VS Code shows what changed."
+        ]
+      },
+      {
+        "h": "Clean vs messy: commit messages",
+        "p": [],
+        "bad": "git commit -m \"stuff\"\ngit commit -m \"fixed things\"",
+        "good": "git commit -m \"Add /t time stamp to the planner\"\ngit commit -m \"Fix week view opening a day on bullet click\"",
+        "why": "The seven rules: short subject (about 50 characters), capital letter, no full stop, and the imperative mood. Test: \"If applied, this commit will add /t time stamp to the planner\" reads well."
+      },
+      {
+        "h": "Clean vs messy: small, focused commits",
+        "p": [],
+        "bad": "One commit: new footer + dark mode + a typo + a renamed file",
+        "good": "Four commits, one per change",
+        "why": "Small commits are easy to review, to understand later, and to undo without losing the good parts."
+      },
+      {
+        "h": "Clean vs messy: look before you commit",
+        "p": [],
+        "bad": "git add .\ngit commit -m \"Update\"",
+        "good": "git status\ngit diff\ngit add planner.html js/planner.js\ngit diff --staged\ngit commit -m \"Move a task with @fri\"",
+        "why": "git add . can sweep in secrets (.env), junk files and someone else's half-done work. Look first, then add only what you mean."
+      },
+      {
+        "h": "Where it leads",
+        "p": [
+          "Branches and merging, pull requests and code review on GitHub, resolving merge conflicts, rebase, tags and releases, and GitHub Actions to run tests on every push."
+        ]
+      },
+      {
+        "h": "How useful",
+        "p": [
+          "Git is the standard for version control; nearly every software team uses it, and GitHub is where most open-source code lives."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Your commit is made but GitHub doesn't show it. What is missing?",
+        "a": "git push. A commit only lives on your Mac until you push it to the remote."
+      },
+      {
+        "q": "What is the staging area for?",
+        "a": "Choosing exactly what goes into the next commit, so one commit can hold one change even if you edited many files."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Pro Git: A Short History of Git",
+        "url": "https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git"
+      },
+      {
+        "title": "How to Write a Git Commit Message",
+        "url": "https://cbea.ms/git-commit/"
+      }
+    ]
+  }
+]
