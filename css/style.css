@@ -482,6 +482,10 @@ footer {
 }
 .bullet { cursor: pointer; }   /* click a • or ○ to mark it done */
 
+/* View mode: read only, clicks don't start typing */
+.reading .doc,
+.reading .bullet { cursor: default; }
+
 /* Priority: * ** or *** at the end of a line */
 .row > [class^="priority"] {
   flex: 0 1 auto;

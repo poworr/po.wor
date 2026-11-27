@@ -49,6 +49,7 @@ function save(date, text) {
 // ===== Draw the view =====
 
 function render() {
+  shown = [];
   for (const button of document.querySelectorAll('[data-view]')) {
     button.setAttribute('aria-pressed', button.dataset.view === view);
   }
@@ -108,6 +109,45 @@ for (const button of document.querySelectorAll('[data-view]')) {
 $('today').addEventListener('click', () => { day = new Date(); day.setHours(0, 0, 0, 0); render(); });
 $('prev').addEventListener('click', () => { day = addDays(day, view === 'week' ? -7 : -1); render(); });
 $('next').addEventListener('click', () => { day = addDays(day, view === 'week' ? 7 : 1); render(); });
+$('read').addEventListener('click', () => setReading(!reading));
+
+// ===== View mode: read your notes without starting to type =====
+
+let reading = false;
+function setReading(on) {
+  reading = on;
+  $('read').setAttribute('aria-pressed', on);
+  document.querySelector('.planner').classList.toggle('reading', on);
+  if (on) page.blur();
+}
+
+// ===== Keys (when you're not typing) =====
+//   v  view mode    d  day    w  week    t  today    ← →  back / forward
+//   enter  start writing (today's page)    esc  stop writing
+document.addEventListener('keydown', (event) => {
+  if (event.target === page || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (event.target.matches('input, textarea, select')) return;
+  if (event.key === 'Enter' && event.target.closest('button, a')) return;   // Enter on a button presses it
+  const keys = {
+    v: () => setReading(!reading),
+    d: () => document.querySelector('[data-view="day"]').click(),
+    w: () => document.querySelector('[data-view="week"]').click(),
+    t: () => $('today').click(),
+    ArrowLeft: () => $('prev').click(),
+    ArrowRight: () => $('next').click(),
+    Enter: () => startWriting()
+  };
+  if (!keys[event.key]) return;
+  event.preventDefault();
+  keys[event.key]();
+});
+
+// Enter: write at the end of today's page (or the first page on screen)
+function startWriting() {
+  if (reading) return;
+  const doc = shown.find((d) => keyOf(d.date) === keyOf(new Date())) || shown[0];
+  edit(doc, doc.lines.length - 1, doc.lines[doc.lines.length - 1].length);
+}
 
 // ===== Writing =====
 
@@ -202,8 +242,11 @@ page.spellcheck = false;
 page.placeholder = '• start writing…';
 
 // Show one day's text in el
+let shown = [];   // the pages on screen right now
 function makeDoc(el, date, placeholder) {
-  draw({ el, date, lines: load(date).split('\n'), placeholder });
+  const doc = { el, date, lines: load(date).split('\n'), placeholder };
+  shown.push(doc);
+  draw(doc);
 }
 
 function draw(doc) {
@@ -214,7 +257,7 @@ function draw(doc) {
     row.className = 'row';
     row.append(typing() ? page : show(line));
     row.addEventListener('click', (event) => {
-      if (typing()) return;
+      if (typing() || reading) return;
       if (String(getSelection())) return;   // you selected text (to copy it): don't start typing
       if (event.target.classList.contains('bullet')) {   // click a • or ○: done
         doc.lines[i] = markDone(doc.lines[i]);
@@ -234,7 +277,7 @@ function draw(doc) {
   doc.el.onmousedown = (event) => { if (event.target === doc.el) event.preventDefault(); };
   doc.el.onclick = (event) => {
     const last = doc.lines.length - 1;
-    if (event.target === doc.el && !String(getSelection())) edit(doc, last, doc.lines[last].length);
+    if (event.target === doc.el && !String(getSelection()) && !reading) edit(doc, last, doc.lines[last].length);
   };
 }
 
@@ -460,12 +503,13 @@ page.addEventListener('keydown', (event) => {
   event.preventDefault();
 });
 
-// ===== Hold ⌘ to see the bullets =====
+// ===== Hold ⌘ to see the bullets and keys =====
 
 $('legend').textContent = BULLETS.map((b) =>
   b.symbol + '  ' + b.name.padEnd(6) + '  ctrl+' + b.ctrl + '   or type ' + b.type + ' and space').join('\n') +
   '\n\nclick •  done\nclick ○  done, click again  cancelled' +
-  '\n\n# to ######  heading     ---  divider     >  quote\n**bold**  *italic*  ~~crossed~~  ==highlight==  `code`\n* ** *** at the end of a line  priority\n\ntype h1, hr, quote, bold, code ...  a list pops up\ntab uses it     ↑ ↓ + enter picks another     esc closes';
+  '\n\n# to ######  heading     ---  divider     >  quote\n**bold**  *italic*  ~~crossed~~  ==highlight==  `code`\n* ** *** at the end of a line  priority\n\ntype h1, hr, quote, bold, code ...  a list pops up\ntab uses it     ↑ ↓ + enter picks another     esc closes' +
+  '\n\nkeys when you are not typing\nv  view mode   d  day   w  week   t  today   ← →  back / forward\nenter  start writing   esc  stop writing';
 
 document.addEventListener('keydown', (event) => { if (event.key === 'Meta') $('legend').hidden = false; });
 document.addEventListener('keyup', (event) => { if (event.key === 'Meta') $('legend').hidden = true; });
