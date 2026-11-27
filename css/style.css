@@ -427,20 +427,116 @@ footer {
   font-weight: normal;
 }
 
-/* Day: a blank page */
-#page {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
+/* Day: one row per line, with its number on the left like a code editor.
+   The line you're on shows what you typed; the others show the result. */
+#day-view {
+  position: relative;   /* for the < list */
+}
+.doc {
   min-height: 55vh;
+  line-height: 1.8;
+  cursor: text;
+  counter-reset: line;
+}
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 1ch;
+  min-height: 1.8em;
+  counter-increment: line;
+}
+.row::before {
+  content: counter(line);
+  flex: none;
+  width: 3ch;
+  font-size: 14px;
+  text-align: right;
+  color: #A8A8A8;
+}
+.row > * {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
   padding: 0;
   font: inherit;
-  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* The line you're typing on */
+#page {
+  display: block;
   color: inherit;
   background: none;
   border: 0;
   outline: none;
-  resize: vertical;
+  overflow: hidden;   /* it grows instead of scrolling */
+  resize: none;
+}
+#page::placeholder,
+.placeholder { color: #A8A8A8; }
+
+/* What the Markdown and HTML turn into */
+.row > h1 { font-size: 1.6em; font-weight: bold; }
+.row > h2 { font-size: 1.4em; font-weight: bold; }
+.row > h3 { font-size: 1.2em; font-weight: bold; }
+.row > h4,
+.row > h5,
+.row > h6 { font-weight: bold; }
+.row > hr {
+  align-self: center;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #C8C8C8;
+}
+.row > blockquote {
+  padding-left: 1ch;
+  color: #8A8A8A;
+  border-left: 2px solid #C8C8C8;
+}
+.row code {
+  padding: 0 3px;
+  background: #E6E6E6;
+  border-radius: 3px;
+}
+.row mark {
+  color: #FFFFFF;
+  background: #1D1D1F;
+}
+.bullet { cursor: pointer; }   /* click a • or ○ to mark it done */
+
+/* Priority: * ** or *** at the end of a line */
+.row > [class^="priority"] {
+  flex: 0 1 auto;
+  margin-left: -4px;
+  padding: 0 4px;
+  border-radius: 3px;
+}
+.row > .priority-1 { background: #E6E6E6; }
+.row > .priority-2 { background: #C8C8C8; }
+.row > .priority-3 { color: #FFFFFF; background: #1D1D1F; }
+
+/* The list that pops up when you type < */
+.suggest {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  font-size: 13px;
+  white-space: pre;
+  background: #FFFFFF;
+  border: 1px solid #C8C8C8;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+.suggest li {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+.suggest li[aria-selected="true"] {
+  color: #FFFFFF;
+  background: #1D1D1F;
 }
 
 /* Week: 7 columns side by side, like a paper weekly planner */

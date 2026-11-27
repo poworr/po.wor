@@ -39,9 +39,10 @@
 
     <h1 class="planner-title" id="title"></h1>
 
-    <!-- Day: free space to write -->
+    <!-- Day: one row per line (js/planner.js fills it in) -->
     <section id="day-view">
-      <textarea id="page" spellcheck="false" aria-label="Today's page" placeholder="• start writing…"></textarea>
+      <div class="doc" id="doc"></div>
+      <ul class="suggest" id="suggest" hidden></ul>
     </section>
 
     <!-- Week: Monday to Sunday, each date with space to write (no times) -->
