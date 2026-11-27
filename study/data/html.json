@@ -575,5 +575,35 @@
     "example": "po.wor planner: the line you are typing on is a one-row textarea.",
     "remember": "placeholder = a place-holder: it keeps the spot until you type.",
     "mastered": false
+  },
+  {
+    "id": "html-53",
+    "category": "Navigation",
+    "syntax": "<nav class=\"footer-nav\">\n  <a href=\"/\" aria-current=\"page\">Home</a>\n  <a href=\"/planner.html\">Planner</a>\n</nav>",
+    "explain": "<nav> holds a group of links to move around the site. aria-current=\"page\" marks the link to the page you are on, for screen readers and for CSS.",
+    "example": "po.wor: the icons in the footer of every page.",
+    "remember": "nav = navigation. aria-current=\"page\" = \"you are here\".",
+    "builtFrom": "element nesting elements + attributes",
+    "mastered": false
+  },
+  {
+    "id": "html-54",
+    "category": "Page",
+    "syntax": "<body class=\"planner-page\">",
+    "explain": "A class on <body> lets one page get its own styles while sharing the same CSS file.",
+    "example": "po.wor: the planner is plain white.",
+    "remember": "Class on body = a name tag for the whole page.",
+    "builtFrom": "element + attribute",
+    "mastered": false
+  },
+  {
+    "id": "html-55",
+    "category": "Forms",
+    "syntax": "<input class=\"move\" placeholder=\"fri, 11-30, tomorrow\" hidden>",
+    "explain": "placeholder is grey hint text that goes away when you type. hidden keeps the input out of sight until JavaScript shows it.",
+    "example": "po.wor: the Ctrl+M \"move to a day\" box in the planner.",
+    "remember": "placeholder = a hint, not a value.",
+    "builtFrom": "void element + attributes (one with no value)",
+    "mastered": false
   }
 ]

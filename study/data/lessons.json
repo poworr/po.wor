@@ -390,6 +390,19 @@
     ]
   },
   {
+    "id": "css-13",
+    "lang": "css",
+    "level": "Intermediate",
+    "title": "The more specific one wins",
+    "task": "Give .plan a margin-left of auto. Then write a second rule, .footer-nav .plan, that sets margin-left to 0, so plans in the footer sit on the left.",
+    "solution": ".plan { margin-left: auto; }\n.footer-nav .plan { margin-left: 0; }",
+    "mustInclude": [
+      ".plan{margin-left:auto;",
+      ".footer-nav .plan{margin-left:0"
+    ],
+    "remember": "Count the classes: more wins."
+  },
+  {
     "id": "javascript-core-1",
     "lang": "javascript",
     "level": "Core",
@@ -580,6 +593,26 @@
     "solution": "const DAYS = [\"sunday\", \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\"];\n\nfunction nextDay(today, word) {\n  const n = DAYS.findIndex((name) => name.startsWith(word));\n  return (n - today + 7) % 7 || 7;\n}\n\nconsole.log(nextDay(5, \"fri\"));\nconsole.log(nextDay(5, \"mon\"));\nconsole.log(nextDay(5, \"sat\"));",
     "expected": "7\n3\n1",
     "remember": "% 7 wraps the week around; || 7 turns \"0 days\" into \"next week\"."
+  },
+  {
+    "id": "javascript-18",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Move a task",
+    "task": "Today is Friday 27 November 2026. Write moveTo(line): if the line ends with @ and a day name (like @fri or @mon), print the line without the @word, then the date of the next one as \"Fri 4 Dec\". Try \"• call mum @fri\" and \"• pay rent @mon\".",
+    "solution": "const DAYS = [\"sun\", \"mon\", \"tue\", \"wed\", \"thu\", \"fri\", \"sat\"];\nconst MONTHS = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"];\nconst today = new Date(2026, 10, 27);\n\nfunction moveTo(line) {\n  const m = line.match(/(?:^|\\s)@(\\w+)\\s*$/);\n  const n = DAYS.findIndex((name) => m[1].startsWith(name));\n  const date = new Date(today);\n  date.setDate(today.getDate() + ((n - today.getDay() + 7) % 7 || 7));\n  console.log(line.replace(/\\s*@\\w+\\s*$/, \"\"));\n  console.log(DAYS[date.getDay()][0].toUpperCase() + DAYS[date.getDay()].slice(1) + \" \" + date.getDate() + \" \" + MONTHS[date.getMonth()]);\n}\n\nmoveTo(\"• call mum @fri\");\nmoveTo(\"• pay rent @mon\");",
+    "remember": "Find the @word with a regex, the day with findIndex, the gap with % 7 || 7.",
+    "expected": "• call mum\nFri 4 Dec\n• pay rent\nMon 30 Nov"
+  },
+  {
+    "id": "javascript-19",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Count down (recursion)",
+    "task": "Write countDown(n) that prints n, then calls itself with n - 1, and prints go when n is 0. Call countDown(3).",
+    "solution": "function countDown(n) {\n  if (n === 0) {\n    console.log(\"go\");\n    return;\n  }\n  console.log(n);\n  countDown(n - 1);\n}\n\ncountDown(3);",
+    "remember": "A stop case first, then a smaller step.",
+    "expected": "3\n2\n1\ngo"
   },
   {
     "id": "node-core-1",

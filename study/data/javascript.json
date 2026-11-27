@@ -966,5 +966,85 @@
     "remember": "concat = chain together (a new array, nothing changed).",
     "builtFrom": "array . method ( array )",
     "mastered": false
+  },
+  {
+    "id": "javascript-92",
+    "category": "Regex",
+    "syntax": "const line = \"    buy milk\";\nconsole.log(line.match(/^ */)[0].length);",
+    "explain": "/^ */ means \"spaces at the start\" (zero or more). match gives an array; [0] is the matched text; .length counts the spaces.",
+    "example": "po.wor: how far in a planner sub-task is.",
+    "remember": "^ = start, \" *\" = any number of spaces.",
+    "builtFrom": "string . method ( regex ) [ 0 ] . length",
+    "mastered": false
+  },
+  {
+    "id": "javascript-93",
+    "category": "Regex",
+    "syntax": "const m = \"2026-11-30\".match(/^(?:(\\d{4})-)?(\\d{1,2})-(\\d{1,2})$/);\nconsole.log(m[1], m[2], m[3]);\nconsole.log(\"11-30\".match(/^(?:(\\d{4})-)?(\\d{1,2})-(\\d{1,2})$/)[1]);",
+    "explain": "(?: … )? is an optional group: the year part may be there or not. \\d{4} is 4 digits, \\d{1,2} is 1 or 2. ( ) captures each number. If the year is missing, m[1] is undefined.",
+    "example": "po.wor: @11-30 and @2026-11-30 in the planner.",
+    "remember": "? after a group = \"maybe\". {1,2} = one or two of them.",
+    "builtFrom": "regex: anchors + groups + counts",
+    "mastered": false
+  },
+  {
+    "id": "javascript-94",
+    "category": "Dates",
+    "syntax": "const today = 5;   // Friday (getDay)\nconst friday = 5, monday = 1;\nconsole.log((friday - today + 7) % 7 || 7);\nconsole.log((monday - today + 7) % 7 || 7);",
+    "explain": "+ 7 keeps it positive, % 7 wraps around the week, and || 7 turns 0 (\"today\") into 7 (\"next week\").",
+    "example": "po.wor: @fri moves a task to the next Friday.",
+    "remember": "Add a week, wrap the week, never zero.",
+    "builtFrom": "expression: + % ||",
+    "mastered": false
+  },
+  {
+    "id": "javascript-95",
+    "category": "Dates",
+    "syntax": "const date = new Date(2026, 2 - 1, 31);\nconsole.log(date.getMonth() !== 2 - 1);   // true: no 31 February",
+    "explain": "new Date rolls a bad day over into the next month (31 Feb becomes 3 March). If the month changed, the date was not real.",
+    "example": "po.wor: @2-31 is ignored in the planner.",
+    "remember": "Months start at 0. If the month moved, the date was fake.",
+    "builtFrom": "new + method + comparison",
+    "mastered": false
+  },
+  {
+    "id": "javascript-96",
+    "category": "Arrays",
+    "syntax": "const lines = [\"a\", \"task\", \"  sub\", \"b\"];\nconst task = lines.splice(1, 2).map((line) => line.trim());\nconsole.log(task, lines);",
+    "explain": "splice removes items and gives them back as a new array, so you can keep working on them with .map.",
+    "example": "po.wor: moving a task and its sub-tasks to another day.",
+    "remember": "splice cuts out and hands you the piece.",
+    "builtFrom": "array . method ( ) . method ( arrow function )",
+    "mastered": false
+  },
+  {
+    "id": "javascript-97",
+    "category": "Loops",
+    "syntax": "const lines = [\"a\", \"b\", \"\", \"\"];\nwhile (lines.length && !lines[lines.length - 1].trim()) lines.pop();\nconsole.log(lines);",
+    "explain": "while repeats as long as the test is true. pop removes the last item. Together: drop empty lines from the end.",
+    "example": "po.wor: no gap before a moved task.",
+    "remember": "while = if, again and again.",
+    "builtFrom": "while ( expression ) statement",
+    "mastered": false
+  },
+  {
+    "id": "javascript-98",
+    "category": "DOM",
+    "syntax": "const el = document.createElement(\"p\");\nconst indent = 4;\nel.style.marginLeft = indent + \"ch\";\nconsole.log(el.style.marginLeft);",
+    "explain": "el.style sets CSS from JavaScript. CSS names with a dash become camelCase (margin-left → marginLeft). The value is a string with its unit; ch is the width of one character.",
+    "example": "po.wor: sub-tasks are pushed in by their spaces.",
+    "remember": "Dash in CSS = capital in JS.",
+    "builtFrom": "object . property . property = string",
+    "mastered": false
+  },
+  {
+    "id": "javascript-99",
+    "category": "Functions",
+    "syntax": "function countDown(n) {\n  if (n === 0) return console.log(\"go\");\n  console.log(n);\n  countDown(n - 1);\n}\ncountDown(3);",
+    "explain": "Recursion: a function that calls itself with a smaller problem, and a stop case so it ends.",
+    "example": "po.wor: show() calls itself for an indented line.",
+    "remember": "Always a stop case first, then a smaller step.",
+    "builtFrom": "function + if + a call to itself",
+    "mastered": false
   }
 ]

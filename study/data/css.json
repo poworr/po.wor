@@ -674,5 +674,75 @@
     "remember": "focus-within = \"focus is somewhere inside me\".",
     "builtFrom": "selector:pseudo-class , selector:pseudo-class { rule }",
     "mastered": false
+  },
+  {
+    "id": "css-63",
+    "category": "Colors",
+    "syntax": ":root {\n  color-scheme: light dark;\n  --bg: #F5F5F5;\n}\n@media (prefers-color-scheme: dark) {\n  :root { --bg: #000000; }\n}\nbody { background: var(--bg); }",
+    "explain": "Dark mode with variables: set the colours once on :root, then give the same variables new values inside the dark-mode @media. Every var(--bg) changes by itself. color-scheme also makes scrollbars and form fields follow.",
+    "example": "po.wor: the whole site follows the Mac's light or dark setting.",
+    "remember": "Same names, new values in the dark.",
+    "builtFrom": "rule with custom properties + at-rule wrapping a rule",
+    "mastered": false
+  },
+  {
+    "id": "css-64",
+    "category": "Colors",
+    "syntax": ".planner-page { --bg: #FFFFFF; }",
+    "explain": "A variable can be set again on any element. Everything inside it uses the new value; the rest of the site keeps the old one.",
+    "example": "po.wor: only the planner page is plain white.",
+    "remember": "Variables flow down: set it on a parent, the children get it.",
+    "builtFrom": "rule + custom property",
+    "mastered": false
+  },
+  {
+    "id": "css-65",
+    "category": "Pseudo-elements",
+    "syntax": "header::before {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 0;\n  right: 0;\n  height: 12px;\n}",
+    "explain": "content: \"\" makes an empty ::before box. Here it is an invisible strip under the hidden header: point at it and the header's :hover kicks in.",
+    "example": "po.wor: the planner header slides down when you point at the top.",
+    "remember": "No content = no box. Empty quotes still make one.",
+    "builtFrom": "selector::pseudo-element { declarations }",
+    "mastered": false
+  },
+  {
+    "id": "css-66",
+    "category": "Selectors",
+    "syntax": ".footer-nav a { opacity: 0.4; }\n.footer-nav a:hover,\n.footer-nav a[aria-current=\"page\"] { opacity: 1; }",
+    "explain": "[attribute=\"value\"] picks elements whose attribute has that value. opacity fades an element: 0 is invisible, 1 is full.",
+    "example": "po.wor: footer icons are faint, except the page you are on.",
+    "remember": "Square brackets = \"with this attribute\".",
+    "builtFrom": "selector[attribute=\"value\"] { property: value }",
+    "mastered": false
+  },
+  {
+    "id": "css-67",
+    "category": "Cascade",
+    "syntax": ".plan { margin-left: auto; }\n.footer-nav .plan { margin-left: 0; }   /* wins */",
+    "explain": "Two classes beat one. The more specific selector wins, wherever it is in the file.",
+    "example": "po.wor: the planner link sits differently in the footer.",
+    "remember": "Count the classes: more wins.",
+    "builtFrom": "two rules + the cascade",
+    "mastered": false
+  },
+  {
+    "id": "css-68",
+    "category": "Position",
+    "syntax": "footer {\n  position: fixed;\n  bottom: 0;\n  transform: translateY(100%);\n  transition: transform 0.2s;\n}\nfooter:hover { transform: none; }",
+    "explain": "position: fixed; bottom: 0 pins it to the bottom of the window. translateY(100%) pushes it down by its own height, out of sight. transition makes it slide.",
+    "example": "po.wor: the footer that hides below the window.",
+    "remember": "100% of its own height = just out of view.",
+    "builtFrom": "rule + :hover rule",
+    "mastered": false
+  },
+  {
+    "id": "css-69",
+    "category": "Transforms",
+    "syntax": ".tip::before {\n  width: 8px;\n  height: 8px;\n  border-right: 1px solid;\n  border-bottom: 1px solid;\n  transform: rotate(225deg);\n}",
+    "explain": "Two borders of a square make a corner. rotate turns it: 45deg points down, 225deg points up.",
+    "example": "po.wor: the little arrow on the footer bubbles.",
+    "remember": "A corner + a turn = an arrow. 45 down, 135 left, 225 up, 315 right.",
+    "builtFrom": "pseudo-element + borders + transform",
+    "mastered": false
   }
 ]
