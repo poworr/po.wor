@@ -1,5 +1,80 @@
 [
   {
+    "id": "html-core-1",
+    "category": "Core",
+    "syntax": "<tag attribute=\"value\">content</tag>",
+    "explain": "An element: an opening tag, the content, and a closing tag with a /. Every piece of HTML is an element.",
+    "example": "po.wor: <p class=\"bubble\">Hi</p>",
+    "remember": "Open, fill, close: <tag> … </tag>. The / means \"the end\".",
+    "mastered": false
+  },
+  {
+    "id": "html-core-2",
+    "category": "Core",
+    "syntax": "<a href=\"/box.html\" target=\"_blank\">Box</a>",
+    "explain": "Attributes go inside the opening tag as name=\"value\". They add settings to the element; an element can have many.",
+    "example": "po.wor: the links on the homepage.",
+    "remember": "Attributes live in the opening tag only, never in the closing tag.",
+    "mastered": false
+  },
+  {
+    "id": "html-core-3",
+    "category": "Core",
+    "syntax": "<ul>\n  <li>One</li>\n  <li>Two</li>\n</ul>",
+    "explain": "Nesting: elements go inside other elements, like boxes in boxes. The page is a tree of elements. Close the inner one before the outer one.",
+    "example": "po.wor: the planner list.",
+    "remember": "Last opened, first closed (like stacking boxes).",
+    "mastered": false
+  },
+  {
+    "id": "html-core-4",
+    "category": "Core",
+    "syntax": "<img src=\"logo.svg\" alt=\"po.wor\">\n<br>\n<input name=\"q\">",
+    "explain": "Void elements have no content, so they have no closing tag.",
+    "example": "po.wor: the logo <img>.",
+    "remember": "Void = empty: nothing goes inside, so nothing to close.",
+    "mastered": false
+  },
+  {
+    "id": "html-core-5",
+    "category": "Core",
+    "syntax": "<!DOCTYPE html>\n<html>\n  <head><title>Page</title></head>\n  <body>…</body>\n</html>",
+    "explain": "The page skeleton: head holds information about the page, body holds what you see.",
+    "example": "po.wor: the top of every .html file.",
+    "remember": "Head = thinking (invisible), body = what people see. Type ! then Tab in VS Code.",
+    "mastered": false
+  },
+  {
+    "id": "html-core-6",
+    "category": "Core: built from it",
+    "syntax": "<button type=\"button\" aria-label=\"Close\" hidden>×</button>",
+    "explain": "Every new element you meet is the same shape: a tag name, some attributes, some content. Learn what the tag and attributes mean; the grammar never changes.",
+    "example": "po.wor: buttons in the planner.",
+    "remember": "New tag? Same shape. Only the names are new.",
+    "builtFrom": "element + 3 attributes (one with no value) + content",
+    "mastered": false
+  },
+  {
+    "id": "html-core-7",
+    "category": "Core: built from it",
+    "syntax": "<form>\n  <label>Name <input name=\"name\"></label>\n  <button>Save</button>\n</form>",
+    "explain": "A form is just elements nested inside elements: a form, a label holding an input, a button.",
+    "example": "The study app's Add syntax form.",
+    "remember": "Big HTML = small elements nested.",
+    "builtFrom": "nesting + void element (input) + attributes",
+    "mastered": false
+  },
+  {
+    "id": "html-core-8",
+    "category": "Core: built from it",
+    "syntax": "<div data-tip=\"Hello\">…</div>",
+    "explain": "data-* attributes are normal attributes with a name you invent. JavaScript and CSS can read them.",
+    "example": "po.wor: the speech bubbles.",
+    "remember": "data- = \"my own data\" on an element.",
+    "builtFrom": "attribute (name you choose after data-)",
+    "mastered": false
+  },
+  {
     "id": "seed-1",
     "category": "Structure",
     "syntax": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>My page</title>\n</head>\n<body>\n  <h1>Hello</h1>\n</body>\n</html>",

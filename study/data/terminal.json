@@ -1,5 +1,61 @@
 [
   {
+    "id": "terminal-core-1",
+    "category": "Core",
+    "syntax": "command -flags arguments",
+    "explain": "Every terminal line has the same shape: the command (what), flags (how, starting with -), and arguments (on what).",
+    "example": "ls -la Desktop",
+    "remember": "What, how, on what.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-core-2",
+    "category": "Core",
+    "syntax": "ls -l -a\nls -la\nls --all",
+    "explain": "Flags: short ones use one - and can be joined (-la). Long ones use two -- and a word.",
+    "example": "git log --oneline",
+    "remember": "One dash, one letter; two dashes, a whole word.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-core-3",
+    "category": "Core",
+    "syntax": "cd ~/Desktop/po.wor\ncd ..\ncd ./study",
+    "explain": "Paths: / separates folders, ~ is your home, . is here, .. is one folder up.",
+    "example": "cd ~/Desktop/po.wor",
+    "remember": "~ home, . here, .. up.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-core-4",
+    "category": "Core",
+    "syntax": "echo \"hi\" > note.txt\necho \"more\" >> note.txt\ncat note.txt | wc -l",
+    "explain": "Plumbing: > sends output into a file (replace), >> adds to it, | sends one command's output into the next.",
+    "example": "Counting lines, saving logs.",
+    "remember": "> pour into a file, | pass to the next.",
+    "mastered": false
+  },
+  {
+    "id": "terminal-core-5",
+    "category": "Core: built from it",
+    "syntax": "grep -rn \"remember\" study/data",
+    "explain": "grep = command, -rn = two flags (recursive, line numbers), then two arguments: what to look for and where.",
+    "example": "Finding text in a project.",
+    "remember": "Split any long command at the spaces: command, flags, arguments.",
+    "builtFrom": "command + joined flags + 2 arguments",
+    "mastered": false
+  },
+  {
+    "id": "terminal-core-6",
+    "category": "Core: built from it",
+    "syntax": "cat notes.txt | sort | uniq | head -5",
+    "explain": "A pipeline: four small commands joined with |. Each does one job on the last one's output.",
+    "example": "Quick data tidying.",
+    "remember": "Small tools, joined by pipes.",
+    "builtFrom": "commands + pipes",
+    "mastered": false
+  },
+  {
     "id": "seed-59",
     "category": "Navigation",
     "syntax": "pwd",

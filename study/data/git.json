@@ -1,5 +1,61 @@
 [
   {
+    "id": "git-core-1",
+    "category": "Core",
+    "syntax": "git <subcommand> [flags] [arguments]",
+    "explain": "Git is one command with subcommands: git add, git commit, git push. After that, the usual flags and arguments.",
+    "example": "git commit -m \"message\"",
+    "remember": "git + verb + how + what.",
+    "mastered": false
+  },
+  {
+    "id": "git-core-2",
+    "category": "Core",
+    "syntax": "working folder  →  git add  →  staging  →  git commit  →  history",
+    "explain": "The three places: your files, the staging area (what goes in the next commit), and the history of commits.",
+    "example": "Every Git workflow.",
+    "remember": "Edit, add (pack the box), commit (seal the box).",
+    "mastered": false
+  },
+  {
+    "id": "git-core-3",
+    "category": "Core",
+    "syntax": "git push origin main\ngit pull origin main",
+    "explain": "Remotes: origin is the name of the copy on GitHub; main is the branch. push sends commits up, pull brings them down.",
+    "example": "po.wor: pushing to GitHub Pages.",
+    "remember": "push up, pull down, origin = GitHub.",
+    "mastered": false
+  },
+  {
+    "id": "git-core-4",
+    "category": "Core",
+    "syntax": "git switch -c new-idea\ngit switch main",
+    "explain": "A branch is a named line of commits. -c creates one.",
+    "example": "Trying an idea without breaking main.",
+    "remember": "Branch = a parallel line of history.",
+    "mastered": false
+  },
+  {
+    "id": "git-core-5",
+    "category": "Core: built from it",
+    "syntax": "git commit -m \"feat: add /t time stamp\"",
+    "explain": "Subcommand (commit) + flag (-m) + argument (the message in quotes).",
+    "example": "po.wor commits.",
+    "remember": "-m = message.",
+    "builtFrom": "git + subcommand + flag + argument",
+    "mastered": false
+  },
+  {
+    "id": "git-core-6",
+    "category": "Core: built from it",
+    "syntax": "git log --oneline -5",
+    "explain": "Subcommand (log) + a long flag + a short flag with a number.",
+    "example": "Seeing the last 5 commits.",
+    "remember": "Read flags as adjectives: short, last 5.",
+    "builtFrom": "git + subcommand + two flags",
+    "mastered": false
+  },
+  {
     "id": "git-1",
     "category": "Setup",
     "syntax": "git config --global user.name \"Your Name\"",

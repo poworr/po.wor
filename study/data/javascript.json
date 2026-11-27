@@ -1,5 +1,99 @@
 [
   {
+    "id": "javascript-core-1",
+    "category": "Core",
+    "syntax": "console.log(42, \"hi\", true, null, [1, 2], { a: 1 });",
+    "explain": "Values: numbers, strings, booleans, null/undefined, arrays [ ] and objects { }. Everything JavaScript works with is a value.",
+    "example": "po.wor: the planner stores lines as an array of strings.",
+    "remember": "Six things: number, string, boolean, nothing, list [ ], object { }.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-2",
+    "category": "Core",
+    "syntax": "const name = \"Po\";\nlet count = 0;\ncount = count + 1;\nconsole.log(name, count);",
+    "explain": "Variables are names for values. const can't be reassigned; let can.",
+    "example": "po.wor: const lines = …",
+    "remember": "const = constant (stays), let = let it change.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-3",
+    "category": "Core",
+    "syntax": "console.log(2 + 3 * 4, \"a\" + \"b\", 5 > 3 && 2 > 1);",
+    "explain": "Expressions: anything that makes a value. Operators (+ * > && ===) combine values into new values.",
+    "example": "po.wor: if (text.startsWith(\"#\") && …)",
+    "remember": "If you can console.log it, it is an expression.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-4",
+    "category": "Core",
+    "syntax": "function add(a, b) {\n  return a + b;\n}\nconst double = (x) => x * 2;\nconsole.log(add(2, 3), double(4));",
+    "explain": "A function is reusable code. You call it with ( ) and give it arguments; return sends a value back. An arrow => is a shorter function. Functions are values too.",
+    "example": "po.wor: function render() { … }",
+    "remember": "Name it, ( ) to call it, return to answer.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-5",
+    "category": "Core",
+    "syntax": "const user = { name: \"Po\", greet() { return \"hi \" + this.name; } };\nconsole.log(user.name, user[\"name\"], user.greet());",
+    "explain": "Objects hold named values (properties). Read them with a dot. A function stored in an object is called a method.",
+    "example": "po.wor: localStorage.getItem(…), document.body",
+    "remember": "Dot = \"open the object and take…\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-6",
+    "category": "Core",
+    "syntax": "for (const n of [1, 2, 3]) {\n  if (n % 2 === 1) console.log(n, \"odd\");\n  else console.log(n, \"even\");\n}",
+    "explain": "Control flow: if / else choose, for / while repeat. Blocks { } group statements.",
+    "example": "po.wor: looping over planner lines.",
+    "remember": "if = choose, for = repeat, { } = the group.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-7",
+    "category": "Core: built from it",
+    "syntax": "document.body.addEventListener(\"click\", () => console.log(\"clicked\"));\ndocument.body.click();",
+    "explain": "An event listener is just a method call with a function as an argument. The browser calls your function later, when the event happens.",
+    "example": "po.wor: every button on the site.",
+    "remember": "object.method(\"what\", whatToDo)",
+    "builtFrom": "object . method ( string , function )",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-8",
+    "category": "Core: built from it",
+    "syntax": "console.log([1, 2, 3].map((n) => n * 2).filter((n) => n > 2).join(\", \"));",
+    "explain": "Chaining: each method returns a value, so you put another dot on it. map, filter and join are methods on arrays, given functions.",
+    "example": "po.wor: lines.map(…).join(\"\\n\")",
+    "remember": "Read it left to right: each dot works on the last answer.",
+    "builtFrom": "array value + methods + arrow functions",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-9",
+    "category": "Core: built from it",
+    "syntax": "const time = \"14:05\";\nconsole.log(`meeting ${time}`);",
+    "explain": "A template literal is a string with expressions inside ${ }.",
+    "example": "po.wor: the /t time stamp.",
+    "remember": "Backticks + ${ } = \"fill in the blank\".",
+    "builtFrom": "string + expression",
+    "mastered": false
+  },
+  {
+    "id": "javascript-core-10",
+    "category": "Core: built from it",
+    "syntax": "const el = document.createElement(\"p\");\nel.textContent = \"Hi\";\ndocument.body.append(el);\nconsole.log(el.outerHTML);",
+    "explain": "The DOM is the page as objects. Changing the page = calling methods and setting properties on those objects.",
+    "example": "po.wor: building the planner rows.",
+    "remember": "The page is objects; dots change it.",
+    "builtFrom": "objects + methods + properties",
+    "mastered": false
+  },
+  {
     "id": "seed-18",
     "category": "Variables",
     "syntax": "const name = \"Ada\";\nlet count = 0;\ncount = count + 1;\nconsole.log(name, count);",

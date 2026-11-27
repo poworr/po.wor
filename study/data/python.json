@@ -1,5 +1,80 @@
 [
   {
+    "id": "python-core-1",
+    "category": "Core",
+    "syntax": "print(42, 3.5, \"hi\", True, None, [1, 2], {\"a\": 1})",
+    "explain": "Values: int, float, str, bool, None, list [ ] and dict { }. Everything is a value (an object).",
+    "example": "Lists and dicts are what most programs store.",
+    "remember": "Python's six: number, decimal, text, yes/no, nothing, list, dict.",
+    "mastered": false
+  },
+  {
+    "id": "python-core-2",
+    "category": "Core",
+    "syntax": "name = \"Po\"\ncount = 0\ncount += 1\nprint(name, count)",
+    "explain": "Variables: a name = a value. No let or const; just =.",
+    "example": "Every Python program.",
+    "remember": "Name on the left, value on the right.",
+    "mastered": false
+  },
+  {
+    "id": "python-core-3",
+    "category": "Core",
+    "syntax": "for n in [1, 2, 3]:\n    if n % 2 == 1:\n        print(n, \"odd\")\n    else:\n        print(n, \"even\")",
+    "explain": "Blocks: a line ending in : starts a block, and the indented lines under it are inside it. Indentation is the grammar (no { }).",
+    "example": "if, for, while, def, class all use : + indent.",
+    "remember": "Colon opens, indent holds, un-indent closes.",
+    "mastered": false
+  },
+  {
+    "id": "python-core-4",
+    "category": "Core",
+    "syntax": "def add(a, b):\n    return a + b\n\nprint(add(2, 3))",
+    "explain": "Functions: def name(parameters): then an indented block; return sends a value back.",
+    "example": "Reusable steps.",
+    "remember": "def = define. Same : + indent rule.",
+    "mastered": false
+  },
+  {
+    "id": "python-core-5",
+    "category": "Core",
+    "syntax": "word = \"hello\"\nprint(word.upper(), word.count(\"l\"), len(word))",
+    "explain": "Everything is an object with methods you reach with a dot. Some tools are plain functions (len, print).",
+    "example": "\"text\".split(), list.append()",
+    "remember": "Dot = \"ask the value to do something\".",
+    "mastered": false
+  },
+  {
+    "id": "python-core-6",
+    "category": "Core: built from it",
+    "syntax": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return self.name + \" says woof\"\n\nprint(Dog(\"Rex\").speak())",
+    "explain": "A class is a block of functions (methods). self is the object itself.",
+    "example": "Making your own kinds of objects.",
+    "remember": "class = a block of defs that share self.",
+    "builtFrom": "block (: + indent) + def + dot",
+    "mastered": false
+  },
+  {
+    "id": "python-core-7",
+    "category": "Core: built from it",
+    "syntax": "print([n * 2 for n in range(5) if n % 2 == 0])",
+    "explain": "A list comprehension is a for loop and an if squeezed inside [ ].",
+    "example": "Building a list in one line.",
+    "remember": "[ what for x in where if test ]",
+    "builtFrom": "list + for + if + expression",
+    "mastered": false
+  },
+  {
+    "id": "python-core-8",
+    "category": "Core: built from it",
+    "syntax": "with open(\"note.txt\", \"w\") as f:\n    f.write(\"hi\")\nprint(open(\"note.txt\").read())",
+    "explain": "with is a block that opens something and closes it for you at the end.",
+    "example": "Reading and writing files.",
+    "remember": "with = \"use it, then tidy up\".",
+    "builtFrom": "block + function call + method",
+    "mastered": false
+  },
+  {
     "id": "seed-35",
     "category": "Basics",
     "syntax": "name = \"Ada\"\nprint(f\"Hello, {name}!\")",

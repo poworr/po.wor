@@ -1,5 +1,71 @@
 [
   {
+    "id": "c-core-1",
+    "category": "Core",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int age = 20;\n    double price = 1.5;\n    char letter = 'A';\n    printf(\"%d %.1f %c\\n\", age, price, letter);\n    return 0;\n}",
+    "explain": "Types: every variable has a type written before its name (int, double, char). The type says how much memory it uses.",
+    "example": "Every C program.",
+    "remember": "Type first, then name: int age.",
+    "mastered": false
+  },
+  {
+    "id": "c-core-2",
+    "category": "Core",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int x = 1;\n    x = x + 1;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+    "explain": "Statements end in ; and blocks are { }. A program is statements inside functions; it starts at main.",
+    "example": "Every C program.",
+    "remember": "Semicolon = full stop. Braces = paragraph.",
+    "mastered": false
+  },
+  {
+    "id": "c-core-3",
+    "category": "Core",
+    "syntax": "#include <stdio.h>\n\nint square(int n) {\n    return n * n;\n}\n\nint main(void) {\n    printf(\"%d\\n\", square(4));\n    return 0;\n}",
+    "explain": "Functions: return type, name, (typed parameters), then a block. A function must be written (or declared) before it is used.",
+    "example": "Splitting a program into steps.",
+    "remember": "Same shape as main: type name(params) { }.",
+    "mastered": false
+  },
+  {
+    "id": "c-core-4",
+    "category": "Core",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n    int *p = &n;\n    *p = 9;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+    "explain": "Pointers: & gives the address of a variable, * follows an address to the value. This is how C shares and changes memory.",
+    "example": "Arrays, strings and changing values in functions.",
+    "remember": "& = \"where is it\", * = \"go there\".",
+    "mastered": false
+  },
+  {
+    "id": "c-core-5",
+    "category": "Core: built from it",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    int nums[3] = {4, 5, 6};\n    for (int i = 0; i < 3; i++) printf(\"%d \", nums[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+    "explain": "An array is many values of one type in a row; nums[i] is really *(nums + i), a pointer step.",
+    "example": "Lists of numbers.",
+    "remember": "Array = pointer to the first one.",
+    "builtFrom": "type + [ ] + pointer arithmetic + for",
+    "mastered": false
+  },
+  {
+    "id": "c-core-6",
+    "category": "Core: built from it",
+    "syntax": "#include <stdio.h>\n\nstruct Point { int x; int y; };\n\nint main(void) {\n    struct Point p = {3, 4};\n    printf(\"%d %d\\n\", p.x, p.y);\n    return 0;\n}",
+    "explain": "A struct groups variables of different types under one name. Read the parts with a dot.",
+    "example": "A point, a person, a record.",
+    "remember": "struct = my own type made from types.",
+    "builtFrom": "types + block + dot",
+    "mastered": false
+  },
+  {
+    "id": "c-core-7",
+    "category": "Core: built from it",
+    "syntax": "#include <stdio.h>\n\nint main(void) {\n    char name[] = \"Po\";\n    printf(\"%s has %zu letters\\n\", name, sizeof name - 1);\n    return 0;\n}",
+    "explain": "A string in C is an array of char that ends with a hidden \\0.",
+    "example": "All text in C.",
+    "remember": "C string = char array + \\0 at the end.",
+    "builtFrom": "char type + array",
+    "mastered": false
+  },
+  {
     "id": "seed-44",
     "category": "Program shape",
     "syntax": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, C!\\n\");\n    return 0;\n}",

@@ -84,6 +84,7 @@ app.post('/api/syntax/:lang', function (req, res) {
     explain: req.body.explain || '',
     example: req.body.example || '',
     remember: req.body.remember || '',     // a tip or memory hook
+    builtFrom: req.body.builtFrom || '',   // which core blocks it is made of
     mastered: Boolean(req.body.mastered)
   };
 

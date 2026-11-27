@@ -1,5 +1,35 @@
 [
   {
+    "id": "html-core-1",
+    "lang": "html",
+    "level": "Core",
+    "title": "Core: one element",
+    "task": "Write one element: a p tag with the attribute class=\"note\" and the content Hello.",
+    "solution": "<p class=\"note\">Hello</p>",
+    "mustInclude": [
+      "<p class=\"note\">",
+      "Hello",
+      "</p>"
+    ],
+    "remember": "Open, fill, close."
+  },
+  {
+    "id": "html-core-2",
+    "lang": "html",
+    "level": "Core",
+    "title": "Core: nesting and a void element",
+    "task": "Make a ul with two li inside it, then an img with src=\"logo.svg\" and alt=\"logo\" (no closing tag).",
+    "solution": "<ul>\n  <li>One</li>\n  <li>Two</li>\n</ul>\n<img src=\"logo.svg\" alt=\"logo\">",
+    "mustInclude": [
+      "<ul>",
+      "<li>",
+      "</li>",
+      "</ul>",
+      "<img src=\"logo.svg\" alt=\"logo\">"
+    ],
+    "remember": "Close inner before outer. img is void."
+  },
+  {
     "id": "html-1",
     "lang": "html",
     "level": "Beginner",
@@ -161,6 +191,36 @@
       "role=\"tabpanel\"",
       "hidden"
     ]
+  },
+  {
+    "id": "css-core-1",
+    "lang": "css",
+    "level": "Core",
+    "title": "Core: one rule",
+    "task": "Write a rule for .note that sets color to red and padding to 10px.",
+    "solution": ".note {\n  color: red;\n  padding: 10px;\n}",
+    "mustInclude": [
+      ".note{",
+      "color:red;",
+      "padding:10px;",
+      "}"
+    ],
+    "remember": "WHO { WHAT: HOW; }"
+  },
+  {
+    "id": "css-core-2",
+    "lang": "css",
+    "level": "Core",
+    "title": "Core: a rule wrapping rules",
+    "task": "Make a custom property --ink: blue on :root, use it with var() on p, and wrap a rule inside @media (max-width: 600px) that sets p { font-size: 14px; }.",
+    "solution": ":root { --ink: blue; }\np { color: var(--ink); }\n@media (max-width: 600px) {\n  p { font-size: 14px; }\n}",
+    "mustInclude": [
+      "--ink:blue",
+      "var(--ink)",
+      "@media(max-width:600px){",
+      "font-size:14px"
+    ],
+    "remember": "-- makes it, var() uses it, @media wraps rules."
   },
   {
     "id": "css-1",
@@ -330,6 +390,36 @@
     ]
   },
   {
+    "id": "javascript-core-1",
+    "lang": "javascript",
+    "level": "Core",
+    "title": "Core: values and functions",
+    "task": "Make a function add(a, b) that returns a + b. Store add(2, 3) in a const called total and print it.",
+    "solution": "function add(a, b) {\n  return a + b;\n}\nconst total = add(2, 3);\nconsole.log(total);",
+    "remember": "Name it, ( ) to call it, return to answer.",
+    "expected": "5"
+  },
+  {
+    "id": "javascript-core-2",
+    "lang": "javascript",
+    "level": "Core",
+    "title": "Core: an object with a method",
+    "task": "Make an object pet with name \"Mo\" and a method speak() that returns name + \" says hi\". Print pet.speak().",
+    "solution": "const pet = {\n  name: \"Mo\",\n  speak() { return this.name + \" says hi\"; }\n};\nconsole.log(pet.speak());",
+    "remember": "A method is a function inside an object.",
+    "expected": "Mo says hi"
+  },
+  {
+    "id": "javascript-core-3",
+    "lang": "javascript",
+    "level": "Core",
+    "title": "Core: a function as an argument",
+    "task": "Make a function run(fn) that calls fn twice. Call run with an arrow function that prints tick. (This is how addEventListener works.)",
+    "solution": "function run(fn) {\n  fn();\n  fn();\n}\nrun(() => console.log(\"tick\"));",
+    "remember": "Pass the function, don't call it: fn, not fn().",
+    "expected": "tick\ntick"
+  },
+  {
     "id": "javascript-1",
     "lang": "javascript",
     "level": "Beginner",
@@ -482,6 +572,26 @@
     "expected": "23\n23"
   },
   {
+    "id": "node-core-1",
+    "lang": "node",
+    "level": "Core",
+    "title": "Core: a module",
+    "task": "require the path module and print path.join(\"data\", \"css.json\").",
+    "solution": "const path = require(\"path\");\nconsole.log(path.join(\"data\", \"css.json\"));",
+    "remember": "require = give me that toolbox.",
+    "expected": "data/css.json"
+  },
+  {
+    "id": "node-core-2",
+    "lang": "node",
+    "level": "Core",
+    "title": "Core: a callback later",
+    "task": "Print first, then use setTimeout with 0 ms to print second, then print third. Watch the order.",
+    "solution": "console.log(\"first\");\nsetTimeout(() => console.log(\"second\"), 0);\nconsole.log(\"third\");",
+    "remember": "Callbacks run after the rest of your code.",
+    "expected": "first\nthird\nsecond"
+  },
+  {
     "id": "node-1",
     "lang": "node",
     "level": "Beginner",
@@ -552,6 +662,26 @@
     "task": "Try to read missing.txt with fs/promises. Catch the error and print its code.",
     "solution": "const fs = require(\"fs/promises\");\nasync function main() {\n  try {\n    await fs.readFile(\"missing.txt\", \"utf8\");\n  } catch (err) {\n    console.log(err.code);\n  }\n}\nmain();",
     "expected": "ENOENT"
+  },
+  {
+    "id": "python-core-1",
+    "lang": "python",
+    "level": "Core",
+    "title": "Core: a block with :",
+    "task": "Loop over [1, 2, 3] and print each number times 10.",
+    "solution": "for n in [1, 2, 3]:\n    print(n * 10)",
+    "remember": "Colon opens, indent holds.",
+    "expected": "10\n20\n30"
+  },
+  {
+    "id": "python-core-2",
+    "lang": "python",
+    "level": "Core",
+    "title": "Core: def and a method",
+    "task": "Write def shout(word) that returns word.upper() + \"!\". Print shout(\"hi\").",
+    "solution": "def shout(word):\n    return word.upper() + \"!\"\n\nprint(shout(\"hi\"))",
+    "remember": "def + : + indent; dot asks the value.",
+    "expected": "HI!"
   },
   {
     "id": "python-1",
@@ -626,6 +756,26 @@
     "expected": "75"
   },
   {
+    "id": "c-core-1",
+    "lang": "c",
+    "level": "Core",
+    "title": "Core: types and a function",
+    "task": "Write int square(int n) that returns n * n, and print square(6) from main.",
+    "solution": "#include <stdio.h>\n\nint square(int n) {\n    return n * n;\n}\n\nint main(void) {\n    printf(\"%d\\n\", square(6));\n    return 0;\n}",
+    "remember": "Type first, then name.",
+    "expected": "36"
+  },
+  {
+    "id": "c-core-2",
+    "lang": "c",
+    "level": "Core",
+    "title": "Core: a pointer",
+    "task": "Make int n = 1, a pointer p to it, set *p = 5, and print n.",
+    "solution": "#include <stdio.h>\n\nint main(void) {\n    int n = 1;\n    int *p = &n;\n    *p = 5;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+    "remember": "& = where is it, * = go there.",
+    "expected": "5"
+  },
+  {
     "id": "c-1",
     "lang": "c",
     "level": "Beginner",
@@ -698,6 +848,26 @@
     "expected": "olleh"
   },
   {
+    "id": "cpp-core-1",
+    "lang": "cpp",
+    "level": "Core",
+    "title": "Core: a reference",
+    "task": "Write void twice(int &n) that doubles n. Call it on x = 4 and print x with std::cout.",
+    "solution": "#include <iostream>\n\nvoid twice(int &n) { n = n * 2; }\n\nint main() {\n    int x = 4;\n    twice(x);\n    std::cout << x << \"\\n\";\n    return 0;\n}",
+    "remember": "& in a type = the same one.",
+    "expected": "8"
+  },
+  {
+    "id": "cpp-core-2",
+    "lang": "cpp",
+    "level": "Core",
+    "title": "Core: a template",
+    "task": "Write template <typename T> T first(T a, T b) that returns a. Print first(1, 2) and first('a', 'b') on one line with a space between.",
+    "solution": "#include <iostream>\n\ntemplate <typename T>\nT first(T a, T b) { return a; }\n\nint main() {\n    std::cout << first(1, 2) << \" \" << first('a', 'b') << \"\\n\";\n    return 0;\n}",
+    "remember": "<T> = any type goes here.",
+    "expected": "1 a"
+  },
+  {
     "id": "cpp-1",
     "lang": "cpp",
     "level": "Beginner",
@@ -768,6 +938,32 @@
     "task": "Write a template function biggest(a, b). Print biggest(3, 7) and biggest(2.5, 1.5).",
     "solution": "#include <iostream>\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    std::cout << biggest(3, 7) << \" \" << biggest(2.5, 1.5) << \"\\n\";\n    return 0;\n}",
     "expected": "7 2.5"
+  },
+  {
+    "id": "terminal-core-1",
+    "lang": "terminal",
+    "level": "Core",
+    "title": "Core: command, flags, argument",
+    "task": "List everything (all files, long format) in the Desktop folder, using joined flags.",
+    "solution": "ls -la Desktop",
+    "mustInclude": [
+      "ls -la Desktop"
+    ],
+    "remember": "What, how, on what."
+  },
+  {
+    "id": "terminal-core-2",
+    "lang": "terminal",
+    "level": "Core",
+    "title": "Core: a pipe",
+    "task": "Print the file notes.txt and pipe it into wc -l to count its lines.",
+    "solution": "cat notes.txt | wc -l",
+    "mustInclude": [
+      "cat notes.txt",
+      "|",
+      "wc -l"
+    ],
+    "remember": "| passes it to the next."
   },
   {
     "id": "terminal-1",
@@ -872,6 +1068,19 @@
     ]
   },
   {
+    "id": "homebrew-core-1",
+    "lang": "homebrew",
+    "level": "Core",
+    "title": "Core: brew + subcommand",
+    "task": "Show information about the git formula, then install the app firefox as a cask.",
+    "solution": "brew info git\nbrew install --cask firefox",
+    "mustInclude": [
+      "brew info git",
+      "brew install --cask firefox"
+    ],
+    "remember": "brew + what to do + to what."
+  },
+  {
     "id": "homebrew-1",
     "lang": "homebrew",
     "level": "Beginner",
@@ -964,6 +1173,31 @@
       "brew services start postgresql",
       "brew services stop postgresql"
     ]
+  },
+  {
+    "id": "git-core-1",
+    "lang": "git",
+    "level": "Core",
+    "title": "Core: the three places",
+    "task": "Stage the file index.html, then commit it with the message \"first\".",
+    "solution": "git add index.html\ngit commit -m \"first\"",
+    "mustInclude": [
+      "git add index.html",
+      "git commit -m \"first\""
+    ],
+    "remember": "add packs the box, commit seals it."
+  },
+  {
+    "id": "git-core-2",
+    "lang": "git",
+    "level": "Core",
+    "title": "Core: a remote",
+    "task": "Send your main branch to origin.",
+    "solution": "git push origin main",
+    "mustInclude": [
+      "git push origin main"
+    ],
+    "remember": "push up, origin = GitHub."
   },
   {
     "id": "git-1",

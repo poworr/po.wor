@@ -1,5 +1,52 @@
 [
   {
+    "id": "node-core-1",
+    "category": "Core",
+    "syntax": "console.log(\"Node is JavaScript\");\nconsole.log(typeof process, typeof window);",
+    "explain": "Node is the same JavaScript language running on your computer instead of in a browser. Values, variables, functions and objects are all the same; there is no window or document, but there is process.",
+    "example": "study/server.js runs in Node.",
+    "remember": "Same language, different room: no page, but files and the computer.",
+    "mastered": false
+  },
+  {
+    "id": "node-core-2",
+    "category": "Core",
+    "syntax": "const fs = require(\"fs\");\nconst path = require(\"path\");\nconsole.log(typeof fs.readFileSync, path.join(\"data\", \"html.json\"));",
+    "explain": "Modules: require(\"name\") gives you an object full of functions. Everything Node can do comes from modules.",
+    "example": "study/server.js: require(\"express\")",
+    "remember": "require = \"give me that toolbox\".",
+    "mastered": false
+  },
+  {
+    "id": "node-core-3",
+    "category": "Core",
+    "syntax": "setTimeout(() => console.log(\"later\"), 0);\nconsole.log(\"now\");",
+    "explain": "Callbacks and the event loop: you pass a function, and Node calls it later when the work is done. Your other code keeps running meanwhile.",
+    "example": "server.js: app.get(path, function (req, res) {…})",
+    "remember": "Don't wait: leave a function to be called back.",
+    "mastered": false
+  },
+  {
+    "id": "node-core-4",
+    "category": "Core: built from it",
+    "syntax": "const fs = require(\"fs\");\nfs.writeFileSync(\"note.txt\", \"hi\");\nconsole.log(fs.readFileSync(\"note.txt\", \"utf8\"));\nfs.unlinkSync(\"note.txt\");",
+    "explain": "Reading a file is just a method call on the fs module object.",
+    "example": "study/server.js reads data/*.json.",
+    "remember": "module . method ( arguments )",
+    "builtFrom": "require + method call + string arguments",
+    "mastered": false
+  },
+  {
+    "id": "node-core-5",
+    "category": "Core: built from it",
+    "syntax": "app.get(\"/api/lessons\", function (req, res) {\n  res.json([]);\n});",
+    "explain": "An Express route is a method call with a string and a callback function. Express calls your function for each request.",
+    "example": "study/server.js",
+    "remember": "Same as addEventListener: \"when this URL, do this\".",
+    "builtFrom": "object . method ( string , function )",
+    "mastered": false
+  },
+  {
     "id": "seed-28",
     "category": "Modules",
     "syntax": "const path = require(\"path\");\nconsole.log(path.join(\"folder\", \"file.txt\"));",

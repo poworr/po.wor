@@ -1,5 +1,42 @@
 [
   {
+    "id": "homebrew-core-1",
+    "category": "Core",
+    "syntax": "brew <subcommand> [name]",
+    "explain": "Homebrew is one command, brew, with subcommands for each job. After it, the usual terminal shape: flags and arguments.",
+    "example": "brew install node",
+    "remember": "brew + what to do + to what.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-core-2",
+    "category": "Core",
+    "syntax": "brew install git\nbrew install --cask visual-studio-code",
+    "explain": "A formula is a command-line tool; a cask (--cask) is an app with a window.",
+    "example": "Installing tools vs apps.",
+    "remember": "Cask = a case for an app.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-core-3",
+    "category": "Core",
+    "syntax": "brew update\nbrew upgrade\nbrew list",
+    "explain": "update refreshes the list of what exists; upgrade installs newer versions of what you have; list shows what you have.",
+    "example": "Keeping your Mac's tools fresh.",
+    "remember": "update the menu, then upgrade the food.",
+    "mastered": false
+  },
+  {
+    "id": "homebrew-core-4",
+    "category": "Core: built from it",
+    "syntax": "brew info --cask firefox",
+    "explain": "Subcommand (info) + flag (--cask) + argument (firefox). The same pattern as every other brew line.",
+    "example": "Checking before you install.",
+    "remember": "Same shape, new words.",
+    "builtFrom": "brew + subcommand + long flag + argument",
+    "mastered": false
+  },
+  {
     "id": "seed-68",
     "category": "Installing",
     "syntax": "brew install <name>",

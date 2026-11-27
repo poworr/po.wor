@@ -1,5 +1,80 @@
 [
   {
+    "id": "css-core-1",
+    "category": "Core",
+    "syntax": "p {\n  color: red;\n}",
+    "explain": "A rule: a selector (which elements), then { } with declarations. A declaration is property: value; All of CSS is rules.",
+    "example": "po.wor: css/style.css is a list of rules.",
+    "remember": "WHO { WHAT: HOW; }: selector, property, value.",
+    "mastered": false
+  },
+  {
+    "id": "css-core-2",
+    "category": "Core",
+    "syntax": "p { }\n.bubble { }\n#main { }\nnav a { }",
+    "explain": "Selectors: a tag name, a .class, an #id, or a combination (nav a = an a inside a nav).",
+    "example": "po.wor: .bubble, header, nav a.",
+    "remember": ". = class (many), # = id (one). A space = \"inside\".",
+    "mastered": false
+  },
+  {
+    "id": "css-core-3",
+    "category": "Core",
+    "syntax": "p { color: red; }\np { color: blue; }  /* wins */",
+    "explain": "The cascade: when two rules set the same property, the more specific selector wins (#id > .class > tag); if equal, the later one wins.",
+    "example": "Why a style \"doesn't work\": another rule beats it.",
+    "remember": "Specific beats general; later beats earlier.",
+    "mastered": false
+  },
+  {
+    "id": "css-core-4",
+    "category": "Core",
+    "syntax": ".box {\n  width: 100px;\n  padding: 10px;\n  border: 1px solid;\n  margin: 20px;\n  box-sizing: border-box;\n}",
+    "explain": "The box model: every element is a box. Content, then padding (inside), border, then margin (outside).",
+    "example": "po.wor: the cards and bubbles.",
+    "remember": "Inside out: content, padding, border, margin (like a framed picture on a wall).",
+    "mastered": false
+  },
+  {
+    "id": "css-core-5",
+    "category": "Core",
+    "syntax": ":root { --ink: #1D1D1F; }\np { color: var(--ink); }",
+    "explain": "A custom property (--name) stores a value; var(--name) reads it. Change it in one place, it changes everywhere.",
+    "example": "po.wor: theme colours (light and dark).",
+    "remember": "-- makes it, var() uses it.",
+    "mastered": false
+  },
+  {
+    "id": "css-core-6",
+    "category": "Core: built from it",
+    "syntax": "a:hover { text-decoration: underline; }",
+    "explain": "A pseudo-class is a selector with :state added. The rule shape stays the same.",
+    "example": "po.wor: links underline on hover.",
+    "remember": ": = \"when it is…\" (hovered, focused, first).",
+    "builtFrom": "rule + selector with :pseudo-class",
+    "mastered": false
+  },
+  {
+    "id": "css-core-7",
+    "category": "Core: built from it",
+    "syntax": "@media (max-width: 700px) {\n  .layout { display: block; }\n}",
+    "explain": "An at-rule wraps normal rules. @media means \"only use these rules when the screen matches\".",
+    "example": "po.wor: the phone layout.",
+    "remember": "@media = an if around rules.",
+    "builtFrom": "at-rule { rules }",
+    "mastered": false
+  },
+  {
+    "id": "css-core-8",
+    "category": "Core: built from it",
+    "syntax": "@keyframes bounce {\n  50% { transform: translateY(-6px); }\n}\n.logo { animation: bounce 1s infinite; }",
+    "explain": "@keyframes is a rule wrapping mini-rules (the selectors are times). The animation property then uses it by name.",
+    "example": "po.wor: the bouncing logo.",
+    "remember": "Name the moves in @keyframes, play them with animation.",
+    "builtFrom": "at-rule + declarations + a value that names it",
+    "mastered": false
+  },
+  {
     "id": "seed-10",
     "category": "Box model",
     "syntax": ".box {\n  width: 300px;\n  padding: 16px;\n  border: 1px solid #ccc;\n  margin: 20px;\n}",

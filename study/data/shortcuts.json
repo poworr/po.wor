@@ -1,5 +1,52 @@
 [
   {
+    "id": "shortcuts-core-1",
+    "category": "Core",
+    "syntax": "modifier(s) + key",
+    "explain": "Every shortcut is one or more modifier keys held down (⌘ ⇧ ⌥ ⌃) and then one normal key.",
+    "example": "⌘S = save.",
+    "remember": "Hold the modifiers, tap the key.",
+    "mastered": false
+  },
+  {
+    "id": "shortcuts-core-2",
+    "category": "Core",
+    "syntax": "⌘ = app commands\n⇧ = reverse / bigger\n⌥ = alternative\n⌃ = terminal / text",
+    "explain": "Each modifier has a job, so you can guess shortcuts: ⌘Z undo, ⇧⌘Z redo (reverse). ⌥ gives another version.",
+    "example": "⌘Z / ⇧⌘Z",
+    "remember": "Add ⇧ to go backwards or select more.",
+    "mastered": false
+  },
+  {
+    "id": "shortcuts-core-3",
+    "category": "Core",
+    "syntax": "⌘ + first letter",
+    "explain": "Most app commands use the first letter of the word: S save, O open, N new, W close window, Q quit, F find, P print.",
+    "example": "Every Mac app.",
+    "remember": "Say the word, press ⌘ + its first letter.",
+    "mastered": false
+  },
+  {
+    "id": "shortcuts-core-4",
+    "category": "Core: built from it",
+    "syntax": "⇧⌘P",
+    "explain": "Shift adds to ⌘P (quick open) to make the command palette: \"the bigger version\".",
+    "example": "VS Code.",
+    "remember": "⇧ = the bigger version.",
+    "builtFrom": "⌘ + ⇧ + letter",
+    "mastered": false
+  },
+  {
+    "id": "shortcuts-core-5",
+    "category": "Core: built from it",
+    "syntax": "ul>li*3  then Tab",
+    "explain": "Emmet tricks are a tiny language: > child, * repeat, . class, # id. Tab turns it into HTML.",
+    "example": "VS Code + HTML.",
+    "remember": "Write the CSS selector, get the HTML.",
+    "builtFrom": "CSS selector symbols + Tab",
+    "mastered": false
+  },
+  {
     "id": "shortcut-1",
     "category": "Key symbols",
     "syntax": "⌘ Command   ⇧ Shift   ⌥ Option   ⌃ Control",

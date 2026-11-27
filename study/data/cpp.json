@@ -1,5 +1,70 @@
 [
   {
+    "id": "cpp-core-1",
+    "category": "Core",
+    "syntax": "#include <iostream>\n\nint main() {\n    int age = 20;\n    std::cout << \"age \" << age << \"\\n\";\n    return 0;\n}",
+    "explain": "C++ starts from C: types, statements with ;, blocks { } and functions are the same. It adds new tools on top.",
+    "example": "Every C++ program.",
+    "remember": "C++ = C plus more (++ means \"one more\").",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-2",
+    "category": "Core",
+    "syntax": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name = \"Po\";\n    std::cout << name.size() << \"\\n\";\n    return 0;\n}",
+    "explain": "Namespaces and ::  std::string means \"string from the std library\". :: reads as \"inside\".",
+    "example": "std::cout, std::vector",
+    "remember": ":: = \"the one that lives in\".",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-3",
+    "category": "Core",
+    "syntax": "#include <iostream>\n\nclass Dog {\npublic:\n    std::string name;\n    void speak() { std::cout << name << \" says woof\\n\"; }\n};\n\nint main() {\n    Dog d{\"Rex\"};\n    d.speak();\n    return 0;\n}",
+    "explain": "Classes: a type with data and functions (methods) together. Use a dot to reach them.",
+    "example": "Your own kinds of objects.",
+    "remember": "class = struct + functions.",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-4",
+    "category": "Core",
+    "syntax": "#include <iostream>\n\nvoid addOne(int &n) { n = n + 1; }\n\nint main() {\n    int x = 1;\n    addOne(x);\n    std::cout << x << \"\\n\";\n    return 0;\n}",
+    "explain": "References: int &n is another name for the same variable, so the function can change it. Like a pointer without the *.",
+    "example": "Passing big things without copying.",
+    "remember": "& in a type = \"the same one, not a copy\".",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-5",
+    "category": "Core",
+    "syntax": "#include <iostream>\n\ntemplate <typename T>\nT biggest(T a, T b) { return a > b ? a : b; }\n\nint main() {\n    std::cout << biggest(3, 7) << \" \" << biggest(2.5, 1.5) << \"\\n\";\n    return 0;\n}",
+    "explain": "Templates: <T> is a type left blank, filled in when you use it. One function for many types.",
+    "example": "std::vector<int> is a template.",
+    "remember": "<T> = \"any type goes here\".",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-6",
+    "category": "Core: built from it",
+    "syntax": "#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> v = {1, 2, 3};\n    v.push_back(4);\n    for (int n : v) std::cout << n << \" \";\n    std::cout << \"\\n\";\n    return 0;\n}",
+    "explain": "std::vector<int> is a namespace (std::), a template (<int>) and a class with methods (.push_back) all at once.",
+    "example": "Growing lists.",
+    "remember": "Read it piece by piece: where :: what <type> . do",
+    "builtFrom": "namespace + template + class + method",
+    "mastered": false
+  },
+  {
+    "id": "cpp-core-7",
+    "category": "Core: built from it",
+    "syntax": "std::cout << \"a\" << 1 << \"\\n\";",
+    "explain": "cout << is an operator that a class defines. << sends each value into the output stream, one after another.",
+    "example": "Printing in C++.",
+    "remember": "Arrows point where the data flows: into cout.",
+    "builtFrom": "object + operator + chaining",
+    "mastered": false
+  },
+  {
     "id": "seed-52",
     "category": "Program shape",
     "syntax": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, C++!\" << std::endl;\n    return 0;\n}",
