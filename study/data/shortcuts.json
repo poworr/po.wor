@@ -1,0 +1,674 @@
+[
+  {
+    "id": "shortcut-1",
+    "category": "Key symbols",
+    "syntax": "⌘ Command   ⇧ Shift   ⌥ Option   ⌃ Control",
+    "explain": "The symbols Mac uses for keys. Every shortcut here uses them.",
+    "example": "⌘⇧P means Command + Shift + P.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-2",
+    "category": "VS Code: Files",
+    "syntax": "⌘P",
+    "explain": "Quick Open: type part of a file name and jump to it.",
+    "example": "Open styles.css without using the mouse.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-3",
+    "category": "VS Code: Files",
+    "syntax": "⌘⇧P",
+    "explain": "Command Palette: search for any VS Code command by name.",
+    "example": "Type \"format\" to find Format Document.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-4",
+    "category": "VS Code: Files",
+    "syntax": "⌘B",
+    "explain": "Shows or hides the sidebar, to get more room for code.",
+    "example": "Focus on one file.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-5",
+    "category": "VS Code: Files",
+    "syntax": "⌘⇧E",
+    "explain": "Opens the Explorer (the list of files).",
+    "example": "Find a file in the project.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-6",
+    "category": "VS Code: Files",
+    "syntax": "⌘S",
+    "explain": "Saves the file.",
+    "example": "Save before running your code.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-7",
+    "category": "VS Code: Files",
+    "syntax": "⌘W",
+    "explain": "Closes the open tab.",
+    "example": "Close files you are done with.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-8",
+    "category": "VS Code: Files",
+    "syntax": "⌃Tab",
+    "explain": "Switches between your open tabs.",
+    "example": "Jump back to the file you were just in.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-9",
+    "category": "VS Code: Files",
+    "syntax": "⌘\\",
+    "explain": "Splits the editor, so you see two files side by side.",
+    "example": "HTML on the left, CSS on the right.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-10",
+    "category": "VS Code: Files",
+    "syntax": "⌃`",
+    "explain": "Opens or hides the terminal inside VS Code.",
+    "example": "Run python3 main.py without leaving VS Code.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-11",
+    "category": "VS Code: Files",
+    "syntax": "⌘,",
+    "explain": "Opens Settings.",
+    "example": "Turn on Format On Save.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-12",
+    "category": "VS Code: Moving around",
+    "syntax": "⌃G",
+    "explain": "Go to a line number.",
+    "example": "An error says line 42: jump there.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-13",
+    "category": "VS Code: Moving around",
+    "syntax": "⌘⇧O",
+    "explain": "Go to a function or heading in this file by name.",
+    "example": "Jump to function render.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-14",
+    "category": "VS Code: Moving around",
+    "syntax": "F12",
+    "explain": "Go to where a function or variable is defined.",
+    "example": "Click a function name, press F12.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-15",
+    "category": "VS Code: Moving around",
+    "syntax": "⌃-",
+    "explain": "Go back to where you were before.",
+    "example": "After F12, come back.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-16",
+    "category": "VS Code: Editing",
+    "syntax": "⌘/",
+    "explain": "Comments out the line (or the selected lines). Press again to undo it.",
+    "example": "Turn off some code for a moment.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-17",
+    "category": "VS Code: Editing",
+    "syntax": "⌥↑   ⌥↓",
+    "explain": "Moves the line up or down.",
+    "example": "Reorder lines without cut and paste.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-18",
+    "category": "VS Code: Editing",
+    "syntax": "⇧⌥↓",
+    "explain": "Copies the line below itself.",
+    "example": "Make a second similar line quickly.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-19",
+    "category": "VS Code: Editing",
+    "syntax": "⌘⇧K",
+    "explain": "Deletes the whole line.",
+    "example": "Remove a line in one step.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-20",
+    "category": "VS Code: Editing",
+    "syntax": "⌘X",
+    "explain": "With nothing selected, cuts the whole line.",
+    "example": "Move a line somewhere else.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-21",
+    "category": "VS Code: Editing",
+    "syntax": "⌘↩   ⌘⇧↩",
+    "explain": "Starts a new line below (or above), even with the cursor in the middle of a line.",
+    "example": "Add a line without going to the end first.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-22",
+    "category": "VS Code: Editing",
+    "syntax": "⌘]   ⌘[",
+    "explain": "Indents or un-indents the line.",
+    "example": "Fix the indentation in Python.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-23",
+    "category": "VS Code: Editing",
+    "syntax": "⇧⌥F",
+    "explain": "Formats the whole file: fixes spaces and indentation.",
+    "example": "Tidy messy HTML.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-24",
+    "category": "VS Code: Editing",
+    "syntax": "⌃Space",
+    "explain": "Shows suggestions for what you can type here.",
+    "example": "See what methods a list has.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-25",
+    "category": "VS Code: Editing",
+    "syntax": "⌘.",
+    "explain": "Quick Fix: shows fixes for the problem under the cursor.",
+    "example": "A red squiggle: let VS Code fix it.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-26",
+    "category": "VS Code: Editing",
+    "syntax": "F2",
+    "explain": "Renames a variable or function everywhere it is used.",
+    "example": "Rename x to total.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-27",
+    "category": "VS Code: Editing",
+    "syntax": "⌥Z",
+    "explain": "Turns word wrap on or off, so long lines fit the screen.",
+    "example": "Read a long paragraph in HTML.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-28",
+    "category": "VS Code: Selecting",
+    "syntax": "⌘D",
+    "explain": "Selects the word, then the next same word each time you press it. Type to change them all.",
+    "example": "Rename three \"box\" classes at once.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-29",
+    "category": "VS Code: Selecting",
+    "syntax": "⌘⇧L",
+    "explain": "Selects every same word in the file.",
+    "example": "Change every \"color\" to \"colour\".",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-30",
+    "category": "VS Code: Selecting",
+    "syntax": "⌥ + click",
+    "explain": "Adds another cursor where you click. Type in many places at once.",
+    "example": "Add the same class to three lines.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-31",
+    "category": "VS Code: Selecting",
+    "syntax": "⌥⌘↓   ⌥⌘↑",
+    "explain": "Adds a cursor on the line below (or above).",
+    "example": "Type at the start of five lines at once.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-32",
+    "category": "VS Code: Selecting",
+    "syntax": "⌘L",
+    "explain": "Selects the whole line. Press again for the next line.",
+    "example": "Select lines to move or delete.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-33",
+    "category": "VS Code: Selecting",
+    "syntax": "⌃⇧⌘→",
+    "explain": "Grows the selection: word, then the string, then the whole block.",
+    "example": "Select everything inside a tag.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-34",
+    "category": "VS Code: Find",
+    "syntax": "⌘F",
+    "explain": "Finds text in this file.",
+    "example": "Find where you wrote \"header\".",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-35",
+    "category": "VS Code: Find",
+    "syntax": "⌥⌘F",
+    "explain": "Finds and replaces in this file.",
+    "example": "Change every \"red\" to \"blue\".",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-36",
+    "category": "VS Code: Find",
+    "syntax": "⌘⇧F",
+    "explain": "Searches in every file of the project.",
+    "example": "Where else did I use this class?",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-37",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "!",
+    "explain": "In an .html file, type ! and press Tab (or Enter): you get the whole starting page (doctype, head, body).",
+    "example": "The first thing you type in a new HTML file.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-38",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "div.box",
+    "explain": "Tag with a class: becomes <div class=\"box\"></div>. A bare .box makes a div too.",
+    "example": ".card → <div class=\"card\"></div>",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-39",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "section#about",
+    "explain": "Tag with an id: becomes <section id=\"about\"></section>.",
+    "example": "#main → <div id=\"main\"></div>",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-40",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "ul>li*3",
+    "explain": "> puts a tag inside another, *3 repeats it: a list with three items.",
+    "example": "nav>a*4 for a menu with four links.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-41",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "h1+p",
+    "explain": "+ puts tags next to each other.",
+    "example": "header+main+footer",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-42",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "li.item$*3",
+    "explain": "$ becomes a number: item1, item2, item3.",
+    "example": "img.photo$*4",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-43",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "p{Hello}",
+    "explain": "{ } puts text inside the tag.",
+    "example": "a{Home}*3",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-44",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "a[href=about.html]",
+    "explain": "[ ] sets attributes.",
+    "example": "img[src=logo.png alt=Logo]",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-45",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "lorem   lorem10",
+    "explain": "Fills in placeholder text. lorem10 gives ten words.",
+    "example": "p>lorem20",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-46",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "link:css",
+    "explain": "Makes <link rel=\"stylesheet\" href=\"style.css\">.",
+    "example": "Inside <head>.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-47",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "script:src",
+    "explain": "Makes <script src=\"\"></script>.",
+    "example": "Load your app.js.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-48",
+    "category": "VS Code tricks: HTML (Emmet)",
+    "syntax": "(header>nav)+main+footer",
+    "explain": "( ) groups a piece so + continues after it.",
+    "example": "A whole page layout in one line.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-49",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "m10   p10-20",
+    "explain": "In a .css file: margin: 10px;  and  padding: 10px 20px;",
+    "example": "mt20 → margin-top: 20px;",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-50",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "w100p   h50",
+    "explain": "width: 100%;  and  height: 50px;  (p means percent).",
+    "example": "w50p → width: 50%;",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-51",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "df   jcc   aic",
+    "explain": "display: flex;  justify-content: center;  align-items: center;",
+    "example": "Center something in three short words.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-52",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "dg",
+    "explain": "display: grid;",
+    "example": "Start a grid layout.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-53",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "fz16   fw700",
+    "explain": "font-size: 16px;  and  font-weight: 700;",
+    "example": "Text styles quickly.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-54",
+    "category": "VS Code tricks: CSS (Emmet)",
+    "syntax": "bgc   c",
+    "explain": "background-color: #fff;  and  color: #000;  (then change the colour).",
+    "example": "Colours quickly.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-55",
+    "category": "VS Code tricks: JavaScript snippets",
+    "syntax": "log",
+    "explain": "In a .js file, type log and pick it from the list: console.log();",
+    "example": "Print a value while testing.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-56",
+    "category": "VS Code tricks: JavaScript snippets",
+    "syntax": "for   forof",
+    "explain": "for makes a counting loop; forof makes for (const item of list).",
+    "example": "Loop over an array.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-57",
+    "category": "VS Code tricks: JavaScript snippets",
+    "syntax": "if   ifelse",
+    "explain": "Makes an if (or if...else) block with the brackets ready.",
+    "example": "Check a condition.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-58",
+    "category": "VS Code tricks: JavaScript snippets",
+    "syntax": "function",
+    "explain": "Makes a function with the name, ( ) and { } ready.",
+    "example": "Start a new function.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-59",
+    "category": "VS Code tricks: JavaScript snippets",
+    "syntax": "trycatch",
+    "explain": "Makes a try { } catch (error) { } block.",
+    "example": "Code that might fail.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-60",
+    "category": "VS Code tricks: Snippets",
+    "syntax": "Tab",
+    "explain": "After a snippet appears, Tab jumps to the next blank to fill in.",
+    "example": "Fill in the loop name, then the list.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-61",
+    "category": "VS Code tricks: Snippets",
+    "syntax": "Snippets: Configure Snippets",
+    "explain": "Run this from ⌘⇧P to make your own snippets for any language (Python, C, C++...). VS Code has none built in for those; extensions can add some.",
+    "example": "\"Print\": { \"prefix\": \"pr\", \"body\": \"print($1)\" }",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-62",
+    "category": "VS Code tricks: Python",
+    "syntax": "⇧↩",
+    "explain": "With the Python extension: runs the selected line(s) in a Python terminal.",
+    "example": "Test one line without running the whole file.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-63",
+    "category": "Mac",
+    "syntax": "⌘Space",
+    "explain": "Spotlight: open any app or file by typing its name.",
+    "example": "⌘Space, type \"term\", Enter: Terminal.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-64",
+    "category": "Mac",
+    "syntax": "⌘Tab",
+    "explain": "Switches between open apps.",
+    "example": "VS Code ↔ Chrome.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-65",
+    "category": "Mac",
+    "syntax": "⌘`",
+    "explain": "Switches between windows of the same app.",
+    "example": "Two VS Code windows.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-66",
+    "category": "Mac",
+    "syntax": "⌘Q",
+    "explain": "Quits the app.",
+    "example": "Close an app completely.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-67",
+    "category": "Mac",
+    "syntax": "⌘⇧4   ⌘⇧5",
+    "explain": "Screenshot of an area; ⌘⇧5 opens the screenshot and recording tool.",
+    "example": "Share an error message.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-68",
+    "category": "Mac",
+    "syntax": "⌘⇧.",
+    "explain": "In Finder: shows or hides hidden files (like .gitignore).",
+    "example": "See your .env or .zshrc.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-69",
+    "category": "Mac: Typing anywhere",
+    "syntax": "⌘←   ⌘→",
+    "explain": "Jumps to the start or end of the line.",
+    "example": "Fix the start of a long line.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-70",
+    "category": "Mac: Typing anywhere",
+    "syntax": "⌥←   ⌥→",
+    "explain": "Jumps one word left or right.",
+    "example": "Move fast through a sentence.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-71",
+    "category": "Mac: Typing anywhere",
+    "syntax": "⌥⌫   ⌘⌫",
+    "explain": "Deletes the word before the cursor; ⌘⌫ deletes to the start of the line.",
+    "example": "Erase quickly.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-72",
+    "category": "Terminal",
+    "syntax": "⌃C",
+    "explain": "Stops the program that is running.",
+    "example": "Stop npm start.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-73",
+    "category": "Terminal",
+    "syntax": "Tab",
+    "explain": "Completes a file or folder name. Press twice to see the choices.",
+    "example": "cd Desk + Tab → cd Desktop/",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-74",
+    "category": "Terminal",
+    "syntax": "↑   ↓",
+    "explain": "Goes through commands you typed before.",
+    "example": "Run the last command again.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-75",
+    "category": "Terminal",
+    "syntax": "⌃R",
+    "explain": "Searches your old commands. Type part of one, press Enter.",
+    "example": "Find that long git command again.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-76",
+    "category": "Terminal",
+    "syntax": "⌃A   ⌃E",
+    "explain": "Jumps to the start or end of the command.",
+    "example": "Add sudo at the start.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-77",
+    "category": "Terminal",
+    "syntax": "⌃U",
+    "explain": "Deletes the whole command you are typing.",
+    "example": "Start over.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-78",
+    "category": "Terminal",
+    "syntax": "⌘K",
+    "explain": "In Terminal.app: clears the screen.",
+    "example": "A clean screen before a new task.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-79",
+    "category": "Chrome",
+    "syntax": "⌥⌘I",
+    "explain": "Opens DevTools: see the HTML, CSS and errors of a page.",
+    "example": "Find out why your page looks wrong.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-80",
+    "category": "Chrome",
+    "syntax": "⌥⌘J",
+    "explain": "Opens the Console: see console.log output and errors.",
+    "example": "Test your JavaScript.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-81",
+    "category": "Chrome",
+    "syntax": "⌘⇧C",
+    "explain": "Click any part of the page to see its HTML and CSS.",
+    "example": "Which CSS makes this button blue?",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-82",
+    "category": "Chrome",
+    "syntax": "⌘R   ⌘⇧R",
+    "explain": "Reloads the page; ⌘⇧R reloads without the old saved copy.",
+    "example": "Your CSS change does not show: ⌘⇧R.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-83",
+    "category": "Chrome",
+    "syntax": "⌘L",
+    "explain": "Jumps to the address bar.",
+    "example": "Type localhost:3000.",
+    "mastered": false
+  },
+  {
+    "id": "shortcut-84",
+    "category": "Chrome",
+    "syntax": "⌘⇧T",
+    "explain": "Reopens the tab you just closed.",
+    "example": "Closed it by mistake.",
+    "mastered": false
+  }
+]

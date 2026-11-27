@@ -199,9 +199,23 @@ const COMMANDS = {
       add: '',
       commit: '[main 1a2b3c4] ' + (args.slice(2).join(' ').replace(/"/g, '') || 'your message') + '\n 1 file changed',
       push: 'To github.com:you/project.git\n   0a1b2c3..1a2b3c4  main -> main',
-      log: 'commit 1a2b3c4 (HEAD -> main)\n    Add notes'
+      log: 'commit 1a2b3c4 (HEAD -> main)\n    Add notes',
+      init: 'Initialized empty Git repository in /Users/you/.git/',
+      clone: "Cloning into 'repo'...\ndone.",
+      config: '',
+      diff: '-old line\n+new line',
+      show: 'commit 1a2b3c4\n    Add notes\n+Hello from notes.txt',
+      remote: 'origin  https://github.com/you/project.git (fetch)\norigin  https://github.com/you/project.git (push)',
+      pull: 'Already up to date.',
+      fetch: '',
+      branch: '* main\n  new-feature',
+      switch: "Switched to branch '" + (args[args.length - 1] || 'main') + "'",
+      merge: 'Fast-forward\n 1 file changed',
+      restore: '',
+      revert: '[main 2b3c4d5] Revert "Add notes"',
+      stash: args[1] === 'pop' ? 'Your stashed changes are back.' : 'Saved working directory and index state WIP on main'
     };
-    return args[0] in answers ? answers[args[0]] : 'git: try status, add, commit, push or log';
+    return args[0] in answers ? answers[args[0]] : 'git: try status, add, commit, push, pull, log, branch or switch';
   },
 
   brew: (args) => {

@@ -28,7 +28,8 @@ function render() {
   $('syntax').hidden = mode !== 'syntax';
   $('lessons').hidden = mode !== 'lessons';
   $('test').hidden = mode !== 'test';
-  if (current !== 'all') playLang = current;
+  const lang = langs.find((l) => l.id === current);
+  if (lang && lang.runs !== 'none') playLang = current;   // shortcuts don't run, so keep the last language
 
   // The playground panel: only on the Syntax tab, and only when it's open
   $('playground').hidden = mode !== 'syntax' || !playOpen;
@@ -139,6 +140,7 @@ function makeCard(lang, item) {
     box.focus();
   });
 
+  card.querySelector('.try').hidden = lang.runs === 'none';   // nothing to try for shortcuts
   card.querySelector('.edit').addEventListener('click', () => openForm(lang.id, item));
   return card;
 }

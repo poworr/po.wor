@@ -1,0 +1,242 @@
+[
+  {
+    "id": "git-1",
+    "category": "Setup",
+    "syntax": "git config --global user.name \"Your Name\"",
+    "explain": "Tells Git your name. It goes on every commit you make. Do it once per computer.",
+    "example": "git config --global user.name \"Po\"",
+    "mastered": false
+  },
+  {
+    "id": "git-2",
+    "category": "Setup",
+    "syntax": "git config --global user.email \"you@example.com\"",
+    "explain": "Tells Git your email. Use the same email as your GitHub account so commits link to you.",
+    "example": "The email on your GitHub account.",
+    "mastered": false
+  },
+  {
+    "id": "git-3",
+    "category": "Setup",
+    "syntax": "git init",
+    "explain": "Turns the current folder into a Git project (a repository). Git starts watching its files.",
+    "example": "Start tracking a brand new project.",
+    "mastered": false
+  },
+  {
+    "id": "git-4",
+    "category": "Setup",
+    "syntax": "git clone <url>",
+    "explain": "Downloads a whole project from GitHub, with all its history, into a new folder.",
+    "example": "git clone https://github.com/user/repo.git",
+    "mastered": false
+  },
+  {
+    "id": "git-5",
+    "category": "Looking around",
+    "syntax": "git status",
+    "explain": "Shows which files changed, which are ready to commit, and which branch you are on. Run it often.",
+    "example": "Check what changed before you commit.",
+    "mastered": false
+  },
+  {
+    "id": "git-6",
+    "category": "Looking around",
+    "syntax": "git diff",
+    "explain": "Shows exactly which lines changed that are not added yet.",
+    "example": "Read your changes before saving them.",
+    "mastered": false
+  },
+  {
+    "id": "git-7",
+    "category": "Looking around",
+    "syntax": "git diff --staged",
+    "explain": "Shows the changes you already added, which will go into the next commit.",
+    "example": "Double-check before git commit.",
+    "mastered": false
+  },
+  {
+    "id": "git-8",
+    "category": "Looking around",
+    "syntax": "git log --oneline",
+    "explain": "Lists past commits, one per line: a short id and the message.",
+    "example": "See the history of the project.",
+    "mastered": false
+  },
+  {
+    "id": "git-9",
+    "category": "Looking around",
+    "syntax": "git show <commit>",
+    "explain": "Shows what one commit changed.",
+    "example": "git show 1a2b3c4",
+    "mastered": false
+  },
+  {
+    "id": "git-10",
+    "category": "Saving changes",
+    "syntax": "git add <file>",
+    "explain": "Puts one file in the \"ready to commit\" area (the staging area).",
+    "example": "git add index.html",
+    "mastered": false
+  },
+  {
+    "id": "git-11",
+    "category": "Saving changes",
+    "syntax": "git add .",
+    "explain": "Adds every changed file in this folder and below.",
+    "example": "Add everything you worked on.",
+    "mastered": false
+  },
+  {
+    "id": "git-12",
+    "category": "Saving changes",
+    "syntax": "git commit -m \"message\"",
+    "explain": "Saves a snapshot of the added files, with a short message saying what you did.",
+    "example": "git commit -m \"Add contact page\"",
+    "mastered": false
+  },
+  {
+    "id": "git-13",
+    "category": "Saving changes",
+    "syntax": "git commit --amend -m \"new message\"",
+    "explain": "Changes the message of your last commit. Only do this before you push.",
+    "example": "Fix a typo in the last commit message.",
+    "mastered": false
+  },
+  {
+    "id": "git-14",
+    "category": "GitHub",
+    "syntax": "git remote -v",
+    "explain": "Shows which GitHub address this project is connected to.",
+    "example": "Check where git push sends your work.",
+    "mastered": false
+  },
+  {
+    "id": "git-15",
+    "category": "GitHub",
+    "syntax": "git remote add origin <url>",
+    "explain": "Connects a local project to an empty GitHub repository. \"origin\" is the usual name for it.",
+    "example": "git remote add origin https://github.com/user/repo.git",
+    "mastered": false
+  },
+  {
+    "id": "git-16",
+    "category": "GitHub",
+    "syntax": "git push",
+    "explain": "Sends your new commits to GitHub.",
+    "example": "Publish your work after committing.",
+    "mastered": false
+  },
+  {
+    "id": "git-17",
+    "category": "GitHub",
+    "syntax": "git push -u origin main",
+    "explain": "The first push of a new branch: sends it and remembers where it goes, so next time plain git push works.",
+    "example": "The first push of a new project.",
+    "mastered": false
+  },
+  {
+    "id": "git-18",
+    "category": "GitHub",
+    "syntax": "git pull",
+    "explain": "Gets new commits from GitHub and adds them to your branch.",
+    "example": "Get changes you made on another computer.",
+    "mastered": false
+  },
+  {
+    "id": "git-19",
+    "category": "GitHub",
+    "syntax": "git fetch",
+    "explain": "Downloads news from GitHub but does not change your files yet.",
+    "example": "See if anything new is there before pulling.",
+    "mastered": false
+  },
+  {
+    "id": "git-20",
+    "category": "Branches",
+    "syntax": "git branch",
+    "explain": "Lists your branches. The * marks the one you are on.",
+    "example": "Which branch am I on?",
+    "mastered": false
+  },
+  {
+    "id": "git-21",
+    "category": "Branches",
+    "syntax": "git switch -c <name>",
+    "explain": "Makes a new branch and moves to it. Try ideas there without touching main.",
+    "example": "git switch -c new-header",
+    "mastered": false
+  },
+  {
+    "id": "git-22",
+    "category": "Branches",
+    "syntax": "git switch <name>",
+    "explain": "Moves to another branch. Your files change to match it.",
+    "example": "git switch main",
+    "mastered": false
+  },
+  {
+    "id": "git-23",
+    "category": "Branches",
+    "syntax": "git merge <name>",
+    "explain": "Brings the commits from another branch into the branch you are on.",
+    "example": "On main: git merge new-header",
+    "mastered": false
+  },
+  {
+    "id": "git-24",
+    "category": "Branches",
+    "syntax": "git branch -d <name>",
+    "explain": "Deletes a branch you already merged.",
+    "example": "git branch -d new-header",
+    "mastered": false
+  },
+  {
+    "id": "git-25",
+    "category": "Undoing",
+    "syntax": "git restore <file>",
+    "explain": "Throws away the changes in a file that you have not added yet. They cannot come back.",
+    "example": "git restore styles.css",
+    "mastered": false
+  },
+  {
+    "id": "git-26",
+    "category": "Undoing",
+    "syntax": "git restore --staged <file>",
+    "explain": "Takes a file out of the \"ready to commit\" area. Your changes stay in the file.",
+    "example": "Added the wrong file? Un-add it.",
+    "mastered": false
+  },
+  {
+    "id": "git-27",
+    "category": "Undoing",
+    "syntax": "git revert <commit>",
+    "explain": "Makes a new commit that undoes an old one. Safe even after you pushed.",
+    "example": "git revert 1a2b3c4",
+    "mastered": false
+  },
+  {
+    "id": "git-28",
+    "category": "Undoing",
+    "syntax": "git stash\ngit stash pop",
+    "explain": "stash puts your unfinished changes away; stash pop brings them back.",
+    "example": "Switch branches without committing half-done work.",
+    "mastered": false
+  },
+  {
+    "id": "git-29",
+    "category": "Ignoring files",
+    "syntax": ".gitignore",
+    "explain": "A file listing things Git should never track, one per line.",
+    "example": "node_modules/\n.DS_Store\n.env",
+    "mastered": false
+  },
+  {
+    "id": "git-30",
+    "category": "Everyday",
+    "syntax": "git status\ngit add .\ngit commit -m \"message\"\ngit push",
+    "explain": "The everyday loop: check, add, save, send to GitHub.",
+    "example": "After finishing a small piece of work.",
+    "mastered": false
+  }
+]

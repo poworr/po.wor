@@ -21,8 +21,9 @@ const app = express();
 const PORT = 3000;
 const DATA = path.join(__dirname, 'data');
 
-// The 9 technologies. "id" is also the JSON file name in /data.
+// The 11 sidebar entries. "id" is also the JSON file name in /data.
 // "runs" says where code runs: in the browser, on the server, or in the practice terminal.
+// Shortcuts are keys to remember, not code, so they don't run ("none").
 const LANGS = [
   { id: 'html',       name: 'HTML',         runs: 'browser' },
   { id: 'css',        name: 'CSS',          runs: 'browser' },
@@ -32,7 +33,9 @@ const LANGS = [
   { id: 'c',          name: 'C',            runs: 'server' },
   { id: 'cpp',        name: 'C++',          runs: 'server' },
   { id: 'terminal',   name: 'Mac Terminal', runs: 'terminal' },
-  { id: 'homebrew',   name: 'Homebrew',     runs: 'terminal' }
+  { id: 'homebrew',   name: 'Homebrew',     runs: 'terminal' },
+  { id: 'git',        name: 'Git',          runs: 'terminal' },
+  { id: 'shortcuts',  name: 'Shortcuts',    runs: 'none' }
 ];
 
 app.use(express.json());                                    // read JSON sent by the page
