@@ -61,9 +61,9 @@ function render() {
 // Day: the date on top, then blank space to write
 function renderDay() {
   $('title').textContent = format(day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  lines = load(day).split('\n');
+  current = null;
   at = -1;
-  drawDoc();
+  makeDoc($('doc'), day, '• start writing…');
 }
 
 // Week: Monday to Sunday side by side, each date with its own column to write in
@@ -73,6 +73,8 @@ function renderWeek() {
   $('title').textContent = format(monday, { day: 'numeric', month: 'short' }) + ' – ' +
     format(sunday, { day: 'numeric', month: 'short', year: 'numeric' });
 
+  current = null;
+  at = -1;
   $('week').innerHTML = '';
   for (let n = 0; n < 7; n++) {
     const date = addDays(monday, n);
@@ -81,18 +83,14 @@ function renderWeek() {
     heading.textContent = format(date, { weekday: 'short', day: 'numeric' });
     heading.classList.toggle('today', keyOf(date) === keyOf(new Date()));   // today is bold
 
-    const box = document.createElement('textarea');
-    box.spellcheck = false;
-    box.rows = 2;
-    box.setAttribute('aria-label', format(date, { weekday: 'long', day: 'numeric', month: 'long' }));
-    box.value = load(date);
-    writingBox(box, () => save(date, box.value));
+    const doc = document.createElement('div');   // the same rows as the day page
+    doc.className = 'doc';
 
     const column = document.createElement('div');   // one column per day
     column.className = 'week-day';
-    column.append(heading, box);
+    column.append(heading, doc);
     $('week').appendChild(column);
-    grow(box);
+    makeDoc(doc, date, '');
   }
 }
 
@@ -111,7 +109,7 @@ $('today').addEventListener('click', () => { day = new Date(); day.setHours(0, 0
 $('prev').addEventListener('click', () => { day = addDays(day, view === 'week' ? -7 : -1); render(); });
 $('next').addEventListener('click', () => { day = addDays(day, view === 'week' ? 7 : 1); render(); });
 
-// ===== Writing (the day page and every box in the week) =====
+// ===== Writing =====
 
 let lastBox = null;   // the box you're writing in, for the phone bullet bar
 
@@ -183,7 +181,7 @@ function markDone(line) {
   return null;
 }
 
-// ===== The day page: one row per line =====
+// ===== Pages: one row per line (the day page and each day in the week) =====
 // The line you're on is a text box and shows what you type.
 // Every other line shows the result:
 //   # to ######   or  <h1> to <h6>   heading
@@ -193,59 +191,70 @@ function markDone(line) {
 //   **bold**  *italic*  ~~crossed~~  ==highlight==  `code`
 //   * ** or *** at the end of a line   priority (highlighted, *** is the most)
 
-let lines = [''];   // the day's text, one line each
-let at = -1;        // the line you're typing on (-1: none)
+// A page is { el, date, lines, placeholder }: lines is its text, one line each.
+let current = null;   // the page you're typing on
+let at = -1;          // the line you're typing on (-1: none)
 
 const page = document.createElement('textarea');
 page.id = 'page';
 page.rows = 1;
 page.spellcheck = false;
 page.placeholder = '• start writing…';
-page.setAttribute('aria-label', "Today's page");
 
-function drawDoc() {
-  $('doc').innerHTML = '';
-  lines.forEach((line, i) => {
-    const row = document.createElement('div');
-    row.className = 'row';
-    row.append(i === at ? page : show(line));
-    // mousedown would take the focus away and redraw before the click lands
-    row.addEventListener('mousedown', (event) => { if (i !== at) event.preventDefault(); });
-    row.addEventListener('click', (event) => {
-      if (i === at) return;
-      if (event.target.classList.contains('bullet')) {   // click a • or ○: done
-        lines[i] = markDone(lines[i]);
-        saveDay();
-        drawDoc();
-      } else {
-        edit(i, lines[i].length);
-      }
-    });
-    $('doc').appendChild(row);
-  });
-  if (at === -1 && lines.join('') === '') {
-    $('doc').firstChild.firstChild.replaceWith(Object.assign(document.createElement('p'), { className: 'placeholder', textContent: '• start writing…' }));
-  }
+// Show one day's text in el
+function makeDoc(el, date, placeholder) {
+  draw({ el, date, lines: load(date).split('\n'), placeholder });
 }
 
-// Click under the last line: keep writing at the end
-$('doc').addEventListener('mousedown', (event) => { if (event.target === $('doc')) event.preventDefault(); });
-$('doc').addEventListener('click', (event) => {
-  if (event.target === $('doc')) edit(lines.length - 1, lines[lines.length - 1].length);
-});
+function draw(doc) {
+  doc.el.innerHTML = '';
+  doc.lines.forEach((line, i) => {
+    const typing = doc === current && i === at;
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.append(typing ? page : show(line));
+    // mousedown would take the focus away and redraw before the click lands
+    row.addEventListener('mousedown', (event) => { if (!typing) event.preventDefault(); });
+    row.addEventListener('click', (event) => {
+      if (typing) return;
+      if (event.target.classList.contains('bullet')) {   // click a • or ○: done
+        doc.lines[i] = markDone(doc.lines[i]);
+        saveDoc(doc);
+        draw(doc);
+      } else {
+        edit(doc, i, doc.lines[i].length);
+      }
+    });
+    doc.el.appendChild(row);
+  });
+  if (doc !== current && doc.lines.join('') === '' && doc.placeholder) {
+    doc.el.firstChild.firstChild.replaceWith(Object.assign(document.createElement('p'), { className: 'placeholder', textContent: doc.placeholder }));
+  }
 
-// Start typing on line i, with the cursor at caret
-function edit(i, caret) {
+  // Click under the last line: keep writing at the end
+  doc.el.onmousedown = (event) => { if (event.target === doc.el) event.preventDefault(); };
+  doc.el.onclick = (event) => {
+    const last = doc.lines.length - 1;
+    if (event.target === doc.el) edit(doc, last, doc.lines[last].length);
+  };
+}
+
+// Start typing on line i of a page, with the cursor at caret
+function edit(doc, i, caret) {
+  const before = current;
+  current = doc;
   at = i;
-  page.value = lines[i];
-  drawDoc();
+  page.value = doc.lines[i];
+  page.setAttribute('aria-label', format(doc.date, { weekday: 'long', day: 'numeric', month: 'long' }));
+  draw(doc);
+  if (before && before !== doc) draw(before);   // the page you left shows its results again
   grow(page);
   page.focus();
   page.setSelectionRange(caret, caret);
 }
 
-function saveDay() {
-  save(day, lines.join('\n'));
+function saveDoc(doc) {
+  save(doc.date, doc.lines.join('\n'));
 }
 
 // What one line looks like when you're not typing on it
@@ -292,8 +301,8 @@ page.addEventListener('input', () => {
   if (page.value.includes('\n')) {
     const parts = page.value.split('\n');
     const caret = page.selectionStart - page.value.lastIndexOf('\n') - 1;
-    lines.splice(at, 1, ...parts);
-    edit(at + parts.length - 1, Math.max(caret, 0));
+    current.lines.splice(at, 1, ...parts);
+    edit(current, at + parts.length - 1, Math.max(caret, 0));
   }
   suggest();
 });
@@ -304,6 +313,8 @@ page.addEventListener('keydown', (event) => {
   const caret = page.selectionStart;
   const nothingSelected = caret === page.selectionEnd;
   const oneRow = page.scrollHeight < parseFloat(getComputedStyle(page).lineHeight) * 1.5;
+
+  const lines = current.lines;
   let go = null;
 
   if (event.key === 'Backspace' && nothingSelected && caret === 0 && at > 0) {
@@ -311,12 +322,12 @@ page.addEventListener('keydown', (event) => {
     const before = lines[at - 1].length;
     lines.splice(at - 1, 2, lines[at - 1] + page.value);
     at--;
-    saveDay();
+    saveDoc(current);
     go = [at, before];
   } else if (event.key === 'Delete' && nothingSelected && caret === page.value.length && at < lines.length - 1) {
     // join with the line below
     lines.splice(at, 2, page.value + lines[at + 1]);
-    saveDay();
+    saveDoc(current);
     go = [at, caret];
   } else if (event.key === 'ArrowUp' && at > 0 && (oneRow || caret === 0)) {
     go = [at - 1, Math.min(caret, lines[at - 1].length)];
@@ -327,7 +338,7 @@ page.addEventListener('keydown', (event) => {
   }
   if (go) {
     event.preventDefault();
-    edit(go[0], go[1]);
+    edit(current, go[0], go[1]);
   }
 });
 
@@ -335,7 +346,12 @@ page.addEventListener('keydown', (event) => {
 page.addEventListener('blur', () => {
   $('suggest').hidden = true;
   setTimeout(() => {
-    if (document.activeElement !== page) { at = -1; drawDoc(); }
+    if (document.activeElement !== page && current) {
+      const doc = current;
+      current = null;
+      at = -1;
+      draw(doc);
+    }
   });
 });
 
@@ -406,7 +422,7 @@ function suggest() {
   // Put the list just under the word  (one letter of Menlo is 0.6 of the font size wide)
   const letter = parseFloat(getComputedStyle(page).fontSize) * 0.6;
   const spot = page.getBoundingClientRect();
-  const where = $('day-view').getBoundingClientRect();
+  const where = $('suggest').parentElement.getBoundingClientRect();
   $('suggest').style.left = (spot.left - where.left + from * letter) + 'px';
   $('suggest').style.top = (spot.bottom - where.top) + 'px';
 }
@@ -480,8 +496,8 @@ if (phone) {
 
 // The line you're typing on: bullets, shortcuts and saving
 writingBox(page, () => {
-  lines[at] = page.value;
-  saveDay();
+  current.lines[at] = page.value;
+  saveDoc(current);
 });
 
 render();

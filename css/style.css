@@ -376,6 +376,7 @@ footer {
 
 /* ===== Planner: plain text, black and white, like a terminal ===== */
 .planner {
+  position: relative;   /* for the list that pops up while you type */
   font-family: Menlo, Monaco, "DejaVu Sans Mono", monospace;
   font-size: 14px;
 }
@@ -406,11 +407,8 @@ footer {
   font-weight: normal;
 }
 
-/* Day: one row per line, with its number on the left like a code editor.
+/* Day and week: one row per line, with its number on the left like a code editor.
    The line you're on shows what you typed; the others show the result. */
-#day-view {
-  position: relative;   /* for the < list */
-}
 .doc {
   min-height: 55vh;
   line-height: 1.8;
@@ -537,21 +535,11 @@ footer {
   font-weight: bold;
   border-bottom-color: #1D1D1F;
 }
-#week textarea {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 55vh;
-  padding: 0;
-  overflow: hidden;   /* it grows instead of scrolling */
-  font: inherit;
+.week-day .doc {
   font-size: 13px;
-  line-height: 1.8;
-  color: inherit;
-  background: none;
-  border: 0;
-  outline: none;
-  resize: none;
+}
+.week-day .row::before {
+  display: none;   /* the columns are narrow, so no line numbers */
 }
 /* phones: 7 columns are too narrow, so the days go in a list */
 @media (max-width: 700px) {
@@ -563,7 +551,7 @@ footer {
     padding: 0 0 16px;
     border-right: 0;
   }
-  #week textarea {
+  .week-day .doc {
     min-height: 3.6em;
   }
 }

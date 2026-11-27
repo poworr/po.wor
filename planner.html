@@ -42,13 +42,15 @@
     <!-- Day: one row per line (js/planner.js fills it in) -->
     <section id="day-view">
       <div class="doc" id="doc"></div>
-      <ul class="suggest" id="suggest" hidden></ul>
     </section>
 
-    <!-- Week: Monday to Sunday, each date with space to write (no times) -->
+    <!-- Week: Monday to Sunday, each date with the same rows as the day page (no times) -->
     <section id="week-view" hidden>
       <div id="week"></div>
     </section>
+
+    <!-- The list that pops up while you type (day and week) -->
+    <ul class="suggest" id="suggest" hidden></ul>
 
     <!-- Shows while you hold ⌘ -->
     <pre class="legend" id="legend" hidden></pre>
