@@ -5,6 +5,7 @@
     "syntax": ".box {\n  width: 300px;\n  padding: 16px;\n  border: 1px solid #ccc;\n  margin: 20px;\n}",
     "explain": "Size, space inside (padding), a line around (border), space outside (margin).",
     "example": "Spacing out cards so they do not touch.",
+    "remember": "Box model, inside out: content → padding → border → margin.",
     "mastered": false
   },
   {
@@ -21,6 +22,7 @@
     "syntax": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}",
     "explain": "A grid of 3 equal columns. 1fr means one share of the free space.",
     "example": "A photo gallery.",
+    "remember": "fr = a fraction (share) of the free space.",
     "mastered": false
   },
   {
@@ -45,6 +47,7 @@
     "syntax": ".parent { position: relative; }\n.badge  { position: absolute; top: 0; right: 0; }",
     "explain": "absolute places an element by its nearest parent that has position: relative.",
     "example": "A red notification count on the corner of an icon.",
+    "remember": "absolute moves to the nearest relative parent. Relative = the anchor, absolute = the boat.",
     "mastered": false
   },
   {
@@ -53,6 +56,7 @@
     "syntax": "@media (max-width: 600px) {\n  .grid { grid-template-columns: 1fr; }\n}",
     "explain": "Rules inside only apply on screens 600px wide or less.",
     "example": "One column on phones, three columns on laptops.",
+    "remember": "max-width = \"up to this wide\" (phones). min-width = \"at least this wide\" (big screens).",
     "mastered": false
   },
   {
@@ -77,6 +81,7 @@
     "syntax": "nav a { color: white; }\nul > li { list-style: none; }",
     "explain": "A space means \"anywhere inside\". > means \"direct child only\".",
     "example": "Links only inside the menu.",
+    "remember": "space = any child or grandchild. > = direct child only.",
     "mastered": false
   },
   {
@@ -93,6 +98,7 @@
     "syntax": "input[type=\"email\"] { border-color: blue; }\na[href^=\"https\"] { color: green; }",
     "explain": "[attr=\"value\"] selects by attribute. ^= means \"starts with\".",
     "example": "Styling only email inputs.",
+    "remember": "^= starts with, $= ends with, *= contains.",
     "mastered": false
   },
   {
@@ -109,6 +115,7 @@
     "syntax": ".tip::before { content: \"💡 \"; }\n.link::after { content: \" →\"; }",
     "explain": "::before and ::after add content before or after an element using CSS.",
     "example": "Icons and arrows without extra HTML.",
+    "remember": "::before = first thing inside, ::after = last thing inside. They need content to show.",
     "mastered": false
   },
   {
@@ -125,6 +132,7 @@
     "syntax": "* { box-sizing: border-box; }",
     "explain": "* selects every element.",
     "example": "A reset at the top of a stylesheet.",
+    "remember": "border-box: the width you set includes padding and border. Sizes stop surprising you.",
     "mastered": false
   },
   {
@@ -133,6 +141,7 @@
     "syntax": ".card {\n  margin: 10px 20px;\n  padding: 10px 20px 30px 40px;\n}",
     "explain": "Shorthand: two values = top/bottom then left/right; four = top, right, bottom, left (clockwise).",
     "example": "Spacing around and inside boxes.",
+    "remember": "Padding is inside the border (cushion), margin is outside (personal space).",
     "mastered": false
   },
   {
@@ -173,6 +182,7 @@
     "syntax": ".row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}",
     "explain": "justify-content spaces items along the row, align-items lines them up across it.",
     "example": "A header with logo left and menu right.",
+    "remember": "justify = along the row (main way), align = across it.",
     "mastered": false
   },
   {
@@ -197,6 +207,7 @@
     "syntax": ".gallery {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  gap: 16px;\n}",
     "explain": "Makes as many 200px+ columns as fit. It changes by itself with the screen size.",
     "example": "A photo gallery that works on any screen.",
+    "remember": "auto-fill + minmax = \"as many columns as fit, each at least this wide\".",
     "mastered": false
   },
   {
@@ -301,6 +312,7 @@
     "syntax": ".button { transition: background 0.3s; }\n.button:hover { background: black; }",
     "explain": "transition makes changes smooth instead of instant.",
     "example": "Buttons that fade when you hover.",
+    "remember": "Put transition on the normal state, not the :hover one, so it animates both ways.",
     "mastered": false
   },
   {
@@ -309,6 +321,7 @@
     "syntax": ".icon:hover { transform: scale(1.1) rotate(10deg); }",
     "explain": "transform moves, grows, or turns an element without moving others.",
     "example": "A playful hover effect.",
+    "remember": "transform moves the drawing, not the layout: nothing around it shifts.",
     "mastered": false
   },
   {
@@ -317,6 +330,7 @@
     "syntax": "@keyframes spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n.loader { animation: spin 1s linear infinite; }",
     "explain": "@keyframes describes an animation; animation plays it.",
     "example": "A loading spinner.",
+    "remember": "Write the keyframes once (the dance), play it with animation (press play).",
     "mastered": false
   },
   {
@@ -365,6 +379,195 @@
     "syntax": ".side { width: calc(100% - 200px); }\n.photo { aspect-ratio: 16 / 9; object-fit: cover; }",
     "explain": "calc() does math with units. aspect-ratio keeps a shape; object-fit: cover fills it without stretching.",
     "example": "Video thumbnails.",
+    "mastered": false
+  },
+  {
+    "id": "css-39",
+    "category": "Selectors",
+    "syntax": "[data-tip]::after {\n  content: attr(data-tip);\n}",
+    "explain": "attr() reads an attribute from the HTML and shows its value as text. A tooltip with no JavaScript.",
+    "example": "po.wor header: data-tip=\"Home?\" on the logo becomes the message bubble.",
+    "remember": "attr() = \"read this tag's attribute\". data-tip in HTML → attr(data-tip) in CSS.",
+    "mastered": false
+  },
+  {
+    "id": "css-40",
+    "category": "Counters",
+    "syntax": ".doc { counter-reset: line; }\n.row { counter-increment: line; }\n.row::before { content: counter(line); }",
+    "explain": "CSS counts for you: counter-reset starts at 0, counter-increment adds 1 on each row, counter() shows the number.",
+    "example": "po.wor planner: the line numbers on the left, like a code editor.",
+    "remember": "Like a tally clicker: reset it, click once per row, read it.",
+    "mastered": false
+  },
+  {
+    "id": "css-41",
+    "category": "Effects",
+    "syntax": "@keyframes bounce {\n  0%   { transform: translateY(0) scale(1); }\n  30%  { transform: translateY(-5px) scale(1.12); }\n  100% { transform: translateY(0) scale(1); }\n}\na:hover > * { animation: bounce 0.6s ease; }",
+    "explain": "Percent steps give an animation many stops, not only from and to. 30% means 30% of the way through the time.",
+    "example": "po.wor: the logo, the • and the box bounce when you point at them.",
+    "remember": "0% = start, 100% = end; the steps in between are stops along the way.",
+    "mastered": false
+  },
+  {
+    "id": "css-42",
+    "category": "Effects",
+    "syntax": ".lid {\n  transform-origin: 4px 7.5px;\n  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);\n}\n.box:hover .lid { transform: rotate(-28deg); }",
+    "explain": "transform-origin is the point it turns around (the hinge). cubic-bezier is a custom speed curve; a number above 1 makes it go past the end and spring back.",
+    "example": "po.wor header: the box lid swings open on its corner, a little springy.",
+    "remember": "origin = where the pin goes in. In cubic-bezier, a number over 1 = overshoot (springy).",
+    "mastered": false
+  },
+  {
+    "id": "css-43",
+    "category": "Effects",
+    "syntax": ".bubble {\n  opacity: 0;\n  transition: opacity 0.2s;\n}\na:hover .bubble {\n  opacity: 1;\n  transition-delay: 0.15s;\n}",
+    "explain": "transition-delay waits before the change starts. Put it on the hover rule and it only waits on the way in.",
+    "example": "po.wor: the message bubbles appear after a short pause, so they don't flash when the mouse passes by.",
+    "remember": "delay = wait, then go.",
+    "mastered": false
+  },
+  {
+    "id": "css-44",
+    "category": "Effects",
+    "syntax": ".bubble { pointer-events: none; }",
+    "explain": "Clicks and hovers go straight through the element to whatever is under it.",
+    "example": "po.wor: the message bubbles never block a click.",
+    "remember": "none = a ghost: the mouse passes right through.",
+    "mastered": false
+  },
+  {
+    "id": "css-45",
+    "category": "Positioning",
+    "syntax": ".has-bubble { position: relative; }\n.bubble {\n  position: absolute;\n  top: calc(100% + 10px);\n  left: 0;\n}",
+    "explain": "top: 100% puts it right under its parent; calc adds a 10px gap. The parent needs position: relative.",
+    "example": "po.wor: each message bubble sits just under its link.",
+    "remember": "100% of the parent's height = just below it.",
+    "mastered": false
+  },
+  {
+    "id": "css-46",
+    "category": "Selectors",
+    "syntax": ".entry:first-of-type { border-top: none; }",
+    "explain": "The first element of its tag type among its siblings.",
+    "example": "po.wor homepage: no line above the first entry.",
+    "remember": "first-child = the first kid. first-of-type = the first kid of that kind.",
+    "mastered": false
+  },
+  {
+    "id": "css-47",
+    "category": "Selectors",
+    "syntax": ".panel + .panel { margin-top: 16px; }",
+    "explain": "+ picks an element that comes right after another one. A gap between boxes, but none above the first.",
+    "example": "po.wor Japanese page: space between the white panels.",
+    "remember": "+ = \"the one right next to it\".",
+    "mastered": false
+  },
+  {
+    "id": "css-48",
+    "category": "Typography",
+    "syntax": ".text a {\n  text-decoration: underline;\n  text-underline-offset: 3px;\n}",
+    "explain": "Moves the underline a little lower, so it doesn't touch the letters.",
+    "example": "po.wor homepage: the project links.",
+    "remember": "offset = how far below the text.",
+    "mastered": false
+  },
+  {
+    "id": "css-49",
+    "category": "Sizing",
+    "syntax": ".row::before { width: 3ch; }\n.icon { width: 1.5em; }",
+    "explain": "ch is the width of the \"0\" character, good for numbers and monospace text. em is the element's font size, so it grows with the text.",
+    "example": "po.wor: planner line numbers are 3ch wide; homepage icons are 1.5em.",
+    "remember": "ch = characters wide. em = \"as big as the font\".",
+    "mastered": false
+  },
+  {
+    "id": "css-50",
+    "category": "Sizing",
+    "syntax": ".genko { width: min(100%, calc(55svh + 30px)); }",
+    "explain": "min() uses the smaller value. svh is 1% of the screen height on phones when the browser bars are showing.",
+    "example": "po.wor Japanese page: the writing paper is never wider than the screen or too tall to see.",
+    "remember": "min() = a ceiling: never bigger than the smallest choice. svh = small viewport height.",
+    "mastered": false
+  },
+  {
+    "id": "css-51",
+    "category": "Responsive",
+    "syntax": ".genko { container-type: inline-size; }\n.genko-row span { font-size: 3cqi; }",
+    "explain": "cqi is 1% of the container's width, so text grows with the box, not with the whole window.",
+    "example": "po.wor Japanese page: the letters in the squares grow with the paper.",
+    "remember": "cqi = container query inline (% of the box). vw = % of the window.",
+    "mastered": false
+  },
+  {
+    "id": "css-52",
+    "category": "Layout",
+    "syntax": "#week {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(0, 1fr));\n}",
+    "explain": "7 equal columns. minmax(0, 1fr) lets them get narrow even when a word is long.",
+    "example": "po.wor planner: the week view, Monday to Sunday.",
+    "remember": "7 days = repeat(7, …). minmax(0, …) = \"you may get tiny\".",
+    "mastered": false
+  },
+  {
+    "id": "css-53",
+    "category": "Layout",
+    "syntax": "header { display: flex; }\n.plan { margin-left: auto; }",
+    "explain": "In a flex row, margin-left: auto takes all the free space on the left, pushing the item to the right.",
+    "example": "po.wor header: the planner • sits on the right, next to the box.",
+    "remember": "An auto margin eats all the empty space.",
+    "mastered": false
+  },
+  {
+    "id": "css-54",
+    "category": "Layout",
+    "syntax": ".row > * { flex: 1; min-width: 0; }\n.row::before { flex: none; }",
+    "explain": "flex: none keeps an item at its own size. min-width: 0 lets a flex item shrink, so long text wraps instead of sticking out.",
+    "example": "po.wor planner: the line number stays fixed, the text takes the rest.",
+    "remember": "Flex items won't shrink below their content until you say min-width: 0.",
+    "mastered": false
+  },
+  {
+    "id": "css-55",
+    "category": "Layout",
+    "syntax": ".row > hr { align-self: center; }",
+    "explain": "Lines up one item differently from the others in a flex row.",
+    "example": "po.wor planner: a --- divider sits in the middle of its row.",
+    "remember": "align-items = for all the kids, align-self = for one kid.",
+    "mastered": false
+  },
+  {
+    "id": "css-56",
+    "category": "Layout",
+    "syntax": ".bullet-bar { display: flex; }\n.bullet-bar[hidden] { display: none; }",
+    "explain": "A display rule in CSS beats the hidden attribute, so the element would still show. This rule makes hidden work again.",
+    "example": "po.wor planner: the phone bullet bar.",
+    "remember": "CSS display beats HTML hidden. [hidden] { display: none } puts hidden back in charge.",
+    "mastered": false
+  },
+  {
+    "id": "css-57",
+    "category": "Typography",
+    "syntax": ".row { white-space: pre-wrap; overflow-wrap: break-word; }\n.sample { white-space: pre-line; }",
+    "explain": "pre-wrap keeps your spaces and line breaks as typed, and still wraps at the edge. pre-line keeps only the line breaks. break-word breaks a very long word so it fits.",
+    "example": "po.wor: planner lines keep their spaces; Japanese samples keep their paragraphs.",
+    "remember": "pre = keep it as typed. wrap = but still wrap at the edge.",
+    "mastered": false
+  },
+  {
+    "id": "css-58",
+    "category": "Forms",
+    "syntax": "#page {\n  border: 0;\n  background: none;\n  outline: none;\n  resize: none;\n}\n#page::placeholder { color: #A8A8A8; }",
+    "explain": "Makes a textarea look like plain text: no border, no focus ring, no drag corner. ::placeholder styles the grey hint text.",
+    "example": "po.wor planner: the line you type on looks the same as the other lines.",
+    "remember": "resize: none removes the corner handle. ::placeholder is a pseudo-element, like ::before.",
+    "mastered": false
+  },
+  {
+    "id": "css-59",
+    "category": "Forms",
+    "syntax": "button {\n  font: inherit;\n  color: inherit;\n  background: none;\n  border: 0;\n}",
+    "explain": "Buttons don't take the page's font on their own. inherit makes them use their parent's font and colour.",
+    "example": "po.wor: the planner buttons look like the rest of the text.",
+    "remember": "inherit = \"use what my parent has\".",
     "mastered": false
   }
 ]

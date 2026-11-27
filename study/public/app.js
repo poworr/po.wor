@@ -83,7 +83,7 @@ function renderCards() {
     const items = lang.items.filter((item) => {
       if (filter === 'mastered' && !item.mastered) return false;
       if (filter === 'learning' && item.mastered) return false;
-      const text = (lang.name + ' ' + item.category + ' ' + item.syntax + ' ' + item.explain + ' ' + item.example).toLowerCase();
+      const text = (lang.name + ' ' + item.category + ' ' + item.syntax + ' ' + item.explain + ' ' + item.example + ' ' + (item.remember || '')).toLowerCase();
       return text.includes(search);
     });
     if (items.length === 0) continue;
@@ -111,6 +111,8 @@ function makeCard(lang, item) {
   card.querySelector('.syntax').textContent = item.syntax;
   card.querySelector('.explain').textContent = item.explain;
   card.querySelector('.example').textContent = item.example ? 'Used for: ' + item.example : '';
+  card.querySelector('.remember').textContent = item.remember ? 'Remember: ' + item.remember : '';
+  card.querySelector('.remember').hidden = !item.remember;
   card.querySelector('.mastered').checked = item.mastered;
   card.classList.toggle('done', item.mastered);
 
@@ -172,6 +174,7 @@ function openForm(langId, item) {
     form.syntax.value = item.syntax;
     form.explain.value = item.explain;
     form.example.value = item.example;
+    form.remember.value = item.remember || '';
   }
   $('form-dialog').showModal();
 }
@@ -192,6 +195,7 @@ $('form').addEventListener('submit', async (event) => {
     syntax: form.syntax.value,
     explain: form.explain.value,
     example: form.example.value,
+    remember: form.remember.value,
     mastered: old ? old.mastered : false
   });
 
@@ -231,7 +235,7 @@ async function runCode() {
   } else if (lang.id === 'css') {
     preview.srcdoc = CSS_SAMPLE + '<style>' + code + '</style>';
   } else if (lang.id === 'javascript') {
-    preview.srcdoc = CATCH_CONSOLE + '<script>' + code + '<\/script>';
+    preview.srcdoc = '<body>' + CATCH_CONSOLE + '<script>' + code + '<\/script>';   // <body> first, so document.body exists
   } else {
     // Python, Node.js, C and C++ run on the Mac, through server.js
     $('output').textContent = 'Running…';

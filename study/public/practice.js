@@ -3,7 +3,7 @@
 // Lessons come from data/lessons.json. Each lesson is one block like this:
 //   { "id": "python-1", "lang": "python", "level": "Beginner", "title": "Say hello",
 //     "task": "Print Hello, world!", "solution": "print(\"Hello, world!\")",
-//     "expected": "Hello, world!" }
+//     "expected": "Hello, world!", "remember": "a tip for remembering it (optional)" }
 // "expected" is what your code must print. HTML, CSS, Terminal, Homebrew and Git can't be
 // checked by output, so they use "mustInclude": the pieces your code must contain.
 
@@ -55,6 +55,8 @@ function renderLessons() {
   $('lesson-level').textContent = lesson.level;
   $('lesson-title').textContent = lesson.title;
   $('lesson-task').textContent = lesson.task;
+  $('lesson-remember').textContent = lesson.remember ? 'Remember: ' + lesson.remember : '';
+  $('lesson-remember').hidden = !lesson.remember;
   $('lesson-code').value = drafts[lesson.id] !== undefined ? drafts[lesson.id] : STARTERS[lesson.lang] || '';
   $('lesson-solution').textContent = lesson.solution;
   $('lesson-solution').hidden = true;
@@ -166,7 +168,10 @@ function showQuestion() {
 }
 
 function revealAnswer() {
-  $('test-solution').textContent = test.items[test.index].syntax;
+  const item = test.items[test.index];
+  $('test-solution').textContent = item.syntax;
+  $('test-remember').textContent = item.remember ? 'Remember: ' + item.remember : '';
+  $('test-remember').hidden = !item.remember;
   $('test-ask').hidden = true;
   $('test-check').hidden = false;
 }

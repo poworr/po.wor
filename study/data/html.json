@@ -5,6 +5,7 @@
     "syntax": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>My page</title>\n</head>\n<body>\n  <h1>Hello</h1>\n</body>\n</html>",
     "explain": "The frame every web page starts with. head holds information, body holds what you see.",
     "example": "The first thing you type in every new .html file.",
+    "remember": "DOCTYPE first, then html → head (about the page) → body (what you see).",
     "mastered": false
   },
   {
@@ -45,6 +46,7 @@
     "syntax": "<img src=\"photo.jpg\" alt=\"My cat on the sofa\">",
     "explain": "Shows an image. alt describes it for screen readers, and shows if the image fails to load.",
     "example": "Product photos and profile pictures.",
+    "remember": "alt = what you'd say if the picture didn't load.",
     "mastered": false
   },
   {
@@ -373,6 +375,7 @@
     "syntax": "<link rel=\"stylesheet\" href=\"style.css\">\n<script src=\"app.js\" defer></script>",
     "explain": "link loads a CSS file. script loads JavaScript; defer runs it after the page is built.",
     "example": "Connecting your CSS and JS files.",
+    "remember": "link = CSS goes in the head. script defer = JS waits for the page.",
     "mastered": false
   },
   {
@@ -397,6 +400,7 @@
     "syntax": "<button data-id=\"42\" hidden>Delete</button>",
     "explain": "data-* stores your own info for JavaScript. hidden hides the element.",
     "example": "Remembering which item a button belongs to.",
+    "remember": "data- = your own notes on a tag for JS. hidden = there, but not shown.",
     "mastered": false
   },
   {
@@ -405,6 +409,7 @@
     "syntax": "<html lang=\"en\">\n<button aria-label=\"Close\">×</button>",
     "explain": "lang tells screen readers the language. aria-label names a button that has no words.",
     "example": "Making a site usable with a screen reader.",
+    "remember": "aria-label = a name tag for buttons that only have an icon.",
     "mastered": false
   },
   {
@@ -413,6 +418,87 @@
     "syntax": "<p style=\"color: red;\">Red text</p>",
     "explain": "style puts CSS right on one element. Fine for a quick test; use a CSS file for real work.",
     "example": "Quick experiments.",
+    "mastered": false
+  },
+  {
+    "id": "html-44",
+    "category": "Head",
+    "syntax": "<link rel=\"icon\" href=\"images/logo.png\">",
+    "explain": "The small picture in the browser tab (the favicon).",
+    "example": "po.wor: every page shows the logo in its tab.",
+    "remember": "Same <link> as the stylesheet, just rel=\"icon\": the tab's icon.",
+    "mastered": false
+  },
+  {
+    "id": "html-45",
+    "category": "Media",
+    "syntax": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\">\n  <path d=\"M4 7.5 L12 3 L20 7.5 L12 12 Z\"/>\n</svg>",
+    "explain": "A drawing made of lines. In d: M moves the pen, L draws a line to a point, Z closes the shape. viewBox is the drawing's own 24×24 grid; stroke draws the outline in the text colour (currentColor), fill=\"none\" keeps it hollow.",
+    "example": "po.wor: the box icon in the header (its lid is one path).",
+    "remember": "M = Move, L = Line, Z = Zip it closed. viewBox = the size of the paper you draw on.",
+    "mastered": false
+  },
+  {
+    "id": "html-46",
+    "category": "Attributes",
+    "syntax": "<a class=\"icon\" href=\"planner.html\" aria-hidden=\"true\" tabindex=\"-1\">•</a>",
+    "explain": "aria-hidden=\"true\" hides it from screen readers; tabindex=\"-1\" skips it when you press Tab. Use it for a decoration that repeats a link next to it.",
+    "example": "po.wor homepage: the • and あ icons before the project names.",
+    "remember": "aria-hidden = hidden from assistive tech. tabindex -1 = \"minus one stop\" on the Tab tour.",
+    "mastered": false
+  },
+  {
+    "id": "html-47",
+    "category": "Attributes",
+    "syntax": "<button aria-pressed=\"false\">view</button>\n<button aria-expanded=\"false\">Show example</button>",
+    "explain": "aria-pressed says an on/off button is on. aria-expanded says the thing it opens is open. JavaScript switches them to \"true\"; CSS can style [aria-pressed=\"true\"].",
+    "example": "po.wor: the planner's \"view\" button; お手本を見る on the Japanese page.",
+    "remember": "pressed = a light switch (on/off). expanded = a door (open/closed).",
+    "mastered": false
+  },
+  {
+    "id": "html-48",
+    "category": "Interactive",
+    "syntax": "<div role=\"tablist\">\n  <button role=\"tab\" aria-controls=\"practice\" aria-selected=\"true\">Practice</button>\n  <button role=\"tab\" aria-controls=\"good\" aria-selected=\"false\">Examples</button>\n</div>\n<section id=\"practice\" role=\"tabpanel\">Practice here</section>\n<section id=\"good\" role=\"tabpanel\" hidden>Examples here</section>",
+    "explain": "Tabs that screen readers understand. role says what each part is, aria-controls points at the panel's id, aria-selected marks the chosen tab. JavaScript shows one panel and hides the others.",
+    "example": "po.wor: the 練習 / お手本 tabs on the Japanese page.",
+    "remember": "list → tab → panel: a tablist holds tabs, each tab controls a tabpanel.",
+    "mastered": false
+  },
+  {
+    "id": "html-49",
+    "category": "Attributes",
+    "syntax": "<button title=\"view mode (v)\">view</button>",
+    "explain": "title shows a small tooltip when you hold the mouse over the element.",
+    "example": "po.wor: the planner's view button tells you its key is v.",
+    "remember": "title = the name tag that pops up on hover.",
+    "mastered": false
+  },
+  {
+    "id": "html-50",
+    "category": "Attributes",
+    "syntax": "<a href=\"japanese.html\" lang=\"ja\">あ</a>",
+    "explain": "lang works on any tag, not only <html>. It marks one part as another language, so the right font and voice are used.",
+    "example": "po.wor homepage: the あ icon is marked as Japanese.",
+    "remember": "lang on <html> for the whole page, lang on a tag for just that part.",
+    "mastered": false
+  },
+  {
+    "id": "html-51",
+    "category": "Text",
+    "syntax": "<s>old price</s>",
+    "explain": "Draws a line through text that is no longer true.",
+    "example": "po.wor planner: ~~crossed~~ turns into <s>crossed</s>.",
+    "remember": "s = strikethrough.",
+    "mastered": false
+  },
+  {
+    "id": "html-52",
+    "category": "Forms",
+    "syntax": "<textarea rows=\"1\" spellcheck=\"false\" placeholder=\"• start writing…\"></textarea>",
+    "explain": "rows sets the starting height in lines. spellcheck=\"false\" turns off the red squiggles. placeholder is grey hint text that goes away when you type.",
+    "example": "po.wor planner: the line you are typing on is a one-row textarea.",
+    "remember": "placeholder = a place-holder: it keeps the spot until you type.",
     "mastered": false
   }
 ]

@@ -54,6 +54,7 @@
           <p class="tag" id="lesson-level"></p>
           <h2 class="lesson-title" id="lesson-title"></h2>
           <p id="lesson-task"></p>
+          <p class="muted" id="lesson-remember"></p>
           <textarea id="lesson-code" class="code" spellcheck="false" placeholder="Write your code here. ⌘↵ runs it."></textarea>
           <div class="bar">
             <button class="btn" id="lesson-run">Run ⌘↵</button>
@@ -79,6 +80,7 @@
           </div>
           <div id="test-check" hidden>
             <pre id="test-solution"></pre>
+            <p class="muted" id="test-remember"></p>
             <div class="bar">
               <button class="btn" id="test-right">I got it</button>
               <button class="btn" id="test-wrong">Not yet</button>
@@ -126,6 +128,7 @@
       </div>
       <p class="explain"></p>
       <p class="example muted"></p>
+      <p class="remember muted"></p>
       <div class="card-actions">
         <label><input type="checkbox" class="mastered"> Mastered</label>
         <button class="btn small try">Try it</button>
@@ -144,6 +147,7 @@
       <label>Syntax <textarea name="syntax" required spellcheck="false"></textarea></label>
       <label>What it does <input name="explain"></label>
       <label>Real-world example <input name="example"></label>
+      <label>How to remember it <input name="remember" placeholder="a tip or memory hook"></label>
       <div class="bar">
         <button class="btn" type="submit">Save</button>
         <button class="btn" type="button" id="cancel">Cancel</button>

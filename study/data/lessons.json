@@ -115,6 +115,54 @@
     ]
   },
   {
+    "id": "html-9",
+    "lang": "html",
+    "level": "Intermediate",
+    "title": "An icon link",
+    "task": "Make a link to planner.html showing • that screen readers skip and Tab skips, then a normal link to planner.html with the text Planner.",
+    "remember": "aria-hidden = hidden from assistive tech; tabindex -1 = no Tab stop.",
+    "solution": "<a href=\"planner.html\" aria-hidden=\"true\" tabindex=\"-1\">•</a>\n<a href=\"planner.html\">Planner</a>",
+    "mustInclude": [
+      "aria-hidden=\"true\"",
+      "tabindex=\"-1\"",
+      ">Planner</a>"
+    ]
+  },
+  {
+    "id": "html-10",
+    "lang": "html",
+    "level": "Advanced",
+    "title": "Draw a box lid",
+    "task": "Draw a 24×24 SVG with one path: a diamond from 4 7.5 to 12 3 to 20 7.5 to 12 12, closed. Outline only, in the text colour.",
+    "remember": "M = Move, L = Line, Z = Zip it closed.",
+    "solution": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\">\n  <path d=\"M4 7.5 L12 3 L20 7.5 L12 12 Z\"/>\n</svg>",
+    "mustInclude": [
+      "<svg",
+      "viewBox=\"0 0 24 24\"",
+      "<path",
+      "d=\"M4 7.5",
+      "Z\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "id": "html-11",
+    "lang": "html",
+    "level": "Master",
+    "title": "Two tabs",
+    "task": "Make a tablist with two tab buttons (Practice is selected, Examples is not), each pointing at its panel with aria-controls. Then two tabpanel sections; the Examples one is hidden.",
+    "remember": "list → tab → panel. aria-controls = the id of the panel.",
+    "solution": "<div role=\"tablist\">\n  <button role=\"tab\" aria-controls=\"practice\" aria-selected=\"true\">Practice</button>\n  <button role=\"tab\" aria-controls=\"examples\" aria-selected=\"false\">Examples</button>\n</div>\n<section id=\"practice\" role=\"tabpanel\">Practice</section>\n<section id=\"examples\" role=\"tabpanel\" hidden>Examples</section>",
+    "mustInclude": [
+      "role=\"tablist\"",
+      "role=\"tab\"",
+      "aria-selected=\"true\"",
+      "aria-controls=",
+      "role=\"tabpanel\"",
+      "hidden"
+    ]
+  },
+  {
     "id": "css-1",
     "lang": "css",
     "level": "Beginner",
@@ -220,6 +268,68 @@
     ]
   },
   {
+    "id": "css-9",
+    "lang": "css",
+    "level": "Intermediate",
+    "title": "Phone layout",
+    "task": "The .row has 3 boxes side by side. On screens 520px wide or less, make it one column (display: grid with grid-template-columns: 1fr).",
+    "remember": "max-width = \"up to this wide\": the rules only count on small screens.",
+    "solution": "@media (max-width: 520px) {\n  .row {\n    display: grid;\n    grid-template-columns: 1fr;\n  }\n}",
+    "mustInclude": [
+      "@media",
+      "max-width: 520px",
+      "grid-template-columns: 1fr"
+    ]
+  },
+  {
+    "id": "css-10",
+    "lang": "css",
+    "level": "Advanced",
+    "title": "Line numbers",
+    "task": "Number the three boxes in .row with a CSS counter: reset it on .row, add one on each .row div, and show it before each with ::before.",
+    "remember": "Like a tally clicker: reset, increment, show.",
+    "solution": ".row { counter-reset: n; }\n.row div { counter-increment: n; }\n.row div::before { content: counter(n) \". \"; }",
+    "mustInclude": [
+      "counter-reset",
+      "counter-increment",
+      "::before",
+      "content: counter("
+    ]
+  },
+  {
+    "id": "css-11",
+    "lang": "css",
+    "level": "Advanced",
+    "title": "Bounce",
+    "task": "Make an animation called bounce: at 0% and 100% no move, at 30% translateY(-5px) and scale(1.12). Play it on the h1 when you point at it, for 0.6s.",
+    "remember": "0% = start, 100% = end, the rest are stops on the way.",
+    "solution": "@keyframes bounce {\n  0%   { transform: translateY(0) scale(1); }\n  30%  { transform: translateY(-5px) scale(1.12); }\n  100% { transform: translateY(0) scale(1); }\n}\nh1:hover { animation: bounce 0.6s ease; }",
+    "mustInclude": [
+      "@keyframes bounce",
+      "30%",
+      "translateY(-5px)",
+      ":hover",
+      "animation: bounce 0.6s"
+    ]
+  },
+  {
+    "id": "css-12",
+    "lang": "css",
+    "level": "Master",
+    "title": "A bubble from an attribute",
+    "task": "Show the button's class name in a bubble under it with ::after and attr(class). Put the button in position: relative and the bubble in position: absolute at top: calc(100% + 10px). The bubble must not block clicks.",
+    "remember": "attr() reads the attribute; top: 100% = just below the parent; pointer-events: none = a ghost.",
+    "solution": ".button { position: relative; }\n.button::after {\n  content: attr(class);\n  position: absolute;\n  top: calc(100% + 10px);\n  left: 0;\n  pointer-events: none;\n}",
+    "mustInclude": [
+      "position: relative",
+      "::after",
+      "content: attr(class)",
+      "position: absolute",
+      "top: calc(100% + 10px)",
+      "pointer-events: none"
+    ]
+  },
+  {
     "id": "javascript-1",
     "lang": "javascript",
     "level": "Beginner",
@@ -290,6 +400,86 @@
     "task": "Make a class BankAccount with deposit(amount) and a balance. Deposit 50 then 25, then print the balance.",
     "solution": "class BankAccount {\n  constructor() { this.balance = 0; }\n  deposit(amount) { this.balance += amount; }\n}\nconst account = new BankAccount();\naccount.deposit(50);\naccount.deposit(25);\nconsole.log(account.balance);",
     "expected": "75"
+  },
+  {
+    "id": "javascript-9",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Count the letters",
+    "task": "Print how many characters \"日本語😀\" has, counting the emoji as one.",
+    "remember": "Spread it out, then count: [...text].length.",
+    "solution": "const text = \"日本語😀\";\nconsole.log([...text].length);",
+    "expected": "4"
+  },
+  {
+    "id": "javascript-10",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Keys that do things",
+    "task": "Make an object KEYS where d gives \"day\" and w gives \"week\" (each as a function). Print what KEYS[\"w\"] gives when you call it.",
+    "remember": "Look it up, then call it: KEYS[key]().",
+    "solution": "const KEYS = {\n  d: () => \"day\",\n  w: () => \"week\"\n};\nconsole.log(KEYS[\"w\"]());",
+    "expected": "week"
+  },
+  {
+    "id": "javascript-11",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "A date to save by",
+    "task": "From new Date(2026, 0, 5), print 2026-01-05 (with the zeros).",
+    "remember": "getMonth() + 1 because January is 0. padStart(2, \"0\") adds the zero.",
+    "solution": "const d = new Date(2026, 0, 5);\nconst key = d.getFullYear() + \"-\" +\n  String(d.getMonth() + 1).padStart(2, \"0\") + \"-\" +\n  String(d.getDate()).padStart(2, \"0\");\nconsole.log(key);",
+    "expected": "2026-01-05"
+  },
+  {
+    "id": "javascript-12",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Heading or not",
+    "task": "Write kind(line): for a line starting with 1 to 6 # and a space, give \"h\" + the number of # + \": \" + the rest; otherwise \"text: \" + the line. Print kind(\"## Shopping\") and kind(\"hello\").",
+    "remember": "match gives null or [whole, group 1, group 2]. ( ) = capture.",
+    "solution": "function kind(line) {\n  const m = line.match(/^(#{1,6}) (.*)/);\n  if (m) return \"h\" + m[1].length + \": \" + m[2];\n  return \"text: \" + line;\n}\nconsole.log(kind(\"## Shopping\"));\nconsole.log(kind(\"hello\"));",
+    "expected": "h2: Shopping\ntext: hello"
+  },
+  {
+    "id": "javascript-13",
+    "lang": "javascript",
+    "level": "Advanced",
+    "title": "Mark it done",
+    "task": "Write markDone(line): \"• x\" becomes \"× x\", \"× x\" becomes \"• x\", anything else stays the same. Print markDone(\"• buy milk\"), markDone(\"× buy milk\") and markDone(\"– a note\").",
+    "remember": "line[0] is the bullet, line.slice(2) is the text after \"• \".",
+    "solution": "function markDone(line) {\n  const text = line.slice(2);\n  if (line[0] === \"•\") return \"× \" + text;\n  if (line[0] === \"×\") return \"• \" + text;\n  return line;\n}\nconsole.log(markDone(\"• buy milk\"));\nconsole.log(markDone(\"× buy milk\"));\nconsole.log(markDone(\"– a note\"));",
+    "expected": "× buy milk\n• buy milk\n– a note"
+  },
+  {
+    "id": "javascript-14",
+    "lang": "javascript",
+    "level": "Advanced",
+    "title": "Time stamp",
+    "task": "Like the planner's /t: write timeStamp(text, date). If text ends with \"/t \" (at the start or after a space), swap it for the time from date as HH:MM and a space; otherwise give text back. Print timeStamp(\"meeting /t \", new Date(2026, 10, 27, 14, 5)), timeStamp(\"/t \", new Date(2026, 10, 27, 9, 30)) and timeStamp(\"a/t \", new Date()).",
+    "remember": "toTimeString().slice(0, 5) = HH:MM. An object of functions: SLASH[word](date).",
+    "solution": "const SLASH = {\n  t: (date) => date.toTimeString().slice(0, 5)\n};\n\nfunction timeStamp(text, date) {\n  const word = text.match(/(?:^|\\s)\\/(\\w+) $/);\n  if (!word || !SLASH[word[1]]) return text;\n  const start = text.length - word[1].length - 2;   // where the / is\n  return text.slice(0, start) + SLASH[word[1]](date) + \" \";\n}\n\nconsole.log(timeStamp(\"meeting /t \", new Date(2026, 10, 27, 14, 5)));\nconsole.log(timeStamp(\"/t \", new Date(2026, 10, 27, 9, 30)));\nconsole.log(timeStamp(\"a/t \", new Date()));",
+    "expected": "meeting 14:05 \n09:30 \na/t "
+  },
+  {
+    "id": "javascript-15",
+    "lang": "javascript",
+    "level": "Master",
+    "title": "Split a line",
+    "task": "lines is [\"a\", \"bc\", \"d\"]. Like pressing Enter in the middle of \"bc\": replace it with \"b\" and \"c\" using splice, then print the lines joined with commas.",
+    "remember": "splice(where, how many to remove, …what to add).",
+    "solution": "const lines = [\"a\", \"bc\", \"d\"];\nlines.splice(1, 1, \"b\", \"c\");\nconsole.log(lines.join(\",\"));",
+    "expected": "a,b,c,d"
+  },
+  {
+    "id": "javascript-16",
+    "lang": "javascript",
+    "level": "Master",
+    "title": "Monday of the week",
+    "task": "Write monday(date) that gives the Monday of that week (weeks start on Monday). Print the day of the month for new Date(2026, 10, 27) (a Friday) and new Date(2026, 10, 29) (a Sunday).",
+    "remember": "getDay: Sunday is 0. (getDay() + 6) % 7 = days since Monday.",
+    "solution": "function monday(date) {\n  const copy = new Date(date);\n  copy.setDate(copy.getDate() - (copy.getDay() + 6) % 7);\n  return copy;\n}\nconsole.log(monday(new Date(2026, 10, 27)).getDate());\nconsole.log(monday(new Date(2026, 10, 29)).getDate());",
+    "expected": "23\n23"
   },
   {
     "id": "node-1",

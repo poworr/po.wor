@@ -83,6 +83,7 @@ app.post('/api/syntax/:lang', function (req, res) {
     syntax: req.body.syntax,
     explain: req.body.explain || '',
     example: req.body.example || '',
+    remember: req.body.remember || '',     // a tip or memory hook
     mastered: Boolean(req.body.mastered)
   };
 

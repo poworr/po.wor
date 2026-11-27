@@ -5,6 +5,7 @@
     "syntax": "const name = \"Ada\";\nlet count = 0;\ncount = count + 1;\nconsole.log(name, count);",
     "explain": "const cannot be given a new value; let can.",
     "example": "Storing a username and a click counter.",
+    "remember": "const = can't point to something new; let = can change. Start with const.",
     "mastered": false
   },
   {
@@ -69,6 +70,7 @@
     "syntax": "const button = document.createElement(\"button\");\nbutton.textContent = \"Click me\";\nbutton.addEventListener(\"click\", () => console.log(\"clicked\"));\ndocument.body.appendChild(button);",
     "explain": "addEventListener runs a function every time something happens, like a click.",
     "example": "Opening a menu when you click its button.",
+    "remember": "addEventListener(what happens, what to do).",
     "mastered": false
   },
   {
@@ -109,6 +111,7 @@
     "syntax": "console.log(1 == \"1\");\nconsole.log(1 === \"1\");",
     "explain": "== converts types first, === does not. Always use ===.",
     "example": "Avoiding surprise bugs.",
+    "remember": "=== checks the value and the type. Always use three.",
     "mastered": false
   },
   {
@@ -157,6 +160,7 @@
     "syntax": "const nums = [1, 2, 3];\nconsole.log(nums.map((n) => n * 2));",
     "explain": "map makes a new array by changing every item.",
     "example": "Turning prices into prices with tax.",
+    "remember": "map = change every item, same count back.",
     "mastered": false
   },
   {
@@ -165,6 +169,7 @@
     "syntax": "const nums = [1, 2, 3, 4];\nconsole.log(nums.filter((n) => n % 2 === 0));",
     "explain": "filter keeps only the items where the function returns true.",
     "example": "Showing only unfinished tasks.",
+    "remember": "filter = keep the items that pass the test.",
     "mastered": false
   },
   {
@@ -173,6 +178,7 @@
     "syntax": "const nums = [1, 2, 3, 4];\nconsole.log(nums.reduce((total, n) => total + n, 0));",
     "explain": "reduce boils an array down to one value. 0 is the starting total.",
     "example": "The total of a shopping cart.",
+    "remember": "reduce = squash the list into one value (start value at the end).",
     "mastered": false
   },
   {
@@ -197,6 +203,7 @@
     "syntax": "const letters = [\"a\", \"b\", \"c\", \"d\"];\nconsole.log(letters.slice(1, 3));\nletters.splice(1, 1);\nconsole.log(letters);",
     "explain": "slice copies a part (start, end). splice removes items from the array itself.",
     "example": "Pages of results; deleting one item.",
+    "remember": "slice copies from start up to (not including) end; the list stays the same.",
     "mastered": false
   },
   {
@@ -349,6 +356,7 @@
     "syntax": "const now = new Date();\nconsole.log(now.getFullYear(), now.toISOString());",
     "explain": "Date holds a moment in time.",
     "example": "Showing today's date.",
+    "remember": "new Date() = right now. Months count from 0.",
     "mastered": false
   },
   {
@@ -365,6 +373,7 @@
     "syntax": "const title = document.querySelector(\"h1\");\nconst items = document.querySelectorAll(\".item\");",
     "explain": "querySelector finds the first match, querySelectorAll finds all of them (CSS selectors).",
     "example": "Grabbing elements to change them.",
+    "remember": "querySelector = the first one. querySelectorAll = all of them.",
     "mastered": false
   },
   {
@@ -373,6 +382,7 @@
     "syntax": "const box = document.querySelector(\".box\");\nbox.classList.add(\"open\");\nbox.classList.toggle(\"dark\");\nbox.textContent = \"Hello\";",
     "explain": "classList adds or removes classes. textContent sets the text safely.",
     "example": "Opening a menu, dark mode switches.",
+    "remember": "classList: add, remove, toggle, contains.",
     "mastered": false
   },
   {
@@ -389,6 +399,7 @@
     "syntax": "localStorage.setItem(\"theme\", \"dark\");\nconsole.log(localStorage.getItem(\"theme\"));",
     "explain": "localStorage keeps small text values in the browser, even after closing it.",
     "example": "Remembering a setting.",
+    "remember": "set = save, get = read. Only text: use JSON.stringify for lists and objects.",
     "mastered": false
   },
   {
@@ -397,6 +408,429 @@
     "syntax": "// math.js\nexport function add(a, b) { return a + b; }\n// app.js\nimport { add } from \"./math.js\";",
     "explain": "export shares code from a file, import uses it. Needs <script type=\"module\">.",
     "example": "Splitting a big app into files.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-41",
+    "category": "Dates",
+    "syntax": "const time = new Date(2026, 10, 27, 14, 5).toTimeString().slice(0, 5);\nconsole.log(time);   // 14:05",
+    "explain": "toTimeString gives \"14:05:00 GMT+…\". slice(0, 5) keeps the first 5 characters: hours and minutes.",
+    "example": "po.wor planner: type /t and a space and it turns into the time.",
+    "remember": "Months count from 0, so 10 is November. slice(0, 5) = \"the first five\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-42",
+    "category": "Dates",
+    "syntax": "const d = new Date(2026, 10, 7);\nconst key = d.getFullYear() + \"-\" +\n  String(d.getMonth() + 1).padStart(2, \"0\") + \"-\" +\n  String(d.getDate()).padStart(2, \"0\");\nconsole.log(key);   // 2026-11-07",
+    "explain": "Builds a date like 2026-11-07. getMonth is 0 to 11, so add 1. padStart adds a 0 in front of single digits.",
+    "example": "po.wor planner: each day is saved as \"planner:2026-11-27\".",
+    "remember": "getMonth() + 1 because January is 0. padStart(2, \"0\") = \"2 wide, fill the start with 0\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-43",
+    "category": "Dates",
+    "syntax": "function addDays(date, n) {\n  const copy = new Date(date);\n  copy.setDate(copy.getDate() + n);\n  return copy;\n}\nconsole.log(addDays(new Date(2026, 10, 30), 2).getDate());   // 2 (December 2)",
+    "explain": "setDate moves the date and rolls over into the next month for you. new Date(date) makes a copy, so the original stays the same.",
+    "example": "po.wor planner: the < and > buttons go back or forward a day or a week.",
+    "remember": "Copy first, then change.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-44",
+    "category": "Dates",
+    "syntax": "const d = new Date(2026, 10, 27);\nconsole.log(d.toLocaleDateString(\"en-GB\", { weekday: \"long\", day: \"numeric\", month: \"long\" }));",
+    "explain": "Writes a date in words. The first part is the language (\"en-GB\"), the options pick which parts to show.",
+    "example": "po.wor planner: the title, like \"friday 27 november 2026\".",
+    "remember": "Locale + options: say the language, then list the parts you want.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-45",
+    "category": "Dates",
+    "syntax": "const d = new Date(2026, 10, 27);   // a Friday\nconst monday = new Date(d);\nmonday.setDate(d.getDate() - (d.getDay() + 6) % 7);\nconsole.log(monday.getDate());   // 23",
+    "explain": "getDay gives 0 for Sunday, 1 for Monday … 6 for Saturday. (getDay() + 6) % 7 is how many days ago Monday was.",
+    "example": "po.wor planner: the week view always starts on Monday.",
+    "remember": "getDay: Sunday is 0. Add 6, then % 7, and Monday becomes 0.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-46",
+    "category": "Strings",
+    "syntax": "const line = \"• buy milk\";\nconsole.log(line.slice(2));      // buy milk\nconsole.log(line.slice(0, 1));   // •\nconsole.log(line.slice(-4));     // milk",
+    "explain": "slice(start, end) copies part of the text. The end is not included. A minus number counts from the end.",
+    "example": "po.wor planner: line.slice(2) is the text after the bullet.",
+    "remember": "Cut a slice: from start up to (not including) end.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-47",
+    "category": "Strings",
+    "syntax": "const text = \"one\\ntwo\\nthree\";\nconsole.log(text.startsWith(\"one\"), text.endsWith(\"three\"));\nconsole.log(text.indexOf(\"\\n\"), text.lastIndexOf(\"\\n\"));   // 3 7",
+    "explain": "startsWith and endsWith answer true or false. indexOf finds the first place, lastIndexOf the last place; -1 means not found.",
+    "example": "po.wor planner: lastIndexOf(\"\\n\") finds where the line you are on starts.",
+    "remember": "indexOf looks from the left, lastIndexOf from the right. -1 = not there.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-48",
+    "category": "Strings",
+    "syntax": "console.log(\"5\".padStart(2, \"0\"));        // 05\nconsole.log(\"task\".padEnd(8) + \"ctrl+1\");",
+    "explain": "padStart and padEnd add characters (spaces if you don't say) until the text is that long. Good for lining things up.",
+    "example": "po.wor planner: the control legend lines up its columns with padEnd.",
+    "remember": "pad = fill. Start = in front, End = behind.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-49",
+    "category": "Strings",
+    "syntax": "console.log(\"done\".replace(/[^\\u0336]/g, \"$&\\u0336\"));   // d̶o̶n̶e̶",
+    "explain": "In the replacement, $& means \"the text that matched\". \\u0336 is a strike mark that crosses out the letter before it.",
+    "example": "po.wor planner: click a ○ twice and the event is crossed out.",
+    "remember": "$& = \"the thing you found\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-50",
+    "category": "Strings",
+    "syntax": "const text = \"日本語😀\";\nconsole.log(text.length, [...text].length);   // 5 4",
+    "explain": ".length counts code units, and an emoji uses 2. Spreading with [...] splits it into real characters.",
+    "example": "po.wor Japanese page: counting 文字数 (how many characters).",
+    "remember": "Spread it out, then count.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-51",
+    "category": "Regex",
+    "syntax": "const m = \"## Shopping\".match(/^(#{1,6}) (.*)/);\nconsole.log(m[1].length, m[2]);   // 2 Shopping",
+    "explain": "match gives null (no match) or a list: m[0] is the whole match, m[1] and m[2] are the parts in ( ). ^ is the start, #{1,6} is 1 to 6 #, .* is anything.",
+    "example": "po.wor planner: # to ###### make headings.",
+    "remember": "( ) = capture: what's inside each pair of brackets comes back as m[1], m[2]…",
+    "mastered": false
+  },
+  {
+    "id": "javascript-52",
+    "category": "Regex",
+    "syntax": "console.log(/^[•×○] /.test(\"• task\"));   // true\nconsole.log(\"a-b-c\".replace(/-/g, \" \"));   // a b c\nconsole.log(/<hr>/i.test(\"<HR>\"));         // true",
+    "explain": "test answers true or false. [ ] means any one of these characters. The g flag changes every match, i ignores upper/lower case.",
+    "example": "po.wor planner: checks for bullets and for <hr>.",
+    "remember": "test = a yes/no question. g = global (all of them). i = insensitive (to case).",
+    "mastered": false
+  },
+  {
+    "id": "javascript-53",
+    "category": "Regex",
+    "syntax": "console.log(\"a **bold** word\".split(/(\\*\\*[^*]+\\*\\*)/));",
+    "explain": "When the pattern has ( ), split keeps the matched pieces in the list too: [\"a \", \"**bold**\", \" word\"].",
+    "example": "po.wor planner: finds **bold**, *italic*, ~~crossed~~ and `code` in a line.",
+    "remember": "split with brackets = cut, but keep the piece you cut out.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-54",
+    "category": "Regex",
+    "syntax": "const before = \"meeting /t \";\nconst word = before.match(/(?:^|\\s)\\/(\\w+) $/);\nconsole.log(word[1]);   // t",
+    "explain": "(?:^|\\s) means \"the start or a space\", without capturing it. \\/ is a real /, (\\w+) captures the letters, and \" $\" means a space at the very end.",
+    "example": "po.wor planner: spots /t and a space, right before the cursor.",
+    "remember": "(?: ) = brackets that group but don't capture. \\w = word letters.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-55",
+    "category": "Objects",
+    "syntax": "const SLASH = {\n  t: () => \"14:05\",\n  d: () => \"today\"\n};\nconst word = \"t\";\nif (SLASH[word]) console.log(SLASH[word]());   // 14:05",
+    "explain": "An object can hold functions. SLASH[word] looks one up by name and () runs it. It replaces a long if / else if chain.",
+    "example": "po.wor planner: the /t slash word and the v d w t keys.",
+    "remember": "Look it up, then call it: SLASH[word] finds it, () runs it.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-56",
+    "category": "Objects",
+    "syntax": "const p = Object.assign(document.createElement(\"p\"), { className: \"note\", textContent: \"Hi\" });\ndocument.body.append(p);\nconsole.log(p.outerHTML);",
+    "explain": "Object.assign copies settings onto something. Here it makes and sets up an element in one line.",
+    "example": "po.wor planner: the clickable bullet span and the placeholder line.",
+    "remember": "assign = \"copy these settings onto it\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-57",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<p id=\"title\"></p>';\nconst $ = (id) => document.getElementById(id);\n$(\"title\").textContent = \"Planner\";\nconsole.log($(\"title\").textContent);",
+    "explain": "getElementById finds the element with that id (no # needed). $ is just a short name for it that you make yourself.",
+    "example": "po.wor: planner.js and japanese.js both start with this $ helper.",
+    "remember": "$ is not magic: it's a function name you chose.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-58",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<section id=\"week\" hidden>Week</section>';\nconst week = document.getElementById(\"week\");\nweek.hidden = false;   // show it\nconsole.log(week.hidden);",
+    "explain": "Every element has a hidden property: true hides it, false shows it. The same as the hidden attribute in HTML.",
+    "example": "po.wor planner: switching between the day and the week view.",
+    "remember": "hidden = true hides, false shows.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-59",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<button data-view=\"week\">week</button>';\nconst button = document.querySelector(\"[data-view]\");\nconsole.log(button.dataset.view);   // week\nbutton.dataset.view = \"day\";",
+    "explain": "data-view=\"week\" in HTML is button.dataset.view in JavaScript. data-some-name becomes dataset.someName.",
+    "example": "po.wor planner: the day and week buttons; the 100, 200 numbers on the Japanese paper.",
+    "remember": "data- disappears and the rest becomes the key. Dashes turn into camelCase.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-60",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<button aria-pressed=\"false\">view</button>';\nconst b = document.querySelector(\"button\");\nb.setAttribute(\"aria-pressed\", true);\nconsole.log(b.getAttribute(\"aria-pressed\"));   // \"true\"",
+    "explain": "setAttribute writes any attribute, getAttribute reads it. Values are always text.",
+    "example": "po.wor: the planner buttons and the Japanese tabs (aria-pressed, aria-selected).",
+    "remember": "set = write, get = read. What comes back is always text.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-61",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<p class=\"week-date\">Fri 27</p>';\nconst isToday = true;\ndocument.querySelector(\"p\").classList.toggle(\"today\", isToday);\nconsole.log(document.querySelector(\"p\").className);",
+    "explain": "toggle with a second value: true adds the class, false removes it. No if needed.",
+    "example": "po.wor planner: today's date is bold; view mode adds \"reading\".",
+    "remember": "toggle(name, yes/no) = \"have it only if yes\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-62",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<div id=\"row\"><p>old</p></div>';\nconst row = document.getElementById(\"row\");\nconst a = document.createElement(\"b\");\na.textContent = \"A\";\nrow.append(a, \" end\");          // at the end, several at once\nrow.prepend(\"• \");              // at the start (text works too)\nrow.querySelector(\"p\").replaceWith(\"new\");\nconsole.log(row.textContent);   // • newA end\na.remove();",
+    "explain": "append adds at the end, prepend at the start; both take elements or text, several at once. after puts it right behind, replaceWith swaps it, remove deletes it.",
+    "example": "po.wor: the planner rows and the Japanese sample cards.",
+    "remember": "append = last, prepend = first, after = behind, replaceWith = swap, remove = gone.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-63",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = \"<ul><li>a</li><li>b</li></ul>\";\nconst items = [...document.querySelector(\"ul\").children];\nitems.forEach((li, i) => { li.textContent += i; });\nconsole.log(items.length);",
+    "explain": "children is a list of elements but not a real array. [...] turns it into one, so forEach, map and filter work.",
+    "example": "po.wor planner: highlighting the picked row in the suggestion list.",
+    "remember": "[...] = pour it into a real array.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-64",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<p class=\"logo\">P</p>';\nconst copy = document.querySelector(\".logo\").cloneNode(true);\ndocument.body.appendChild(copy);\nconsole.log(document.querySelectorAll(\".logo\").length);   // 2",
+    "explain": "cloneNode makes a copy of an element. true also copies everything inside it.",
+    "example": "po.wor: clicking the box copies the logo into a small P that gets tossed in.",
+    "remember": "clone = an identical twin.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-65",
+    "category": "DOM",
+    "syntax": "console.log(location.href);   // the page's address\n// location.href = \"box.html\";   // this line would open another page",
+    "explain": "location.href is the address of the page. Setting it opens that page, like clicking a link.",
+    "example": "po.wor: after the box animation, location.href opens box.html.",
+    "remember": "href = where this page lives. Change it and you move.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-66",
+    "category": "Events",
+    "syntax": "document.body.innerHTML = '<textarea id=\"box\"></textarea>';\nconst box = document.getElementById(\"box\");\nbox.addEventListener(\"input\", () => console.log(\"now: \" + box.value));\nbox.value = \"hi\";\nbox.dispatchEvent(new Event(\"input\"));   // as if you typed",
+    "explain": "The input event runs on every change while you type (change only runs when you leave the box). Changing .value in code fires nothing, so dispatchEvent fires it yourself.",
+    "example": "po.wor planner: every keystroke is saved; adding a bullet with ctrl+1 dispatches \"input\" to save it.",
+    "remember": "input = every key. change = when you're done.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-67",
+    "category": "Events",
+    "syntax": "document.addEventListener(\"keydown\", (event) => {\n  if (event.ctrlKey && event.key === \"1\") {\n    event.preventDefault();\n    console.log(\"bullet 1\");\n  }\n});\ndocument.dispatchEvent(new KeyboardEvent(\"keydown\", { key: \"1\", ctrlKey: true }));",
+    "explain": "event.key names the key: \"a\", \"Enter\", \"Escape\", \"ArrowLeft\". ctrlKey, metaKey (⌘), altKey and shiftKey are true while held. preventDefault stops the browser's own action.",
+    "example": "po.wor planner: ctrl+1 to 5 for bullets; v d w t and the arrows when you are not typing.",
+    "remember": "metaKey = ⌘. preventDefault = \"browser, don't do your usual thing\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-68",
+    "category": "Events",
+    "syntax": "document.addEventListener(\"keydown\", (e) => { if (e.key === \"Control\") console.log(\"show\"); });\ndocument.addEventListener(\"keyup\", (e) => { if (e.key === \"Control\") console.log(\"hide\"); });\ndocument.dispatchEvent(new KeyboardEvent(\"keydown\", { key: \"Control\" }));   // as if you pressed it\ndocument.dispatchEvent(new KeyboardEvent(\"keyup\", { key: \"Control\" }));     // and let go",
+    "explain": "keydown runs when a key goes down, keyup when it comes back up. Together: do something only while a key is held.",
+    "example": "po.wor planner: hold control to see the legend.",
+    "remember": "down = pressed, up = let go.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-69",
+    "category": "Events",
+    "syntax": "document.body.innerHTML = '<input id=\"name\" placeholder=\"click here, then click outside\">';\nconst input = document.getElementById(\"name\");\ninput.addEventListener(\"focus\", () => console.log(\"typing starts\"));\ninput.addEventListener(\"blur\", () => console.log(\"typing stops\"));",
+    "explain": "focus runs when you click or tab into a box, blur when you leave it. In code, input.focus() and input.blur() do the same.",
+    "example": "po.wor planner: leaving a line shows its result; the phone bullet bar shows while you type.",
+    "remember": "focus = you're in. blur = you left (and it goes blurry).",
+    "mastered": false
+  },
+  {
+    "id": "javascript-70",
+    "category": "Events",
+    "syntax": "document.body.innerHTML = \"<button><b>Save</b></button>\";\ndocument.addEventListener(\"click\", (event) => {\n  console.log(event.target.tagName, event.target.matches(\"b\"), Boolean(event.target.closest(\"button\")));\n});\ndocument.querySelector(\"b\").click();",
+    "explain": "event.target is what was clicked. matches(selector) asks \"are you this?\", closest(selector) looks at it and then up through its parents.",
+    "example": "po.wor planner: Enter on a button presses it instead of starting to write.",
+    "remember": "matches = \"are you…?\" closest = \"are you, or any parent…?\"",
+    "mastered": false
+  },
+  {
+    "id": "javascript-71",
+    "category": "Events",
+    "syntax": "document.body.innerHTML = \"<button>Go</button>\";\nconst b = document.querySelector(\"button\");\nb.onclick = () => console.log(\"only one handler\");\nb.click();",
+    "explain": "onclick holds one function; setting it again replaces the old one. addEventListener can add many.",
+    "example": "po.wor planner: each page redraw sets doc.onclick again without piling up handlers.",
+    "remember": "onclick = one slot. addEventListener = as many as you like.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-72",
+    "category": "Events",
+    "syntax": "window.addEventListener(\"pageshow\", () => {\n  console.log(\"the page is showing (also after the Back button)\");\n});",
+    "explain": "pageshow runs every time the page appears, even when the browser brings it back from the Back button.",
+    "example": "po.wor: going Back resets the box lid and removes the tossed P.",
+    "remember": "show = every time you see it, not just the first load.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-73",
+    "category": "Text boxes",
+    "syntax": "document.body.innerHTML = '<textarea id=\"box\">hello world</textarea>';\nconst box = document.getElementById(\"box\");\nbox.setSelectionRange(6, 11);   // select \"world\"\nconsole.log(box.selectionStart, box.selectionEnd);   // 6 11\nconsole.log(box.value.slice(0, box.selectionStart));   // the text before the cursor",
+    "explain": "selectionStart and selectionEnd are where the selection starts and ends (counted in characters). The same number means a plain cursor. setSelectionRange moves it.",
+    "example": "po.wor planner: /t reads the text before the cursor; the cursor is put back after a bullet.",
+    "remember": "start = where it begins, end = where it stops. Same number = just a cursor.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-74",
+    "category": "Text boxes",
+    "syntax": "document.body.innerHTML = '<textarea id=\"box\" rows=\"1\">a\\nb\\nc</textarea>';\nconst box = document.getElementById(\"box\");\nbox.style.height = \"auto\";\nbox.style.height = box.scrollHeight + \"px\";\nconsole.log(box.style.height);",
+    "explain": "A box that grows as you type. scrollHeight is the height of everything inside it. Set height to auto first so it can shrink too.",
+    "example": "po.wor planner: the typing line grows instead of scrolling.",
+    "remember": "auto first (shrink), then scrollHeight (grow to fit).",
+    "mastered": false
+  },
+  {
+    "id": "javascript-75",
+    "category": "Text boxes",
+    "syntax": "document.body.innerHTML = \"<p>Select some of this text with the mouse.</p>\";\ndocument.addEventListener(\"mouseup\", () => {\n  const picked = String(getSelection());\n  if (picked) console.log(\"You selected: \" + picked);\n});",
+    "explain": "getSelection() is the text you highlighted. String() turns it into plain text; an empty string means nothing is selected.",
+    "example": "po.wor planner: if you selected text to copy, a click doesn't start typing.",
+    "remember": "getSelection = what's highlighted right now.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-76",
+    "category": "Storage",
+    "syntax": "function load(key) {\n  try { return localStorage.getItem(key) || \"\"; } catch (e) { return \"\"; }\n}\nfunction save(key, text) {\n  try { localStorage.setItem(key, text); } catch (e) {}\n}\nsave(\"note\", \"hello\");\nconsole.log(load(\"note\"));",
+    "explain": "localStorage can fail (private windows, sealed-off frames). try runs it, catch keeps the page working if it fails. Here in the playground storage is blocked, so you see an empty line: that's the catch doing its job.",
+    "example": "po.wor: the planner and the Japanese page save this way.",
+    "remember": "Try the risky thing; catch the error so nothing breaks.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-77",
+    "category": "Storage",
+    "syntax": "const saved = null;   // nothing saved yet\nconst queue = JSON.parse(saved || \"[]\");\nconsole.log(queue.length);   // 0",
+    "explain": "a || b gives b when a is empty, null or 0. Here: use an empty list when nothing was saved.",
+    "example": "po.wor Japanese page: the question queue.",
+    "remember": "|| = \"or else use this\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-78",
+    "category": "Arrays",
+    "syntax": "const bullets = [\"•\", \"×\", \"○\"];\nconsole.log(bullets.some((b) => \"• task\".startsWith(b)));   // true\nconsole.log(bullets.every((b) => b.length === 1));          // true",
+    "explain": "some asks \"is at least one true?\", every asks \"are all of them true?\". Both give true or false.",
+    "example": "po.wor planner: does this line already start with a bullet?",
+    "remember": "some = at least one. every = all of them.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-79",
+    "category": "Arrays",
+    "syntax": "const lines = [\"a\", \"bc\", \"d\"];\nlines.splice(1, 1, \"b\", \"c\");   // at 1: remove 1, add \"b\" and \"c\"\nconsole.log(lines);   // a b c d",
+    "explain": "splice(where, how many to remove, …what to add) changes the array itself.",
+    "example": "po.wor planner: Enter splits a line in two; Backspace joins two lines.",
+    "remember": "slice copies, splice changes (the p is for \"put in\").",
+    "mastered": false
+  },
+  {
+    "id": "javascript-80",
+    "category": "Arrays",
+    "syntax": "const queue = [\"a\", \"b\", \"c\"];\nconst first = queue.shift();   // takes \"a\" off the front\nqueue.push(first);            // puts it on the back\nconsole.log(queue);   // b c a",
+    "explain": "shift takes the first item off and gives it back. push adds to the end. Together: a queue.",
+    "example": "po.wor Japanese page: questions come one by one from a shuffled queue.",
+    "remember": "shift = shift everyone forward (the first one leaves). push = join the back.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-81",
+    "category": "Arrays",
+    "syntax": "const ids = [1, 2, 3, 4];\nfor (let i = ids.length - 1; i > 0; i--) {\n  const j = Math.floor(Math.random() * (i + 1));\n  [ids[i], ids[j]] = [ids[j], ids[i]];   // swap two\n}\nconsole.log(ids);",
+    "explain": "A fair shuffle: go from the end, swap each item with a random one before it. [a, b] = [b, a] swaps two values.",
+    "example": "po.wor Japanese page: shuffles the questions.",
+    "remember": "[a, b] = [b, a] = swap in one line.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-82",
+    "category": "Numbers",
+    "syntax": "const count = 3;\nlet picked = 0;\npicked = (picked - 1 + count) % count;   // up from the first → the last\nconsole.log(picked);   // 2",
+    "explain": "% is the remainder after dividing. It makes a number wrap around: past the end goes back to 0. Adding count first stops it going below 0.",
+    "example": "po.wor planner: ↑ and ↓ in the suggestion list wrap around.",
+    "remember": "% = remainder. Add the count first so it never goes negative.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-83",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = '<p style=\"font-size: 14px\">hi</p>';\nconst size = parseFloat(getComputedStyle(document.querySelector(\"p\")).fontSize);\nconsole.log(size);   // 14",
+    "explain": "getComputedStyle gives the styles the browser really uses. parseFloat(\"14px\") turns the text into the number 14.",
+    "example": "po.wor planner: works out how wide one letter is to place the suggestion list.",
+    "remember": "computed = what the browser actually uses. parseFloat reads the number at the start.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-84",
+    "category": "DOM",
+    "syntax": "document.body.innerHTML = \"<button>box</button>\";\nconst r = document.querySelector(\"button\").getBoundingClientRect();\nconsole.log(Math.round(r.left), Math.round(r.top), Math.round(r.width));",
+    "explain": "getBoundingClientRect gives where an element is on screen: left, top, width, height, measured from the window's top-left corner.",
+    "example": "po.wor: the P pops up beside the box; the suggestion list appears under the word.",
+    "remember": "Bounding box = the rectangle around it.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-85",
+    "category": "DOM",
+    "syntax": "const touch = matchMedia(\"(hover: none)\").matches;\nconsole.log(touch ? \"touch screen\" : \"has a mouse\");",
+    "explain": "matchMedia asks a CSS @media question from JavaScript. .matches is true or false.",
+    "example": "po.wor: phones get the tap bubble and the bullet bar.",
+    "remember": "The @media question, asked from JS.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-86",
+    "category": "DOM",
+    "syntax": "console.log(visualViewport.height, innerHeight);",
+    "explain": "On phones the keyboard covers part of the page. visualViewport is the part you can still see; innerHeight is the whole window.",
+    "example": "po.wor planner: keeps the bullet bar just above the phone keyboard.",
+    "remember": "visual = what you can actually see right now.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-87",
+    "category": "Effects",
+    "syntax": "document.body.innerHTML = \"<p>P</p>\";\ndocument.querySelector(\"p\").animate([\n  { transform: \"scale(0)\" },\n  { transform: \"scale(1.2)\", offset: 0.2 },\n  { transform: \"rotate(220deg) scale(0.2)\", opacity: 0 }\n], { duration: 1100, easing: \"ease-in-out\", fill: \"forwards\" });",
+    "explain": "animate plays keyframes from JavaScript: a list of steps, then options. offset is where a step happens (0 to 1). fill: \"forwards\" keeps the last step.",
+    "example": "po.wor: the P that gets tossed into the box.",
+    "remember": "Like @keyframes, but in JS. offset 0.2 = 20%. forwards = stay at the end.",
     "mastered": false
   }
 ]
