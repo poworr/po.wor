@@ -644,5 +644,35 @@
     "example": "po.wor: the planner buttons look like the rest of the text.",
     "remember": "inherit = \"use what my parent has\".",
     "mastered": false
+  },
+  {
+    "id": "css-60",
+    "category": "Colors",
+    "syntax": "@media (prefers-color-scheme: dark) {\n  .logo { filter: invert(1); }\n}",
+    "explain": "filter: invert(1) flips every colour: black becomes white. Handy for a black logo on a dark page.",
+    "example": "po.wor: the logo in dark mode.",
+    "remember": "invert = turn it inside out (1 = fully, 0 = not at all).",
+    "builtFrom": "at-rule { rule { property: function(value) } }",
+    "mastered": false
+  },
+  {
+    "id": "css-61",
+    "category": "Responsive",
+    "syntax": "@media (hover: hover) {\n  header { transform: translateY(-100%); }\n}",
+    "explain": "Only when the device can hover (a mouse or trackpad). Phones can't point, so they skip these rules.",
+    "example": "po.wor: the planner header hides only on a computer.",
+    "remember": "hover: hover = \"has a pointer\". Hide hover-only things from phones.",
+    "builtFrom": "at-rule { rules }",
+    "mastered": false
+  },
+  {
+    "id": "css-62",
+    "category": "Selectors",
+    "syntax": "header:hover,\nheader:focus-within {\n  transform: none;\n}",
+    "explain": ":focus-within matches an element when it, or anything inside it, has keyboard focus. Two selectors with a comma share one rule.",
+    "example": "po.wor: the hidden planner header comes back when you Tab into it.",
+    "remember": "focus-within = \"focus is somewhere inside me\".",
+    "builtFrom": "selector:pseudo-class , selector:pseudo-class { rule }",
+    "mastered": false
   }
 ]

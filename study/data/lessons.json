@@ -572,6 +572,16 @@
     "expected": "23\n23"
   },
   {
+    "id": "javascript-17",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Next Friday",
+    "task": "Write nextDay(today, word) that finds the day name starting with word (like \"fri\") and returns how many days until the next one (not today: use 7 then). Today is a Friday (day 5). Print nextDay(5, \"fri\"), nextDay(5, \"mon\") and nextDay(5, \"sat\").",
+    "solution": "const DAYS = [\"sunday\", \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\"];\n\nfunction nextDay(today, word) {\n  const n = DAYS.findIndex((name) => name.startsWith(word));\n  return (n - today + 7) % 7 || 7;\n}\n\nconsole.log(nextDay(5, \"fri\"));\nconsole.log(nextDay(5, \"mon\"));\nconsole.log(nextDay(5, \"sat\"));",
+    "expected": "7\n3\n1",
+    "remember": "% 7 wraps the week around; || 7 turns \"0 days\" into \"next week\"."
+  },
+  {
     "id": "node-core-1",
     "lang": "node",
     "level": "Core",

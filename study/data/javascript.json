@@ -926,5 +926,45 @@
     "example": "po.wor: the P that gets tossed into the box.",
     "remember": "Like @keyframes, but in JS. offset 0.2 = 20%. forwards = stay at the end.",
     "mastered": false
+  },
+  {
+    "id": "javascript-88",
+    "category": "Arrays",
+    "syntax": "const DAYS = [\"sunday\", \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\"];\nconsole.log(DAYS.findIndex((name) => name.startsWith(\"fri\")));",
+    "explain": "findIndex gives the position of the first item where your function returns true, or -1 if none.",
+    "example": "po.wor: @fri finds Friday in the planner.",
+    "remember": "find = the item, findIndex = where it is (-1 = nowhere).",
+    "builtFrom": "array . method ( arrow function )",
+    "mastered": false
+  },
+  {
+    "id": "javascript-89",
+    "category": "Dates",
+    "syntax": "const today = new Date();\ntoday.setHours(0, 0, 0, 0);\nconsole.log(today.getHours(), today.getMinutes());",
+    "explain": "setHours(h, m, s, ms) sets the time. 0, 0, 0, 0 means midnight, so you can compare days without the time getting in the way.",
+    "example": "po.wor: the planner's \"today\" for @day moves.",
+    "remember": "Four zeros = the start of the day.",
+    "builtFrom": "object . method ( numbers )",
+    "mastered": false
+  },
+  {
+    "id": "javascript-90",
+    "category": "Timers",
+    "syntax": "let timer;\nfunction showNote(text) {\n  clearTimeout(timer);\n  timer = setTimeout(() => console.log(\"hide \" + text), 100);\n}\nshowNote(\"a\");\nshowNote(\"b\");",
+    "explain": "setTimeout returns a number; clearTimeout(that number) cancels it. Clear the old timer before starting a new one, so only the last one runs.",
+    "example": "po.wor: the \"moved to Fri\" note in the planner.",
+    "remember": "Keep the ticket (timer), tear it up (clearTimeout).",
+    "builtFrom": "variable + function call + arrow function",
+    "mastered": false
+  },
+  {
+    "id": "javascript-91",
+    "category": "Arrays",
+    "syntax": "const day = [\"buy milk\"];\nconst task = [\"call Mo\", \"  ask about Friday\"];\nconsole.log(day.concat(task));",
+    "explain": "concat makes a new array: the first one followed by the second. The old arrays stay the same.",
+    "example": "po.wor: a moved task goes to the end of that day.",
+    "remember": "concat = chain together (a new array, nothing changed).",
+    "builtFrom": "array . method ( array )",
+    "mastered": false
   }
 ]
