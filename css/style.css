@@ -73,7 +73,7 @@ header {
   text-align: center;
 }
 
-/* ===== The box: a link to the projects page ===== */
+/* ===== The box: a link to the box page ===== */
 .box {
   display: flex;
   padding: 6px;
@@ -85,7 +85,8 @@ header {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* springy */
 }
 .box:hover .lid,
-.box.open .lid {
+.box.open .lid,
+.nav-box:hover .lid {
   transform: rotate(-28deg);
 }
 /* js/box.js adds "shut" to close the lid once the P is inside */
@@ -108,7 +109,7 @@ header {
 }
 
 /* ===== Message bubbles (old Mac OS X style) =====
-   Any link with data-tip="..." in index.html gets one, with that text. */
+   Any link with data-tip="..." gets one, with that text. */
 [data-tip] {
   position: relative;
 }
@@ -332,7 +333,7 @@ footer > span {
 }
 
 /* =====================================================
-   Other pages (projects, Japanese).
+   Other pages (box, Japanese, planner).
    They use the same header, footer and colors as the
    homepage. Everything below is shared by them.
    ===================================================== */
@@ -615,7 +616,7 @@ footer > span {
 .row > .priority-2 { background: var(--line-strong); }
 .row > .priority-3 { color: var(--bg); background: var(--text); }
 
-/* The list that pops up when you type < */
+/* The suggestion list that pops up while you type (a word like h1, or <) */
 .suggest {
   position: absolute;
   z-index: 2;

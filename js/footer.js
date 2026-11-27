@@ -17,7 +17,7 @@ const here = location.pathname.split('/').pop() || 'index.html';
 
 for (const project of PROJECTS) {
   const link = document.createElement('a');
-  link.className = project.name;          // "box" gets the lid that opens
+  link.className = 'nav-' + project.name; // nav-box gets the lid that opens
   link.href = project.href;
   link.dataset.tip = project.name;        // the bubble
   link.setAttribute('aria-label', project.name);

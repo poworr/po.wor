@@ -5,7 +5,8 @@
 // same pages, so what you write on a day in the week is also on that day.
 // The todo list is one more page, saved as "planner:todo".
 //
-// The bullets. To change one, change its symbol here.
+// The bullets: what you type for each one, and its ctrl key.
+// (The symbols • × ○ ⊗ are also used in markDone and show, so change them there too.)
 const BULLETS = [
   { symbol: '•', name: 'task',  ctrl: '1', type: '.' },
   { symbol: '×', name: 'done',  ctrl: '2', type: 'x' },
@@ -48,7 +49,9 @@ function save(date, text) {
   try {
     if (text.trim()) localStorage.setItem(nameOf(date), text);
     else localStorage.removeItem(nameOf(date));
-  } catch (e) {}
+  } catch (e) {
+    showNote('not saved: this browser blocked saving');   // like a private window
+  }
 }
 
 // ===== Draw the view =====
@@ -190,10 +193,9 @@ function startWriting() {
 
 // ===== Writing =====
 
-let lastBox = null;   // the box you're writing in, for the phone bullet bar
-
 // Put a bullet at the start of the line the cursor is on (replacing any bullet already there)
-function setBullet(box, symbol) {
+function setBullet(symbol) {
+  const box = page;
   const caret = box.selectionStart;
   const start = box.value.lastIndexOf('\n', caret - 1) + 1;
   const hasBullet = BULLETS.some((b) => box.value.startsWith(b.symbol + ' ', start)) || box.value.startsWith('⊗ ', start);
@@ -203,9 +205,10 @@ function setBullet(box, symbol) {
   box.dispatchEvent(new Event('input'));   // save it
 }
 
-// Bullets, shortcuts and saving for one box. store() saves it.
-function writingBox(box, store) {
-  box.addEventListener('focus', () => { lastBox = box; });
+// Bullets, shortcuts and saving for the line you're typing on (page).
+// Called at the end of the file, once page and the phone bar exist.
+function setUpTyping() {
+  const box = page;
 
   box.addEventListener('input', () => {
     // A line starting with ". " "x " "o " "- " or "= " turns into that bullet
@@ -217,7 +220,8 @@ function writingBox(box, store) {
       box.value = box.value.slice(0, start) + bullet.symbol + box.value.slice(start + 1);
       box.selectionStart = box.selectionEnd = caret;   // the bullet is one character, like the letter it replaced
     }
-    store();
+    current.lines[at] = box.value;   // save it
+    saveDoc(current);
     grow(box);
   });
 
@@ -226,7 +230,7 @@ function writingBox(box, store) {
     const bullet = BULLETS.find((b) => b.ctrl === event.key);
     if (event.ctrlKey && !event.metaKey && bullet) {
       event.preventDefault();
-      setBullet(box, bullet.symbol);
+      setBullet(bullet.symbol);
     }
   });
 
@@ -244,7 +248,10 @@ function writingBox(box, store) {
     box.dispatchEvent(new Event('input'));   // save it
   });
 
-  phoneBar(box);
+  if (phone) {   // the phone bullet bar shows while you type
+    box.addEventListener('focus', () => { bar.hidden = false; placeBar(); });
+    box.addEventListener('blur', () => { bar.hidden = true; });
+  }
 }
 
 // Click a • and the task is done (×). Click a ○ once: done (⊗). Twice: cancelled (crossed out).
@@ -696,7 +703,7 @@ for (const b of BULLETS) {
   button.textContent = b.symbol;
   button.setAttribute('aria-label', b.name);
   // pointerdown + preventDefault keeps the keyboard open
-  button.addEventListener('pointerdown', (e) => { e.preventDefault(); setBullet(lastBox, b.symbol); });
+  button.addEventListener('pointerdown', (e) => { e.preventDefault(); setBullet(b.symbol); });
   bar.appendChild(button);
 }
 
@@ -704,20 +711,11 @@ for (const b of BULLETS) {
 function placeBar() {
   bar.style.top = (visualViewport.offsetTop + visualViewport.height - bar.offsetHeight) + 'px';
 }
-function phoneBar(box) {
-  if (!phone) return;
-  box.addEventListener('focus', () => { bar.hidden = false; placeBar(); });
-  box.addEventListener('blur', () => { bar.hidden = true; });
-}
 if (phone) {
   visualViewport.addEventListener('resize', placeBar);
   visualViewport.addEventListener('scroll', placeBar);
 }
 
-// The line you're typing on: bullets, shortcuts and saving
-writingBox(page, () => {
-  current.lines[at] = page.value;
-  saveDoc(current);
-});
+setUpTyping();
 
 render();

@@ -1,6 +1,6 @@
 // When you click the box: a small P pops up next to the box,
 // gets tossed into it like a hand throwing it, the lid closes,
-// then the projects page opens. The logo on the left doesn't move.
+// then the box page opens. The logo on the left doesn't move.
 
 const box = document.querySelector('.box');
 const logo = document.querySelector('.logo');
