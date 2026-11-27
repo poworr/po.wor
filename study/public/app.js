@@ -269,6 +269,21 @@ const CATCH_CONSOLE = `<script>
   window.onerror = (message) => send("Error: " + message);
 <\/script>`;
 
+// The frame is its own page and can't see our CSS, so it gets the app's colours here
+// (the same as --side and --text in styles.css). Your own CSS comes later, so it still wins.
+const FRAME_STYLE = `<style>
+  :root { color-scheme: light dark; }
+  body { margin: 12px; font: 13px/1.6 Menlo, Monaco, monospace; color: #1F1F1F; background: #F8F8F8; }
+  a { color: inherit; }
+  @media (prefers-color-scheme: dark) { body { color: #CCCCCC; background: #252526; } }
+</style>`;
+
+// Put the frame style in front of a page, after its <!DOCTYPE html> if it has one
+function framePage(html) {
+  return html.replace(/^\s*(<!doctype[^>]*>)?/i, (doctype) => doctype + FRAME_STYLE);
+}
+$('preview').srcdoc = framePage('');   // before the first Run: empty, not white
+
 // Some HTML for CSS to style
 const CSS_SAMPLE = `<h1>Heading</h1>
 <p>A paragraph with a <a href="#">link</a>.</p>
@@ -284,11 +299,11 @@ async function runCode() {
 
   // HTML, CSS and browser JavaScript run in the sealed-off frame
   if (lang.id === 'html') {
-    preview.srcdoc = code;
+    preview.srcdoc = framePage(code);
   } else if (lang.id === 'css') {
-    preview.srcdoc = CSS_SAMPLE + '<style>' + code + '</style>';
+    preview.srcdoc = framePage(CSS_SAMPLE) + '<style>' + code + '</style>';
   } else if (lang.id === 'javascript') {
-    preview.srcdoc = '<body>' + CATCH_CONSOLE + '<script>' + code + '<\/script>';   // <body> first, so document.body exists
+    preview.srcdoc = framePage('<body>') + CATCH_CONSOLE + '<script>' + code + '<\/script>';   // <body> first, so document.body exists
   } else {
     // Python, Node.js, C and C++ run on the Mac, through server.js
     $('output').textContent = 'Running…';

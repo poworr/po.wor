@@ -68,7 +68,7 @@ function renderLessons() {
   $('lesson-output').textContent = '';
   $('lesson-result').textContent = '';
   $('lesson-preview').hidden = lesson.lang !== 'html' && lesson.lang !== 'css';
-  $('lesson-preview').srcdoc = '';
+  $('lesson-preview').srcdoc = framePage('');   // empty, in the app's colours (framePage is in app.js)
 }
 
 function openLesson() {
@@ -82,9 +82,9 @@ async function runLesson() {
   let output = '';
 
   if (lesson.lang === 'html') {
-    $('lesson-preview').srcdoc = code;
+    $('lesson-preview').srcdoc = framePage(code);
   } else if (lesson.lang === 'css') {
-    $('lesson-preview').srcdoc = CSS_SAMPLE + '<style>' + code + '</style>';   // CSS_SAMPLE is in app.js
+    $('lesson-preview').srcdoc = framePage(CSS_SAMPLE) + '<style>' + code + '</style>';   // CSS_SAMPLE is in app.js
   } else if (langs.find((l) => l.id === lesson.lang).runs === 'terminal') {   // Terminal, Homebrew, Git
     // Each line goes through the practice terminal (terminal.js)
     output = code.split('\n').filter((line) => line.trim()).map((line) => {

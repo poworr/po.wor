@@ -317,7 +317,7 @@ pre {
   width: 100%;
   height: 200px;
   margin-bottom: 10px;
-  background: #FFFFFF;    /* a web page is white, like a browser */
+  background: var(--side);   /* the page inside gets the same colour (FRAME_STYLE in app.js) */
   border: 1px solid var(--line);
 }
 .preview[hidden] {
@@ -326,6 +326,11 @@ pre {
 .output {
   min-height: 20px;
   white-space: pre-wrap;
+}
+.output:not(:empty) {   /* printed output sits in a panel, like VS Code's terminal */
+  padding: 10px 12px;
+  background: var(--side);
+  border: 1px solid var(--line);
 }
 
 /* ===== Bottom panel: the playground ===== */
