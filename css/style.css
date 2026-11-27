@@ -669,6 +669,9 @@ footer > span {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.week-list .row > :is(h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;   /* headings stay small in the narrow columns */
+}
 .week-day .row::before {
   display: none;   /* the columns are narrow, so no line numbers */
 }

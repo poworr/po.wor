@@ -75,7 +75,8 @@ function renderDay() {
   makeDoc($('doc'), day, '• start writing…');
 }
 
-// Week: Monday to Sunday side by side. Only the tasks and events show, one line each.
+// Week: Monday to Sunday side by side. Every line shows, one line each (long ones end in …),
+// with the tasks and events on top.
 // Click a day (or anything in it) to open that day. Click a • or ○ to mark it done.
 function renderWeek() {
   const monday = addDays(day, -((day.getDay() + 6) % 7));
@@ -96,8 +97,12 @@ function renderWeek() {
     const list = document.createElement('div');
     list.className = 'week-list';
     const lines = load(date).split('\n');
-    lines.forEach((line, i) => {
-      if (!/^[•×○⊗] /.test(line.trim())) return;   // not a task or an event: leave it out
+    const isTask = (i) => /^[•×○⊗] /.test(lines[i].trim());   // a task or an event
+    const order = lines.map((line, i) => i)
+      .filter((i) => lines[i].trim() && !/^(---|<hr\s*\/?>)\s*$/i.test(lines[i]))   // no empty lines or dividers
+      .sort((a, b) => isTask(b) - isTask(a));                                     // tasks and events first
+    order.forEach((i) => {
+      const line = lines[i];
       const row = document.createElement('div');
       row.className = 'row';
       row.append(show(line));
