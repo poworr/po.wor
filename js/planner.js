@@ -503,12 +503,29 @@ page.addEventListener('keydown', (event) => {
   event.preventDefault();
 });
 
+// ===== Slash words: type /t and space, and it turns into the time =====
+// To add one: copy a line. The letter after / is the word, the part after => is what it turns into.
+const SLASH = {
+  t: () => new Date().toTimeString().slice(0, 5)   // the time right now, like 14:05
+};
+
+page.addEventListener('input', () => {
+  const caret = page.selectionStart;
+  const word = page.value.slice(0, caret).match(/(?:^|\s)\/(\w+) $/);
+  if (!word || !SLASH[word[1]]) return;
+  const start = caret - word[1].length - 2;   // where the / is
+  const text = SLASH[word[1]]() + ' ';
+  page.value = page.value.slice(0, start) + text + page.value.slice(caret);
+  page.selectionStart = page.selectionEnd = start + text.length;
+});
+
 // ===== Hold control to see the bullets and keys =====
 
 $('legend').textContent = BULLETS.map((b) =>
   b.symbol + '  ' + b.name.padEnd(6) + '  ctrl+' + b.ctrl + '   or type ' + b.type + ' and space').join('\n') +
   '\n\nclick •  done\nclick ○  done, click again  cancelled' +
   '\n\n# to ######  heading     ---  divider     >  quote\n**bold**  *italic*  ~~crossed~~  ==highlight==  `code`\n* ** *** at the end of a line  priority\n\ntype h1, hr, quote, bold, code ...  a list pops up\ntab uses it     ↑ ↓ + enter picks another     esc closes' +
+  '\n\n/t and space  the time right now' +
   '\n\nkeys when you are not typing\nv  view mode   d  day   w  week   t  today   ← →  back / forward\nenter  start writing   esc  stop writing';
 
 document.addEventListener('keydown', (event) => { if (event.key === 'Control') $('legend').hidden = false; });
