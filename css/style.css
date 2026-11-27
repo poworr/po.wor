@@ -1,11 +1,43 @@
+/* ===== Colors: light, or dark when the Mac is in dark mode ===== */
+:root {
+  color-scheme: light dark;
+  --bg: #F5F5F5;           /* the page */
+  --text: #1D1D1F;
+  --box: #FFFFFF;          /* bubbles, panels, lists */
+  --box-end: #F2F2F2;      /* the bottom of a bubble */
+  --line: #DCDCDC;
+  --line-strong: #C8C8C8;
+  --line-hover: #A0A0A0;
+  --muted: #6E6E73;        /* dates, small grey text */
+  --faint: #A8A8A8;        /* line numbers */
+  --hover: #E6E6E6;
+  --tag: #4B5560;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --text: #F5F5F7;
+    --box: #1C1C1E;
+    --box-end: #161618;
+    --line: #2C2C2E;
+    --line-strong: #48484A;
+    --line-hover: #636366;
+    --muted: #98989D;
+    --faint: #636366;
+    --hover: #2C2C2E;
+    --tag: #A1A1A6;
+  }
+  .logo { filter: invert(1); }   /* the black logo turns white */
+}
+
 /* ===== Whole page ===== */
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #F5F5F5;
-  color: #1D1D1F;
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Lucida Grande', Verdana, sans-serif;
 }
 
@@ -92,9 +124,9 @@ header {
   padding: 4px 10px;
   white-space: nowrap;
   font-size: 11px;
-  color: #1D1D1F;
-  background: linear-gradient(#FFFFFF, #F2F2F2);
-  border: 1px solid #C8C8C8;
+  color: var(--text);
+  background: linear-gradient(var(--box), var(--box-end));
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   pointer-events: none;
@@ -110,9 +142,9 @@ header {
   top: calc(100% + 6px);
   width: 8px;
   height: 8px;
-  background: #FFFFFF;
-  border-left: 1px solid #C8C8C8;
-  border-top: 1px solid #C8C8C8;
+  background: var(--box);
+  border-left: 1px solid var(--line-strong);
+  border-top: 1px solid var(--line-strong);
   transform: translateY(-4px) rotate(45deg);
   z-index: 1;
   pointer-events: none;
@@ -154,7 +186,7 @@ main {
   grid-template-columns: 112px 1fr;
   gap: 20px;
   padding: 22px 0;
-  border-top: 1px solid #DCDCDC;
+  border-top: 1px solid var(--line);
 }
 .entry:first-of-type {
   border-top: none;
@@ -164,7 +196,7 @@ main {
   margin: 0;
   padding-top: 3px;
   font-size: 11px;
-  color: #6E6E73;
+  color: var(--muted);
   white-space: nowrap;
 }
 
@@ -189,12 +221,12 @@ main {
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
-  color: #4B5560;
+  color: var(--tag);
 }
 
 .sep {
   margin: 0 10px;
-  color: #DCDCDC;
+  color: var(--line);
 }
 
 /* on phones the date goes above the text */
@@ -209,8 +241,8 @@ footer {
   padding: 24px 20px 60px;
   text-align: right;
   font-size: 12px;
-  color: #6E6E73;
-  border-top: 1px solid #DCDCDC;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
 }
 
 /* =====================================================
@@ -227,13 +259,13 @@ footer {
 
 .muted {
   font-size: 13px;
-  color: #6E6E73;
+  color: var(--muted);
 }
 
 .label {
   margin: 20px 0 8px;
   font-size: 11px;
-  color: #6E6E73;
+  color: var(--muted);
 }
 
 /* Buttons: plain, like the message bubbles. A pressed or chosen one turns dark. */
@@ -247,27 +279,27 @@ footer {
   padding: 5px 14px;
   font: inherit;
   font-size: 13px;
-  color: #1D1D1F;
-  background: linear-gradient(#FFFFFF, #F2F2F2);
-  border: 1px solid #C8C8C8;
+  color: var(--text);
+  background: linear-gradient(var(--box), var(--box-end));
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
   cursor: pointer;
 }
 .btn:hover {
-  border-color: #A0A0A0;
+  border-color: var(--line-hover);
 }
 .btn[aria-pressed="true"],
 .btn[aria-selected="true"] {
-  color: #FFFFFF;
-  background: #1D1D1F;
-  border-color: #1D1D1F;
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
 }
 
 /* A white box with a thin line */
 .panel {
   padding: 20px;
-  background: #FFFFFF;
-  border: 1px solid #DCDCDC;
+  background: var(--box);
+  border: 1px solid var(--line);
   border-radius: 6px;
 }
 .panel + .panel {
@@ -290,14 +322,14 @@ footer {
 }
 .keywords li {
   padding: 4px 10px;
-  background: #F5F5F5;
-  border: 1px solid #DCDCDC;
+  background: var(--bg);
+  border: 1px solid var(--line);
   border-radius: 6px;
 }
 .keywords small {
   display: block;
   font-size: 11px;
-  color: #6E6E73;
+  color: var(--muted);
 }
 .sample-title {
   margin: 10px 0 0;
@@ -326,7 +358,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   margin-bottom: 1.2cqi;   /* the thin gap between rows, like real paper */
-  background: #FFFFFF;
+  background: var(--box);
   border: 1px solid #A8B8A8;
 }
 .genko-row span {
@@ -357,7 +389,7 @@ footer {
   right: -30px;
   bottom: 0;
   font-size: 9px;
-  color: #6E6E73;
+  color: var(--muted);
 }
 .why {
   margin: 0;
@@ -368,7 +400,7 @@ footer {
 .source {
   margin: 16px 0 0;
   font-size: 12px;
-  color: #6E6E73;
+  color: var(--muted);
 }
 .source a {
   text-decoration: underline;
@@ -390,11 +422,11 @@ footer {
   cursor: pointer;
 }
 .planner button:hover {
-  background: #E6E6E6;
+  background: var(--hover);
 }
 .planner button[aria-pressed="true"] {
-  color: #FFFFFF;
-  background: #1D1D1F;
+  color: var(--bg);
+  background: var(--text);
 }
 .planner-bar {
   display: flex;
@@ -428,7 +460,7 @@ footer {
   width: 3ch;
   font-size: 14px;
   text-align: right;
-  color: #A8A8A8;
+  color: var(--faint);
 }
 .row > * {
   flex: 1;
@@ -451,7 +483,7 @@ footer {
   resize: none;
 }
 #page::placeholder,
-.placeholder { color: #A8A8A8; }
+.placeholder { color: var(--faint); }
 
 /* What the Markdown and HTML turn into */
 .row > h1 { font-size: 1.6em; font-weight: bold; }
@@ -464,21 +496,21 @@ footer {
   align-self: center;
   height: 0;
   border: 0;
-  border-top: 1px solid #C8C8C8;
+  border-top: 1px solid var(--line-strong);
 }
 .row > blockquote {
   padding-left: 1ch;
-  color: #8A8A8A;
-  border-left: 2px solid #C8C8C8;
+  color: var(--muted);
+  border-left: 2px solid var(--line-strong);
 }
 .row code {
   padding: 0 3px;
-  background: #E6E6E6;
+  background: var(--hover);
   border-radius: 3px;
 }
 .row mark {
-  color: #FFFFFF;
-  background: #1D1D1F;
+  color: var(--bg);
+  background: var(--text);
 }
 .bullet { cursor: pointer; }   /* click a • or ○ to mark it done */
 
@@ -493,9 +525,9 @@ footer {
   padding: 0 4px;
   border-radius: 3px;
 }
-.row > .priority-1 { background: #E6E6E6; }
-.row > .priority-2 { background: #C8C8C8; }
-.row > .priority-3 { color: #FFFFFF; background: #1D1D1F; }
+.row > .priority-1 { background: var(--hover); }
+.row > .priority-2 { background: var(--line-strong); }
+.row > .priority-3 { color: var(--bg); background: var(--text); }
 
 /* The list that pops up when you type < */
 .suggest {
@@ -506,8 +538,8 @@ footer {
   list-style: none;
   font-size: 13px;
   white-space: pre;
-  background: #FFFFFF;
-  border: 1px solid #C8C8C8;
+  background: var(--box);
+  border: 1px solid var(--line-strong);
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
@@ -516,28 +548,28 @@ footer {
   cursor: pointer;
 }
 .suggest li[aria-selected="true"] {
-  color: #FFFFFF;
-  background: #1D1D1F;
+  color: var(--bg);
+  background: var(--text);
 }
 
 /* Week: 7 columns side by side, like a paper weekly planner */
 #week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  border-left: 1px solid #DCDCDC;
+  border-left: 1px solid var(--line);
 }
 .week-day {
   padding: 0 8px;
-  border-right: 1px solid #DCDCDC;
+  border-right: 1px solid var(--line);
 }
 .week-date {
   margin: 0 0 8px;
   padding-bottom: 4px;
-  border-bottom: 1px solid #DCDCDC;
+  border-bottom: 1px solid var(--line);
 }
 .week-date.today {
   font-weight: bold;
-  border-bottom-color: #1D1D1F;
+  border-bottom-color: var(--text);
 }
 .week-day .doc {
   font-size: 13px;
@@ -568,8 +600,8 @@ footer {
   display: flex;
   justify-content: space-around;
   padding: 4px 0;
-  background: #F5F5F5;
-  border-top: 1px solid #DCDCDC;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
 }
 .bullet-bar[hidden] {
   display: none;
@@ -589,7 +621,63 @@ footer {
   font: inherit;
   font-size: 12px;
   line-height: 1.7;
-  color: #F5F5F5;
-  background: #1D1D1F;
+  color: var(--bg);
+  background: var(--text);
   border-radius: 6px;
+}
+
+/* ===== The planner page: plain white (or plain black in dark mode),
+   and the header hides until you point at the very top ===== */
+.planner-page { --bg: #FFFFFF; }
+@media (prefers-color-scheme: dark) {
+  .planner-page { --bg: #000000; }
+}
+@media (hover: hover) {   /* phones can't point, so they keep the header */
+  .planner-page header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background: var(--bg);
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+  }
+  /* a thin strip under the hidden header: point at it and the header slides down */
+  .planner-page header::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+  }
+  .planner-page header:hover,
+  .planner-page header:focus-within {
+    transform: none;
+  }
+  .planner-page main {
+    padding-top: 28px;
+  }
+}
+
+/* Todo: a short message after a task moves to a day */
+.planner-note {
+  padding: 2px 6px;
+  color: var(--muted);
+}
+
+/* Todo: the box where you type the day to move a task to (ctrl+m) */
+.move {
+  position: absolute;
+  z-index: 2;
+  width: 30ch;
+  padding: 2px 6px;
+  font: inherit;
+  font-size: 13px;
+  color: inherit;
+  background: var(--box);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  outline: none;
 }

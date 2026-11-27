@@ -1,8 +1,9 @@
-// planner.js: a plain-text planner with a day view and a week view.
+// planner.js: a plain-text planner with a day view, a week view and a todo list.
 //
 // Each day is one page of text, saved in this browser (localStorage) as
 // "planner:2026-11-27". Nothing is sent anywhere. The week view shows the
 // same pages, so what you write on a day in the week is also on that day.
+// The todo list is one more page, saved as "planner:todo".
 //
 // The bullets. To change one, change its symbol here.
 const BULLETS = [
@@ -15,7 +16,7 @@ const BULLETS = [
 
 const $ = (id) => document.getElementById(id);
 
-let view = 'day';                  // day or week
+let view = 'day';                  // day, week or todo
 let day = new Date();              // the day you are looking at
 day.setHours(0, 0, 0, 0);
 
@@ -36,13 +37,17 @@ function format(date, options) {
 
 // ===== Saving =====
 
+const TODO = 'todo';   // the todo list is saved like a day, with "todo" instead of a date
+function nameOf(date) {
+  return 'planner:' + (date === TODO ? TODO : keyOf(date));
+}
 function load(date) {
-  try { return localStorage.getItem('planner:' + keyOf(date)) || ''; } catch (e) { return ''; }
+  try { return localStorage.getItem(nameOf(date)) || ''; } catch (e) { return ''; }
 }
 function save(date, text) {
   try {
-    if (text.trim()) localStorage.setItem('planner:' + keyOf(date), text);
-    else localStorage.removeItem('planner:' + keyOf(date));
+    if (text.trim()) localStorage.setItem(nameOf(date), text);
+    else localStorage.removeItem(nameOf(date));
   } catch (e) {}
 }
 
@@ -55,8 +60,11 @@ function render() {
   }
   $('day-view').hidden = view !== 'day';
   $('week-view').hidden = view !== 'week';
+  $('todo-view').hidden = view !== 'todo';
+  $('days').hidden = view === 'todo';   // the todo list has no dates, so no < today >
   if (view === 'day') renderDay();
   if (view === 'week') renderWeek();
+  if (view === 'todo') renderTodo();
 }
 
 // Day: the date on top, then blank space to write
@@ -95,6 +103,14 @@ function renderWeek() {
   }
 }
 
+// Todo: one list of everything you want to do
+function renderTodo() {
+  $('title').textContent = 'todo';
+  current = null;
+  at = -1;
+  makeDoc($('todo'), TODO, '• list what you want to do…');
+}
+
 // Boxes get taller as you write
 function grow(box) {
   box.style.height = 'auto';
@@ -122,7 +138,7 @@ function setReading(on) {
 }
 
 // ===== Keys (when you're not typing) =====
-//   v  view mode    d  day    w  week    t  today    ← →  back / forward
+//   v  view mode    d  day    w  week    l  todo list    t  today    ← →  back / forward
 //   enter  start writing (today's page)    esc  stop writing
 document.addEventListener('keydown', (event) => {
   if (event.target === page || event.ctrlKey || event.metaKey || event.altKey) return;
@@ -132,6 +148,7 @@ document.addEventListener('keydown', (event) => {
     v: () => setReading(!reading),
     d: () => document.querySelector('[data-view="day"]').click(),
     w: () => document.querySelector('[data-view="week"]').click(),
+    l: () => document.querySelector('[data-view="todo"]').click(),
     t: () => $('today').click(),
     ArrowLeft: () => $('prev').click(),
     ArrowRight: () => $('next').click(),
@@ -145,7 +162,7 @@ document.addEventListener('keydown', (event) => {
 // Enter: write at the end of today's page (or the first page on screen)
 function startWriting() {
   if (reading) return;
-  const doc = shown.find((d) => keyOf(d.date) === keyOf(new Date())) || shown[0];
+  const doc = shown.find((d) => d.date !== TODO && keyOf(d.date) === keyOf(new Date())) || shown[0];
   edit(doc, doc.lines.length - 1, doc.lines[doc.lines.length - 1].length);
 }
 
@@ -171,7 +188,8 @@ function writingBox(box, store) {
   box.addEventListener('input', () => {
     // A line starting with ". " "x " "o " "- " or "= " turns into that bullet
     const caret = box.selectionStart;
-    const start = box.value.lastIndexOf('\n', caret - 1) + 1;
+    let start = box.value.lastIndexOf('\n', caret - 1) + 1;
+    start += box.value.slice(start).match(/^ */)[0].length;   // a sub-task: after its spaces
     const bullet = BULLETS.find((b) => box.value.startsWith(b.type + ' ', start));
     if (bullet) {
       box.value = box.value.slice(0, start) + bullet.symbol + box.value.slice(start + 1);
@@ -210,6 +228,11 @@ function writingBox(box, store) {
 // Click a • and the task is done (×). Click a ○ once: done (⊗). Twice: cancelled (crossed out).
 // Clicking again goes back to the start. Gives back the changed line, or null.
 function markDone(line) {
+  const indent = line.match(/^ */)[0];   // a sub-task keeps its spaces
+  const done = markLine(line.slice(indent.length));
+  return done && indent + done;
+}
+function markLine(line) {
   const symbol = line[0];
   let text = line.slice(2);
   if (line[1] !== ' ') return null;
@@ -287,7 +310,7 @@ function edit(doc, i, caret) {
   current = doc;
   at = i;
   page.value = doc.lines[i];
-  page.setAttribute('aria-label', format(doc.date, { weekday: 'long', day: 'numeric', month: 'long' }));
+  page.setAttribute('aria-label', doc.date === TODO ? 'todo' : format(doc.date, { weekday: 'long', day: 'numeric', month: 'long' }));
   draw(doc);
   if (before && before !== doc) draw(before);   // the page you left shows its results again
   grow(page);
@@ -301,6 +324,12 @@ function saveDoc(doc) {
 
 // What one line looks like when you're not typing on it
 function show(line) {
+  const indent = line.match(/^ */)[0].length;   // a sub-task: the spaces push it in
+  if (indent) {
+    const el = show(line.slice(indent));
+    el.style.marginLeft = indent + 'ch';
+    return el;
+  }
   let m;
   if ((m = line.match(/^(#{1,6}) (.*)/))) return element('h' + m[1].length, m[2]);
   if (/^(---|<hr\s*\/?>)\s*$/i.test(line)) return document.createElement('hr');
@@ -343,9 +372,22 @@ page.addEventListener('input', () => {
   // Enter (or pasting several lines) splits the line into new rows
   if (page.value.includes('\n')) {
     const parts = page.value.split('\n');
-    const caret = page.selectionStart - page.value.lastIndexOf('\n') - 1;
-    current.lines.splice(at, 1, ...parts);
-    edit(current, at + parts.length - 1, Math.max(caret, 0));
+    let caret = page.selectionStart - page.value.lastIndexOf('\n') - 1;
+    const indent = parts[0].match(/^ */)[0];
+    if (parts.length === 2 && !parts[1].startsWith(' ')) {   // Enter: the new line starts as far in, like a code editor
+      parts[1] = indent + parts[1];
+      caret += indent.length;
+    }
+    const date = current.date === TODO && parts.length === 2 && dateOf(parts[0]);
+    if (date) {   // a todo ending in @fri: it moves to that day, and you keep typing where it was
+      current.lines[at] = parts[0];
+      moveTask(current, at, date);
+      current.lines.splice(at, 0, parts[1]);
+      edit(current, at, Math.max(caret, 0));
+    } else {
+      current.lines.splice(at, 1, ...parts);
+      edit(current, at + parts.length - 1, Math.max(caret, 0));
+    }
   }
   suggest();
 });
@@ -378,6 +420,16 @@ page.addEventListener('keydown', (event) => {
     go = [at + 1, Math.min(caret, lines[at + 1].length)];
   } else if (event.key === 'Escape') {
     page.blur();
+  } else if (event.key === 'Tab') {
+    // Tab: a sub-task (2 spaces in). Shift+Tab: back out.
+    const indent = page.value.match(/^ */)[0].length;
+    const change = event.shiftKey ? -Math.min(indent, 2) : 2;
+    lines[at] = change < 0 ? page.value.slice(-change) : '  ' + page.value;
+    saveDoc(current);
+    go = [at, Math.max(caret + change, 0)];
+  } else if (event.key === 'm' && event.ctrlKey && current.date === TODO) {
+    event.preventDefault();
+    openMove();
   }
   if (go) {
     event.preventDefault();
@@ -519,6 +571,84 @@ page.addEventListener('input', () => {
   page.selectionStart = page.selectionEnd = start + text.length;
 });
 
+// ===== Todo: move a task to a day =====
+// End a todo line with @fri, @11-30, @2026-11-30, @today or @tomorrow and press Enter.
+// Or press ctrl+m on the line and type the day. The task and its sub-tasks leave the list
+// and go to the end of that day's page.
+
+const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+// The day an @word at the end of a line means (or null)
+function dateOf(line) {
+  const m = line.match(/(?:^|\s)@([\w-]+)\s*$/);
+  if (!m) return null;
+  const word = m[1].toLowerCase();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  if (word === 'today') return today;
+  if (word === 'tomorrow') return addDays(today, 1);
+  const n = DAYS.findIndex((name) => word.length >= 3 && name.startsWith(word));   // fri, friday
+  if (n !== -1) return addDays(today, (n - today.getDay() + 7) % 7 || 7);         // the next one, not today
+  const d = word.match(/^(?:(\d{4})-)?(\d{1,2})-(\d{1,2})$/);                     // 11-30 or 2026-11-30
+  if (!d) return null;
+  const date = new Date(d[1] || today.getFullYear(), d[2] - 1, d[3]);
+  if (date.getMonth() !== d[2] - 1) return null;                                  // no 2-31
+  if (!d[1] && date < today) date.setFullYear(date.getFullYear() + 1);            // 1-5 in november: next january
+  return date;
+}
+
+// Move line i and its sub-tasks (the lines under it that start further in) to the end of a day
+function moveTask(doc, i, date) {
+  const indent = doc.lines[i].match(/^ */)[0].length;
+  let end = i + 1;
+  while (end < doc.lines.length && doc.lines[end].match(/^ */)[0].length > indent) end++;
+  const task = doc.lines.splice(i, end - i).map((line) => line.slice(indent));
+  task[0] = task[0].replace(/\s*@[\w-]+\s*$/, '');   // the @fri is done with
+  const lines = load(date) ? load(date).split('\n') : [];
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();   // no empty lines in between
+  save(date, lines.concat(task).join('\n'));
+  saveDoc(doc);
+  showNote('moved to ' + format(date, { weekday: 'short', day: 'numeric', month: 'short' }));
+}
+
+let noteTimer;
+function showNote(text) {
+  $('note').textContent = text;
+  $('note').hidden = false;
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => { $('note').hidden = true; }, 3000);
+}
+
+// ctrl+m: a small box under the line asks which day
+let moving = null;   // the todo line waiting for a day: { doc, i }
+function openMove() {
+  moving = { doc: current, i: at };
+  const spot = page.getBoundingClientRect();
+  const where = $('move').parentElement.getBoundingClientRect();
+  $('move').style.left = (spot.left - where.left) + 'px';
+  $('move').style.top = (spot.bottom - where.top) + 'px';
+  $('move').value = '';
+  $('move').hidden = false;
+  $('move').focus();
+}
+$('move').addEventListener('keydown', (event) => {
+  const { doc, i } = moving;
+  if (event.key === 'Escape') {   // never mind: back to the line
+    $('move').hidden = true;
+    edit(doc, i, doc.lines[i].length);
+  }
+  if (event.key !== 'Enter') return;
+  const date = dateOf('@' + $('move').value.trim());
+  if (!date) return $('move').select();   // not a day: try again
+  $('move').hidden = true;
+  current = null;   // no line is open while it moves
+  at = -1;
+  moveTask(doc, i, date);
+  if (!doc.lines.length) doc.lines.push('');
+  draw(doc);
+});
+$('move').addEventListener('blur', () => { $('move').hidden = true; });
+
 // ===== Hold control to see the bullets and keys =====
 
 $('legend').textContent = BULLETS.map((b) =>
@@ -526,7 +656,10 @@ $('legend').textContent = BULLETS.map((b) =>
   '\n\nclick •  done\nclick ○  done, click again  cancelled' +
   '\n\n# to ######  heading     ---  divider     >  quote\n**bold**  *italic*  ~~crossed~~  ==highlight==  `code`\n* ** *** at the end of a line  priority\n\ntype h1, hr, quote, bold, code ...  a list pops up\ntab uses it     ↑ ↓ + enter picks another     esc closes' +
   '\n\n/t and space  the time right now' +
-  '\n\nkeys when you are not typing\nv  view mode   d  day   w  week   t  today   ← →  back / forward\nenter  start writing   esc  stop writing';
+  '\n\ntab  sub-task   shift+tab  back out' +
+  '\ntodo: end a line with @fri @11-30 @today @tomorrow, then enter  moves it to that day' +
+  '\ntodo: ctrl+m  type the day to move the line to' +
+  '\n\nkeys when you are not typing\nv  view mode   d  day   w  week   l  todo   t  today   ← →  back / forward\nenter  start writing   esc  stop writing';
 
 document.addEventListener('keydown', (event) => { if (event.key === 'Control') $('legend').hidden = false; });
 document.addEventListener('keyup', (event) => { if (event.key === 'Control') $('legend').hidden = true; });
