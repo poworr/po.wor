@@ -640,6 +640,16 @@
     "expected": "home: index.html\nplanner: planner.html\njapanese: japanese.html"
   },
   {
+    "id": "javascript-21",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "Tasks on top",
+    "task": "Sort [\"notes\", \"• call mum\", \"idea\", \"• buy milk\", \"end\"] so the lines starting with \"• \" come first, and the other lines keep their order. Use sort with a comparator that subtracts two booleans. Print each line.",
+    "solution": "const lines = [\"notes\", \"• call mum\", \"idea\", \"• buy milk\", \"end\"];\nconst isTask = (line) => line.startsWith(\"• \");\n\nconst sorted = [...lines].sort((a, b) => isTask(b) - isTask(a));\nfor (const line of sorted) console.log(line);",
+    "remember": "true - false = 1, so b - a puts the trues first. Sort keeps ties in order.",
+    "expected": "• call mum\n• buy milk\nnotes\nidea\nend"
+  },
+  {
     "id": "node-core-1",
     "lang": "node",
     "level": "Core",

@@ -1096,5 +1096,15 @@
     "remember": "return in forEach = skip this one.",
     "builtFrom": "array . forEach ( arrow function with if + return )",
     "mastered": false
+  },
+  {
+    "id": "javascript-105",
+    "category": "Arrays",
+    "syntax": "const lines = [\"notes\", \"• call mum\", \"idea\", \"○ dentist\"];\nconst isTask = (i) => /^[•×○⊗] /.test(lines[i].trim());\nconst order = lines.map((line, i) => i).sort((a, b) => isTask(b) - isTask(a));\nconsole.log(order.map((i) => lines[i]));",
+    "explain": "map((line, i) => i) makes a list of positions. In a sort comparator, true - false is 1 and false - true is -1, so isTask(b) - isTask(a) puts the true ones first. Sort is stable, so equal items keep their order.",
+    "example": "po.wor: the week view puts tasks and events on top.",
+    "remember": "true counts as 1, false as 0. b - a = the trues go first.",
+    "builtFrom": "array . map ( arrow ) . sort ( arrow with booleans )",
+    "mastered": false
   }
 ]

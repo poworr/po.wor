@@ -774,5 +774,15 @@
     "remember": "Pad in, pull back. None on the parent, auto on the children.",
     "builtFrom": "rule + child rule",
     "mastered": false
+  },
+  {
+    "id": "css-73",
+    "category": "Selectors",
+    "syntax": ".week-list .row > :is(h1, h2, h3, h4, h5, h6) {\n  font-size: inherit;\n}",
+    "explain": ":is( ) matches any selector in its list, so you write the rest of the selector once instead of six times. font-size: inherit makes the headings the same size as their parent.",
+    "example": "po.wor: headings in the week view stay one line high.",
+    "remember": ":is = \"any of these\". Write the long part once.",
+    "builtFrom": "selector + :is( list ) { property: value }",
+    "mastered": false
   }
 ]
