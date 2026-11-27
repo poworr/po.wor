@@ -1046,5 +1046,35 @@
     "remember": "Always a stop case first, then a smaller step.",
     "builtFrom": "function + if + a call to itself",
     "mastered": false
+  },
+  {
+    "id": "javascript-100",
+    "category": "Data",
+    "syntax": "const PROJECTS = [\n  { name: \"home\", href: \"index.html\" },\n  { name: \"planner\", href: \"planner.html\" },\n  { name: \"box\", href: \"box.html\" }\n];\nfor (const project of PROJECTS) {\n  const link = document.createElement(\"a\");\n  link.href = project.href;\n  link.textContent = project.name;\n  document.body.append(link, \" \");\n}\nconsole.log(document.querySelectorAll(\"a\").length);",
+    "explain": "Keep the data in one array of objects, and let a loop build the page from it. To add a project, add one line to the list; the code doesn't change.",
+    "example": "po.wor: js/footer.js builds the footer icons from PROJECTS.",
+    "remember": "Data in a list, code in a loop. Add a line, not code.",
+    "builtFrom": "array of objects + for...of + DOM methods",
+    "mastered": false
+  },
+  {
+    "id": "javascript-101",
+    "category": "Strings",
+    "syntax": "const pathname = \"/po.wor/planner.html\";\nconsole.log(pathname.split(\"/\").pop() || \"index.html\");\nconsole.log(\"/po.wor/\".split(\"/\").pop() || \"index.html\");",
+    "explain": "location.pathname is the page's path. split(\"/\") cuts it into parts and pop() takes the last one, the file name. On the home page the last part is \"\", so || gives \"index.html\".",
+    "example": "po.wor: the footer finds which page you are on.",
+    "remember": "Cut at the slashes, take the last piece, fall back with ||.",
+    "builtFrom": "string . method ( ) . method ( ) || string",
+    "mastered": false
+  },
+  {
+    "id": "javascript-102",
+    "category": "Strings",
+    "syntax": "const icon =\n  '<svg viewBox=\"0 0 24 24\">' +\n  '<path d=\"M4 7 L12 3\"/>' +\n  '</svg>';\nconsole.log(icon);",
+    "explain": "+ joins strings, so a long string can be split over several lines. Single quotes on the outside let the HTML use double quotes inside.",
+    "example": "po.wor: the box icon's SVG in js/footer.js.",
+    "remember": "End a line with +, carry on below.",
+    "builtFrom": "string + string + string",
+    "mastered": false
   }
 ]

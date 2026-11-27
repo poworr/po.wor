@@ -744,5 +744,35 @@
     "remember": "A corner + a turn = an arrow. 45 down, 135 left, 225 up, 315 right.",
     "builtFrom": "pseudo-element + borders + transform",
     "mastered": false
+  },
+  {
+    "id": "css-70",
+    "category": "Scrolling",
+    "syntax": ".footer-nav {\n  display: flex;\n  min-width: 0;\n  overflow-x: auto;\n  scroll-snap-type: x mandatory;\n}\n.footer-nav a { scroll-snap-align: start; }",
+    "explain": "overflow-x: auto adds sideways scrolling when the items don't fit. scroll-snap-type makes a swipe stop on an item; scroll-snap-align says which edge of each item to stop at. min-width: 0 lets a flex child shrink, so it can scroll at all.",
+    "example": "po.wor: the footer icons slide left and right.",
+    "remember": "Snap = the box (type) + the items (align). Mandatory = always stop on one.",
+    "builtFrom": "two rules: the box and its children",
+    "mastered": false
+  },
+  {
+    "id": "css-71",
+    "category": "Scrolling",
+    "syntax": ".footer-nav { scrollbar-width: none; }\n.footer-nav::-webkit-scrollbar { display: none; }",
+    "explain": "Hides the scrollbar but keeps scrolling. scrollbar-width is the standard way; ::-webkit-scrollbar is for older Safari and Chrome, so use both.",
+    "example": "po.wor: the footer slides with no bar showing.",
+    "remember": "Two rules, one job: standard + webkit.",
+    "builtFrom": "rule + pseudo-element rule",
+    "mastered": false
+  },
+  {
+    "id": "css-72",
+    "category": "Scrolling",
+    "syntax": ".footer-nav {\n  padding-top: 40px;\n  margin-top: -40px;\n  pointer-events: none;\n}\n.footer-nav a { pointer-events: auto; }",
+    "explain": "A scrolling box cuts off anything sticking out, so padding-top makes room inside for the bubbles and an equal negative margin-top keeps it in the same place. pointer-events: none lets clicks pass through that empty room; auto turns clicks back on for the links.",
+    "example": "po.wor: the footer bubbles show above the icons.",
+    "remember": "Pad in, pull back. None on the parent, auto on the children.",
+    "builtFrom": "rule + child rule",
+    "mastered": false
   }
 ]

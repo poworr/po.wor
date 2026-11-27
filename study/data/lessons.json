@@ -615,6 +615,16 @@
     "expected": "3\n2\n1\ngo"
   },
   {
+    "id": "javascript-20",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Add a project",
+    "task": "Here is a list of projects: home (index.html) and planner (planner.html). Add a third object for japanese (japanese.html). Then loop over the list with for...of and print each one as \"name: href\".",
+    "solution": "const PROJECTS = [\n  { name: \"home\", href: \"index.html\" },\n  { name: \"planner\", href: \"planner.html\" },\n  { name: \"japanese\", href: \"japanese.html\" }\n];\n\nfor (const project of PROJECTS) {\n  console.log(project.name + \": \" + project.href);\n}",
+    "remember": "Data in a list, code in a loop. Add a line, not code.",
+    "expected": "home: index.html\nplanner: planner.html\njapanese: japanese.html"
+  },
+  {
     "id": "node-core-1",
     "lang": "node",
     "level": "Core",
