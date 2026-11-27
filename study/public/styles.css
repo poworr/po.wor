@@ -1,72 +1,87 @@
-/* ===== Syntax study: the same plain look as the po.wor homepage ===== */
+/* ===== Syntax study: plain text, laid out like VS Code ===== */
 
-/* Whole page */
+/* Colors: light, or dark when the Mac is in dark mode */
+:root {
+  color-scheme: light dark;
+  --editor: #FFFFFF;       /* the middle, where the cards are */
+  --side: #F8F8F8;         /* explorer and bottom panel */
+  --activity: #F0F0F0;     /* the thin bar on the far left */
+  --text: #1F1F1F;
+  --muted: #6E6E73;        /* explanations, counts */
+  --faint: #A0A0A0;        /* // comments, placeholders */
+  --line: #E5E5E5;
+  --hover: #EBEBEB;
+  --input: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --editor: #1E1E1E;
+    --side: #252526;
+    --activity: #181818;
+    --text: #CCCCCC;
+    --muted: #9D9D9D;
+    --faint: #6A6A6A;
+    --line: #333333;
+    --hover: #2A2D2E;
+    --input: #313131;
+  }
+}
+
+/* Whole page: one monospace font, nothing else */
 body {
   margin: 0;
-  min-height: 100vh;
+  color: var(--text);
+  background: var(--editor);
+  font-family: Menlo, 'SF Mono', Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* activity | explorer | editor, filling the window */
+.layout {
+  display: grid;
+  grid-template-columns: 44px 200px 1fr;
+  height: 100vh;
+}
+
+/* ===== Activity bar (S, L, T) ===== */
+.activity {
   display: flex;
   flex-direction: column;
-  background: #F5F5F5;
-  color: #1D1D1F;
-  font-family: 'Lucida Grande', Verdana, sans-serif;
+  background: var(--activity);
+  border-right: 1px solid var(--line);
+}
+.activity .btn {
+  height: 44px;
+  font-size: 14px;
+  color: var(--faint);
+  border-left: 2px solid transparent;
+}
+.activity .btn:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+.activity .btn[aria-pressed="true"] {
+  color: var(--text);
+  border-left-color: var(--text);   /* the line VS Code puts on the open one */
+  text-decoration: none;
 }
 
-/* Header: logo on the left */
-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 40px 20px 24px;
-}
-.logo {
-  display: block;
-  width: 36px;
-  height: 36px;
-}
-
-/* Sidebar + main, side by side (CSS Grid) */
-.layout {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 24px;
-  padding: 0 20px 40px;
-}
-/* When the playground is open: a third column on the right */
-.layout.with-playground {
-  grid-template-columns: 180px 1fr 420px;
-}
-#playground {
-  align-self: start;
-  position: sticky;            /* stays in view while you scroll the cards */
-  top: 20px;
-  max-height: calc(100vh - 40px);
+/* ===== Explorer ===== */
+.explorer {
   overflow-y: auto;
+  background: var(--side);
+  border-right: 1px solid var(--line);
 }
-
-footer {
-  padding: 24px 20px 60px;
-  text-align: right;
-  font-size: 12px;
-  color: #6E6E73;
-  border-top: 1px solid #DCDCDC;
-}
-
-/* Small reusable text styles */
-.muted {
-  font-size: 13px;
-  color: #6E6E73;
-}
-.tag {
-  margin: 0 0 8px;
-  font-size: 12px;
-  font-weight: 700;
+.side-title {
+  margin: 0;
+  padding: 10px 14px 6px;
+  font-size: 11px;
   text-transform: uppercase;
-  color: #4B5560;
+  color: var(--muted);
 }
-
-/* ===== Sidebar ===== */
-#languages {
+#languages,
+#languages ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -75,61 +90,112 @@ footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 8px 10px;
+  padding: 2px 14px;
   font: inherit;
-  font-size: 14px;
   text-align: left;
   color: inherit;
   background: none;
   border: 0;
-  border-radius: 6px;
   cursor: pointer;
 }
 #languages button:hover {
-  background: #EBEBEB;
+  background: var(--hover);
 }
-#languages button[aria-current="true"] {
-  color: #FFFFFF;
-  background: #1D1D1F;
+#languages > li > button::before {
+  content: "▸ ";
+  color: var(--faint);
+}
+#languages > li > button[aria-current="true"] {
+  background: var(--hover);
+}
+#languages > li > button[aria-current="true"]::before {
+  content: "▾ ";
+}
+#languages > li > button span:first-child {
+  margin-right: auto;
 }
 #languages .count {
-  font-size: 11px;
-  opacity: 0.7;
+  color: var(--faint);
+}
+#languages .category-link {
+  padding-left: 40px;
+  color: var(--muted);
 }
 
-/* ===== Buttons and inputs (plain, like the homepage bubbles) ===== */
-.btn {
-  padding: 5px 14px;
-  font: inherit;
+/* ===== Editor: a tab on top, the content, then the panel ===== */
+main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+}
+.tabs {
+  display: flex;
+  background: var(--side);
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  padding: 6px 14px;
+  background: var(--editor);
+  border-right: 1px solid var(--line);
+  margin-bottom: -1px;   /* sits over the line, like an open tab */
+}
+.editor {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px 40px;
+}
+
+/* Small text styles */
+.muted {
+  color: var(--muted);
+}
+.tag {
+  margin: 0;
   font-size: 13px;
-  color: #1D1D1F;
-  background: linear-gradient(#FFFFFF, #F2F2F2);
-  border: 1px solid #C8C8C8;
-  border-radius: 6px;
+  font-weight: normal;
+  color: var(--faint);
+}
+h2.tag {   /* panel and form titles, small like VS Code's */
+  margin-bottom: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== Buttons: plain words, underlined on hover ===== */
+.btn {
+  padding: 0;
+  font: inherit;
+  color: var(--muted);
+  background: none;
+  border: 0;
   cursor: pointer;
 }
 .btn:hover {
-  border-color: #A0A0A0;
+  color: var(--text);
+  text-decoration: underline;
 }
 .btn[aria-pressed="true"] {
-  color: #FFFFFF;
-  background: #1D1D1F;
-  border-color: #1D1D1F;
-}
-.btn.small {
-  padding: 2px 10px;
-  font-size: 12px;
+  color: var(--text);
+  text-decoration: underline;
 }
 
 input,
 select,
 textarea {
   font: inherit;
-  font-size: 14px;
-  padding: 6px 8px;
-  background: #FFFFFF;
-  border: 1px solid #C8C8C8;
-  border-radius: 6px;
+  padding: 3px 6px;
+  color: var(--text);
+  background: var(--input);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid var(--muted);
+  outline-offset: -1px;
 }
 
 /* A row of controls */
@@ -137,41 +203,53 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  margin: 0 0 16px;
+  gap: 6px 16px;
+  margin: 0 0 12px;
 }
 #search {
   flex: 1;
   min-width: 160px;
+  max-width: 360px;
 }
 
-/* ===== Cards ===== */
+/* ===== Cards: plain text blocks, one under another ===== */
 #cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-  margin-bottom: 40px;
+  max-width: 860px;
 }
 .group-title {
-  grid-column: 1 / -1;   /* a heading that spans the whole row */
-  margin: 8px 0 0;
-  font-size: 18px;
+  margin: 20px 0 4px;
+  font-size: 13px;
   font-weight: normal;
+  color: var(--faint);
+}
+.group-title::before {
+  content: "── ";
 }
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px;
-  background: #FFFFFF;
-  border: 1px solid #DCDCDC;
-  border-radius: 6px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
 }
 .card p {
   margin: 0;
 }
-.card.done {
-  border-color: #1D1D1F;
+.card .category::before,
+.card .explain::before,
+.card .example::before,
+.card .built::before,
+.card .remember::before {
+  content: "// ";
+  color: var(--faint);
+}
+.card .explain {
+  color: var(--muted);
+}
+.card .example,
+.card .built,
+.card .remember {
+  color: var(--faint);
+}
+.card.done .syntax {
+  color: var(--muted);   /* mastered: greyed a little */
 }
 
 .code-box {
@@ -179,34 +257,32 @@ textarea {
 }
 .code-box .copy {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 4px;
+  right: 0;
 }
 
-/* Code: monospace, keeps spaces and line breaks */
+/* Code keeps spaces and line breaks */
 pre,
 .code {
-  font-family: Menlo, Monaco, monospace;
+  font-family: inherit;
   font-size: 13px;
 }
 pre {
-  margin: 0;
-  padding: 10px 12px;
+  margin: 4px 0;
+  padding: 0;
   overflow-x: auto;
-  background: #F5F5F5;
-  border: 1px solid #DCDCDC;
-  border-radius: 6px;
+  white-space: pre;
+}
+.card .syntax {
+  padding-right: 48px;   /* room for Copy */
 }
 
 .card-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: auto;   /* push to the bottom of the card */
-  font-size: 13px;
-}
-.card-actions label {
-  margin-right: auto;
+  gap: 16px;
+  margin-top: 4px;
+  color: var(--muted);
 }
 
 /* ===== Code boxes (playground, lessons, test) ===== */
@@ -214,57 +290,63 @@ pre {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  min-height: 200px;
-  margin-bottom: 12px;
-  line-height: 1.5;
+  min-height: 160px;
+  margin-bottom: 10px;
+  line-height: 1.6;
   tab-size: 2;
+  resize: vertical;
 }
 .preview {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 240px;
-  margin-bottom: 12px;
-  background: #FFFFFF;
-  border: 1px solid #DCDCDC;
-  border-radius: 6px;
+  height: 200px;
+  margin-bottom: 10px;
+  background: #FFFFFF;    /* a web page is white, like a browser */
+  border: 1px solid var(--line);
 }
 .preview[hidden] {
   display: none;
 }
 .output {
-  min-height: 40px;
+  min-height: 20px;
   white-space: pre-wrap;
-  background: #FFFFFF;
+}
+
+/* ===== Bottom panel: the playground ===== */
+#playground {
+  max-height: 45vh;
+  overflow-y: auto;
+  padding: 8px 24px 16px;
+  background: var(--side);
+  border-top: 1px solid var(--line);
+}
+#playground .code {
+  min-height: 100px;
 }
 
 /* ===== Practice terminal: dark, like Terminal.app ===== */
 #terminal {
-  padding: 12px;
+  padding: 10px;
   background: #1D1D1F;
-  border-radius: 6px;
+  border-radius: 2px;
   cursor: text;
 }
 #term-output {
-  max-height: 320px;
-  padding: 0;
+  max-height: 260px;
+  margin: 0;
   overflow-y: auto;
   white-space: pre-wrap;
   color: #F5F5F5;
-  background: none;
-  border: 0;
 }
 .term-line {
   display: flex;
   gap: 8px;
-  font-family: Menlo, Monaco, monospace;
-  font-size: 13px;
   color: #9BE39B;
 }
 #term-input {
   flex: 1;
   padding: 0;
-  font-family: inherit;
   color: #F5F5F5;
   background: none;
   border: 0;
@@ -272,49 +354,95 @@ pre {
 }
 
 /* ===== Lessons and Test ===== */
+#lessons .card,
+#test .card {
+  max-width: 860px;
+  border-top: 0;
+}
+#lessons .card > *,
+#test .card > * {
+  margin-bottom: 8px;
+}
+#lesson-list {
+  max-width: 860px;
+  gap: 2px 14px;
+}
 .lesson-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: normal;
 }
 .test-question {
-  font-size: 18px;
-}
-#playground,
-#lessons .card,
-#test .card {
-  margin-bottom: 40px;
+  margin: 0;
 }
 
 /* ===== Add / edit form ===== */
 dialog {
   width: min(520px, 90vw);
-  padding: 20px;
-  border: 1px solid #C8C8C8;
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 16px 20px;
+  color: var(--text);
+  background: var(--side);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.3);
 }
 #form label {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 12px;
-  font-size: 13px;
+  gap: 2px;
+  margin-bottom: 10px;
+  color: var(--muted);
 }
 #form textarea {
-  min-height: 120px;
-  font-family: Menlo, Monaco, monospace;
-  font-size: 13px;
+  min-height: 100px;
 }
 
-/* ===== Phones: sidebar goes on top ===== */
+/* ===== Phones: everything in one column ===== */
 @media (max-width: 700px) {
-  .layout,
-  .layout.with-playground {
+  .layout {
     grid-template-columns: 1fr;
+    height: auto;
   }
-  #playground {
-    position: static;
-    max-height: none;
+  .activity {
+    flex-direction: row;
   }
+  .activity .btn {
+    flex: 1;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+  }
+  .activity .btn[aria-pressed="true"] {
+    border-bottom-color: var(--text);
+  }
+  .explorer {
+    max-height: 30vh;
+  }
+  main {
+    height: auto;
+  }
+  .editor {
+    padding: 12px 16px 32px;
+  }
+}
+
+/* The lesson list, shown in the explorer under the open language */
+.explorer #lesson-list {
+  display: block;
+  margin: 0;
+}
+.explorer #lesson-list .btn {
+  display: block;
+  width: 100%;
+  padding: 2px 14px 2px 28px;
+  text-align: left;
+}
+.explorer #lesson-list .btn:hover {
+  background: var(--hover);
+  text-decoration: none;
+}
+.explorer #lesson-list .btn[aria-pressed="true"] {
+  background: var(--hover);
+  text-decoration: none;
 }

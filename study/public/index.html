@@ -9,26 +9,27 @@
 </head>
 <body>
 
-  <!-- Same header style as the homepage -->
-  <header>
-    <img class="logo" src="/logo.png" alt="po.wor">
-    <span class="muted">Syntax study</span>
-  </header>
-
+  <!-- Laid out like VS Code: activity bar | explorer | editor (with a panel at the bottom) -->
   <div class="layout">
 
-    <!-- ===== Sidebar: the 9 technologies, with how many you mastered ===== -->
-    <nav>
+    <!-- ===== Activity bar: the three modes ===== -->
+    <nav class="activity" id="modes">
+      <button class="btn" data-mode="syntax" aria-pressed="true" title="Syntax" aria-label="Syntax">S</button>
+      <button class="btn" data-mode="lessons" title="Lessons" aria-label="Lessons">L</button>
+      <button class="btn" data-mode="test" title="Test" aria-label="Test">T</button>
+    </nav>
+
+    <!-- ===== Explorer: every language, with how many you mastered ===== -->
+    <nav class="explorer">
+      <p class="side-title">Explorer</p>
       <ul id="languages"></ul>
     </nav>
 
     <main>
-      <!-- ===== The three modes ===== -->
-      <div class="bar" id="modes">
-        <button class="btn" data-mode="syntax" aria-pressed="true">Syntax</button>
-        <button class="btn" data-mode="lessons">Lessons</button>
-        <button class="btn" data-mode="test">Test</button>
-      </div>
+      <!-- The editor tab: which language and mode is open -->
+      <div class="tabs"><span class="tab" id="tab"></span></div>
+
+      <div class="editor">
 
       <!-- ===== Mode 1: Syntax cards ===== -->
       <section id="syntax">
@@ -92,10 +93,9 @@
           </div>
         </div>
       </section>
+      </div>
 
-    </main>
-
-    <!-- ===== Practice Playground: the panel on the right (the Playground button opens it) ===== -->
+    <!-- ===== Practice Playground: the panel at the bottom (the Playground button opens it) ===== -->
     <aside id="playground" hidden>
       <h2 class="tag" id="playground-title">Playground</h2>
       <div id="editor">
@@ -114,9 +114,8 @@
         <div class="term-line"><span id="term-prompt"></span><input id="term-input" spellcheck="false" autocomplete="off" aria-label="Type a command"></div>
       </div>
     </aside>
+    </main>
   </div>
-
-  <footer>&copy; 2026 po.wor</footer>
 
   <!-- ===== One syntax card. app.js copies this for every item. ===== -->
   <template id="card-template">

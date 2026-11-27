@@ -13,7 +13,8 @@ let langs = [];            // [{ id, name, runs, items: [...] }, ...]
 let current = 'all';       // the language shown in the sidebar ('all' = every language)
 let mode = 'syntax';       // which tab is open: syntax, lessons or test
 let playLang = 'html';     // the language the playground runs
-let playOpen = false;      // is the playground panel open on the right?
+const lessonList = $('lesson-list');   // practice.js fills it; the explorer shows it under the open language
+let playOpen = false;      // is the playground panel open at the bottom?
 
 // ===== Start: load the data, then draw the page =====
 async function start() {
@@ -25,6 +26,7 @@ async function start() {
 // ===== Draw everything =====
 function render() {
   renderSidebar();
+  $('tab').textContent = current + '.' + mode;   // like a file name: javascript.syntax
   $('syntax').hidden = mode !== 'syntax';
   $('lessons').hidden = mode !== 'lessons';
   $('test').hidden = mode !== 'test';
@@ -33,7 +35,6 @@ function render() {
 
   // The playground panel: only on the Syntax tab, and only when it's open
   $('playground').hidden = mode !== 'syntax' || !playOpen;
-  document.querySelector('.layout').classList.toggle('with-playground', !$('playground').hidden);
   $('toggle-playground').setAttribute('aria-pressed', playOpen);
 
   if (mode === 'syntax') { renderCards(); updatePlayground(); }
@@ -69,7 +70,27 @@ function renderSidebar() {
     const li = document.createElement('li');
     li.appendChild(button);
     $('languages').appendChild(li);
+    if (lang.id === current && lang.id !== 'all' && mode === 'syntax') li.appendChild(categoryList(lang));
+    if (lang.id === current && mode === 'lessons') li.appendChild(lessonList);
   }
+}
+
+// Under the open language: its categories. Click one to scroll to its first card.
+function categoryList(lang) {
+  const ul = document.createElement('ul');
+  for (const category of new Set(lang.items.map((item) => item.category))) {
+    const button = document.createElement('button');
+    button.className = 'category-link';
+    button.textContent = category;
+    button.addEventListener('click', () => {
+      const card = [...document.querySelectorAll('#cards .category')].find((el) => el.textContent === category);
+      if (card) card.closest('.card').scrollIntoView({ behavior: 'smooth' });
+    });
+    const li = document.createElement('li');
+    li.appendChild(button);
+    ul.appendChild(li);
+  }
+  return ul;
 }
 
 // Cards: with "All" or while searching, show all 9 languages; otherwise the current one
