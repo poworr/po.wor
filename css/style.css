@@ -28,6 +28,19 @@ header {
   height: 36px;
 }
 
+/* ===== The planner: a • just left of the box ===== */
+.plan {
+  margin-left: auto;   /* pushes it right, next to the box */
+  padding: 6px;
+  font-size: 20px;
+  line-height: 24px;
+}
+.plan span {
+  display: block;   /* so it can bounce */
+  min-width: 24px;
+  text-align: center;
+}
+
 /* ===== The box: a link to the projects page ===== */
 .box {
   display: flex;
@@ -112,6 +125,8 @@ header {
 .home::before { left: 14px; }
 .box::after   { right: 0; }
 .box::before  { right: 14px; }
+.plan::after  { right: 0; }
+.plan::before { right: 14px; }
 
 /* show the bubble on hover (or tap on a phone), after a short pause */
 [data-tip]:hover::after,
