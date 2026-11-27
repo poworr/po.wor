@@ -11,6 +11,7 @@ const $ = (id) => document.getElementById(id);   // a short way to find an eleme
 
 let langs = [];            // [{ id, name, runs, items: [...] }, ...]
 let current = 'all';       // the language shown in the sidebar ('all' = every language)
+let folded = false;        // the open language's list in the explorer, folded away?
 let mode = 'syntax';       // which tab is open: syntax, lessons or test
 let playLang = 'html';     // the language the playground runs
 const lessonList = $('lesson-list');   // practice.js fills it; the explorer shows it under the open language
@@ -71,7 +72,9 @@ function renderSidebar() {
     button.children[0].textContent = lang.name;
     button.children[1].textContent = done + '/' + lang.items.length;
     button.setAttribute('aria-current', lang.id === current);
+    button.setAttribute('aria-expanded', lang.id === current && !folded);
     button.addEventListener('click', () => {
+      folded = lang.id === current ? !folded : false;   // click the open one again: fold or unfold it
       current = lang.id;
       $('search').value = '';
       render();
@@ -79,8 +82,8 @@ function renderSidebar() {
     const li = document.createElement('li');
     li.appendChild(button);
     $('languages').appendChild(li);
-    if (lang.id === current && lang.id !== 'all' && mode === 'syntax') li.appendChild(categoryList(lang));
-    if (lang.id === current && mode === 'lessons') li.appendChild(lessonList);
+    if (lang.id === current && !folded && lang.id !== 'all' && mode === 'syntax') li.appendChild(categoryList(lang));
+    if (lang.id === current && !folded && mode === 'lessons') li.appendChild(lessonList);
   }
 }
 
@@ -298,6 +301,7 @@ window.addEventListener('message', (event) => {
 function updatePlayground() {
   const lang = langs.find((l) => l.id === playLang);
   $('playground-title').textContent = 'Playground · ' + lang.name;
+  setEditorLanguage($('code'), lang.id);   // in editor.js
   $('editor').hidden = lang.runs === 'terminal';
   $('terminal').hidden = lang.runs !== 'terminal';
   $('preview').hidden = lang.runs !== 'browser';

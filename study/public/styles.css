@@ -119,7 +119,7 @@ body {
 #languages > li > button[aria-current="true"] {
   background: var(--hover);
 }
-#languages > li > button[aria-current="true"]::before {
+#languages > li > button[aria-expanded="true"]::before {
   content: "▾ ";
 }
 #languages > li > button span:first-child {
@@ -462,4 +462,16 @@ dialog::backdrop {
 .explorer #lesson-list .btn[aria-pressed="true"] {
   background: var(--hover);
   text-decoration: none;
+}
+
+/* The VS Code editor (Monaco) boxes. Drag the bottom edge to make one taller. */
+.monaco-box {
+  height: 240px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  resize: vertical;
+  border: 1px solid var(--line);
+}
+#playground .monaco-box {
+  height: 160px;   /* the playground, in the bottom panel */
 }

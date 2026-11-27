@@ -35,7 +35,7 @@ function renderLessons() {
   }
 
   // One button per lesson; ✓ for solved ones
-  $('lesson-list').innerHTML = '';
+  lessonList.innerHTML = '';
   list.forEach((l) => {
     const number = lessons.filter((x) => x.lang === l.lang).indexOf(l) + 1;   // its number within its language
     const name = current === 'all' ? langs.find((x) => x.id === l.lang).name + ' ' : '';
@@ -44,7 +44,7 @@ function renderLessons() {
     button.textContent = name + number + '. ' + l.title + (solved.includes(l.id) ? ' ✓' : '');
     button.setAttribute('aria-pressed', l.id === lessonId);
     button.addEventListener('click', () => { lessonId = l.id; renderLessons(); });
-    $('lesson-list').appendChild(button);
+    lessonList.appendChild(button);
   });
 
   const lesson = list.find((l) => l.id === lessonId);
@@ -57,6 +57,7 @@ function renderLessons() {
   $('lesson-task').textContent = lesson.task;
   $('lesson-remember').textContent = lesson.remember ? 'Remember: ' + lesson.remember : '';
   $('lesson-remember').hidden = !lesson.remember;
+  setEditorLanguage($('lesson-code'), lesson.lang);   // in editor.js
   $('lesson-code').value = drafts[lesson.id] !== undefined ? drafts[lesson.id] : STARTERS[lesson.lang] || '';
   $('lesson-solution').textContent = lesson.solution;
   $('lesson-solution').hidden = true;
@@ -118,7 +119,7 @@ async function checkLesson() {
   if (right && !solved.includes(lesson.id)) {
     solved.push(lesson.id);
     saveSolved();
-    $('lesson-list').querySelector('[aria-pressed="true"]').textContent += ' ✓';
+    lessonList.querySelector('[aria-pressed="true"]').textContent += ' ✓';
   }
 }
 

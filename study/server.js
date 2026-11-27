@@ -40,6 +40,8 @@ const LANGS = [
 
 app.use(express.json());                                    // read JSON sent by the page
 app.use(express.static(path.join(__dirname, 'public')));    // serve index.html, styles.css, app.js
+app.use('/vs', express.static(path.join(__dirname, 'node_modules/monaco-editor/min/vs')));   // the VS Code editor
+app.use('/emmet', express.static(path.join(__dirname, 'node_modules/emmet-monaco-es/dist')));   // Emmet for it
 app.get('/logo.png', function (req, res) {                  // reuse the site's logo
   res.sendFile(path.join(__dirname, '..', 'images', 'logo.png'));
 });
