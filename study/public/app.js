@@ -58,7 +58,15 @@ $('toggle-explorer').addEventListener('click', () => {
   explorer.hidden = !explorer.hidden;
   document.querySelector('.layout').classList.toggle('no-explorer', explorer.hidden);
   $('toggle-explorer').setAttribute('aria-pressed', !explorer.hidden);
-  $('toggle-explorer').title = explorer.hidden ? 'Show the explorer' : 'Hide the explorer';
+  $('toggle-explorer').title = explorer.hidden ? 'Show the explorer (⌘B)' : 'Hide the explorer (⌘B)';
+});
+
+// ⌘B (Ctrl+B): show or hide the explorer, like VS Code
+window.addEventListener('keydown', (event) => {
+  if (event.key.toLowerCase() === 'b' && (event.metaKey || event.ctrlKey) && !event.shiftKey && !event.altKey) {
+    event.preventDefault();
+    $('toggle-explorer').click();
+  }
 });
 
 // Sidebar: "All" at the top, then one button per language, with "mastered / total"
