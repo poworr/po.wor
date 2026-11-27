@@ -4,7 +4,7 @@
 //   { "id": "python-1", "lang": "python", "level": "Beginner", "title": "Say hello",
 //     "task": "Print Hello, world!", "solution": "print(\"Hello, world!\")",
 //     "expected": "Hello, world!" }
-// "expected" is what your code must print. HTML, CSS, Terminal and Homebrew can't be
+// "expected" is what your code must print. HTML, CSS, Terminal, Homebrew and Git can't be
 // checked by output, so they use "mustInclude": the pieces your code must contain.
 
 let lessons = [];
@@ -78,7 +78,7 @@ async function runLesson() {
     $('lesson-preview').srcdoc = code;
   } else if (lesson.lang === 'css') {
     $('lesson-preview').srcdoc = CSS_SAMPLE + '<style>' + code + '</style>';   // CSS_SAMPLE is in app.js
-  } else if (lesson.lang === 'terminal' || lesson.lang === 'homebrew') {
+  } else if (langs.find((l) => l.id === lesson.lang).runs === 'terminal') {   // Terminal, Homebrew, Git
     // Each line goes through the practice terminal (terminal.js)
     output = code.split('\n').filter((line) => line.trim()).map((line) => {
       const result = runCommand(line);

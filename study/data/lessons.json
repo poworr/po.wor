@@ -774,5 +774,103 @@
       "brew services start postgresql",
       "brew services stop postgresql"
     ]
+  },
+  {
+    "id": "git-1",
+    "lang": "git",
+    "level": "Beginner",
+    "title": "Who are you?",
+    "task": "Tell Git your name and your email (do this once per computer).",
+    "solution": "git config --global user.name \"Your Name\"\ngit config --global user.email \"you@example.com\"",
+    "mustInclude": [
+      "git config --global user.name",
+      "git config --global user.email"
+    ]
+  },
+  {
+    "id": "git-2",
+    "lang": "git",
+    "level": "Beginner",
+    "title": "Start a project",
+    "task": "Turn this folder into a Git project, then check its status.",
+    "solution": "git init\ngit status",
+    "mustInclude": [
+      "git init",
+      "git status"
+    ]
+  },
+  {
+    "id": "git-3",
+    "lang": "git",
+    "level": "Intermediate",
+    "title": "Your first commit",
+    "task": "Add index.html, then commit it with the message \"Add home page\".",
+    "solution": "git add index.html\ngit commit -m \"Add home page\"",
+    "mustInclude": [
+      "git add index.html",
+      "git commit -m \"Add home page\""
+    ]
+  },
+  {
+    "id": "git-4",
+    "lang": "git",
+    "level": "Intermediate",
+    "title": "Look back",
+    "task": "Show the lines you changed but have not added yet, then show the history, one commit per line.",
+    "solution": "git diff\ngit log --oneline",
+    "mustInclude": [
+      "git diff",
+      "git log --oneline"
+    ]
+  },
+  {
+    "id": "git-5",
+    "lang": "git",
+    "level": "Advanced",
+    "title": "Connect to GitHub",
+    "task": "Connect this project to https://github.com/you/my-site.git as origin, then push main for the first time.",
+    "solution": "git remote add origin https://github.com/you/my-site.git\ngit push -u origin main",
+    "mustInclude": [
+      "git remote add origin https://github.com/you/my-site.git",
+      "git push -u origin main"
+    ]
+  },
+  {
+    "id": "git-6",
+    "lang": "git",
+    "level": "Advanced",
+    "title": "Oops, un-add it",
+    "task": "You ran git add on secret.txt by mistake. Take it out of the next commit, but keep the file as it is.",
+    "solution": "git restore --staged secret.txt",
+    "mustInclude": [
+      "git restore --staged secret.txt"
+    ]
+  },
+  {
+    "id": "git-7",
+    "lang": "git",
+    "level": "Master",
+    "title": "Try an idea on a branch",
+    "task": "Make a branch called new-header and move to it. Add everything and commit \"Change header\". Go back to main and merge new-header into it.",
+    "solution": "git switch -c new-header\ngit add .\ngit commit -m \"Change header\"\ngit switch main\ngit merge new-header",
+    "mustInclude": [
+      "git switch -c new-header",
+      "git add",
+      "git commit -m \"Change header\"",
+      "git switch main",
+      "git merge new-header"
+    ]
+  },
+  {
+    "id": "git-8",
+    "lang": "git",
+    "level": "Master",
+    "title": "Undo a pushed commit",
+    "task": "Commit 1a2b3c4 broke the site and it is already on GitHub. Undo it the safe way, then send the fix to GitHub.",
+    "solution": "git revert 1a2b3c4\ngit push",
+    "mustInclude": [
+      "git revert 1a2b3c4",
+      "git push"
+    ]
   }
 ]
