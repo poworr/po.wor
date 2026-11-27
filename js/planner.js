@@ -503,7 +503,7 @@ page.addEventListener('keydown', (event) => {
   event.preventDefault();
 });
 
-// ===== Hold ⌘ to see the bullets and keys =====
+// ===== Hold control to see the bullets and keys =====
 
 $('legend').textContent = BULLETS.map((b) =>
   b.symbol + '  ' + b.name.padEnd(6) + '  ctrl+' + b.ctrl + '   or type ' + b.type + ' and space').join('\n') +
@@ -511,8 +511,8 @@ $('legend').textContent = BULLETS.map((b) =>
   '\n\n# to ######  heading     ---  divider     >  quote\n**bold**  *italic*  ~~crossed~~  ==highlight==  `code`\n* ** *** at the end of a line  priority\n\ntype h1, hr, quote, bold, code ...  a list pops up\ntab uses it     ↑ ↓ + enter picks another     esc closes' +
   '\n\nkeys when you are not typing\nv  view mode   d  day   w  week   t  today   ← →  back / forward\nenter  start writing   esc  stop writing';
 
-document.addEventListener('keydown', (event) => { if (event.key === 'Meta') $('legend').hidden = false; });
-document.addEventListener('keyup', (event) => { if (event.key === 'Meta') $('legend').hidden = true; });
+document.addEventListener('keydown', (event) => { if (event.key === 'Control') $('legend').hidden = false; });
+document.addEventListener('keyup', (event) => { if (event.key === 'Control') $('legend').hidden = true; });
 window.addEventListener('blur', () => { $('legend').hidden = true; });
 
 // ===== Phone: a bullet bar just above the keyboard =====
