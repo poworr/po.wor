@@ -10,8 +10,10 @@
 const $ = (id) => document.getElementById(id);   // a short way to find an element by id
 
 let langs = [];            // [{ id, name, runs, items: [...] }, ...]
-let current = 'html';      // the language shown in the sidebar
+let current = 'all';       // the language shown in the sidebar ('all' = every language)
 let mode = 'syntax';       // which tab is open: syntax, lessons or test
+let playLang = 'html';     // the language the playground runs
+let playOpen = false;      // is the playground panel open on the right?
 
 // ===== Start: load the data, then draw the page =====
 async function start() {
@@ -24,9 +26,15 @@ async function start() {
 function render() {
   renderSidebar();
   $('syntax').hidden = mode !== 'syntax';
-  $('playground').hidden = mode !== 'syntax';
   $('lessons').hidden = mode !== 'lessons';
   $('test').hidden = mode !== 'test';
+  if (current !== 'all') playLang = current;
+
+  // The playground panel: only on the Syntax tab, and only when it's open
+  $('playground').hidden = mode !== 'syntax' || !playOpen;
+  document.querySelector('.layout').classList.toggle('with-playground', !$('playground').hidden);
+  $('toggle-playground').setAttribute('aria-pressed', playOpen);
+
   if (mode === 'syntax') { renderCards(); updatePlayground(); }
   if (mode === 'lessons') renderLessons();   // in practice.js
   if (mode === 'test') startTest();          // in practice.js
@@ -41,10 +49,11 @@ for (const button of document.querySelectorAll('#modes .btn')) {
   });
 }
 
-// Sidebar: one button per language, with "mastered / total"
+// Sidebar: "All" at the top, then one button per language, with "mastered / total"
 function renderSidebar() {
   $('languages').innerHTML = '';
-  for (const lang of langs) {
+  const all = { id: 'all', name: 'All', items: langs.flatMap((l) => l.items) };
+  for (const lang of [all].concat(langs)) {
     const done = lang.items.filter((item) => item.mastered).length;
     const button = document.createElement('button');
     button.innerHTML = '<span></span><span class="count"></span>';
@@ -62,11 +71,11 @@ function renderSidebar() {
   }
 }
 
-// Cards: while searching, look in all 9 languages; otherwise show the current one
+// Cards: with "All" or while searching, show all 9 languages; otherwise the current one
 function renderCards() {
   const search = $('search').value.trim().toLowerCase();
   const filter = $('filter').value;
-  const shown = search ? langs : langs.filter((l) => l.id === current);
+  const shown = search || current === 'all' ? langs : langs.filter((l) => l.id === current);
   $('cards').innerHTML = '';
 
   for (const lang of shown) {
@@ -120,7 +129,9 @@ function makeCard(lang, item) {
 
   // Put the syntax in the playground (for Terminal and Homebrew: the first line, in the terminal)
   card.querySelector('.try').addEventListener('click', () => {
-    current = lang.id;
+    if (current !== 'all') current = lang.id;
+    playLang = lang.id;
+    playOpen = true;
     render();
     const box = lang.runs === 'terminal' ? $('term-input') : $('code');
     box.value = lang.runs === 'terminal' ? item.syntax.split('\n')[0] : item.syntax;
@@ -163,7 +174,8 @@ function openForm(langId, item) {
   $('form-dialog').showModal();
 }
 
-$('add').addEventListener('click', () => openForm(current, null));
+$('add').addEventListener('click', () => openForm(current === 'all' ? 'html' : current, null));
+$('toggle-playground').addEventListener('click', () => { playOpen = !playOpen; render(); });
 $('cancel').addEventListener('click', () => $('form-dialog').close());
 
 $('form').addEventListener('submit', async (event) => {
@@ -207,7 +219,7 @@ const CSS_SAMPLE = `<h1>Heading</h1>
 
 async function runCode() {
   const code = $('code').value;
-  const lang = langs.find((l) => l.id === current);
+  const lang = langs.find((l) => l.id === playLang);
   const preview = $('preview');
   $('output').textContent = '';
 
@@ -244,7 +256,7 @@ window.addEventListener('message', (event) => {
 // Terminal and Homebrew get the practice terminal; the rest get the code box.
 // The frame is only for HTML, CSS and browser JavaScript.
 function updatePlayground() {
-  const lang = langs.find((l) => l.id === current);
+  const lang = langs.find((l) => l.id === playLang);
   $('playground-title').textContent = 'Playground · ' + lang.name;
   $('editor').hidden = lang.runs === 'terminal';
   $('terminal').hidden = lang.runs !== 'terminal';

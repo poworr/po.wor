@@ -32,6 +32,17 @@ header {
   gap: 24px;
   padding: 0 20px 40px;
 }
+/* When the playground is open: a third column on the right */
+.layout.with-playground {
+  grid-template-columns: 180px 1fr 420px;
+}
+#playground {
+  align-self: start;
+  position: sticky;            /* stays in view while you scroll the cards */
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
 
 footer {
   padding: 24px 20px 60px;
@@ -298,7 +309,12 @@ dialog {
 
 /* ===== Phones: sidebar goes on top ===== */
 @media (max-width: 700px) {
-  .layout {
+  .layout,
+  .layout.with-playground {
     grid-template-columns: 1fr;
+  }
+  #playground {
+    position: static;
+    max-height: none;
   }
 }

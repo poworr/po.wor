@@ -40,6 +40,7 @@
             <option value="mastered">Mastered</option>
           </select>
           <button class="btn" id="add">+ Add syntax</button>
+          <button class="btn" id="toggle-playground" aria-pressed="false">Playground</button>
         </div>
 
         <!-- Syntax cards (filled in by app.js) -->
@@ -90,26 +91,27 @@
         </div>
       </section>
 
-      <!-- ===== Practice Playground (under the syntax cards) ===== -->
-      <section id="playground">
-        <h2 class="tag" id="playground-title">Playground</h2>
-        <div id="editor">
-          <textarea id="code" class="code" spellcheck="false" placeholder="Type code here. ⌘↵ runs it."></textarea>
-          <div class="bar">
-            <button class="btn" id="run">Run ⌘↵</button>
-            <span class="muted" id="run-note"></span>
-          </div>
-          <iframe id="preview" class="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
-          <pre id="output" class="output"></pre>
-        </div>
-
-        <!-- The practice terminal (terminal.js): for Mac Terminal and Homebrew -->
-        <div id="terminal" hidden>
-          <pre id="term-output"></pre>
-          <div class="term-line"><span id="term-prompt"></span><input id="term-input" spellcheck="false" autocomplete="off" aria-label="Type a command"></div>
-        </div>
-      </section>
     </main>
+
+    <!-- ===== Practice Playground: the panel on the right (the Playground button opens it) ===== -->
+    <aside id="playground" hidden>
+      <h2 class="tag" id="playground-title">Playground</h2>
+      <div id="editor">
+        <textarea id="code" class="code" spellcheck="false" placeholder="Type code here. ⌘↵ runs it."></textarea>
+        <div class="bar">
+          <button class="btn" id="run">Run ⌘↵</button>
+          <span class="muted" id="run-note"></span>
+        </div>
+        <iframe id="preview" class="preview" sandbox="allow-scripts" title="Result" hidden></iframe>
+        <pre id="output" class="output"></pre>
+      </div>
+
+      <!-- The practice terminal (terminal.js): for Mac Terminal and Homebrew -->
+      <div id="terminal" hidden>
+        <pre id="term-output"></pre>
+        <div class="term-line"><span id="term-prompt"></span><input id="term-input" spellcheck="false" autocomplete="off" aria-label="Type a command"></div>
+      </div>
+    </aside>
   </div>
 
   <footer>&copy; 2026 po.wor</footer>

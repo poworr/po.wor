@@ -29,17 +29,19 @@ const STARTERS = {
 // ===== Lessons =====
 
 function renderLessons() {
-  const list = lessons.filter((l) => l.lang === current);
+  const list = lessons.filter((l) => current === 'all' || l.lang === current);
   if (!list.some((l) => l.id === lessonId)) {
     lessonId = (list.find((l) => !solved.includes(l.id)) || list[0] || {}).id;   // first unsolved one
   }
 
   // One button per lesson; ✓ for solved ones
   $('lesson-list').innerHTML = '';
-  list.forEach((l, i) => {
+  list.forEach((l) => {
+    const number = lessons.filter((x) => x.lang === l.lang).indexOf(l) + 1;   // its number within its language
+    const name = current === 'all' ? langs.find((x) => x.id === l.lang).name + ' ' : '';
     const button = document.createElement('button');
     button.className = 'btn small';
-    button.textContent = (i + 1) + '. ' + l.title + (solved.includes(l.id) ? ' ✓' : '');
+    button.textContent = name + number + '. ' + l.title + (solved.includes(l.id) ? ' ✓' : '');
     button.setAttribute('aria-pressed', l.id === lessonId);
     button.addEventListener('click', () => { lessonId = l.id; renderLessons(); });
     $('lesson-list').appendChild(button);
@@ -129,8 +131,10 @@ codeKeys($('lesson-code'), runLesson);   // codeKeys is in app.js
 let test = { items: [], index: 0, missed: [] };
 
 function startTest() {
-  const lang = langs.find((l) => l.id === current);
-  const shuffled = lang.items.slice().sort(() => Math.random() - 0.5);
+  // Every card, with its language name; with "All" picked, from every language
+  const cards = langs.filter((l) => current === 'all' || l.id === current)
+    .flatMap((l) => l.items.map((item) => ({ ...item, langName: l.name })));
+  const shuffled = cards.sort(() => Math.random() - 0.5);
   test = { items: shuffled.slice(0, 10), index: 0, missed: [] };
   $('test-done').hidden = true;
   showQuestion();
@@ -155,7 +159,7 @@ function showQuestion() {
 
   const item = test.items[test.index];
   $('test-progress').textContent = 'Question ' + (test.index + 1) + ' of ' + test.items.length;
-  $('test-category').textContent = item.category;
+  $('test-category').textContent = (current === 'all' ? item.langName + ' · ' : '') + item.category;
   $('test-question').textContent = item.explain;
   $('test-answer').value = '';
   $('test-answer').focus();
