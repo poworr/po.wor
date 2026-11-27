@@ -172,6 +172,18 @@ main {
   margin: 0;
   font-size: 16px;
 }
+.text a {
+  text-decoration: underline;   /* a project: click it to open */
+  text-underline-offset: 3px;
+}
+.text .icon {
+  display: inline-block;
+  width: 1.5em;   /* names line up after the icons */
+  text-decoration: none;
+}
+.text .icon:hover {
+  animation: bounce 0.6s ease;   /* the same bounce as the logo and the box */
+}
 
 .tag {
   font-weight: 700;
@@ -261,39 +273,6 @@ footer {
 .panel + .panel {
   margin-top: 16px;
 }
-
-/* ===== Projects page: left brain (logic) | right brain (creativity) ===== */
-.brain {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.brain section {
-  min-height: 160px;
-  padding: 0 20px;
-}
-.brain section:first-child {
-  padding-left: 0;
-  border-right: 1px solid #DCDCDC;   /* the line between the two halves */
-}
-
-/* small icons in a row, left to right */
-.icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.icon {
-  padding: 6px;
-  font-size: 20px;
-  line-height: 24px;
-}
-.icon span {
-  display: block;   /* so it can bounce */
-  min-width: 24px;
-  text-align: center;
-}
-.icon::after  { left: 0; }
-.icon::before { left: 14px; }
 
 /* ===== Japanese page ===== */
 .question {
