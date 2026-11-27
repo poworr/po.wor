@@ -209,14 +209,13 @@ function makeDoc(el, date, placeholder) {
 function draw(doc) {
   doc.el.innerHTML = '';
   doc.lines.forEach((line, i) => {
-    const typing = doc === current && i === at;
+    const typing = () => doc === current && i === at;
     const row = document.createElement('div');
     row.className = 'row';
-    row.append(typing ? page : show(line));
-    // mousedown would take the focus away and redraw before the click lands
-    row.addEventListener('mousedown', (event) => { if (!typing) event.preventDefault(); });
+    row.append(typing() ? page : show(line));
     row.addEventListener('click', (event) => {
-      if (typing) return;
+      if (typing()) return;
+      if (String(getSelection())) return;   // you selected text (to copy it): don't start typing
       if (event.target.classList.contains('bullet')) {   // click a • or ○: done
         doc.lines[i] = markDone(doc.lines[i]);
         saveDoc(doc);
@@ -235,7 +234,7 @@ function draw(doc) {
   doc.el.onmousedown = (event) => { if (event.target === doc.el) event.preventDefault(); };
   doc.el.onclick = (event) => {
     const last = doc.lines.length - 1;
-    if (event.target === doc.el) edit(doc, last, doc.lines[last].length);
+    if (event.target === doc.el && !String(getSelection())) edit(doc, last, doc.lines[last].length);
   };
 }
 
@@ -262,14 +261,15 @@ function show(line) {
   let m;
   if ((m = line.match(/^(#{1,6}) (.*)/))) return element('h' + m[1].length, m[2]);
   if (/^(---|<hr\s*\/?>)\s*$/i.test(line)) return document.createElement('hr');
-  if ((m = line.match(/^<(h[1-6]|p|div|blockquote)>(.*?)(<\/\1>)?$/i))) return element(m[1].toLowerCase(), m[2]);
+  if ((m = line.match(/^<(h[1-6]|p|div|blockquote)>(.*?)(<\/\1>)?$/i))) return element(m[1].toLowerCase().replace(/^p$/, 'div'), m[2]);
   if ((m = line.match(/^> ?(.*)/))) return element('blockquote', m[1]);
 
   // * ** or *** at the end: priority. The stars go, the line gets highlighted.
   const stars = line.match(/\s(\*{1,3})$/);
   if (stars) line = line.slice(0, -stars[0].length);
 
-  const p = element('p', line || ' ');   // an empty line keeps its height
+  // a div, not a p: copied text gets no blank line between lines
+  const p = element('div', line || ' ');   // an empty line keeps its height
   if (stars) p.className = 'priority-' + stars[1].length;
   if (/^[•×○⊗] /.test(line)) {           // a bullet you can click
     p.firstChild.textContent = p.firstChild.textContent.slice(1);
@@ -348,9 +348,13 @@ page.addEventListener('blur', () => {
   setTimeout(() => {
     if (document.activeElement !== page && current) {
       const doc = current;
+      const line = doc.lines[at];
+      const row = page.parentElement;
       current = null;
       at = -1;
-      draw(doc);
+      // Only the line you left changes, so a click or a text selection on another line still works
+      if (doc.lines.join('') === '') draw(doc);   // empty page: show the placeholder
+      else if (row) row.replaceChildren(show(line));
     }
   });
 });
