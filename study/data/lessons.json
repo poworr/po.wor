@@ -193,6 +193,21 @@
     ]
   },
   {
+    "id": "html-12",
+    "lang": "html",
+    "level": "Intermediate",
+    "title": "Stop the bubble",
+    "task": "Make a div with id=\"day\" holding a button with id=\"dot\". In a script, clicking the day shows \"open\" in the day; clicking the dot shows \"tick\" on the dot and uses event.stopPropagation() so the day does not open too. Click the dot to try it.",
+    "solution": "<div id=\"day\">day <button id=\"dot\">•</button></div>\n<script>\n  document.getElementById(\"day\").addEventListener(\"click\", () => {\n    document.getElementById(\"day\").append(\" open\");\n  });\n  document.getElementById(\"dot\").addEventListener(\"click\", (event) => {\n    event.stopPropagation();\n    event.target.textContent = \"tick\";\n  });\n</script>",
+    "mustInclude": [
+      "id=\"day\"",
+      "id=\"dot\"",
+      "addEventListener(\"click\"",
+      "event.stopPropagation()"
+    ],
+    "remember": "Events bubble up; stopPropagation pops the bubble."
+  },
+  {
     "id": "css-core-1",
     "lang": "css",
     "level": "Core",

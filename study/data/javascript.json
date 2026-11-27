@@ -1076,5 +1076,25 @@
     "remember": "End a line with +, carry on below.",
     "builtFrom": "string + string + string",
     "mastered": false
+  },
+  {
+    "id": "javascript-103",
+    "category": "Events",
+    "syntax": "document.body.innerHTML = '<div id=\"day\"><span id=\"dot\">•</span> call mum</div>';\ndocument.getElementById(\"day\").addEventListener(\"click\", () => console.log(\"open the day\"));\ndocument.getElementById(\"dot\").addEventListener(\"click\", (event) => {\n  event.stopPropagation();\n  console.log(\"tick the task\");\n});\ndocument.getElementById(\"dot\").click();",
+    "explain": "Event bubbling: a click on an inner element also reaches every element around it. event.stopPropagation() stops it there, so the outer click doesn't run too.",
+    "example": "po.wor: clicking a bullet in the week view ticks it without opening the day.",
+    "remember": "Events bubble up like air in water; stopPropagation pops the bubble.",
+    "builtFrom": "two listeners + a method call on the event object",
+    "mastered": false
+  },
+  {
+    "id": "javascript-104",
+    "category": "Arrays",
+    "syntax": "const lines = [\"• call mum\", \"notes\", \"○ dentist 14:00\"];\nlines.forEach((line, i) => {\n  if (!/^[•×○⊗] /.test(line.trim())) return;   // skip: not a task or event\n  console.log(i, line);\n});",
+    "explain": "Inside forEach, return only ends this one item's function, so it skips to the next item, like continue in a for loop.",
+    "example": "po.wor: the week view shows only tasks and events.",
+    "remember": "return in forEach = skip this one.",
+    "builtFrom": "array . forEach ( arrow function with if + return )",
+    "mastered": false
   }
 ]
