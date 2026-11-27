@@ -238,11 +238,97 @@ main {
 }
 
 footer {
-  padding: 24px 20px 60px;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;   /* icons on the left, © on the right */
+  align-items: center;
+  gap: 20px;
+  padding: 24px 20px 60px 10px;   /* left: 10px + half a slot lines the logo up with the one at the top */
   font-size: 12px;
   color: var(--muted);
   border-top: 1px solid var(--line);
+}
+
+/* ===== Footer icons (js/footer.js): one row, every icon in the same size slot.
+   More than fit? Slide left and right with two fingers on the trackpad. ===== */
+.footer-nav {
+  display: flex;
+  min-width: 0;                  /* can be narrower than its icons, then it scrolls */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* a swipe stops on an icon, not halfway */
+  scrollbar-width: none;         /* no scrollbar, just slide */
+  padding-top: 40px;             /* room for the bubbles (a scrolling box cuts off what sticks out) */
+  margin-top: -40px;
+  pointer-events: none;          /* that room doesn't block clicks on the page */
+  color: var(--text);
+}
+.footer-nav::-webkit-scrollbar { display: none; }
+footer > span {
+  flex: none;
+  white-space: nowrap;   /* the © stays on one line */
+}
+.footer-nav a {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;                   /* every slot the same: the spacing is even */
+  height: 36px;
+  padding: 0;
+  font-size: 18px;
+  opacity: 0.45;                 /* other pages: light */
+  pointer-events: auto;
+  scroll-snap-align: start;
+}
+.footer-nav a:hover,
+.footer-nav a[aria-current="page"] { opacity: 1; }   /* the page you're on: dark */
+.footer-nav span { display: block; }
+.footer-nav .logo { width: 24px; height: 24px; }
+
+/* footer bubbles open upward, from the middle of the slot */
+.footer-nav [data-tip]::after {
+  top: auto;
+  bottom: calc(100% + 6px);
+  left: 6px;
+  right: auto;
+}
+.footer-nav [data-tip]::before {
+  top: auto;
+  bottom: calc(100% + 2px);
+  left: 18px;
+  right: auto;
+  transform: translateY(4px) rotate(225deg);   /* the arrow points down at the icon */
+}
+.footer-nav [data-tip]:hover::before {
+  transform: translateY(0) rotate(225deg);
+}
+
+/* Computers: the footer hides until you point at the very bottom of the window.
+   Phones can't point, so they keep it. */
+@media (hover: hover) {
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    padding-bottom: 24px;
+    background: var(--bg);
+    transform: translateY(100%);
+    transition: transform 0.2s;
+  }
+  /* a thin strip above the hidden footer: point at it and the footer slides up */
+  footer::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+  }
+  footer:hover,
+  footer:focus-within {
+    transform: none;
+  }
 }
 
 /* =====================================================
@@ -560,6 +646,7 @@ footer {
 }
 .week-day {
   padding: 0 8px;
+  cursor: pointer;   /* click a day to open it */
   border-right: 1px solid var(--line);
 }
 .week-date {
@@ -571,8 +658,16 @@ footer {
   font-weight: bold;
   border-bottom-color: var(--text);
 }
-.week-day .doc {
+.week-list {
+  min-height: 55vh;
   font-size: 13px;
+  line-height: 1.8;
+}
+/* one line each: long text ends in … */
+.week-list .row > * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .week-day .row::before {
   display: none;   /* the columns are narrow, so no line numbers */
@@ -587,7 +682,7 @@ footer {
     padding: 0 0 16px;
     border-right: 0;
   }
-  .week-day .doc {
+  .week-list {
     min-height: 3.6em;
   }
 }

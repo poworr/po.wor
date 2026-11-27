@@ -75,7 +75,8 @@ function renderDay() {
   makeDoc($('doc'), day, '• start writing…');
 }
 
-// Week: Monday to Sunday side by side, each date with its own column to write in
+// Week: Monday to Sunday side by side. Only the tasks and events show, one line each.
+// Click a day (or anything in it) to open that day. Click a • or ○ to mark it done.
 function renderWeek() {
   const monday = addDays(day, -((day.getDay() + 6) % 7));
   const sunday = addDays(monday, 6);
@@ -92,14 +93,29 @@ function renderWeek() {
     heading.textContent = format(date, { weekday: 'short', day: 'numeric' });
     heading.classList.toggle('today', keyOf(date) === keyOf(new Date()));   // today is bold
 
-    const doc = document.createElement('div');   // the same rows as the day page
-    doc.className = 'doc';
+    const list = document.createElement('div');
+    list.className = 'week-list';
+    const lines = load(date).split('\n');
+    lines.forEach((line, i) => {
+      if (!/^[•×○⊗] /.test(line.trim())) return;   // not a task or an event: leave it out
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.append(show(line));
+      row.addEventListener('click', (event) => {
+        if (!event.target.classList.contains('bullet') || reading) return;
+        event.stopPropagation();   // just mark it done, stay on the week
+        lines[i] = markDone(line);
+        save(date, lines.join('\n'));
+        render();
+      });
+      list.appendChild(row);
+    });
 
     const column = document.createElement('div');   // one column per day
     column.className = 'week-day';
-    column.append(heading, doc);
+    column.append(heading, list);
+    column.addEventListener('click', () => { day = date; view = 'day'; render(); });   // open that day
     $('week').appendChild(column);
-    makeDoc(doc, date, '');
   }
 }
 
@@ -162,6 +178,7 @@ document.addEventListener('keydown', (event) => {
 // Enter: write at the end of today's page (or the first page on screen)
 function startWriting() {
   if (reading) return;
+  if (!shown.length) { view = 'day'; render(); }   // the week has nothing to type on: go to the day
   const doc = shown.find((d) => d.date !== TODO && keyOf(d.date) === keyOf(new Date())) || shown[0];
   edit(doc, doc.lines.length - 1, doc.lines[doc.lines.length - 1].length);
 }

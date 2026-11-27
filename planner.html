@@ -48,7 +48,7 @@
       <div class="doc" id="doc"></div>
     </section>
 
-    <!-- Week: Monday to Sunday, each date with the same rows as the day page (no times) -->
+    <!-- Week: Monday to Sunday, only the tasks and events, one line each. Click a day to open it. -->
     <section id="week-view" hidden>
       <div id="week"></div>
     </section>
@@ -72,7 +72,13 @@
     <div class="bullet-bar" id="bullet-bar" hidden></div>
   </main>
 
-  <footer>&copy; 2026 po.wor</footer>
+  <!-- Same footer on every page: icons to move around (bottom left, js/footer.js fills them in),
+       hidden until you point at the bottom -->
+  <footer>
+    <nav class="footer-nav" id="footer-nav"></nav>
+    <span>&copy; 2026 po.wor</span>
+  </footer>
+  <script src="js/footer.js"></script>
 
   <script src="js/planner.js"></script>
 </body>
