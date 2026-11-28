@@ -5,7 +5,8 @@
 //   { "id": "python", "group": "Languages", "title": "Python: readable and everywhere",
 //     "sections": [ { "h": "Its job", "p": ["..."], "code": "...", "bad": "...", "good": "...", "why": "..." } ],
 //     "check": [ { "q": "a question", "a": "its answer" } ],
-//     "sources": [ { "title": "PEP 8", "url": "https://..." } ] }
+//     "sources": [ { "title": "PEP 8", "url": "https://..." } ],
+//     "practise": "hardware" }   // optional: which lessons the Practise button opens (else the page id)
 // Every part of a section except "h" is optional.
 
 let pages = [];
@@ -79,11 +80,13 @@ function renderPage(page) {
     learn.appendChild(details);
   }
 
-  // A language page leads to its lessons
-  if (langs.some((l) => l.id === page.id)) {
-    const practice = el('button', '→ Practise it: open the ' + page.title.split(':')[0] + ' lessons', 'btn');
+  // A language page leads to its lessons. Other pages can name theirs: "practise": "hardware"
+  const lessonLang = page.practise || page.id;
+  const lang = langs.find((l) => l.id === lessonLang);
+  if (lang) {
+    const practice = el('button', '→ Practise it: open the ' + lang.name + ' lessons', 'btn');
     practice.addEventListener('click', () => {
-      current = page.id;
+      current = lessonLang;
       setMode('lessons');   // in app.js
     });
     learn.appendChild(practice);

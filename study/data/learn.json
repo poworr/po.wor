@@ -1252,7 +1252,8 @@
         "title": "Wikipedia: Moore's law",
         "url": "https://en.wikipedia.org/wiki/Moore%27s_law"
       }
-    ]
+    ],
+    "practise": "hardware"
   },
   {
     "id": "hw-making",
@@ -1325,7 +1326,8 @@
         "title": "Wikipedia: Extreme ultraviolet lithography",
         "url": "https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography"
       }
-    ]
+    ],
+    "practise": "hardware"
   },
   {
     "id": "hw-soc",
@@ -1388,7 +1390,8 @@
         "title": "Wikipedia: Package on a package",
         "url": "https://en.wikipedia.org/wiki/Package_on_a_package"
       }
-    ]
+    ],
+    "practise": "hardware"
   },
   {
     "id": "hw-iphone",
@@ -1446,7 +1449,8 @@
         "title": "iFixit: iPhone 1st Generation Teardown",
         "url": "https://www.ifixit.com/Teardown/iPhone+1st+Generation+Teardown/599"
       }
-    ]
+    ],
+    "practise": "hardware"
   },
   {
     "id": "hw-ipad",
@@ -1511,7 +1515,8 @@
         "title": "iFixit: iPad Wi-Fi Teardown",
         "url": "https://www.ifixit.com/Teardown/iPad+Wi-Fi+Teardown/2183"
       }
-    ]
+    ],
+    "practise": "hardware"
   },
   {
     "id": "hw-apple-silicon",
@@ -1576,6 +1581,7 @@
         "title": "Wikipedia: Apple A7",
         "url": "https://en.wikipedia.org/wiki/Apple_A7"
       }
-    ]
+    ],
+    "practise": "hardware"
   }
 ]

@@ -35,6 +35,7 @@ const LANGS = [
   { id: 'terminal',   name: 'Mac Terminal', runs: 'terminal' },
   { id: 'homebrew',   name: 'Homebrew',     runs: 'terminal' },
   { id: 'git',        name: 'Git',          runs: 'terminal' },
+  { id: 'hardware',   name: 'Hardware',     runs: 'server' },     // written in JavaScript, run by Node
   { id: 'shortcuts',  name: 'Shortcuts',    runs: 'none' }
 ];
 
@@ -128,7 +129,7 @@ async function runCode(lang, code, dir) {
     fs.writeFileSync(path.join(dir, 'main.py'), code);
     return (await run('python3', ['main.py'], dir, 10)).text;
   }
-  if (lang === 'node') {
+  if (lang === 'node' || lang === 'hardware') {
     fs.writeFileSync(path.join(dir, 'main.js'), code);
     return (await run('node', ['main.js'], dir, 10)).text;
   }

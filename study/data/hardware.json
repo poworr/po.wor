@@ -1,0 +1,82 @@
+[
+  {
+    "id": "hardware-1",
+    "category": "Bits",
+    "syntax": "(5).toString(2)   // '101'",
+    "explain": "toString(2) writes a number in base 2: only 1s and 0s, the way the chip stores it.",
+    "example": "Hardware lesson 1: count in binary.",
+    "builtFrom": "a method call on a number, with the base as the argument",
+    "remember": "The 2 is the base: 2 digits, 0 and 1.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-2",
+    "category": "Bits",
+    "syntax": "parseInt('101', 2)   // 5",
+    "explain": "parseInt with 2 reads text of 1s and 0s back into a normal number.",
+    "example": "Reading a binary number someone wrote down.",
+    "builtFrom": "a function call with two arguments: the text and the base",
+    "remember": "toString(2) goes number → bits, parseInt(…, 2) goes bits → number.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-3",
+    "category": "Bits",
+    "syntax": "'101'.padStart(4, '0')   // '0101'",
+    "explain": "padStart adds 0s to the front until the text is 4 long, so every number shows the same number of bits.",
+    "example": "Hardware lessons: printing bits in tidy columns.",
+    "builtFrom": "a string method with a length and the text to fill with",
+    "remember": "Pad at the start, like the leading zeros on a car's mileage counter.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-4",
+    "category": "Gates",
+    "syntax": "a & b   // AND: 1 only if both are 1",
+    "explain": "One & works on bits: it gives 1 only when both bits are 1. It is an AND gate written as code. (&& is for true/false, & is for bits.)",
+    "example": "Hardware lesson 2: logic gates. The carry in an adder.",
+    "builtFrom": "an operator between two numbers",
+    "remember": "One & for bits, two && for true/false.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-5",
+    "category": "Gates",
+    "syntax": "a | b   // OR: 1 if either is 1",
+    "explain": "One | gives 1 when at least one bit is 1: an OR gate.",
+    "example": "Hardware lesson 2: logic gates.",
+    "builtFrom": "an operator between two numbers",
+    "remember": "The | is a wall with a gap on either side: either way gets through.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-6",
+    "category": "Gates",
+    "syntax": "a ^ b   // XOR: 1 if they are different",
+    "explain": "^ is XOR (exclusive or): 1 when the two bits are different, 0 when they are the same. It is the sum bit when you add two bits.",
+    "example": "Hardware lesson 3: a half adder.",
+    "builtFrom": "an operator between two numbers",
+    "remember": "XOR asks \"are they different?\" 1 + 1 = 10 in binary, so the sum bit is 0.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-7",
+    "category": "Gates",
+    "syntax": "1 - a   // NOT for one bit",
+    "explain": "NOT turns 1 into 0 and 0 into 1. For a single bit, 1 - a does it simply.",
+    "example": "Hardware lesson 2: logic gates.",
+    "builtFrom": "subtraction",
+    "remember": "NOT flips: 1 - 1 = 0, 1 - 0 = 1.",
+    "mastered": false
+  },
+  {
+    "id": "hardware-8",
+    "category": "Bits",
+    "syntax": "(n >> i) & 1   // bit number i of n",
+    "explain": ">> shifts the bits to the right by i places; & 1 then keeps only the last bit. Together they read one bit out of a number.",
+    "example": "Hardware lesson 4: add two numbers with gates.",
+    "builtFrom": "a shift operator, then & with 1",
+    "remember": "Shift it to the end, then look at the end.",
+    "mastered": false
+  }
+]

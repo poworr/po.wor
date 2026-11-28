@@ -1547,5 +1547,93 @@
       "git push"
     ],
     "walkthrough": "git revert 1a2b3c4 makes a new commit that undoes the changes of commit 1a2b3c4. The old commit stays in the history.\n1a2b3c4 is the argument: the short id of the bad commit, which you can find with git log --oneline.\nGit opens an editor with a ready-made message. Save and close it to finish.\ngit push sends the new undo commit to GitHub. Nothing that is already there gets rewritten, so it is safe for everyone.\nCommon mistake: using git reset to remove a commit that is already pushed. Your next git push is rejected, because your history no longer matches GitHub's."
+  },
+  {
+    "id": "hardware-1",
+    "lang": "hardware",
+    "level": "Beginner",
+    "title": "Count in binary",
+    "task": "A chip stores everything as 1s and 0s. Print the numbers 0 to 7 in binary, each as 3 digits, like \"5 = 101\".",
+    "solution": "for (let n = 0; n <= 7; n++) {\n  const bits = n.toString(2).padStart(3, \"0\");\n  console.log(n + \" = \" + bits);\n}",
+    "remember": "toString(2) turns a number into bits; padStart lines them up.",
+    "expected": "0 = 000\n1 = 001\n2 = 010\n3 = 011\n4 = 100\n5 = 101\n6 = 110\n7 = 111",
+    "walkthrough": "The loop goes n = 0, 1, 2 … 7.\nn.toString(2) writes n in base 2: 5 becomes \"101\", 2 becomes \"10\".\npadStart(3, \"0\") adds 0s in front until there are 3 digits, so 2 shows as \"010\".\nconsole.log prints \"number = bits\" on its own line.\nWhy it matters: 3 bits (3 switches) can hold 8 different numbers, 0 to 7. Every extra bit doubles it.\nCommon mistake: n <= 7 vs n < 7. With < you stop at 6 and miss 111."
+  },
+  {
+    "id": "hardware-2",
+    "lang": "hardware",
+    "level": "Beginner",
+    "title": "Logic gates",
+    "task": "Write and(a, b), or(a, b) and not(a) that work on bits (0 or 1). Then print the truth table: for every a and b, print \"a b | AND OR\", like \"1 0 | 0 1\".",
+    "solution": "const and = (a, b) => a & b;\nconst or = (a, b) => a | b;\nconst not = (a) => 1 - a;\n\nfor (const a of [0, 1]) {\n  for (const b of [0, 1]) {\n    console.log(a + \" \" + b + \" | \" + and(a, b) + \" \" + or(a, b));\n  }\n}\nconsole.log(\"NOT 1 = \" + not(1));",
+    "remember": "AND needs both, OR needs one, NOT flips.",
+    "expected": "0 0 | 0 0\n0 1 | 0 1\n1 0 | 0 1\n1 1 | 1 1\nNOT 1 = 0",
+    "walkthrough": "and uses one & : on bits it gives 1 only when both are 1. That is two switches in a row.\nor uses one | : 1 if either is 1. That is two switches side by side.\nnot is 1 - a: it flips 0 and 1.\nThe two loops try every pair: 0 0, 0 1, 1 0, 1 1. That is the whole truth table.\nThe last line checks not: NOT 1 = 0.\nCommon mistake: writing && instead of &. With 0 and 1 it happens to give the same answers, but && is for true/false. With bigger numbers it goes wrong: 2 && 1 is 1, while 2 & 1 is 0 (no bits in common). Use & for bits."
+  },
+  {
+    "id": "hardware-3",
+    "lang": "hardware",
+    "level": "Intermediate",
+    "title": "A half adder",
+    "task": "Add two bits with gates. The sum bit is a ^ b (XOR) and the carry is a & b (AND). For every a and b, print \"a + b = carry sum\", like \"1 + 1 = 10\".",
+    "solution": "for (const a of [0, 1]) {\n  for (const b of [0, 1]) {\n    const sum = a ^ b;\n    const carry = a & b;\n    console.log(a + \" + \" + b + \" = \" + carry + sum);\n  }\n}",
+    "remember": "Sum = XOR, carry = AND.",
+    "expected": "0 + 0 = 00\n0 + 1 = 01\n1 + 0 = 01\n1 + 1 = 10",
+    "walkthrough": "In binary, 1 + 1 = 10: write 0, carry 1. That is just like 5 + 5 = 10 in normal numbers.\nsum = a ^ b is 1 only when the bits are different (0+1 or 1+0).\ncarry = a & b is 1 only when both are 1 (1+1).\ncarry + sum here joins two numbers as text, because the string before it (\"… = \") turns + into joining. So 1 and 0 print as \"10\".\nThis is the start of every adder in a real CPU: two gates, two bits in, two bits out.\nCommon mistake: printing sum then carry. The carry is the bigger place, so it goes first, on the left."
+  },
+  {
+    "id": "hardware-4",
+    "lang": "hardware",
+    "level": "Advanced",
+    "title": "Add two numbers with gates",
+    "task": "Add 5 and 6 the way a chip does: one bit at a time, using only ^, & and | and a carry. Go through bits 0 to 3 (bit i of n is (n >> i) & 1). Print \"0101 + 0110 = 1011\" and then \"11\".",
+    "solution": "const a = 5;\nconst b = 6;\nlet carry = 0;\nlet result = 0;\n\nfor (let i = 0; i < 4; i++) {\n  const x = (a >> i) & 1;\n  const y = (b >> i) & 1;\n  const sum = x ^ y ^ carry;\n  carry = (x & y) | (carry & (x ^ y));\n  result = result | (sum << i);\n}\n\nconst show = (n) => n.toString(2).padStart(4, \"0\");\nconsole.log(show(a) + \" + \" + show(b) + \" = \" + show(result));\nconsole.log(result);",
+    "remember": "One full adder per bit; the carry walks to the left.",
+    "expected": "0101 + 0110 = 1011\n11",
+    "walkthrough": "The loop goes through bit 0 (the right end) to bit 3, the way you add on paper from right to left.\n(a >> i) & 1 reads bit i: shift it to the end, keep only the end.\nsum = x ^ y ^ carry: the bit for this place, counting the carry from the place before.\ncarry = (x & y) | (carry & (x ^ y)): carry on if both bits are 1, or if one is 1 and a carry came in.\nresult | (sum << i) puts the sum bit back into place i.\nThat is a full adder, four times in a row. A real 64-bit CPU has the same thing, 64 wide, built from transistors.\nCommon mistake: forgetting to add the carry into sum. Then 0101 + 0110 gives 0011 instead of 1011."
+  },
+  {
+    "id": "hardware-5",
+    "lang": "hardware",
+    "level": "Beginner",
+    "title": "Clock speed",
+    "task": "The first iPhone's chip could run at 620 MHz, but Apple slowed it to 412 MHz to save battery. 1 MHz is a million ticks a second. For both speeds, print how many seconds a billion ticks take, with 2 decimals, like \"412 MHz: 2.43 s\".",
+    "solution": "const ticks = 1000000000;\n\nfor (const mhz of [412, 620]) {\n  const perSecond = mhz * 1000000;\n  const seconds = ticks / perSecond;\n  console.log(mhz + \" MHz: \" + seconds.toFixed(2) + \" s\");\n}",
+    "remember": "MHz = millions of ticks per second. Time = work ÷ speed.",
+    "expected": "412 MHz: 2.43 s\n620 MHz: 1.61 s",
+    "walkthrough": "ticks is the work: a billion steps.\nmhz * 1000000 turns MHz into ticks per second: 412 MHz is 412,000,000.\nticks / perSecond is how long the work takes, like distance ÷ speed.\ntoFixed(2) rounds to 2 decimals: 2.43 and 1.61.\nSo the slower chip takes about 50% longer, but uses less power and makes less heat. That is the trade-off.\nCommon mistake: dividing the other way (perSecond / ticks), which gives ticks per second ÷ work: a number that means nothing here."
+  },
+  {
+    "id": "hardware-6",
+    "lang": "hardware",
+    "level": "Beginner",
+    "title": "Battery life",
+    "task": "The first iPad's battery holds 24.8 watt-hours (Wh). Watching a video it uses about 2.5 watts. Print how many hours it lasts, rounded to a whole number: \"About 10 hours\". Then, with a brighter screen at 4 watts: \"About 6 hours\".",
+    "solution": "const battery = 24.8;   // watt-hours\n\nfor (const watts of [2.5, 4]) {\n  const hours = battery / watts;\n  console.log(\"About \" + Math.round(hours) + \" hours\");\n}",
+    "remember": "Hours = watt-hours ÷ watts.",
+    "expected": "About 10 hours\nAbout 6 hours",
+    "walkthrough": "Watt-hours is how much energy the battery holds. Watts is how fast the iPad uses it.\nbattery / watts is how long it lasts: 24.8 / 2.5 = 9.92 hours.\nMath.round rounds to the nearest whole number: 10. With 4 watts, 6.2 becomes 6.\nThis is why a tablet is mostly battery: the big screen is the part that uses the watts.\nCommon mistake: Math.floor instead of Math.round. Floor always rounds down, so 9.92 would print 9."
+  },
+  {
+    "id": "hardware-7",
+    "lang": "hardware",
+    "level": "Intermediate",
+    "title": "Good chips on a wafer",
+    "task": "After a wafer is made, every chip (die) on it is tested. Here are the results: const dies = [\"ok\", \"ok\", \"bad\", \"ok\", \"bad\", \"ok\", \"ok\", \"ok\", \"ok\", \"bad\"]. Print how many are good and the percent: \"7 of 10 good (70%)\".",
+    "solution": "const dies = [\"ok\", \"ok\", \"bad\", \"ok\", \"bad\", \"ok\", \"ok\", \"ok\", \"ok\", \"bad\"];\n\nconst good = dies.filter((die) => die === \"ok\").length;\nconst percent = Math.round((good / dies.length) * 100);\nconsole.log(good + \" of \" + dies.length + \" good (\" + percent + \"%)\");",
+    "remember": "filter keeps the matches, .length counts them.",
+    "expected": "7 of 10 good (70%)",
+    "walkthrough": "Each item in dies is one tested chip.\nfilter((die) => die === \"ok\") keeps only the good ones, and .length counts them: 7.\ngood / dies.length is the share that works: 0.7. Times 100 gives 70.\nFactories call this the yield. A speck of dust or a tiny flaw makes a bad die, which is why fabs are so clean, and why big chips (more room for a flaw) cost more.\nCommon mistake: = instead of === inside filter. = sets a value; === compares."
+  },
+  {
+    "id": "hardware-8",
+    "lang": "hardware",
+    "level": "Intermediate",
+    "title": "Fast and slow cores",
+    "task": "The M1 has performance cores and efficiency cores. Send each job to a core: size 50 or more goes to \"performance\", smaller goes to \"efficiency\". Jobs: const jobs = [{ name: \"export video\", size: 90 }, { name: \"check mail\", size: 5 }, { name: \"game\", size: 70 }, { name: \"music\", size: 10 }]. Print \"export video → performance\" and so on.",
+    "solution": "const jobs = [\n  { name: \"export video\", size: 90 },\n  { name: \"check mail\", size: 5 },\n  { name: \"game\", size: 70 },\n  { name: \"music\", size: 10 }\n];\n\nfor (const job of jobs) {\n  const core = job.size >= 50 ? \"performance\" : \"efficiency\";\n  console.log(job.name + \" → \" + core);\n}",
+    "remember": "Big work to the fast cores, small work to the frugal ones.",
+    "expected": "export video → performance\ncheck mail → efficiency\ngame → performance\nmusic → efficiency",
+    "walkthrough": "jobs is a list of objects; each has a name and a size.\nThe loop takes them one by one.\njob.size >= 50 ? \"performance\" : \"efficiency\" picks the core: a short if/else that gives back a value.\nReal chips decide this all the time, many times a second, so hard work is quick and small work saves battery.\nCommon mistake: > instead of >=. Then a job of exactly 50 would go to the slow cores."
   }
 ]

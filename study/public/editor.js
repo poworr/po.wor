@@ -8,7 +8,8 @@
 // Our language ids → Monaco's language ids
 const MONACO_LANGS = {
   html: 'html', css: 'css', javascript: 'javascript', node: 'javascript',
-  python: 'python', c: 'c', cpp: 'cpp', terminal: 'shell', homebrew: 'shell', git: 'shell'
+  python: 'python', c: 'c', cpp: 'cpp', terminal: 'shell', homebrew: 'shell', git: 'shell',
+  hardware: 'javascript'
 };
 
 // app.js and practice.js call this when the language changes
