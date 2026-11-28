@@ -784,5 +784,15 @@
     "remember": ":is = \"any of these\". Write the long part once.",
     "builtFrom": "selector + :is( list ) { property: value }",
     "mastered": false
+  },
+  {
+    "id": "css-74",
+    "category": "Layout",
+    "syntax": ".write-list span {\n  display: contents;\n}",
+    "explain": "The element's own box disappears, and its children act like children of its parent. Its children stay; only the wrapper stops taking part in the layout.",
+    "example": "A <span> wrapped around some buttons: with display: contents on the span, the buttons line up in the parent's flex column as if the span weren't there.",
+    "builtFrom": "a selector, then one declaration: property: value;",
+    "remember": "\"contents\" = keep the contents, lose the box.",
+    "mastered": false
   }
 ]

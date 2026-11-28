@@ -222,6 +222,24 @@
     "walkthrough": "<div id=\"day\"> holds a button with id=\"dot\". The button is nested inside the div.\naddEventListener(\"click\", ...) runs a function each time the element is clicked. The day's function adds the text \" open\".\nA click on the dot bubbles: the dot's listener runs, then the click travels up to the day and its listener runs too.\nevent.stopPropagation() stops that trip up, so the day's listener never runs. event.target is the element clicked, the button, and its text becomes \"tick\".\nThe script comes after the HTML, so the elements already exist when getElementById looks for them.\nCommon mistake: writing event.stopPropagation without (). That only names the method and does not call it, so the click still bubbles."
   },
   {
+    "id": "html-13",
+    "lang": "html",
+    "level": "Intermediate",
+    "title": "Two pages in one file",
+    "task": "Make a div id=\"list\" with a button id=\"open\", and a hidden div id=\"note\" with a button id=\"back\". In a script, write render(): show the note when location.hash is \"#note\", otherwise the list. \"open\" sets location.hash = \"note\", \"back\" sets it to \"\". Call render on the hashchange event and once at the start.",
+    "solution": "<div id=\"list\">\n  <button id=\"open\">Open the note</button>\n</div>\n<div id=\"note\" hidden>\n  <p>The note</p>\n  <button id=\"back\">Back</button>\n</div>\n<script>\n  function render() {\n    const open = location.hash === \"#note\";\n    document.getElementById(\"list\").hidden = open;\n    document.getElementById(\"note\").hidden = !open;\n  }\n  document.getElementById(\"open\").addEventListener(\"click\", () => { location.hash = \"note\"; });\n  document.getElementById(\"back\").addEventListener(\"click\", () => { location.hash = \"\"; });\n  window.addEventListener(\"hashchange\", render);\n  render();\n</script>",
+    "mustInclude": [
+      "id=\"list\"",
+      "id=\"note\"",
+      "location.hash === \"#note\"",
+      "location.hash = \"note\"",
+      "addEventListener(\"hashchange\", render)",
+      "render();"
+    ],
+    "remember": "Buttons change the hash; hashchange calls render; render shows the page for that hash.",
+    "walkthrough": "The two divs are the two \"pages\". The note starts hidden, so the list shows first.\nrender() reads location.hash. When it is \"#note\", open is true: the list is hidden and the note is shown. Otherwise it is the other way round.\nThe buttons don't show or hide anything themselves. They only change location.hash, and the browser fires hashchange, which calls render.\nrender() is also called once at the start, so a page opened with #note already in the address shows the note.\nOn a real website, each hash change is a step in the history, so the browser's back button returns to the list, like on the po.wor write page.\nCommon mistake: forgetting the # in the comparison. location.hash gives \"#note\", so location.hash === \"note\" is never true."
+  },
+  {
     "id": "css-core-1",
     "lang": "css",
     "level": "Core",
@@ -701,6 +719,28 @@
     "remember": "true - false = 1, so b - a puts the trues first. Sort keeps ties in order.",
     "expected": "• call mum\n• buy milk\nnotes\nidea\nend",
     "walkthrough": "lines is an array of strings. isTask is an arrow function that returns true when a line starts with \"• \".\n[...lines] copies the array first, because sort changes the array it is called on.\n.sort((a, b) => isTask(b) - isTask(a)) compares two lines at a time. Subtracting booleans turns them into numbers, 1 for true and 0 for false.\nIf b is a task and a is not, the result is 1, which puts b first. When both are the same, it is 0, and sort keeps their original order.\nSo the two tasks come first, then notes, idea, end, and the for...of loop prints each line.\nCommon mistake: sorting lines directly without the copy. It works, but the original lines array is changed too, which surprises any code that still uses it."
+  },
+  {
+    "id": "javascript-22",
+    "lang": "javascript",
+    "level": "Beginner",
+    "title": "Newest on top",
+    "task": "Start with const notes = [\"old note\"]. Add \"new note\", then \"newest\", both to the front with unshift. Print each note on its own line.",
+    "solution": "const notes = [\"old note\"];\nnotes.unshift(\"new note\");\nnotes.unshift(\"newest\");\nfor (const note of notes) console.log(note);",
+    "expected": "newest\nnew note\nold note",
+    "remember": "unshift = front, push = back.",
+    "walkthrough": "notes starts as an array with one string, \"old note\".\nnotes.unshift(\"new note\") puts \"new note\" in front of it, so the array is [\"new note\", \"old note\"].\nnotes.unshift(\"newest\") puts \"newest\" in front again, so the last one added is first.\nThe for...of loop prints each note from the front, so newest comes out first.\nCommon mistake: using push. Push adds to the end, so the order comes out oldest first."
+  },
+  {
+    "id": "javascript-23",
+    "lang": "javascript",
+    "level": "Intermediate",
+    "title": "A word counter",
+    "task": "const text = \"  The quick  brown\\nfox  \"; Count its words with split(/\\s+/) and filter(Boolean), and print \"4 words\".",
+    "solution": "const text = \"  The quick  brown\\nfox  \";\nconst count = text.split(/\\s+/).filter(Boolean).length;\nconsole.log(count + \" words\");",
+    "expected": "4 words",
+    "remember": "Split on spaces, drop the empties, count.",
+    "walkthrough": "text has spaces at both ends, two spaces in the middle and a new line (\\n).\nsplit(/\\s+/) cuts at every run of whitespace. Because the text starts and ends with spaces, you get [\"\", \"The\", \"quick\", \"brown\", \"fox\", \"\"].\nfilter(Boolean) calls Boolean on each piece. The empty string \"\" is false, so it is dropped, and the four words stay.\n.length is 4, and console.log prints \"4 words\".\nCommon mistake: split(\" \") with one space. Then every extra space makes another empty piece, and the new line is not a split at all, so you get the wrong count."
   },
   {
     "id": "node-core-1",

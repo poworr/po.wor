@@ -1106,5 +1106,65 @@
     "remember": "true counts as 1, false as 0. b - a = the trues go first.",
     "builtFrom": "array . map ( arrow ) . sort ( arrow with booleans )",
     "mastered": false
+  },
+  {
+    "id": "javascript-106",
+    "category": "Arrays",
+    "syntax": "const pieces = [\"old\"];\npieces.unshift(\"new\");\nconsole.log(pieces);   // [\"new\", \"old\"]",
+    "explain": "unshift puts a value on the front of an array; push puts it on the end. It returns the new length.",
+    "example": "po.wor write page: pieces.unshift(''); at = 0; starts a new piece on top.",
+    "builtFrom": "an array, a dot, a method call",
+    "remember": "push and pop work at the back; unshift and shift work at the front. \"un-shift\" makes room at the front.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-107",
+    "category": "Text boxes",
+    "syntax": "document.execCommand('insertText', false, '  ');",
+    "explain": "Types text into the focused box as if you typed it, so ⌘Z can undo it. Setting box.value directly wipes the undo history. execCommand is marked deprecated, but browsers still support it and nothing else keeps undo.",
+    "example": "po.wor write page: Tab in a textarea inserts two spaces.",
+    "builtFrom": "an object (document), a method call, three values: a command name, false, the text",
+    "remember": "execCommand = \"pretend the user typed this\". Use it when ⌘Z must still work.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-108",
+    "category": "Strings",
+    "syntax": "const words = text.split(/\\s+/).filter(Boolean).length;",
+    "explain": "Counts words: split cuts the text at every run of spaces, tabs or new lines (\\s+), filter(Boolean) drops the empty strings left at the ends, and length counts what is left.",
+    "example": "po.wor write page: the word count.",
+    "builtFrom": "a method chain: split with a regex, filter with a function, then .length",
+    "remember": "Boolean is a function that turns \"\" into false, so filter(Boolean) keeps only real words.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-109",
+    "category": "Events",
+    "syntax": "location.hash = w.id;\nwindow.addEventListener('hashchange', render);",
+    "explain": "location.hash is the part of the address after #. Changing it doesn't load a new page, but it adds a step to the history, so the browser's back button goes back to the old hash. The hashchange event fires every time it changes, so one render function can show the right \"page\".",
+    "example": "po.wor write page: the address ends in #id while a writing is open, and back returns to the list.",
+    "builtFrom": "an object property (location.hash) set with =, then addEventListener with an event name and a function",
+    "remember": "# = \"a place on this same page\". Change it, and hashchange tells you.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-110",
+    "category": "Numbers",
+    "syntax": "const id = Date.now().toString(36);   // e.g. \"mx03349j\"",
+    "explain": "Date.now() is the milliseconds since 1970. toString(36) writes that number in base 36 (0-9 then a-z), which makes a short id. Two ids made in the same millisecond would be the same, which is fine for things you make by clicking.",
+    "example": "po.wor write page: { id: Date.now().toString(36), title: '', text: '' } for a new writing.",
+    "builtFrom": "a call (Date.now()), then a method call on the number it returns, with one value: the base",
+    "remember": "Base 36 = 10 digits + 26 letters. The clock always moves on, so the next id is new.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-111",
+    "category": "Types",
+    "syntax": "$('list-view').hidden = !!open;",
+    "explain": "One ! flips a value to its opposite true or false; the second ! flips it back. So !! turns anything into a real true or false: !!\"\" is false, !!\"hi\" is true, !!null is false, !!{} is true.",
+    "example": "po.wor write page: $('list-view').hidden = !!open; hides the list while a writing is open.",
+    "builtFrom": "the ! operator, twice",
+    "remember": "!! = \"is there something here?\" as true or false. Same as Boolean(value).",
+    "mastered": false
   }
 ]
