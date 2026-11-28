@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write — po.wor</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- planner-page: plain white or black, and the header hides like on the planner -->
+<body class="planner-page">
+
+  <!-- Same header as the homepage -->
+  <header>
+    <a class="home" href="index.html" data-tip="Home?"><img class="logo" src="images/logo.png" alt="po.wor"></a>
+    <a class="plan" href="planner.html" aria-label="Planner" data-tip="Plan"><span>•</span></a>
+    <a class="box" href="box.html" aria-label="box" data-tip="Inside the box">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/>
+        <path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>
+        <path class="lid" d="M4 7.5 L12 3 L20 7.5 L12 12 Z"/>
+      </svg>
+    </a>
+  </header>
+
+  <!-- Songs, lyrics and stories. Everything is saved in this browser only. -->
+  <main class="planner">
+
+    <!-- The list: every writing, newest on top (js/write.js fills it in) -->
+    <section id="list-view">
+      <button id="new" title="new writing (n)">+ new</button>
+      <ul class="write-list" id="list"></ul>
+    </section>
+
+    <!-- The writing: an empty page. The topic is optional. -->
+    <section id="write-view" hidden>
+      <button id="back" title="back to the list (esc)">&lt; all writings</button>
+      <input class="write-title" id="title" placeholder="untitled" spellcheck="false">
+      <textarea class="write-text" id="page" spellcheck="false" placeholder="start writing…"></textarea>
+      <p class="write-count"><span id="count"></span> <span id="note"></span></p>
+    </section>
+
+    <!-- Shows while you hold control -->
+    <pre class="legend" id="legend" hidden></pre>
+  </main>
+
+  <!-- Same footer on every page: icons to move around (bottom left, js/footer.js fills them in),
+       hidden until you point at the bottom -->
+  <footer>
+    <nav class="footer-nav" id="footer-nav"></nav>
+    <span>&copy; 2026 po.wor</span>
+  </footer>
+  <script src="js/footer.js"></script>
+
+  <script src="js/write.js"></script>
+</body>
+</html>

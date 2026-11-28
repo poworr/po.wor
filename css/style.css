@@ -746,6 +746,55 @@ footer > span {
   }
 }
 
+/* ===== Write page: a list of writings, and an empty page to write on ===== */
+#new,
+#back {
+  margin: 0 0 16px -6px;   /* line the text up with the edge, like the planner bar */
+}
+.write-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.write-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.write-list li:hover,
+.write-list li.on {   /* .on: picked with j / k */
+  border-bottom-color: var(--text);
+}
+.write-list .untitled {
+  color: var(--muted);
+}
+.write-title,
+.write-text {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  outline: none;
+}
+.write-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+.write-text {
+  min-height: 70vh;
+  line-height: 1.8;
+  resize: none;
+}
+.write-count {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: pre;
+}
+
 /* Todo: a short message after a task moves to a day */
 .planner-note {
   padding: 2px 6px;
