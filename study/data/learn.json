@@ -1182,5 +1182,400 @@
         "url": "https://cbea.ms/git-commit/"
       }
     ]
+  },
+  {
+    "id": "hw-chip",
+    "group": "Hardware",
+    "title": "What a chip is: billions of tiny switches",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "A chip is a small piece of silicon covered in billions of transistors: switches with no moving parts that turn electricity on or off."
+        ]
+      },
+      {
+        "h": "A switch is a 1 or a 0",
+        "p": [
+          "A transistor has three legs. A small voltage on the middle one (the gate) lets current flow between the other two. Current flowing means 1, no current means 0.",
+          "That is all the computer knows: 1 and 0. Every number, letter, photo and song you have is stored as a long row of them."
+        ]
+      },
+      {
+        "h": "Switches make decisions: logic gates",
+        "p": [
+          "Wire two switches one after the other and current only gets through if both are on. That is an AND gate. Wire them side by side and either one is enough: an OR gate.",
+          "You have already used these in code. && and || in JavaScript are the same idea, written as text instead of wires."
+        ],
+        "code": "A  B  | A AND B | A OR B\n0  0  |    0    |   0\n0  1  |    0    |   1\n1  0  |    0    |   1\n1  1  |    1    |   1"
+      },
+      {
+        "h": "Gates make maths",
+        "p": [
+          "A few gates together can add two bits. Chain those adders and you can add big numbers. Add memory (gates that hold a 1 or 0) and a clock (a beat that says \"next step\"), and you have a processor.",
+          "A processor does very simple steps: fetch an instruction, do it, fetch the next one. It does billions of them each second. A 1 GHz chip ticks a billion times per second."
+        ]
+      },
+      {
+        "h": "Why smaller is better",
+        "p": [
+          "Smaller transistors switch faster, use less power and fit more on one chip. Gordon Moore noticed in 1965 that the number on a chip was doubling regularly (later: about every two years). People call it Moore's law. It is an observation, not a law of nature, and it is slowing down now."
+        ]
+      },
+      {
+        "h": "Where your code meets the chip",
+        "p": [
+          "Your JavaScript gets turned into machine code: instructions like \"add these two numbers\" or \"jump back to step 4\". Each one is carried out by gates switching. C is close to the machine because it maps almost directly onto those instructions."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "What does a transistor do, in one sentence?",
+        "a": "It is a switch with no moving parts: a small voltage on its gate lets current through (1) or stops it (0)."
+      },
+      {
+        "q": "How is && in JavaScript like an AND gate?",
+        "a": "Both give true (1) only when both inputs are true. The gate does it with wires and current, the code does it with text the chip ends up running."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: Transistor",
+        "url": "https://en.wikipedia.org/wiki/Transistor"
+      },
+      {
+        "title": "Wikipedia: Logic gate",
+        "url": "https://en.wikipedia.org/wiki/Logic_gate"
+      },
+      {
+        "title": "Wikipedia: Moore's law",
+        "url": "https://en.wikipedia.org/wiki/Moore%27s_law"
+      }
+    ]
+  },
+  {
+    "id": "hw-making",
+    "group": "Hardware",
+    "title": "How a chip is made: from sand to silicon",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Chips are printed, not built: light shines through a pattern onto a slice of pure silicon, layer after layer, until billions of transistors and wires are drawn on it."
+        ]
+      },
+      {
+        "h": "1. Sand becomes a crystal",
+        "p": [
+          "Silicon comes from sand (silicon dioxide). It is cleaned until it is almost perfectly pure, melted, and pulled slowly into one big crystal cylinder called an ingot.",
+          "The ingot is sliced into thin round plates called wafers and polished like a mirror."
+        ]
+      },
+      {
+        "h": "2. Printing with light: photolithography",
+        "p": [
+          "Think of a stencil and spray paint, but with light. The wafer is coated with photoresist, a liquid that changes when light hits it.",
+          "Light shines through a mask (the stencil, with one layer of the chip drawn on it). Where the light lands, the resist changes. A wash removes those parts, and the uncovered silicon is etched away or treated. Then the leftover resist is cleaned off.",
+          "The newest machines use extreme ultraviolet (EUV) light with a wavelength of about 13.5 nm, because shorter light draws finer lines. Only one company, ASML, makes them."
+        ],
+        "code": "clean → coat with resist → shine light through the mask\n      → wash away the lit parts → etch or add material\n      → strip the resist → repeat for the next layer"
+      },
+      {
+        "h": "3. Many layers",
+        "p": [
+          "The transistors are made in the bottom layers. Above them, many more layers of tiny metal wires connect them, like the floors of a building with lifts between them. A modern chip goes through hundreds of steps.",
+          "This happens in a fab (a chip factory) with air far cleaner than an operating room. One speck of dust is bigger than a transistor."
+        ]
+      },
+      {
+        "h": "4. Test, cut, package",
+        "p": [
+          "One wafer holds many copies of the chip. Each copy (a die) is tested, the wafer is cut apart, and the good dies are put in a package: the small black square with connections that gets soldered onto a board."
+        ]
+      },
+      {
+        "h": "Who does what",
+        "p": [
+          "Designing a chip and making it are often different companies. Apple designs its chips; factories like Samsung (for the early ones) and TSMC (for the newer ones) make them.",
+          "Names like \"45 nm\" or \"5 nm\" are the process: the generation of the factory's technology. Smaller number, newer and denser. Today the number is more of a name than a real measurement."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Explain photolithography with the stencil picture.",
+        "a": "The mask is the stencil, light is the paint. Light only reaches the resist through the open parts of the mask, those parts get washed away, and the silicon under them is etched or changed."
+      },
+      {
+        "q": "Why does a chip factory need such clean air?",
+        "a": "The transistors are smaller than a speck of dust, so one speck landing on a wafer can ruin a chip."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: Photolithography",
+        "url": "https://en.wikipedia.org/wiki/Photolithography"
+      },
+      {
+        "title": "Wikipedia: Semiconductor device fabrication",
+        "url": "https://en.wikipedia.org/wiki/Semiconductor_device_fabrication"
+      },
+      {
+        "title": "Wikipedia: Extreme ultraviolet lithography",
+        "url": "https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography"
+      }
+    ]
+  },
+  {
+    "id": "hw-soc",
+    "group": "Hardware",
+    "title": "System on a chip: a whole computer in one square",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "A system on a chip (SoC) puts the main parts of a computer on one chip, so a phone can be small, fast and kind to its battery."
+        ]
+      },
+      {
+        "h": "The parts of any computer",
+        "p": [
+          "CPU: the brain that runs your code, one step at a time but very fast.",
+          "GPU: many small, simple cores that draw the screen, all pixels at once.",
+          "Memory (RAM): the desk where work in progress lies. Fast, but forgotten when the power goes.",
+          "Storage (flash): the filing cabinet. Slower, but it keeps your photos when the phone is off.",
+          "Radios: the modem for the mobile network, plus Wi-Fi and Bluetooth."
+        ]
+      },
+      {
+        "h": "Why one chip instead of many",
+        "p": [
+          "Signals that travel a short way inside one chip are faster and use less power than signals across a circuit board. Fewer chips also means a smaller, cheaper board.",
+          "Phones often stack the RAM right on top of the SoC (package on package). The first iPhone and the A4 did this."
+        ]
+      },
+      {
+        "h": "The clean code idea, in hardware",
+        "p": [
+          "An SoC is built from blocks with one job each: the CPU block, the GPU block, the video block. That is the same rule as small functions in clean code: one job each, a clear way in and out, and you can improve one block without rewriting the others."
+        ]
+      },
+      {
+        "h": "What it looks like inside a phone",
+        "p": [
+          "The board in a phone is the logic board. The SoC sits in the middle; flash, radios, audio and power chips sit around it. The battery, screen and camera plug into it with thin ribbon cables."
+        ],
+        "code": "[ screen ]──ribbon──┐\n                     │\n[ camera ]──┐   [ logic board: SoC+RAM, flash, radios, audio, power ]\n            └───────┘           │\n                           [ battery ]"
+      }
+    ],
+    "check": [
+      {
+        "q": "What is the difference between RAM and flash storage?",
+        "a": "RAM is the fast desk for work in progress and forgets everything without power. Flash is the slower filing cabinet that keeps things when the phone is off."
+      },
+      {
+        "q": "Why put the parts on one chip?",
+        "a": "Short paths inside one chip are faster and use less power, and fewer chips fit in a smaller phone."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: System on a chip",
+        "url": "https://en.wikipedia.org/wiki/System_on_a_chip"
+      },
+      {
+        "title": "Wikipedia: Package on a package",
+        "url": "https://en.wikipedia.org/wiki/Package_on_a_package"
+      }
+    ]
+  },
+  {
+    "id": "hw-iphone",
+    "group": "Hardware",
+    "title": "Inside the first iPhone (2007)",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "The first iPhone was a small computer built mostly from other companies' chips, with Apple's design and software tying them together."
+        ]
+      },
+      {
+        "h": "What was inside",
+        "p": [
+          "Brain: a Samsung SoC (S5L8900) with a 32-bit ARM core, slowed from 620 MHz to 412 MHz to save battery, and 128 MB of RAM stacked on top.",
+          "Storage: 4 or 8 GB of Samsung flash at launch (16 GB later).",
+          "Screen: 3.5 inches, 480 × 320 pixels, with a multi-touch layer that senses fingers by the tiny electric charge they carry (capacitive touch).",
+          "Camera: 2 megapixels, no video at first.",
+          "Radios: GSM/EDGE for the mobile network (no 3G yet), Wi-Fi from Marvell and Bluetooth from CSR.",
+          "Battery: 1400 mAh, soldered to the board, so it was very hard to replace."
+        ]
+      },
+      {
+        "h": "How it was put together",
+        "p": [
+          "Apple designed the phone and its software. The chips came from Samsung, Marvell, CSR, Infineon and others. Foxconn, a contract manufacturer, assembled it in China.",
+          "This is how most electronics are made: the brand designs, many suppliers make parts, one factory puts them together."
+        ]
+      },
+      {
+        "h": "What it teaches",
+        "p": [
+          "The hardware was ordinary for 2007. The big change was the design: one big touch screen instead of buttons, and software (iPhone OS) made for fingers.",
+          "Slowing the chip from 620 to 412 MHz shows a real hardware trade-off: speed against battery and heat. Phones still make that choice every second."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why was the processor slowed down?",
+        "a": "A slower clock uses less power and makes less heat, so the battery lasts longer. It trades speed for battery life."
+      },
+      {
+        "q": "How does a capacitive touch screen know where your finger is?",
+        "a": "Your finger carries a tiny electric charge. A grid of sensors in the screen notices the change in charge where you touch."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: iPhone (1st generation)",
+        "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+      },
+      {
+        "title": "iFixit: iPhone 1st Generation Teardown",
+        "url": "https://www.ifixit.com/Teardown/iPhone+1st+Generation+Teardown/599"
+      }
+    ]
+  },
+  {
+    "id": "hw-ipad",
+    "group": "Hardware",
+    "title": "Inside the first iPad (2010)",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "The first iPad was mostly battery and screen, run by the A4: the first chip Apple designed itself."
+        ]
+      },
+      {
+        "h": "What was inside",
+        "p": [
+          "Brain: the Apple A4, an SoC with one ARM Cortex-A8 core at 1 GHz and a PowerVR SGX535 GPU, with 256 MB of RAM stacked on top.",
+          "Storage: 16, 32 or 64 GB of flash.",
+          "Screen: 9.7 inches, 1024 × 768 pixels, an IPS LCD (colours stay right when you look from the side).",
+          "Battery: 6,600 mAh (24.8 Wh), about 10 hours."
+        ]
+      },
+      {
+        "h": "Open it and you see batteries",
+        "p": [
+          "Most of the space under the screen is battery cells. The logic board is a small strip. A big screen needs a lot of power, so a tablet is really a battery with a screen on it and a small computer on the side."
+        ]
+      },
+      {
+        "h": "The A4: Apple starts making its own chips",
+        "p": [
+          "The first three iPhones used chips Samsung designed. For the A4, Apple designed the chip and Samsung built it in its factory, on a 45 nm process.",
+          "Apple had bought chip design teams (P.A. Semi in 2008, and Intrinsity, whose work sped up the A4). The same A4 then went into the iPhone 4, slowed to 800 MHz to save battery in the smaller phone."
+        ]
+      },
+      {
+        "h": "What it teaches",
+        "p": [
+          "Reuse: one chip design in several devices, tuned for each (1 GHz in the iPad, 800 MHz in the iPhone 4). Like one function called with different arguments."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why is a tablet mostly battery?",
+        "a": "The big screen uses most of the power, so it needs a big battery to last a day. The computer part is small."
+      },
+      {
+        "q": "What was new about the A4?",
+        "a": "It was the first chip Apple designed itself. Samsung still manufactured it."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: iPad (1st generation)",
+        "url": "https://en.wikipedia.org/wiki/IPad_(1st_generation)"
+      },
+      {
+        "title": "Wikipedia: Apple A4",
+        "url": "https://en.wikipedia.org/wiki/Apple_A4"
+      },
+      {
+        "title": "iFixit: iPad Wi-Fi Teardown",
+        "url": "https://www.ifixit.com/Teardown/iPad+Wi-Fi+Teardown/2183"
+      }
+    ]
+  },
+  {
+    "id": "hw-apple-silicon",
+    "group": "Hardware",
+    "title": "Apple silicon: from A4 to M1",
+    "sections": [
+      {
+        "h": "In one sentence",
+        "p": [
+          "Apple went from buying chips to designing them, so it could build the hardware and the software to fit each other."
+        ]
+      },
+      {
+        "h": "The steps",
+        "p": [
+          "2007: the first iPhone uses a Samsung chip.",
+          "2010: the A4, Apple's first own chip, in the iPad and iPhone 4.",
+          "2013: the A7 in the iPhone 5s, the first 64-bit chip in a phone.",
+          "2017: the A11 adds a Neural Engine, a block made for machine learning (Face ID, photos).",
+          "2020: the M1 moves the Mac from Intel chips to Apple's own. TSMC makes it on a 5 nm process, with about 16 billion transistors."
+        ]
+      },
+      {
+        "h": "Fast cores and slow cores",
+        "p": [
+          "The M1 has 4 performance cores and 4 efficiency cores. Hard work goes to the fast ones; small jobs like checking mail go to the frugal ones. That is the iPhone's 412 MHz trade-off again, done all the time and automatically."
+        ]
+      },
+      {
+        "h": "Unified memory",
+        "p": [
+          "In the M1, the CPU and GPU share one pool of memory in the same package. They don't have to copy data between two memories, which saves time and power."
+        ]
+      },
+      {
+        "h": "The principle",
+        "p": [
+          "Owning both sides lets you remove the parts in between. Clean code works the same: when you understand the whole thing, you can make it simpler instead of adding layers to make pieces fit."
+        ]
+      }
+    ],
+    "check": [
+      {
+        "q": "Why have both performance and efficiency cores?",
+        "a": "Big work gets speed from the fast cores, and small work runs on the slow cores that use much less power, so the battery lasts longer."
+      },
+      {
+        "q": "What does unified memory save?",
+        "a": "The CPU and GPU share one memory, so data doesn't have to be copied between them. That saves time and power."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Wikipedia: Apple silicon",
+        "url": "https://en.wikipedia.org/wiki/Apple_silicon"
+      },
+      {
+        "title": "Wikipedia: Apple M1",
+        "url": "https://en.wikipedia.org/wiki/Apple_M1"
+      },
+      {
+        "title": "Wikipedia: Apple A7",
+        "url": "https://en.wikipedia.org/wiki/Apple_A7"
+      }
+    ]
   }
 ]
