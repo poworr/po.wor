@@ -1166,5 +1166,65 @@
     "builtFrom": "the ! operator, twice",
     "remember": "!! = \"is there something here?\" as true or false. Same as Boolean(value).",
     "mastered": false
+  },
+  {
+    "id": "javascript-112",
+    "category": "Files",
+    "syntax": "const blob = new Blob([text], { type: 'application/json' });\nconst link = document.createElement('a');\nlink.href = URL.createObjectURL(blob);\nlink.download = 'backup.json';\nlink.click();\nsetTimeout(() => URL.revokeObjectURL(link.href), 0);",
+    "explain": "Makes a file in the browser and downloads it. A Blob is a file-like chunk of data. createObjectURL gives it a temporary address, an <a> with download saves that address as a file, and click() starts it. revokeObjectURL frees the memory afterwards; the setTimeout lets the download start first.",
+    "example": "po.wor export: saves the planner and writings as a .json file.",
+    "builtFrom": "new with an array and an object, a made element with two properties, a method call, and a timer",
+    "remember": "Blob = the file, object URL = its address, <a download> = the save button, click() = press it, revoke = clean up.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-113",
+    "category": "Files",
+    "syntax": "const input = document.createElement('input');\ninput.type = 'file';\ninput.accept = '.json';\ninput.addEventListener('change', async () => {\n  const text = await input.files[0].text();\n});\ninput.click();",
+    "explain": "Lets someone pick a file and reads it as text. accept limits the picker to .json files. click() opens the picker; when a file is chosen, 'change' fires. input.files is the list of chosen files, and .text() reads one. It takes time, so it returns a promise: await needs an async function.",
+    "example": "po.wor import: loads a backup .json file back in.",
+    "builtFrom": "a made element with properties, an async arrow function as the listener, await on a method call",
+    "remember": "files[0] = the first chosen file. .text() is slow, so await it.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-114",
+    "category": "JSON",
+    "syntax": "JSON.stringify(data, null, 2)",
+    "explain": "The third value is the indent: 2 puts each key on its own line, indented by 2 spaces, so people can read the file. The second value (null here) can pick or change keys; null means keep them all.",
+    "example": "po.wor export: the backup file is readable when you open it.",
+    "builtFrom": "a method call with three values: the data, a replacer, the indent",
+    "remember": "stringify(data, null, 2): the data, \"no changes\", \"two spaces\".",
+    "mastered": false
+  },
+  {
+    "id": "javascript-115",
+    "category": "Dates",
+    "syntax": "new Date().toLocaleDateString('en-CA')   // \"2026-11-28\"",
+    "explain": "Today as year-month-day. The Canadian English format ('en-CA') happens to be year-month-day with dashes, so file names sort in date order.",
+    "example": "po.wor export: the backup's file name has the date in it.",
+    "builtFrom": "new Date(), then a method call with one value: the locale",
+    "remember": "en-CA = big to small: year, month, day.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-116",
+    "category": "Spread",
+    "syntax": "const copy = { ...w, id: w.id + '-copy' };",
+    "explain": "Copies every property of w into a new object, then sets id again. When a key appears twice, the later one wins, so the copy has a new id and everything else the same. w itself is not changed.",
+    "example": "po.wor import: a writing that already exists comes back as a copy with its own id.",
+    "builtFrom": "an object literal: spread first, then one key: value",
+    "remember": "Spread first, changes after: the last word wins.",
+    "mastered": false
+  },
+  {
+    "id": "javascript-117",
+    "category": "Storage",
+    "syntax": "const pages = Object.keys(localStorage).filter((name) => name.startsWith('planner:'));",
+    "explain": "Object.keys(localStorage) is the name of everything this site saved. filter with startsWith keeps only the names with a planner: prefix, so you get every saved planner page.",
+    "example": "po.wor export: finds every planner page to put in the backup.",
+    "builtFrom": "a function call on an object, then filter with an arrow function that calls a string method",
+    "remember": "A shared prefix in the names (planner:) turns storage into folders you can list.",
+    "mastered": false
   }
 ]
