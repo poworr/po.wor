@@ -53,16 +53,11 @@ function show(id) {
   $('q-level').textContent = current.level;
   $('q-text').textContent = current.question_ja;
 
-  $('q-keywords').innerHTML = '';
-  current.keywords.forEach(function (k) {
+  $('q-points').innerHTML = '';
+  current.points.forEach(function (point) {
     const li = document.createElement('li');
-    li.textContent = k.ja;
-    if (k.reading !== k.ja) {
-      const small = document.createElement('small');
-      small.textContent = k.reading;
-      li.appendChild(small);
-    }
-    $('q-keywords').appendChild(li);
+    li.textContent = point;
+    $('q-points').appendChild(li);
   });
 
   // Hide the example again
