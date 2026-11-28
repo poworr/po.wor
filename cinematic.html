@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinematic — po.wor</title>
+<meta name="description" content="Cinematic showcase — photos and short video by po.wor.">
+<link rel="icon" href="P-logo-small.png?v=2" type="image/png">
+<link rel="stylesheet" href="style.css?v=12">
+</head>
+<body data-feed="cinematic.json" data-layout="grid">
+
+<header class="bar">
+  <a class="brand" href="index.html"><img class="brand-icon" src="P-logo-small.png" alt="po.wor"></a>
+  <div class="box-menu">
+    <button type="button" class="box-toggle" id="box-toggle" aria-expanded="false" aria-controls="box-panel" aria-label="Projects" title="Projects">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5v9L12 21l8-4.5v-9M4 7.5 12 12l8-4.5M12 12v9"/><path class="box-lid" d="M4 7.5 12 3l8 4.5L12 12z"/></svg>
+    </button>
+    <nav class="box-panel" id="box-panel" aria-label="Sections">
+      <a href="pouvoir.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/></svg><span>Pouvoir</span></a>
+      <a href="album.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg><span>Album</span></a>
+      <a href="cinematic.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="m3 9 17-5 1 3.5L4 12.5"/><path d="m8 7.5 2.5 3.2M13 6 15.5 9.2"/></svg><span>Cinematic</span></a>
+      <a href="creative.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><span>Creative</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div id="feed" class="feed" aria-live="polite">
+    <p class="feed-loading">loading&hellip;</p>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="year"></span> po.wor</span>
+</footer>
+
+<script src="script.js?v=7"></script>
+</body>
+</html>

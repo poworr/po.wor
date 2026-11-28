@@ -7,6 +7,11 @@ const PROJECTS = [
   { name: 'planner',  href: 'planner.html',  icon: '•' },
   { name: 'japanese', href: 'japanese.html', icon: 'あ' },
   { name: 'write',    href: 'write.html',    icon: '♪' },
+  { name: 'log',       href: 'log.html',       icon: '≡' },
+  { name: 'pouvoir',   href: 'pouvoir.html',   icon: 'P' },
+  { name: 'album',     href: 'album.html',     icon: '◎' },
+  { name: 'cinematic', href: 'cinematic.html', icon: '▶' },
+  { name: 'creative',  href: 'creative.html',  icon: '◇' },
   { name: 'box',      href: 'box.html',      icon:
     '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">' +
     '<path d="M4 7.5 L4 16.5 L12 21 L20 16.5 L20 7.5"/><path d="M4 7.5 L12 12 L20 7.5 M12 12 L12 21"/>' +
